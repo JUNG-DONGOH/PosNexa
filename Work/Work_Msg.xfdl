@@ -1,0 +1,62 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="Work_Msg" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Grid id="Grid00" taborder="0" left="78" top="29" width="432" height="341" binddataset="gdsMessage" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="MSG_ID"/>
+                <Cell col="1" text="MSG_TEXT"/>
+                <Cell col="2" text="MSG_TEXT_EN"/>
+                <Cell col="3" text="MSG_TYPE"/>
+                <Cell col="4" text="MSG_ICON"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:MSG_ID"/>
+                <Cell col="1" text="bind:MSG_TEXT"/>
+                <Cell col="2" text="bind:MSG_TEXT_EN"/>
+                <Cell col="3" text="bind:MSG_TYPE"/>
+                <Cell col="4" text="bind:MSG_ICON"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="1" text="확인" left="549" top="42" width="180" height="58" onclick="Button00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sMsgId = "confirm.logout";	 	//메세지ID
+	var arrArg = "";						//메세지취환될값 배열[생략가능]
+	var sPopId = sMsgId;					//메세지팝업ID[생략가능]	*해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+	var sMsgCallback = "fn_callback";
+	
+	// function 전달
+	//this.gfnAlert(sMsgId, arrArg, sPopId, sMsgCallback);
+	this.gfnAlert(sMsgId, arrArg, sPopId, function(id, rtn){
+			if(rtn){
+				this.alert("confirm");
+			}
+			else{
+				this.alert("cancel");
+			}
+		} 
+	);	
+};
+]]></Script>
+  </Form>
+</FDL>

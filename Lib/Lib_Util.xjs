@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Script version="1.0" type="xscript5.1"><![CDATA[//오늘 날짜 가져오기
+this.lfn_today = function ()
+{
+	var sToday="";
+	var objDate = new Date();
+	var sToday  = objDate.getFullYear().toString();//년도
+	sToday += (objDate.getMonth()+1).toString().padLeft(2, "0");//월
+	sToday   += objDate.getDate().toString().padLeft(2, "0");//일
+
+	return sToday;
+};
+
+//이번달 1일 가져오기
+this.lfn_firstDay = function ()
+{
+	var sFirstDay="";
+	var objDate = new Date();
+	var sFirstDay  = objDate.getFullYear().toString();//년도
+	sFirstDay += (objDate.getMonth()+1).toString().padLeft(2, "0");//월
+	sFirstDay   += "01"; //01일
+	
+	return sFirstDay;
+};]]></Script>

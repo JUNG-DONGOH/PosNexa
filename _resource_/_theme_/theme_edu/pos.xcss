@@ -1,0 +1,286 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<XCSS version="1.1">
+  <CSSData><![CDATA[/* ===== Primary Button (결제, 확인 등 주요 액션) ===== */
+.Button.primary {
+    background: #0064FF;
+    color: #FFFFFF;
+    -nexa-border: 0px none;
+    border-radius: 12px;
+    font: bold 16px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 16px 24px;
+    -nexa-text-align: center;
+}
+
+.Button.primary[status=mouseover] {
+    background: #0052CC;
+}
+
+.Button.primary[status=disabled] {
+    background: #E5E8EB;
+    color: #9EA4AA;
+}
+
+/* ===== Large Button (결제수단 선택, 메뉴 등) ===== */
+.Button.large {
+    background: #FFFFFF;
+    color: #191F28;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 16px;
+    font: 600 18px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 24px 20px;
+    -nexa-text-align: center;
+}
+
+.Button.large[status=mouseover] {
+    background: #F9FAFB;
+    -nexa-border: 1px solid #0064FF;
+}
+
+.Button.large[userstatus=pushed] {
+    background: #F2F4F6;
+}
+
+/* ===== Secondary Button (취소, 뒤로가기 등) ===== */
+.Button.secondary {
+    background: #F9FAFB;
+    color: #4E5968;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 12px;
+    font: 600 16px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 16px 24px;
+    -nexa-text-align: center;
+}
+
+.Button.secondary[status=mouseover] {
+    background: #F2F4F6;
+}
+
+/* ===== Danger Button (삭제, 초기화 등) ===== */
+.Button.danger {
+    background: #FF3B30;
+    color: #FFFFFF;
+    -nexa-border: 0px none;
+    border-radius: 12px;
+    font: bold 16px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 16px 24px;
+    -nexa-text-align: center;
+}
+
+.Button.danger[status=mouseover] {
+    background: #E02F25;
+}
+
+/* ===== Menu Button (상품 선택 버튼) ===== */
+.Button.menu {
+    background: #FFFFFF;
+    color: #191F28;
+    -nexa-border: 2px solid #E5E8EB;
+    border-radius: 12px;
+    font: 500 15px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 20px 16px;
+    -nexa-text-align: left;
+}
+
+.Button.menu[status=mouseover] {
+    -nexa-border: 2px solid #0064FF;
+}
+
+.Button.menu[status=focused] {
+    background: #EBF4FF;
+    -nexa-border: 2px solid #0064FF;
+}
+
+/* ===== Static (제목, 라벨) ===== */
+.Static.title {
+    color: #191F28;
+    font: bold 24px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: left;
+}
+
+.Static.subtitle {
+    color: #4E5968;
+    font: 600 18px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: left;
+}
+
+.Static.label {
+    color: #191F28;
+    font: 500 16px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: left;
+}
+
+.Static.caption {
+    color: #6B7684;
+    font: normal 14px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: left;
+}
+
+/* ===== Price Display (가격 표시) ===== */
+.Static.price {
+    color: #191F28;
+    font: bold 28px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: right;
+}
+
+.Static.price_large {
+    color: #0064FF;
+    font: bold 36px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: right;
+}
+
+/* ===== Edit (입력 필드) ===== */
+.Edit.input {
+    background: #FFFFFF;
+    color: #191F28;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 12px;
+    font: normal 16px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 14px 16px;
+}
+
+.Edit.input[status=focused] {
+    -nexa-border: 2px solid #0064FF;
+    background: #FFFFFF;
+}
+
+.Edit.input[status=disabled] {
+    background: #F9FAFB;
+    color: #9EA4AA;
+}
+
+/* ===== Number Pad Button (숫자 키패드) ===== */
+.Button.numpad {
+    background: #F9FAFB;
+    color: #191F28;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 12px;
+    font: 600 24px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 20px;
+    -nexa-text-align: center;
+}
+
+.Button.numpad[userstatus=pushed] {
+    background: #E5E8EB;
+}
+
+/* ===== Div (카드, 패널) ===== */
+.Div.card {
+    background: #FFFFFF;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 16px;
+}
+
+.Div.card_selected {
+    background: #EBF4FF;
+    -nexa-border: 2px solid #0064FF;
+    border-radius: 16px;
+}
+
+/* ===== Static으로 카드 배경 만들기 ===== */
+.Static.card_bg {
+    background: #FFFFFF;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 16px;
+    -nexa-padding: 20px;
+}
+
+.Static.card_bg_selected {
+    background: #EBF4FF;
+    -nexa-border: 2px solid #0064FF;
+    border-radius: 16px;
+    -nexa-padding: 20px;
+}
+
+/* ===== Grid (주문 내역, 상품 리스트) ===== */
+.Grid.list {
+    background: #FFFFFF;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 12px;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid.list .body {
+    background: #FFFFFF;
+    color: #191F28;
+}
+
+.Grid.list .head {
+    background: #F9FAFB;
+    color: #6B7684;
+    font: 600 14px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-border: 0px none;
+}
+
+.Grid.list .body[status=mouseover] {
+    background: #F9FAFB;
+}
+
+.Grid.list .summary {
+    background: #F9FAFB;
+    color: #191F28;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+/* ===== Tab (메뉴 카테고리 탭) ===== */
+.Tab.category {
+    background: #FFFFFF;
+    -nexa-border: 0px none;
+}
+
+.Tab.category .tabbuttonitem {
+    background: #F9FAFB;
+    color: #6B7684;
+    -nexa-border: 0px none;
+    border-radius: 8px;
+    font: 500 15px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 12px 20px;
+}
+
+.Tab.category .tabbuttonitem[status=mouseover] {
+    background: #E5E8EB;
+}
+
+.Tab.category .tabbuttonitem[userstatus=selected] {
+    background: #0064FF;
+    color: #FFFFFF;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Tab.category .tabpage {
+    background: #FFFFFF;
+}
+
+.Tab.category .nextbutton {
+    background: #F9FAFB;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+.Tab.category .prevbutton {
+    background: #F9FAFB;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+/* ===== Badge (수량, 알림) ===== */
+.Static.badge {
+    background: #FF3B30;
+    color: #FFFFFF;
+    border-radius: 12px;
+    font: bold 12px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 4px 8px;
+    -nexa-text-align: center;
+}
+
+.Static.badge_blue {
+    background: #0064FF;
+    color: #FFFFFF;
+    border-radius: 12px;
+    font: bold 12px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 4px 8px;
+    -nexa-text-align: center;
+}
+]]></CSSData>
+  <CSSData type="desktop"><![CDATA[]]></CSSData>
+  <CSSData type="mobile_large"><![CDATA[]]></CSSData>
+  <CSSData type="mobile_small"><![CDATA[]]></CSSData>
+  <CSSData type="mobile_medium"><![CDATA[]]></CSSData>
+</XCSS>

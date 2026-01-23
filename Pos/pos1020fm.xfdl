@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos1020fm" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" left="122" top="53" width="255" height="95" text="아이디 찾기" border="1px solid black" onclick="Div00_Static00_onclick"/>
+              <Button id="Button00" taborder="1" text="아이디 찾기" left="56" top="327" width="389" height="71"/>
+              <Button id="moveMain" taborder="2" left="458" top="13" width="20" height="20" cssclass="btn_MDI_AllX" onclick="Div00_Button01_onclick" text=""/>
+              <TextField id="TextField00_00" taborder="3" labeltext="비밀번호" left="56" top="196" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="비밀번호를 입력해주세요"/>
+              <Button id="Button02" taborder="4" text="보기" left="395" top="215" width="50" height="25" onclick="Div00_Button02_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[//main화면으로 이동
+this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("Pos::pos1010fm.xfdl");
+};
+
+this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var isPassword = this.Div00.form.TextField00_00.inputtype;
+	
+	if(isPassword=="password"){
+		this.Div00.form.TextField00_00.inputtype="text";
+	}
+	
+	if(isPassword=="text"){
+		this.Div00.form.TextField00_00.inputtype="password";
+	}
+};
+]]></Script>
+  </Form>
+</FDL>

@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos1010fm" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" mobileorientation="landscape" width="1280">
+        <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" left="122" top="53" width="255" height="67" text="매장운영관리 시스템  POS" border="1px solid black" onclick="Div00_Static00_onclick"/>
+              <TextField id="TextField00" taborder="1" labeltext="아이디" left="50" top="139" width="399" height="54" inputtype="email" usetrailingbutton="true"/>
+              <TextField id="TextField00_00" taborder="2" labeltext="비밀번호" left="50" top="213" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged"/>
+              <CheckBox id="CheckBox00" taborder="3" left="54" top="287" width="95" height="30" text="아이디 저장"/>
+              <Button id="btnLogin" taborder="4" text="로그인" left="56" top="337" width="389" height="53" onclick="Div00_btnLogin_onclick"/>
+              <Button id="moveId" taborder="5" text="ID찾기" left="102" top="410" width="75" height="53" onclick="Div00_Button01_onclick"/>
+              <Button id="movePassword" taborder="6" text="비밀번호 찾기" left="197" top="410" width="110" height="53" onclick="Div00_Button01_00_onclick"/>
+              <Button id="Button01_00_00" taborder="7" text="회원가입" left="327" top="410" width="75" height="53" onclick="Div00_Button01_00_00_onclick"/>
+              <Button id="Button02" taborder="8" text="보기" left="389" top="232" width="50" height="25" onclick="Div00_Button02_onclick"/>
+              <Static id="Static01" taborder="9" text="SMS로그인" left="195" top="478" width="110" height="32"/>
+              <Button id="Button01" taborder="10" text="네이버" left="134" top="529" width="102" height="83"/>
+              <Button id="Button01_00" taborder="11" text="카카오톡" left="254" top="530" width="102" height="83"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var isPassword = this.Div00.form.TextField00_00.inputtype;
+	
+	if(isPassword=="password"){
+		this.Div00.form.TextField00_00.inputtype="text";
+	}
+	
+	if(isPassword=="text"){
+		this.Div00.form.TextField00_00.inputtype="password";
+	}
+
+};
+
+//ID화면으로 이동
+this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("Pos::pos1020fm.xfdl");
+};
+
+//Password화면으로 이동
+this.Div00_Button01_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("Pos::pos1030fm.xfdl");
+};
+
+//회원가입화면으로 이동
+this.Div00_Button01_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("Pos::pos1040fm.xfdl");
+};
+
+//로그인 버튼
+this.Div00_btnLogin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fvApp.VF.separatesize = "50,*,0";
+};]]></Script>
+  </Form>
+</FDL>
