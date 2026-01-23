@@ -41,19 +41,19 @@ this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 //ID화면으로 이동
 this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("Pos::pos1020fm.xfdl");
+	this.go("Account::pos1020fm.xfdl");
 };
 
 //Password화면으로 이동
 this.Div00_Button01_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("Pos::pos1030fm.xfdl");
+	this.go("Account::pos1030fm.xfdl");
 };
 
 //회원가입화면으로 이동
 this.Div00_Button01_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("Pos::pos1040fm.xfdl");
+	this.go("Account::pos1040fm.xfdl");
 };
 
 //로그인 버튼

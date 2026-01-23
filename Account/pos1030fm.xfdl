@@ -21,7 +21,7 @@
     <Script type="xscript5.1"><![CDATA[//main화면으로 이동
 this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("Pos::pos1010fm.xfdl");
+	this.go("Account::pos1010fm.xfdl");
 };
 ]]></Script>
   </Form>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1040fm" width="1280" height="720" titletext="New Form">
+  <Form id="pos1040fm" width="1280" height="720" titletext="New Form" onload="pos1040fm_onload">
     <Layouts>
       <Layout height="720" width="1280">
         <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black" formscrollbartype="none none">
@@ -43,9 +43,57 @@
             </Layout>
           </Layouts>
         </Div>
+        <Grid id="Grid00" taborder="1" left="897" top="122" width="433" height="364" binddataset="gdsAccount">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="user_id"/>
+                <Cell col="1" text="login_id"/>
+                <Cell col="2" text="password"/>
+                <Cell col="3" text="name"/>
+                <Cell col="4" text="role"/>
+                <Cell col="5" text="status"/>
+                <Cell col="6" text="created_at"/>
+                <Cell col="7" text="updated_at"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:user_id"/>
+                <Cell col="1" text="bind:login_id"/>
+                <Cell col="2" text="bind:password"/>
+                <Cell col="3" text="bind:name"/>
+                <Cell col="4" text="bind:role"/>
+                <Cell col="5" text="bind:status"/>
+                <Cell col="6" text="bind:created_at"/>
+                <Cell col="7" text="bind:updated_at"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[//비밀번호 보기 버튼
+    <Script type="xscript5.1"><![CDATA[//Form이 시작되면
+this.pos1040fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+// 	// 공통 데이터셋(Global Dataset)에 행 추가
+// 	nexacro.getApplication().gdsAccount.addRow();
+};
+
+
+//비밀번호 보기 버튼
 this.Div00_btnPwdShow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var isPassword = this.Div00.form.TxfPwd.inputtype;
@@ -74,16 +122,50 @@ this.Div00_btnPwdCheckShow_onclick = function(obj:nexacro.Button,e:nexacro.Click
 };
 
 
-//<확인> DB로 보냄
+//<확인> DB로 보내기 및 정합성 체크
 this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
+
+	var objDs = nexacro.getApplication().gdsAccount;
 	
+	this.alert(objDs.rowcount)
+	if (objDs.rowcount == 0) {
+		objDs.addRow();
+	}
+	// 정합성 체크
+	this.gfnClearValidation(objDs);
+	this.gfnSetValidation(objDs, "name", "이름", "required");	
+	// 수정된 Row만 Validation check
+ 	if (this.gfnValidation(objDs, "U") == false) return;
+	
+	
+
+// 	if (this.gdsAccount.rowcount == 0) {
+// 		this.gdsAccount.addRow();
+// 	}
+// 	// 정합성 체크
+// 	this.gfnClearValidation(this.gdsAccount);
+// 	this.gfnSetValidation(this.gdsAccount, "DATE", "필수(날짜)", "required,date");
+// 	this.gfnSetValidation(this.gdsAccount, "EDIT", "필수(Edit)", "required");	
+// 	this.gfnSetValidation(this.gdsAccount, "MAX_NUM", "최대값100", "required,digits,max:100");
+// 	this.gfnSetValidation(this.gdsAccount, "MIN_NUM", "최소값10", "required,digits,min:10");	
+// 	this.gfnSetValidation(this.gdsAccount, "LENGTH_MIN", "최소길이3", "required,minlength:3");
+// 	this.gfnSetValidation(this.gdsAccount, "RANGE", "범위(1~5)", "required,digits,range:1:5");
+// 	// 수정된 Row만 Validation check
+//  	if (this.gfnValidation(this.gdsAccount, "U") == false) return;
 };
 
 //<취소> main화면으로 이동
 this.Div00_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.go("Pos::pos1010fm.xfdl");
+	this.go("Account::pos1010fm.xfdl");
 };]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.TxfName" propid="value" datasetid="gdsAccount" columnid="name"/>
+      <BindItem id="item1" compid="Div00.form.TxfId" propid="value" datasetid="gdsAccount" columnid="login_id"/>
+      <BindItem id="item2" compid="Div00.form.TxfPwd" propid="value" datasetid="gdsAccount" columnid="password"/>
+      <BindItem id="item3" compid="Div00.form.TxfPwdCheck" propid="value" datasetid="gdsAccount" columnid="password"/>
+      <BindItem id="item4" compid="Div00.form.rdoRole" propid="value" datasetid="gdsAccount" columnid="role"/>
+    </Bind>
   </Form>
 </FDL>

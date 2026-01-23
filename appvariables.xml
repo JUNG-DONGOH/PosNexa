@@ -3059,6 +3059,21 @@
         <Column id="USE_FLAG" type="STRING" size="256"/>
       </ColumnInfo>
     </Dataset>
+    <Dataset id="gdsAccount">
+      <ColumnInfo>
+        <Column id="user_id" type="STRING" size="256"/>
+        <Column id="login_id" type="STRING" size="256"/>
+        <Column id="password" type="STRING" size="256"/>
+        <Column id="name" type="STRING" size="256"/>
+        <Column id="role" type="STRING" size="256"/>
+        <Column id="status" type="STRING" size="256"/>
+        <Column id="created_at" type="DATETIME" size="256"/>
+        <Column id="updated_at" type="DATETIME" size="256"/>
+      </ColumnInfo>
+      <Rows>
+        <Row/>
+      </Rows>
+    </Dataset>
   </Datasets>
   <Variables>
     <Variable id="gv_var1" initval="App Variable Value1"/>

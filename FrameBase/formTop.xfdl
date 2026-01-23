@@ -1,16 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formTop" width="1280" height="50" titletext="New Form" background="white">
+  <Form id="formTop" width="1280" height="50" titletext="New Form" background="white" onclick="formTop_onclick">
     <Layouts>
       <Layout height="50" width="1280">
-        <Button id="Button00" taborder="0" left="0" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick"/>
-        <Button id="btnLogout" taborder="1" text="로그아웃" left="1166" top="13" width="108" height="24" onclick="btnLogout"/>
+        <Button id="Button00" taborder="0" left="0" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
+        <Button id="btnLogout" taborder="1" text="로그아웃" left="1166" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[
-this.btnLogout = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.btnLogout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+		var sMsgId = "confirm.logout";			//메세지ID
+		var arrArg = "";						//메세지취환될값 배열[생략가능]
+		var sPopId = sMsgId;					//메세지팝업ID[생략가능]	*해당화면에서 메시지 중복사용시 구분되는값을 넣어줘야함
+		var sMsgCallback = "fnMsgCallback";		//메세지콜백[생략가능] 		* confirm성 메시지를 사용 시 반드시 필요
+		
+		// 로그아웃 하시겠습니까?
+		this.gfnAlert(sMsgId, arrArg, sPopId, sMsgCallback);	
+};
+// /************************************************************************************************
+//  * CALLBACK 콜백 처리부분(Transaction, Popup)
+//  ************************************************************************************************/
+// /**
+//  * @description 메세지 콜백
+// */
+
+this.fnMsgCallback = function (strId, strVal)
+{
+	if(strId == "confirm.logout"){
+		if(strVal){
+		    this.fvObjApp.gvLogOut = "Y";
+			this.fvObjApp.exit();
+		} 
+		else{
+			this.fvObjApp.gvLogOut = "N";
+		}		
+	}
 };
 ]]></Script>
   </Form>

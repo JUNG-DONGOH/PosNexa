@@ -128,8 +128,8 @@
           <Column id="name" type="STRING" size="256"/>
           <Column id="role" type="STRING" size="256"/>
           <Column id="status" type="STRING" size="256"/>
-          <Column id="created_at" type="STRING" size="256"/>
-          <Column id="updated_at" type="STRING" size="256"/>
+          <Column id="created_at" type="DATETIME" size="256"/>
+          <Column id="updated_at" type="DATETIME" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
