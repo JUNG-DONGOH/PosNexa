@@ -3,9 +3,15 @@
   <Form id="formTop" width="1280" height="50" titletext="New Form" background="white">
     <Layouts>
       <Layout height="50" width="1280">
-        <Button id="Button00" taborder="0" left="5" top="0" width="250" height="50" cssclass="logo" onclick="Button00_onclick"/>
+        <Button id="Button00" taborder="0" left="0" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick"/>
+        <Button id="btnLogout" taborder="1" text="로그아웃" left="1166" top="13" width="108" height="24" onclick="btnLogout"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[]]></Script>
+    <Script type="xscript5.1"><![CDATA[
+this.btnLogout = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
   </Form>
 </FDL>

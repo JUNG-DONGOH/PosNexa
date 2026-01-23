@@ -1,0 +1,89 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos1040fm" width="1280" height="720" titletext="New Form">
+    <Layouts>
+      <Layout height="720" width="1280">
+        <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black" formscrollbartype="none none">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" left="119" top="53" width="255" height="95" text="회원가입" border="1px solid black" onclick="Div00_Static00_onclick"/>
+              <Static id="Static02_01" taborder="1" text="확인" left="169" top="722" width="72" height="25" border="1px solid black"/>
+              <Static id="Static02_00_00" taborder="2" text="취소" left="261" top="722" width="72" height="25" border="1px solid black" onclick="Div00_Static02_00_onclick"/>
+              <Button id="Button00" taborder="3" text="중복확인" left="365" top="307" width="81" height="30"/>
+              <TextField id="TxfId" taborder="4" labeltext="아이디" left="47" top="243" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="example@naver.com"/>
+              <TextField id="TxfPwd" taborder="5" labeltext="비밀번호" left="47" top="351" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
+              <TextField id="TxfPwdCheck" taborder="6" labeltext="비밀번호 확인" left="47" top="445" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
+              <Button id="btnPwdShow" taborder="7" text="보기" left="390" top="370" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
+              <Button id="btnPwdCheckShow" taborder="8" text="보기" left="390" top="464" width="50" height="25" onclick="Div00_btnPwdCheckShow_onclick"/>
+              <TextField id="TxfName" taborder="9" labeltext="이름" left="46" top="163" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
+              <Static id="Static01" taborder="10" text="Static01" left="54" top="224" width="386" height="20"/>
+              <Static id="Static01_00" taborder="11" text="Static01" left="54" top="314" width="301" height="20"/>
+              <Static id="Static01_01" taborder="12" text="Static01" left="54" top="414" width="386" height="20"/>
+              <Static id="Static01_01_00" taborder="13" text="Static01" left="54" top="504" width="386" height="20"/>
+              <Radio id="rdoRole" taborder="14" left="152" top="540" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">Admin</Col>
+                      <Col id="datacolumn">사용자</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">User</Col>
+                      <Col id="datacolumn">관리자</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Radio>
+              <Button id="btnConfirm" taborder="15" text="확인" left="155" top="598" width="72" height="25" onclick="Div00_btnConfirm_onclick"/>
+              <Button id="btnCancel" taborder="16" text="취소" left="255" top="598" width="72" height="25" onclick="Div00_btnCancel_onclick"/>
+            </Layout>
+          </Layouts>
+        </Div>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[//비밀번호 보기 버튼
+this.Div00_btnPwdShow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var isPassword = this.Div00.form.TxfPwd.inputtype;
+	
+	if(isPassword=="password"){
+		this.Div00.form.TxfPwd.inputtype="text";
+	}
+	
+	if(isPassword=="text"){
+		this.Div00.form.TxfPwd.inputtype="password";
+	}
+};
+
+//비밀번호 확인 보기 버튼
+this.Div00_btnPwdCheckShow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var isPassword = this.Div00.form.TxfPwdCheck.inputtype;
+	
+	if(isPassword=="password"){
+		this.Div00.form.TxfPwdCheck.inputtype="text";
+	}
+	
+	if(isPassword=="text"){
+		this.Div00.form.TxfPwdCheck.inputtype="password";
+	}
+};
+
+
+//<확인> DB로 보냄
+this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+//<취소> main화면으로 이동
+this.Div00_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.go("Pos::pos1010fm.xfdl");
+};]]></Script>
+  </Form>
+</FDL>

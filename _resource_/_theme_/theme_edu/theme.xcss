@@ -1024,12 +1024,13 @@
 
 .Button.logo
 {
-	background : url('theme://images/pos_Logo.png') repeat 2.8025969286496341e-45 /cover;
+	background : url('theme://images/pos_Logo.png') ;
 	-nexa-border : 0px none;
+	
 }
 .Div.logo
 {
-	background : url('theme://images/pos_Logo.png') repeat 2.8025969286496341e-45 /cover;
+	background : url('theme://images/pos_Logo.png');
 }
 
 ]]></CSSData>
