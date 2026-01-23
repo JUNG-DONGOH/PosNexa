@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="720" width="1280">
         <Button id="Button00" taborder="0" text="primary" left="20" top="20" width="120" height="50" cssclass="primary"/>
-        <Button id="Button01" taborder="1" text="현금결제" left="170" top="20" width="140" height="80" cssclass="large"/>
+        <Button id="Button01" taborder="1" text="현금결제" left="310" top="30" width="140" height="80" cssclass="large"/>
         <Button id="Button02" taborder="2" text="뒤로가기" left="54" top="116" width="120" height="50" cssclass="secondary"/>
         <Button id="Button03" taborder="3" text="1" left="188" top="110" width="62" height="56" cssclass="numpad" onclick="Button03_onclick"/>
       </Layout>
