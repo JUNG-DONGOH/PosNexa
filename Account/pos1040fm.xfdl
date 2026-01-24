@@ -43,7 +43,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="1" left="897" top="122" width="433" height="364" binddataset="gdsAccount">
+        <Grid id="Grid00" taborder="1" left="897" top="50" width="653" height="364" binddataset="gdsAccount">
           <Formats>
             <Format id="default">
               <Columns>
@@ -88,8 +88,12 @@
     <Script type="xscript5.1"><![CDATA[//Form이 시작되면
 this.pos1040fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-// 	// 공통 데이터셋(Global Dataset)에 행 추가
-// 	nexacro.getApplication().gdsAccount.addRow();
+	var objApp = nexacro.getApplication();
+    
+    // 행 개수가 0개일 때만(처음 로딩될 때만) 추가
+    if (objApp.gdsAccount.rowcount == 0) {
+        objApp.gdsAccount.addRow();
+    }
 };
 
 
@@ -126,15 +130,16 @@ this.Div00_btnPwdCheckShow_onclick = function(obj:nexacro.Button,e:nexacro.Click
 this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 
-	var objDs = nexacro.getApplication().gdsAccount;
-	
-	this.alert(objDs.rowcount)
-	if (objDs.rowcount == 0) {
-		objDs.addRow();
-	}
+ 	var objDs = nexacro.getApplication().gdsAccount;
+ 	
 	// 정합성 체크
 	this.gfnClearValidation(objDs);
-	this.gfnSetValidation(objDs, "name", "이름", "required");	
+	this.gfnSetValidation(objDs, "name", "이름","required");	
+	this.gfnSetValidation(objDs, "login_id", "아이디","required,isemail");
+	this.gfnSetValidation(objDs, "password", "비밀번호","required,minlength:8");
+	this.gfnSetValidation(objDs, "passwordCheck", "비밀번호 확인", "required,equalto:password");
+	
+	
 	// 수정된 Row만 Validation check
  	if (this.gfnValidation(objDs, "U") == false) return;
 	
@@ -164,7 +169,7 @@ this.Div00_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventI
       <BindItem id="item0" compid="Div00.form.TxfName" propid="value" datasetid="gdsAccount" columnid="name"/>
       <BindItem id="item1" compid="Div00.form.TxfId" propid="value" datasetid="gdsAccount" columnid="login_id"/>
       <BindItem id="item2" compid="Div00.form.TxfPwd" propid="value" datasetid="gdsAccount" columnid="password"/>
-      <BindItem id="item3" compid="Div00.form.TxfPwdCheck" propid="value" datasetid="gdsAccount" columnid="password"/>
+      <BindItem id="item3" compid="Div00.form.TxfPwdCheck" propid="value" datasetid="gdsAccount" columnid="passwordCheck"/>
       <BindItem id="item4" compid="Div00.form.rdoRole" propid="value" datasetid="gdsAccount" columnid="role"/>
     </Bind>
   </Form>

@@ -498,6 +498,7 @@ pForm.gfnValidationCheckRule = function(itemName, itemValue, validationRuleSet, 
 				if (itemName.indexOf("^_^") != -1 ) {
 					//return this.gfnGetKoreanTarget(columname1, "이(가)") + " "+columname2+"과 일치하지 않습니다.";
 					// {0} 이(가) {1} 와(과) 일치하지 않습니다.
+					//r
 					return this.gfnGetMessage("msg.err.validator.equalto",[columname1,columname2]);
 				}
 				// 비교대상 칼럼의 title을 넘겨주지 않았을 경우 해당 값을 표시
