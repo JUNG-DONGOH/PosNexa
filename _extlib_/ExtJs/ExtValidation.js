@@ -404,7 +404,7 @@ pForm.gfnValidationCheckRule = function(itemName, itemValue, validationRuleSet, 
 				return this.gfnGetMessage("msg.err.validator.minlength",[titile, arrItem2[1]]);
 			}
 			break;
-		// 숫자 여부 : digits
+		// 숫자만 가지고 있는지 여부 : digits
 		case "digits":		
 			if (!this.lookupFunc("gfnIsDigit").call(itemValue))
 			{
@@ -413,6 +413,14 @@ pForm.gfnValidationCheckRule = function(itemName, itemValue, validationRuleSet, 
 				return this.gfnGetMessage("msg.err.validator.digits",[titile]);
 			}
 			break;
+		// 숫자를 하나 이상 포함하고 있는지 : hasdigit
+		case "hasdigit":
+			if (!this.gfnHasDigit(itemValue))
+			{
+				return this.gfnGetKoreanTarget(titile, "은(는)") + " 숫자를 하나 이상 포함해야 합니다.";
+			}
+			break;
+		
 		// 해당 숫자 이하 : min:7
 		case "min":
 			if (parseFloat(itemValue) < parseFloat(arrItem2[1]))
@@ -491,25 +499,25 @@ pForm.gfnValidationCheckRule = function(itemName, itemValue, validationRuleSet, 
 			// {0} 은(는) {1} 중 하나의 값이어야 합니다.
 			return this.gfnGetMessage("msg.err.validator.code",[titile,nexacro.replaceAll(validationRuleSet.split("code:")[1],":",",")]);
 			break;
-		// 타 칼럼값과 같은지 비교 - equalto:target칼럼명
+			// 타 칼럼값과 같은지 비교 - equalto:target칼럼명
 		case "equalto":
 			if( compare1 != compare2 )
 			{
 				if (itemName.indexOf("^_^") != -1 ) {
 					//return this.gfnGetKoreanTarget(columname1, "이(가)") + " "+columname2+"과 일치하지 않습니다.";
 					// {0} 이(가) {1} 와(과) 일치하지 않습니다.
-					//r
 					return this.gfnGetMessage("msg.err.validator.equalto",[columname1,columname2]);
 				}
 				// 비교대상 칼럼의 title을 넘겨주지 않았을 경우 해당 값을 표시
 				else {
 					//return  titile + "의 값과 "+compare2+"와 일치하지 않습니다.";
 					// {0} 이(가) {1} 와(과) 일치하지 않습니다.
-					return this.gfnGetMessage("msg.err.validator.equalto",[titile,compare2]);
+					//return this.gfnGetMessage("msg.err.validator.equalto",[titile,compare2]);
+					return this.gfnGetKoreanTarget(titile, "이(가)") + " 일치하지 않습니다.";
 				}
 			}
 			break;
-		// 날짜 from ~ to 비교 : comparedate:target칼럼명
+			// 날짜 from ~ to 비교 : comparedate:target칼럼명
 		case "fromto":
 			if (compare1 < compare2)
 			{
@@ -602,13 +610,22 @@ pForm.gfnValidationCheckRule = function(itemName, itemValue, validationRuleSet, 
 				return this.gfnGetKoreanTarget(titile, "은(는)") + " 올바른 신용카드번호가 아닙니다.";
 			}
 			break;
-		// 이메일 체크 - isemail
+			// 이메일 체크 - isemail
 		case "isemail":
 			if (!this.lookupFunc("gfnIsEmail").call(itemValue))
 			{
 				//return this.gfnGetKoreanTarget(titile, "은(는)") + " 올바른 이메일이 아닙니다.";
 				// e-mail이 잘못된 형태로 입력 되었습니다.
 				return this.gfnGetMessage("msg.err.validator.email",[titile]);
+			}
+			break;
+			
+			// 한국어 체크 - nokorean
+		case "nokorean":
+			if (this.gfnHasKorean(itemValue))
+			{
+				// {0} 은(는) 한글을 포함할 수 없습니다.
+				return this.gfnGetKoreanTarget(titile, "은(는)") + " 한글을 포함할 수 없습니다.";
 			}
 			break;
 
@@ -888,6 +905,15 @@ pForm.gfnIsDigit = function(sNum)
 };
 
 /**
+ * @class 숫자가 하나라도 포함되어 있는지 Check한다.
+ */
+pForm.gfnHasDigit = function(sValue)
+{
+    var regexp = /[0-9]/;
+    return regexp.test(sValue);
+};
+
+/**
  * @class 한글만으로 되어 있는지 Check한다. <br>
  * @param {String} strValue
  * @return {Boolean}
@@ -904,6 +930,18 @@ pForm.gfnIsKoreanChar = function(strValue)
 	
 	return retVal;
 };
+/**
+ * @class 한글이 포함되어 있는지 Check한다.
+ * @param {String} strValue
+ * @return {Boolean} 한글이 포함되어 있으면 true, 없으면 false
+ */
+pForm.gfnHasKorean = function(strValue)
+{
+	// 한글 정규식 (ㄱ-ㅎ, ㅏ-ㅣ, 가-힣)
+	var regexp = /[ㄱ-ㅎ|ㅏ-ㅣ|가-힣]/;
+	return regexp.test(strValue);
+};
+
 
 /**
  * @class 특수문자가 있는지 Check한다. <br>

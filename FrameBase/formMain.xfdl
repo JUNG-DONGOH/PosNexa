@@ -136,7 +136,7 @@
     <Script type="xscript5.1"><![CDATA[
 this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-//모든 dataset정보 가져오기
+	//모든 dataset정보 가져오기
 	var sSvcId  = "svcSaveTest";
 	var sUrl    = "SvcUrl::pos/getEmpList.do";
 	var inData  = "";
@@ -144,7 +144,7 @@ this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	var sParam  = "";
 	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "");
 
-//파라미터를 넘겨서 검색
+	//파라미터를 넘겨서 검색
 	var sSvcId  = "loginParam";
 	var sUrl    = "SvcUrl::pos/getLoginListParam.do";
 	var inData  = "";

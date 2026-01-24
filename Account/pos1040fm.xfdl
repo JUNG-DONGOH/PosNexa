@@ -43,7 +43,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="1" left="897" top="50" width="653" height="364" binddataset="gdsAccount">
+        <Grid id="Grid00" taborder="1" left="910" top="20" width="653" height="364" binddataset="gdsAccount">
           <Formats>
             <Format id="default">
               <Columns>
@@ -136,29 +136,47 @@ this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	this.gfnClearValidation(objDs);
 	this.gfnSetValidation(objDs, "name", "이름","required");	
 	this.gfnSetValidation(objDs, "login_id", "아이디","required,isemail");
-	this.gfnSetValidation(objDs, "password", "비밀번호","required,minlength:8");
-	this.gfnSetValidation(objDs, "passwordCheck", "비밀번호 확인", "required,equalto:password");
+	this.gfnSetValidation(objDs, "password", "비밀번호","required,minlength:8,nokorean,hasdigit");
+	this.gfnSetValidation(objDs, "passwordCheck", "비밀번호", "required,equalto:password");
+	this.gfnSetValidation(objDs, "role", "사용자 유형","required");	
 	
 	
 	// 수정된 Row만 Validation check
  	if (this.gfnValidation(objDs, "U") == false) return;
-	
-	
 
-// 	if (this.gdsAccount.rowcount == 0) {
-// 		this.gdsAccount.addRow();
-// 	}
-// 	// 정합성 체크
-// 	this.gfnClearValidation(this.gdsAccount);
-// 	this.gfnSetValidation(this.gdsAccount, "DATE", "필수(날짜)", "required,date");
-// 	this.gfnSetValidation(this.gdsAccount, "EDIT", "필수(Edit)", "required");	
-// 	this.gfnSetValidation(this.gdsAccount, "MAX_NUM", "최대값100", "required,digits,max:100");
-// 	this.gfnSetValidation(this.gdsAccount, "MIN_NUM", "최소값10", "required,digits,min:10");	
-// 	this.gfnSetValidation(this.gdsAccount, "LENGTH_MIN", "최소길이3", "required,minlength:3");
-// 	this.gfnSetValidation(this.gdsAccount, "RANGE", "범위(1~5)", "required,digits,range:1:5");
-// 	// 수정된 Row만 Validation check
-//  	if (this.gfnValidation(this.gdsAccount, "U") == false) return;
+	//gdsAccount(회원가입 정보) 서버에 저장
+	var sSvcId  = "svcSaveAccount";
+	var sUrl    = "SvcUrl::pos/saveAccount.do";
+	var inData  = "input_account=gdsAccount:U";
+	var outData = "gdsAccount=output_account:A";
+	var sParam  = "";
+	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fn_accountCallback");
 };
+
+// 회원가입 성공/실패 알람
+this.fn_accountCallback = function(svcID, errorCode, errorMsg) {
+    if (errorCode >= 0) {
+        var objApp = nexacro.getApplication();
+        // 1. 실제로 행 개수가 늘어났는지 확인
+        trace("현재 gdsAccount 행 개수: " + objApp.gdsAccount.rowcount);
+        
+        // 2. 서버에서 넘어온 데이터 내용 확인 (XML 구조로 출력)
+        trace(objApp.gdsAccount.saveXML());
+    }
+};
+// fn_accountCallback = function(svcID, errorCode, errorMsg) {
+//     if (errorCode == 0) {
+//         // 성공했다면 전역 데이터셋(gds_userInfo)에 유저 정보가 담겨 있음
+//         var userName = gds_userInfo.getColumn(0, "name");
+//         gfnAlert("msg.account.success",name);
+//         
+//         // 메인 화면으로 이동
+//         go("Account::pos1010fm.xfdl");
+//     } else {
+//         alert("로그인 실패: " + errorMsg);
+//     }
+// }
+
 
 //<취소> main화면으로 이동
 this.Div00_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)

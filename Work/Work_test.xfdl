@@ -7,6 +7,49 @@
         <Button id="Button01" taborder="1" text="현금결제" left="310" top="30" width="140" height="80" cssclass="large"/>
         <Button id="Button02" taborder="2" text="뒤로가기" left="54" top="116" width="120" height="50" cssclass="secondary"/>
         <Button id="Button03" taborder="3" text="1" left="188" top="110" width="62" height="56" cssclass="numpad" onclick="Button03_onclick"/>
+        <Grid id="Grid00" taborder="4" left="341" top="130" width="375" height="270" binddataset="gdsAccount">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="user_id"/>
+                <Cell col="1" text="login_id"/>
+                <Cell col="2" text="password"/>
+                <Cell col="3" text="passwordCheck"/>
+                <Cell col="4" text="name"/>
+                <Cell col="5" text="role"/>
+                <Cell col="6" text="status"/>
+                <Cell col="7" text="created_at"/>
+                <Cell col="8" text="updated_at"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:user_id"/>
+                <Cell col="1" text="bind:login_id"/>
+                <Cell col="2" text="bind:password"/>
+                <Cell col="3" text="bind:passwordCheck"/>
+                <Cell col="4" text="bind:name"/>
+                <Cell col="5" text="bind:role"/>
+                <Cell col="6" text="bind:status"/>
+                <Cell col="7" text="bind:created_at"/>
+                <Cell col="8" text="bind:updated_at"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[]]></Script>
