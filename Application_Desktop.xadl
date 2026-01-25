@@ -27,6 +27,5 @@
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
 	this.VF=this.mainframe.VFrameSet;
-	
 };]]></Script>
 </ADL>

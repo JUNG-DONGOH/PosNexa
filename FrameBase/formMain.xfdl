@@ -87,6 +87,31 @@
             </Format>
           </Formats>
         </Grid>
+        <Grid id="Grid02" taborder="6" left="383" top="35" width="375" height="270" binddataset="gdsAccount" autoenter="none" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="login_id"/>
+                <Cell col="1" text="name"/>
+                <Cell col="2" text="role"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:login_id"/>
+                <Cell col="1" text="bind:name"/>
+                <Cell col="2" text="bind:role"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Objects>

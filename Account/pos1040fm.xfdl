@@ -9,18 +9,14 @@
               <Static id="Static00" taborder="0" left="119" top="53" width="255" height="95" text="회원가입" border="1px solid black" onclick="Div00_Static00_onclick"/>
               <Static id="Static02_01" taborder="1" text="확인" left="169" top="722" width="72" height="25" border="1px solid black"/>
               <Static id="Static02_00_00" taborder="2" text="취소" left="261" top="722" width="72" height="25" border="1px solid black" onclick="Div00_Static02_00_onclick"/>
-              <Button id="Button00" taborder="3" text="중복확인" left="365" top="307" width="81" height="30"/>
+              <Button id="btnIdCheck" taborder="3" text="중복확인" left="365" top="307" width="81" height="30" onclick="Div00_btnIdCheck_onclick"/>
               <TextField id="TxfId" taborder="4" labeltext="아이디" left="47" top="243" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="example@naver.com"/>
               <TextField id="TxfPwd" taborder="5" labeltext="비밀번호" left="47" top="351" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
               <TextField id="TxfPwdCheck" taborder="6" labeltext="비밀번호 확인" left="47" top="445" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
               <Button id="btnPwdShow" taborder="7" text="보기" left="390" top="370" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
               <Button id="btnPwdCheckShow" taborder="8" text="보기" left="390" top="464" width="50" height="25" onclick="Div00_btnPwdCheckShow_onclick"/>
               <TextField id="TxfName" taborder="9" labeltext="이름" left="46" top="163" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
-              <Static id="Static01" taborder="10" text="Static01" left="54" top="224" width="386" height="20"/>
-              <Static id="Static01_00" taborder="11" text="Static01" left="54" top="314" width="301" height="20"/>
-              <Static id="Static01_01" taborder="12" text="Static01" left="54" top="414" width="386" height="20"/>
-              <Static id="Static01_01_00" taborder="13" text="Static01" left="54" top="504" width="386" height="20"/>
-              <Radio id="rdoRole" taborder="14" left="152" top="540" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
+              <Radio id="rdoRole" taborder="10" left="152" top="540" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -28,28 +24,25 @@
                   </ColumnInfo>
                   <Rows>
                     <Row>
-                      <Col id="codecolumn">Admin</Col>
+                      <Col id="codecolumn">User</Col>
                       <Col id="datacolumn">사용자</Col>
                     </Row>
                     <Row>
-                      <Col id="codecolumn">User</Col>
+                      <Col id="codecolumn">Admin</Col>
                       <Col id="datacolumn">관리자</Col>
                     </Row>
                   </Rows>
                 </Dataset>
               </Radio>
-              <Button id="btnConfirm" taborder="15" text="확인" left="155" top="598" width="72" height="25" onclick="Div00_btnConfirm_onclick"/>
-              <Button id="btnCancel" taborder="16" text="취소" left="255" top="598" width="72" height="25" onclick="Div00_btnCancel_onclick"/>
+              <Button id="btnConfirm" taborder="11" text="확인" left="155" top="598" width="72" height="25" onclick="Div00_btnConfirm_onclick"/>
+              <Button id="btnCancel" taborder="12" text="취소" left="255" top="598" width="72" height="25" onclick="Div00_btnCancel_onclick"/>
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="1" left="910" top="20" width="653" height="364" binddataset="gdsAccount">
+        <Grid id="Grid00" taborder="1" left="910" top="20" width="653" height="364" binddataset="ds_account">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
@@ -61,24 +54,18 @@
                 <Row size="24"/>
               </Rows>
               <Band id="head">
-                <Cell text="user_id"/>
-                <Cell col="1" text="login_id"/>
-                <Cell col="2" text="password"/>
+                <Cell text="login_id"/>
+                <Cell col="1" text="password"/>
+                <Cell col="2" text="passwordCheck"/>
                 <Cell col="3" text="name"/>
                 <Cell col="4" text="role"/>
-                <Cell col="5" text="status"/>
-                <Cell col="6" text="created_at"/>
-                <Cell col="7" text="updated_at"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:user_id"/>
-                <Cell col="1" text="bind:login_id"/>
-                <Cell col="2" text="bind:password"/>
+                <Cell text="bind:login_id"/>
+                <Cell col="1" text="bind:password"/>
+                <Cell col="2" text="bind:passwordCheck"/>
                 <Cell col="3" text="bind:name"/>
                 <Cell col="4" text="bind:role"/>
-                <Cell col="5" text="bind:status"/>
-                <Cell col="6" text="bind:created_at"/>
-                <Cell col="7" text="bind:updated_at"/>
               </Band>
             </Format>
           </Formats>
@@ -88,11 +75,11 @@
     <Script type="xscript5.1"><![CDATA[//Form이 시작되면
 this.pos1040fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	var objApp = nexacro.getApplication();
+/*	var objApp = nexacro.getApplication();*/
     
     // 행 개수가 0개일 때만(처음 로딩될 때만) 추가
-    if (objApp.gdsAccount.rowcount == 0) {
-        objApp.gdsAccount.addRow();
+    if (this.ds_account.rowcount == 0) {
+        this.ds_account.addRow();
     }
 };
 
@@ -105,8 +92,7 @@ this.Div00_btnPwdShow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	if(isPassword=="password"){
 		this.Div00.form.TxfPwd.inputtype="text";
 	}
-	
-	if(isPassword=="text"){
+	else{
 		this.Div00.form.TxfPwd.inputtype="password";
 	}
 };
@@ -119,8 +105,7 @@ this.Div00_btnPwdCheckShow_onclick = function(obj:nexacro.Button,e:nexacro.Click
 	if(isPassword=="password"){
 		this.Div00.form.TxfPwdCheck.inputtype="text";
 	}
-	
-	if(isPassword=="text"){
+	else{
 		this.Div00.form.TxfPwdCheck.inputtype="password";
 	}
 };
@@ -129,25 +114,22 @@ this.Div00_btnPwdCheckShow_onclick = function(obj:nexacro.Button,e:nexacro.Click
 //<확인> DB로 보내기 및 정합성 체크
 this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-
- 	var objDs = nexacro.getApplication().gdsAccount;
- 	
 	// 정합성 체크
-	this.gfnClearValidation(objDs);
-	this.gfnSetValidation(objDs, "name", "이름","required");	
-	this.gfnSetValidation(objDs, "login_id", "아이디","required,isemail");
-	this.gfnSetValidation(objDs, "password", "비밀번호","required,minlength:8,nokorean,hasdigit");
-	this.gfnSetValidation(objDs, "passwordCheck", "비밀번호", "required,equalto:password");
-	this.gfnSetValidation(objDs, "role", "사용자 유형","required");	
+	this.gfnClearValidation(this.ds_account);
+	this.gfnSetValidation(this.ds_account, "name", "이름","required");	
+	this.gfnSetValidation(this.ds_account, "login_id", "아이디","required,isemail");
+	this.gfnSetValidation(this.ds_account, "password", "비밀번호","required,minlength:8,nokorean,hasdigit");
+	this.gfnSetValidation(this.ds_account, "passwordCheck", "비밀번호", "required,equalto:password");
+	this.gfnSetValidation(this.ds_account, "role", "사용자 유형","required");	
 	
 	
 	// 수정된 Row만 Validation check
- 	if (this.gfnValidation(objDs, "U") == false) return;
+ 	if (this.gfnValidation(this.ds_account, "U") == false) return;
 
 	//gdsAccount(회원가입 정보) 서버에 저장
 	var sSvcId  = "svcSaveAccount";
 	var sUrl    = "SvcUrl::pos/saveAccount.do";
-	var inData  = "input_account=gdsAccount:U";
+	var inData  = "input_account=ds_account:U";
 	var outData = "gdsAccount=output_account:A";
 	var sParam  = "";
 	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fn_accountCallback");
@@ -155,40 +137,75 @@ this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 
 // 회원가입 성공/실패 알람
 this.fn_accountCallback = function(svcID, errorCode, errorMsg) {
-    if (errorCode >= 0) {
-        var objApp = nexacro.getApplication();
-        // 1. 실제로 행 개수가 늘어났는지 확인
-        trace("현재 gdsAccount 행 개수: " + objApp.gdsAccount.rowcount);
+	if (errorCode == 0) {
+        // 성공했다면 전역 데이터셋(gdsAccount)에 유저 정보가 담겨 있음
+        var ds = nexacro.getApplication().gdsAccount;
+		var userName = ds.getColumn(ds.getRowCount() - 1, "name");
+
+        this.gfnAlert("msg.account.success",[userName]);
         
-        // 2. 서버에서 넘어온 데이터 내용 확인 (XML 구조로 출력)
-        trace(objApp.gdsAccount.saveXML());
+        // 메인 화면으로 이동
+        this.go("Account::pos1010fm.xfdl");
+    } else {
+       this.gfnAlert("msg.action.fail");
     }
 };
-// fn_accountCallback = function(svcID, errorCode, errorMsg) {
-//     if (errorCode == 0) {
-//         // 성공했다면 전역 데이터셋(gds_userInfo)에 유저 정보가 담겨 있음
-//         var userName = gds_userInfo.getColumn(0, "name");
-//         gfnAlert("msg.account.success",name);
-//         
-//         // 메인 화면으로 이동
-//         go("Account::pos1010fm.xfdl");
-//     } else {
-//         alert("로그인 실패: " + errorMsg);
-//     }
-// }
 
 
 //<취소> main화면으로 이동
 this.Div00_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.go("Account::pos1010fm.xfdl");
-};]]></Script>
+};
+
+//중복확인 체크
+this.Div00_btnIdCheck_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	 // 1) 입력값은 ds_account(입력용)에서 가져옴
+    var dsIn  = this.ds_account; 
+    var sId   = dsIn.getColumn(0, "login_id");
+
+    if (this.gfnIsNull(sId)) {
+        this.gfnAlert("msg.account.id.required"); // "아이디를 입력해주세요."
+        return;
+    }
+
+    sId = (sId + "").trim();
+
+    // 2) 중복 비교는 gfnAccount(목록용, 여러 행)에서 수행
+    var dsList = nexacro.getApplication().gdsAccount;
+	
+
+    // login_id 기준으로 존재 여부 체크
+    var nRow = dsList.findRow("login_id", sId);
+
+    if (nRow > -1) {
+        // 중복: 이미 존재하는 계정
+        this.gfnAlert("msg.account.id.duplicated"); //"이미 사용 중인 아이디입니다."
+    } else {
+        // 사용 가능
+        this.gfnAlert("msg.account.id.available"); // "사용 가능한 아이디입니다."
+    }
+};
+]]></Script>
     <Bind>
-      <BindItem id="item0" compid="Div00.form.TxfName" propid="value" datasetid="gdsAccount" columnid="name"/>
-      <BindItem id="item1" compid="Div00.form.TxfId" propid="value" datasetid="gdsAccount" columnid="login_id"/>
-      <BindItem id="item2" compid="Div00.form.TxfPwd" propid="value" datasetid="gdsAccount" columnid="password"/>
-      <BindItem id="item3" compid="Div00.form.TxfPwdCheck" propid="value" datasetid="gdsAccount" columnid="passwordCheck"/>
-      <BindItem id="item4" compid="Div00.form.rdoRole" propid="value" datasetid="gdsAccount" columnid="role"/>
+      <BindItem id="item0" compid="Div00.form.TxfName" propid="value" datasetid="ds_account" columnid="name"/>
+      <BindItem id="item1" compid="Div00.form.TxfId" propid="value" datasetid="ds_account" columnid="login_id"/>
+      <BindItem id="item2" compid="Div00.form.TxfPwd" propid="value" datasetid="ds_account" columnid="password"/>
+      <BindItem id="item3" compid="Div00.form.TxfPwdCheck" propid="value" datasetid="ds_account" columnid="passwordCheck"/>
+      <BindItem id="item4" compid="Div00.form.rdoRole" propid="value" datasetid="ds_account" columnid="role"/>
     </Bind>
+    <Objects>
+      <Dataset id="ds_account">
+        <ColumnInfo>
+          <Column id="login_id" type="STRING" size="256"/>
+          <Column id="login_idCheck" type="STRING" size="256"/>
+          <Column id="password" type="STRING" size="256"/>
+          <Column id="passwordCheck" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="role" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
   </Form>
 </FDL>

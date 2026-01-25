@@ -7,7 +7,9 @@
         <Button id="btnLogout" taborder="1" text="로그아웃" left="1166" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.btnLogout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+this.btnLogout_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 		var sMsgId = "confirm.logout";			//메세지ID
 		var arrArg = "";						//메세지취환될값 배열[생략가능]
@@ -28,11 +30,11 @@ this.fnMsgCallback = function (strId, strVal)
 {
 	if(strId == "confirm.logout"){
 		if(strVal){
-		    this.fvObjApp.gvLogOut = "Y";
-			this.fvObjApp.exit();
+		    this.fvApp.gvLogOut = "Y";
+			this.fvApp.VF.separatesize = "0,0,*";
 		} 
 		else{
-			this.fvObjApp.gvLogOut = "N";
+			this.fvApp.gvLogOut = "N";
 		}		
 	}
 };

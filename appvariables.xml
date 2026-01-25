@@ -1474,8 +1474,29 @@
         </Row>
         <Row>
           <Col id="MSG_ID">msg.account.success</Col>
-          <Col id="MSG_TEXT">{0} 님, 환영합니다!</Col>
+          <Col id="MSG_TEXT">회원가입이 완료되었습니다. "{0}" 님, 환영합니다!</Col>
           <Col id="MSG_TEXT_EN"> {0}, welcome!</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.account.id.required</Col>
+          <Col id="MSG_TEXT">아이디를 입력해주세요.</Col>
+          <Col id="MSG_TEXT_EN"> Please enter your ID.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.account.id.duplicated</Col>
+          <Col id="MSG_TEXT">이미 사용 중인 아이디입니다.</Col>
+          <Col id="MSG_TEXT_EN"> This ID is already in use.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.account.id.available</Col>
+          <Col id="MSG_TEXT">사용 가능한 아이디입니다.</Col>
+          <Col id="MSG_TEXT_EN"> This ID is available.</Col>
           <Col id="MSG_TYPE">A</Col>
           <Col id="MSG_ICON">INF</Col>
         </Row>
@@ -3068,15 +3089,9 @@
     </Dataset>
     <Dataset id="gdsAccount">
       <ColumnInfo>
-        <Column id="user_id" type="STRING" size="256"/>
         <Column id="login_id" type="STRING" size="256"/>
-        <Column id="password" type="STRING" size="256"/>
-        <Column id="passwordCheck" type="STRING" size="256"/>
         <Column id="name" type="STRING" size="256"/>
         <Column id="role" type="STRING" size="256"/>
-        <Column id="status" type="STRING" size="256"/>
-        <Column id="created_at" type="DATETIME" size="256"/>
-        <Column id="updated_at" type="DATETIME" size="256"/>
       </ColumnInfo>
     </Dataset>
   </Datasets>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1010fm" width="1280" height="720" titletext="New Form">
+  <Form id="pos1010fm" width="1280" height="720" titletext="New Form" onload="pos1010fm_onload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1280">
         <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black">
@@ -24,6 +24,23 @@
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+this.pos1010fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// 데이터셋에 행(row)이 이미 1개라도 있다면 서버를 부르지 않음
+    if (this.fvApp.gdsAccount.rowcount > 0) {
+        return; 
+    }
+	
+	var sSvcId  = "svcLoadAccount";
+	var sUrl    = "SvcUrl::pos/loadAccount.do";
+	var inData  = "";
+	var outData = "gdsAccount=output_account";
+	var sParam  = "";
+	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fnCallback");
+};
+
+
 this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var isPassword = this.Div00.form.TextField00_00.inputtype;
@@ -31,8 +48,7 @@ this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 	if(isPassword=="password"){
 		this.Div00.form.TextField00_00.inputtype="text";
 	}
-	
-	if(isPassword=="text"){
+	else{
 		this.Div00.form.TextField00_00.inputtype="password";
 	}
 
@@ -60,6 +76,7 @@ this.Div00_Button01_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 this.Div00_btnLogin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fvApp.VF.separatesize = "50,*,0";
-};]]></Script>
+};
+]]></Script>
   </Form>
 </FDL>
