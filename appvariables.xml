@@ -1501,6 +1501,13 @@
           <Col id="MSG_ICON">INF</Col>
         </Row>
         <Row>
+          <Col id="MSG_ID">msg.account.id.check</Col>
+          <Col id="MSG_TEXT">아이디 중복확인을 먼저 완료해주세요.</Col>
+          <Col id="MSG_TEXT_EN"> Please complete ID duplication check first.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
           <Col id="MSG_ID">msg.login.error</Col>
           <Col id="MSG_TEXT">해당하는 사용자 정보가 없습니다.</Col>
           <Col id="MSG_TEXT_EN">No user found.</Col>
