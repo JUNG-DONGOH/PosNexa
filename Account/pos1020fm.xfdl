@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1020fm" width="1280" height="720" titletext="New Form">
+  <Form id="pos1020fm" width="1600" height="720" titletext="New Form">
     <Layouts>
-      <Layout height="720" width="1280">
-        <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black">
+      <Layout height="720" width="1600">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" border="1px solid black">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" left="122" top="53" width="255" height="95" text="아이디 찾기" border="1px solid black" onclick="Div00_Static00_onclick"/>
-              <Button id="Button00" taborder="1" text="아이디 찾기" left="56" top="327" width="389" height="71"/>
+              <Button id="btnIdSearch" taborder="1" text="아이디 찾기" left="51" top="449" width="389" height="71" onclick="Div00_Button00_onclick"/>
               <Button id="moveMain" taborder="2" left="458" top="13" width="20" height="20" cssclass="btn_MDI_AllX" onclick="Div00_Button01_onclick" text=""/>
-              <TextField id="TextField00_00" taborder="3" labeltext="비밀번호" left="56" top="196" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="비밀번호를 입력해주세요"/>
-              <Button id="Button02" taborder="4" text="보기" left="395" top="215" width="50" height="25" onclick="Div00_Button02_onclick"/>
+              <TextField id="TxfPwd" taborder="3" labeltext="비밀번호" left="55" top="280" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="비밀번호를 입력해주세요"/>
+              <Button id="btnPwdShow" taborder="4" text="보기" left="395" top="299" width="50" height="25" onclick="Div00_Button02_onclick"/>
+              <TextField id="TxfName" taborder="5" labeltext="이름" left="55" top="180" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
             </Layout>
           </Layouts>
         </Div>
@@ -29,10 +30,35 @@ this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 	if(isPassword=="password"){
 		this.Div00.form.TextField00_00.inputtype="text";
 	}
-	
-	if(isPassword=="text"){
+	else{
 		this.Div00.form.TextField00_00.inputtype="password";
 	}
+};
+
+this.Div00_Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    
+   // 1. 사용자가 입력한 이름, 비밀번호 가져오기
+    var sInputName = this.Div00.form.TxfName.value;
+	var sInputPwd = this.Div00.form.TxfPwd.value;
+    
+    // 2. 검색 대상 데이터셋 가져오기
+    var ds = nexacro.getApplication().gdsAccount;
+    
+    // 3. 데이터셋에서 비밀번호가 일치하는 행(Row)의 번호 찾기
+    var nRow = ds.findRowExpr("name=='" + sInputName + "' && password=='" + sInputPwd + "'");
+    
+    // 4. 아이디 찾기 결과 처리
+    if (nRow != -1) {
+        // 일치하는 비밀번호가 있다면 해당 행의 "login_id"를 가져옴
+        var userName = ds.getColumn(nRow, "login_id");
+        
+        // 찾은 아이디로 알림창 띄우기
+        this.gfnAlert("msg.account.id.info", [userName]);
+    } else {
+        // 일치하는 데이터가 없을 경우
+        this.gfnAlert("msg.login.error");	
+    }
 };
 ]]></Script>
   </Form>

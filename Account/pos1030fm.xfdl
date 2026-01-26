@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1030fm" width="1280" height="720" titletext="New Form">
+  <Form id="pos1030fm" width="1600" height="720" titletext="New Form">
     <Layouts>
-      <Layout height="720" width="1280">
-        <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black">
+      <Layout height="720" width="1600">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" border="1px solid black">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" left="122" top="53" width="255" height="95" text="비밀번호 찾기" border="1px solid black" onclick="Div00_Static00_onclick"/>

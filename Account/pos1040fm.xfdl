@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1040fm" width="1280" height="720" titletext="New Form" onload="pos1040fm_onload">
+  <Form id="pos1040fm" width="1600" height="720" titletext="New Form" onload="pos1040fm_onload">
     <Layouts>
-      <Layout height="720" width="1280">
-        <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black" formscrollbartype="none none">
+      <Layout height="720" width="1600">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" border="1px solid black" formscrollbartype="none none">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" left="119" top="53" width="255" height="95" text="회원가입" border="1px solid black" onclick="Div00_Static00_onclick"/>
@@ -39,7 +39,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="1" left="850" top="20" width="653" height="253" binddataset="ds_account" autofittype="none">
+        <Grid id="Grid00" taborder="1" left="1052" top="20" width="653" height="253" binddataset="ds_account" autofittype="none">
           <Formats>
             <Format id="default">
               <Columns>
@@ -70,11 +70,12 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid01" taborder="2" left="895" top="283" width="375" height="270" binddataset="gdsAccount" autofittype="col">
+        <Grid id="Grid01" taborder="2" left="1055" top="285" width="375" height="270" binddataset="gdsAccount" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
-                <Column size="162"/>
+                <Column size="137"/>
+                <Column size="80"/>
                 <Column size="80"/>
                 <Column size="80"/>
               </Columns>
@@ -84,13 +85,15 @@
               </Rows>
               <Band id="head">
                 <Cell text="login_id"/>
-                <Cell col="1" text="name"/>
-                <Cell col="2" text="role"/>
+                <Cell col="1" text="password"/>
+                <Cell col="2" text="name"/>
+                <Cell col="3" text="role"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:login_id"/>
-                <Cell col="1" text="bind:name"/>
-                <Cell col="2" text="bind:role"/>
+                <Cell col="1" text="bind:password"/>
+                <Cell col="2" text="bind:name"/>
+                <Cell col="3" text="bind:role"/>
               </Band>
             </Format>
           </Formats>
@@ -142,11 +145,6 @@ this.Div00_btnPwdCheckShow_onclick = function(obj:nexacro.Button,e:nexacro.Click
 //<확인> DB로 보내기 및 정합성 체크
 this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	// 중복확인 버튼을 눌렀는지 체크
-    if (this.isIdChecked == false) {
-        this.gfnAlert("msg.account.id.check");
-        return; 
-    }
 	// 정합성 체크
 	this.gfnClearValidation(this.ds_account);
 	this.gfnSetValidation(this.ds_account, "name", "이름","required");	
@@ -158,6 +156,12 @@ this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	
 	// 수정된 Row만 Validation check
  	if (this.gfnValidation(this.ds_account, "U") == false) return;
+	
+	// 중복확인 버튼을 눌렀는지 체크
+    if (this.isIdChecked == false) {
+        this.gfnAlert("msg.account.id.check");
+        return; 
+    }
 
 	//gdsAccount(회원가입 정보) 서버에 저장
 	var sSvcId  = "svcSaveAccount";

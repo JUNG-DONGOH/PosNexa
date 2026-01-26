@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1010fm" width="1280" height="720" titletext="New Form" onload="pos1010fm_onload">
+  <Form id="pos1010fm" width="1600" height="720" titletext="New Form" onload="pos1010fm_onload">
     <Layouts>
-      <Layout height="720" mobileorientation="landscape" width="1280">
-        <Div id="Div00" taborder="0" left="394" top="29" width="493" height="651" border="1px solid black">
+      <Layout height="720" mobileorientation="landscape" width="1600">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" border="1px solid black">
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" left="122" top="53" width="255" height="67" text="매장운영관리 시스템  POS" border="1px solid black" onclick="Div00_Static00_onclick"/>
-              <TextField id="TextField00" taborder="1" labeltext="아이디" left="50" top="139" width="399" height="54" inputtype="email" usetrailingbutton="true"/>
-              <TextField id="TextField00_00" taborder="2" labeltext="비밀번호" left="50" top="213" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged"/>
-              <CheckBox id="CheckBox00" taborder="3" left="54" top="287" width="95" height="30" text="아이디 저장"/>
+              <TextField id="TxfId" taborder="1" labeltext="아이디" left="50" top="139" width="399" height="54" inputtype="email" usetrailingbutton="true"/>
+              <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="50" top="213" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged"/>
+              <CheckBox id="chkIdSave" taborder="3" left="54" top="287" width="95" height="30" text="아이디 저장"/>
               <Button id="btnLogin" taborder="4" text="로그인" left="56" top="337" width="389" height="53" onclick="Div00_btnLogin_onclick"/>
               <Button id="moveId" taborder="5" text="ID찾기" left="102" top="410" width="75" height="53" onclick="Div00_Button01_onclick"/>
               <Button id="movePassword" taborder="6" text="비밀번호 찾기" left="197" top="410" width="110" height="53" onclick="Div00_Button01_00_onclick"/>
@@ -38,18 +38,27 @@ this.pos1010fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	var outData = "gdsAccount=output_account";
 	var sParam  = "";
 	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fnCallback");
+	
+	// 저장된 아이디 가져오기
+    var sSavedId = nexacro.getPrivateProfile("login_id");
+	
+    // 만약 저장된 값이 있다면 입력창에 세팅
+    if (sSavedId) {
+        this.Div00.form.TxfId.value=sSavedId;        // 아이디 입력창
+        this.Div00.form.chkIdSave.value=true;        // 아이디 저장 체크박스
+    }
 };
 
 
 this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var isPassword = this.Div00.form.TextField00_00.inputtype;
+	var isPassword = this.Div00.form.TxfPwd.inputtype;
 	
 	if(isPassword=="password"){
-		this.Div00.form.TextField00_00.inputtype="text";
+		this.Div00.form.TxfPwd.inputtype="text";
 	}
 	else{
-		this.Div00.form.TextField00_00.inputtype="password";
+		this.Div00.form.TxfPwd.inputtype="password";
 	}
 
 };
@@ -75,7 +84,53 @@ this.Div00_Button01_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 //로그인 버튼
 this.Div00_btnLogin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.fvApp.VF.separatesize = "50,*,0";
+	var sId = this.Div00.form.TxfId.value;       // 아이디 입력창
+    var sPw = this.Div00.form.TxfPwd.value;       // 비밀번호 입력창
+
+    // 1. 입력값 확인
+    if (!sId || !sPw) {
+		this.gfnAlert("msg.account.inputidandpassword.check");
+        return;
+    }
+
+    // 2. gdsAccount에서 아이디와 비밀번호가 일치하는 행(row) 찾기
+    var nRow = this.fvApp.gdsAccount.findRowExpr("login_id=='" + sId + "' && password=='" + sPw + "'");
+
+    if (nRow >= 0) {		
+		// 로그인 성공: 해당 행에서 역할(role) 가져오기
+        var sRole = this.fvApp.gdsAccount.getColumn(nRow, "role");
+		// 3. 역할별 프레임 제어 함수 호출
+        this.fnSetFrameByRole(sRole);
+		
+		
+		//아이디 저장
+		var isSave = this.Div00.form.chkIdSave.value;
+		
+		if(isSave==true){
+			// 체크되어 있으면 아이디 저장
+			nexacro.setPrivateProfile("login_id", sId);
+		} else {
+			// 체크 해제되어 있으면 저장된 정보 삭제 (빈값으로 초기화)
+			nexacro.setPrivateProfile("login_id", "");
+	}
+		
+    } else {
+		this.gfnAlert("msg.account.idandpassword.check");
+    }
+	
+};
+
+//역할별 프레임 제어 함수
+this.fnSetFrameByRole = function (sRole)
+{
+	if(sRole=="Admin"){
+		//Admin화면 열림
+		this.fvApp.VF.separatesize = "50,*,0,0";
+	}
+	else {
+		//User화면 열림
+		this.fvApp.VF.separatesize = "0,0,0,*";
+	}
 };
 ]]></Script>
   </Form>

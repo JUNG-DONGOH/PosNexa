@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formTop" width="1600" height="50" titletext="New Form" background="white" onclick="formTop_onclick">
+  <Form id="pos2010fm" width="1600" height="740" titletext="New Form" background="green">
     <Layouts>
-      <Layout height="50" width="1600">
-        <Button id="Button00" taborder="0" left="0" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
-        <Button id="btnLogout" taborder="1" text="로그아웃" left="1482" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
+      <Layout height="740" mobileorientation="landscape" width="1600">
+        <Button id="btnLogout" taborder="0" text="로그아웃" left="1482" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
+        <Button id="Button00" taborder="1" left="0" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -31,7 +31,7 @@ this.fnMsgCallback = function (strId, strVal)
 	if(strId == "confirm.logout"){
 		if(strVal){
 		    this.fvApp.gvLogOut = "Y";
-			this.fvApp.VF.separatesize = "0,0,*";
+			this.fvApp.VF.separatesize = "0,0,*,0";
 		} 
 		else{
 			this.fvApp.gvLogOut = "N";
