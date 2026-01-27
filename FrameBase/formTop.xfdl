@@ -5,36 +5,7 @@
       <Layout height="50" width="1600">
         <Button id="btnGoMain" taborder="0" left="20" top="0" width="170" height="50" cssclass="logo" onclick="btnGoMain_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
         <Button id="btnLogout" taborder="1" text="로그아웃" left="1482" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
-        <Static id="staUser" taborder="2" top="15" width="140" height="20" cssclass="sta_TF_Welcome" right="150" onclick="staUser_onclick" text="역할, 사용자 이름"/>
-        <Grid id="Grid00" taborder="3" left="795" top="6" width="330" height="109" binddataset="gdsAccount">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="login_id"/>
-                <Cell col="1" text="password"/>
-                <Cell col="2" text="name"/>
-                <Cell col="3" text="role"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:login_id"/>
-                <Cell col="1" text="bind:password"/>
-                <Cell col="2" text="bind:name"/>
-                <Cell col="3" text="bind:role"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Button id="Button00" taborder="4" text="Button00" left="1150" top="0" width="120" height="50" onclick="Button00_onclick"/>
+        <Static id="staUser" taborder="2" top="13" width="110" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1355" border="1px solid black"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -85,13 +56,19 @@ this.btnGoMain_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 
 this.formTop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	var sName = nexacro.getPrivateProfile("name");
-	var sRole = nexacro.getPrivateProfile("role");
-	trace(sName,sRole);
-	
-	var sText = (sRole == "Admin" ? "관리자" : "사용자") + " " + sName + "님";
-	this.staUser.text=sText;
+	// gdsAccount의 데이터가 로드되거나 변경될 때 실행될 함수를 연결
+	this.fvApp.gdsAccount.addEventHandler("onload", this.fnUpdateUserInfo, this);
+};
 
+this.fnUpdateUserInfo = function(obj:nexacro.NormalDataset, e:nexacro.DSLoadEventInfo)
+{
+    // e.reason == 0 은 데이터가 성공적으로 로드(Load)되었음
+    if (e.reason == 0) {
+        var sRole = obj.getColumn(0, "role");
+		var sRoleNm = (sRole == "Admin" ? "관리자" : "사용자");
+		var sName = obj.getColumn(0, "name");
+        this.staUser.text= sRoleNm + "   "+sName + "님"; 
+    }
 };
 ]]></Script>
   </Form>

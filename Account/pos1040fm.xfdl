@@ -7,16 +7,14 @@
           <Layouts>
             <Layout>
               <Static id="Static00" taborder="0" left="119" top="53" width="255" height="95" text="회원가입" border="1px solid black" onclick="Div00_Static00_onclick"/>
-              <Static id="Static02_01" taborder="1" text="확인" left="169" top="722" width="72" height="25" border="1px solid black"/>
-              <Static id="Static02_00_00" taborder="2" text="취소" left="261" top="722" width="72" height="25" border="1px solid black" onclick="Div00_Static02_00_onclick"/>
-              <Button id="btnIdCheck" taborder="3" text="중복확인" left="365" top="307" width="81" height="30" onclick="Div00_btnIdCheck_onclick"/>
-              <TextField id="TxfId" taborder="4" labeltext="아이디" left="47" top="243" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="example@naver.com"/>
-              <TextField id="TxfPwd" taborder="5" labeltext="비밀번호" left="47" top="351" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
-              <TextField id="TxfPwdCheck" taborder="6" labeltext="비밀번호 확인" left="47" top="445" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
-              <Button id="btnPwdShow" taborder="7" text="보기" left="390" top="370" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
-              <Button id="btnPwdCheckShow" taborder="8" text="보기" left="390" top="464" width="50" height="25" onclick="Div00_btnPwdCheckShow_onclick"/>
-              <TextField id="TxfName" taborder="9" labeltext="이름" left="46" top="163" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
-              <Radio id="rdoRole" taborder="10" left="152" top="540" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
+              <Button id="btnIdCheck" taborder="1" text="중복확인" left="365" top="307" width="81" height="30" onclick="Div00_btnIdCheck_onclick"/>
+              <TextField id="TxfId" taborder="2" labeltext="아이디" left="47" top="243" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="example@naver.com"/>
+              <TextField id="TxfPwd" taborder="3" labeltext="비밀번호" left="47" top="351" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
+              <TextField id="TxfPwdCheck" taborder="4" labeltext="비밀번호 확인" left="47" top="445" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
+              <Button id="btnPwdShow" taborder="5" text="보기" left="390" top="370" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
+              <Button id="btnPwdCheckShow" taborder="6" text="보기" left="390" top="464" width="50" height="25" onclick="Div00_btnPwdCheckShow_onclick"/>
+              <TextField id="TxfName" taborder="7" labeltext="이름" left="46" top="163" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
+              <Radio id="rdoRole" taborder="8" left="152" top="540" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -34,8 +32,8 @@
                   </Rows>
                 </Dataset>
               </Radio>
-              <Button id="btnConfirm" taborder="11" text="확인" left="155" top="598" width="72" height="25" onclick="Div00_btnConfirm_onclick"/>
-              <Button id="btnCancel" taborder="12" text="취소" left="255" top="598" width="72" height="25" onclick="Div00_btnCancel_onclick"/>
+              <Button id="btnConfirm" taborder="9" text="확인" left="155" top="598" width="72" height="25" onclick="Div00_btnConfirm_onclick"/>
+              <Button id="btnCancel" taborder="10" text="취소" left="255" top="598" width="72" height="25" onclick="Div00_btnCancel_onclick"/>
             </Layout>
           </Layouts>
         </Div>
@@ -98,16 +96,16 @@
             </Format>
           </Formats>
         </Grid>
+        <Button id="Button00" taborder="3" text="Button00" left="280" top="64" width="120" height="50" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[//중복체크를 하기위한 변수
 this.isIdChecked = false; // 기본값은 '안함(false)'
+this.id_count="";
 
 //Form이 시작되면
 this.pos1040fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-/*	var objApp = nexacro.getApplication();*/
-    
+{    
     // 행 개수가 0개일 때만(처음 로딩될 때만) 추가
     if (this.ds_account.rowcount == 0) {
         this.ds_account.addRow();
@@ -167,7 +165,7 @@ this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	var sSvcId  = "svcSaveAccount";
 	var sUrl    = "SvcUrl::pos/saveAccount.do";
 	var inData  = "input_account=ds_account:U";
-	var outData = "gdsAccount=output_account:A";
+	var outData = ""; 
 	var sParam  = "";
 	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fn_accountCallback");
 };
@@ -176,7 +174,7 @@ this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 this.fn_accountCallback = function(svcID, errorCode, errorMsg) {
 	if (errorCode == 0) {
         // 성공했다면 전역 데이터셋(gdsAccount)에 유저 정보가 담겨 있음
-        var ds = nexacro.getApplication().gdsAccount;
+        var ds =this.ds_account;
 		var userName = ds.getColumn(ds.getRowCount() - 1, "name");
 
         this.gfnAlert("msg.account.success",[userName]);
@@ -197,35 +195,48 @@ this.Div00_btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventI
 
 //중복확인 체크
 this.Div00_btnIdCheck_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	 // 1) 입력값은 ds_account(입력용)에서 가져옴
-    var dsIn  = this.ds_account; 
-    var sId   = dsIn.getColumn(0, "login_id");
+{	 
+    var sId   = this.Div00.form.TxfId.value;
 
     if (this.gfnIsNull(sId)) {
         this.gfnAlert("msg.account.id.required"); // "아이디를 입력해주세요."
         return;
     }
-
-    sId = (sId + "").trim();
-
-    // 2) 중복 비교는 gfnAccount(목록용, 여러 행)에서 수행
-    var dsList = nexacro.getApplication().gdsAccount;
 	
-
-    // login_id 기준으로 존재 여부 체크
-    var nRow = dsList.findRow("login_id", sId);
-
-    if (nRow > -1) {
-        // 중복: 이미 존재하는 계정
-        this.gfnAlert("msg.account.id.duplicated"); //"이미 사용 중인 아이디입니다."
-		this.isIdChecked = false; // 중복이면 다시 '안함' 상태로
-	} else {
-        // 사용 가능
-        this.gfnAlert("msg.account.id.available"); // "사용 가능한 아이디입니다."
-		this.isIdChecked = true;
-	}
+	var sSvcId  = "svcCheckId";
+	var sUrl    = "SvcUrl::pos/checkId.do";
+	var inData  = "";
+	var outData = "";
+	var sParam  = "loginId="+this.Div00.form.TxfId.value;
+	
+	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fnCallback");
 };
+this.fnCallback=function(svcId, errCd, errMsg){
+
+	if(svcId == "svcCheckId"){
+        // 서버에서 받아온 id_count 변수 값 확인
+        if(this.id_count > 0){
+            // 아이디가 1개 이상 존재할 때
+            this.gfnAlert("msg.account.id.duplicated"); //"이미 사용 중인 아이디입니다."
+			this.isIdChecked = false; // 중복이면 다시 '안함' 상태로
+        } else {
+            // 아이디가 0개일 때
+			this.gfnAlert("msg.account.id.available"); // "사용 가능한 아이디입니다."
+			this.isIdChecked = true;
+        }
+    }
+}
+
+
+// this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+// {
+// 	var sSvcId  = "svcSelectAccout";
+// 	var sUrl    = "SvcUrl::pos/selectAccout.do";
+// 	var inData  = "";
+// 	var outData = "gdsAccount=out_dataset";
+// 	var sParam  = "loginId='wjdehddh03@naver.com'";
+// 	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fnCallback");
+// };
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.TxfName" propid="value" datasetid="ds_account" columnid="name"/>

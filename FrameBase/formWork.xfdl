@@ -1,10 +1,33 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formWork" width="1400" height="720" titletext="New Form" background="darkmagenta">
+  <Form id="formWork" width="1400" height="720" titletext="New Form" onload="formWork_onload">
     <Layouts>
       <Layout height="720" width="1400">
-        <Div id="Div00" taborder="0" text="formWork화면이다~~" left="305" top="50" width="350" height="240" background="white"/>
+        <Div id="divWork" taborder="0" width="1400" height="700" background="white" right="0" bottom="0">
+          <Layouts>
+            <Layout/>
+          </Layouts>
+        </Div>
+        <Static id="staTitle" taborder="1" left="0" width="520" height="20" cssclass="sta_WF_Title" top="0" text="sta"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp=nexacro.getApplication();
+this.formWork_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	let objCF=this.getOwnerFrame();
+  	this.fnOpenUrl(objCF);
+};
+
+// form과 연결된 URL 띄우기
+this.fnOpenUrl = function (objCF)
+{
+	sMenuId = objCF.param.MENU_ID;
+	let sMenuName = objCF.param.MENU_NAME;
+	let sMenuUrl = objCF.param.MENU_URL;
+	
+	this.staTitle.text=sMenuName;
+	this.divWork.url=sMenuUrl;
+	this.staTitle.fittocontents="width";
+};]]></Script>
   </Form>
 </FDL>

@@ -26,19 +26,7 @@
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
 
 this.pos1010fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
-{
-	// 데이터셋에 행(row)이 이미 1개라도 있다면 서버를 부르지 않음
-    if (this.fvApp.gdsAccount.rowcount > 0) {
-        return; 
-    }
-	
-	var sSvcId  = "svcLoadAccount";
-	var sUrl    = "SvcUrl::pos/loadAccount.do";
-	var inData  = "";
-	var outData = "gdsAccount=output_account";
-	var sParam  = "";
-	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fnCallback");
-	
+{	
 	// 저장된 아이디 가져오기
     var sSavedId = nexacro.getPrivateProfile("login_id");
 	
@@ -84,43 +72,63 @@ this.Div00_Button01_00_00_onclick = function(obj:nexacro.Button,e:nexacro.ClickE
 //로그인 버튼
 this.Div00_btnLogin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var sId = this.Div00.form.TxfId.value;       // 아이디 입력창
-    var sPw = this.Div00.form.TxfPwd.value;       // 비밀번호 입력창
+	var sId = this.Div00.form.TxfId.value;
+    var sPw = this.Div00.form.TxfPwd.value;
 
     // 1. 입력값 확인
     if (!sId || !sPw) {
-		this.gfnAlert("msg.account.inputidandpassword.check");
+        this.gfnAlert("msg.account.inputidandpassword.check");
         return;
     }
 
-    // 2. gdsAccount에서 아이디와 비밀번호가 일치하는 행(row) 찾기
-    var nRow = this.fvApp.gdsAccount.findRowExpr("login_id=='" + sId + "' && password=='" + sPw + "'");
-
-    if (nRow >= 0) {		
-		// 로그인 성공: 해당 행에서 역할(role) 가져오기
-        var sRole = this.fvApp.gdsAccount.getColumn(nRow, "role");
-	
-		
-		// 3. 역할별 프레임 제어 함수 호출
-        this.fnSetFrameByRole(sRole);
-		
-		
-		//아이디 저장
-		var isSave = this.Div00.form.chkIdSave.value;
-		
-		if(isSave==true){
-			// 체크되어 있으면 아이디 저장
-			nexacro.setPrivateProfile("login_id", sId);
-		} else {
-			// 체크 해제되어 있으면 저장된 정보 삭제 (빈값으로 초기화)
-			nexacro.setPrivateProfile("login_id", "");
-	}
-		
-    } else {
-		this.gfnAlert("msg.account.idandpassword.check");
-    }
+    // 2. 서버로 보낼 트랜잭션 설정
+    var sSvcId  = "svcSelectAccount";
+    var sUrl    = "SvcUrl::pos/selectAccount.do";
+    var inData  = "";
+    var outData = "gdsAccount=out_dataset"; // 서버에서 성공 시 gdsAccount를 채워줌
+    
+    // ID와 PW를 서버에 인자로 전달
+    var sParam  = "loginId=" + nexacro.wrapQuote(sId) 
+                + " loginPw=" + nexacro.wrapQuote(sPw);
+                
+    this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fnCallback");
 	
 };
+
+this.fnCallback = function(svcId, errCd, errMsg)
+{
+    if (errCd < 0) {
+        this.gfnAlert("msg.action.fail");
+        return;
+    }
+
+    if (svcId == "svcSelectAccount") {
+        var ds = this.fvApp.gdsAccount;
+        
+        // 3. 서버에서 일치하는 사용자를 찾아 데이터셋에 담아줬는지 확인
+        if (ds.getRowCount() > 0) {
+            // 로그인 성공
+            var sRole = ds.getColumn(0, "role"); // 첫 번째 행의 역할 가져오기
+            var sId = ds.getColumn(0, "login_id");
+
+            // 역할별 프레임 제어
+            this.fnSetFrameByRole(sRole);
+
+            // 아이디 저장 (PrivateProfile)
+            var isSave = this.Div00.form.chkIdSave.value;
+            if (isSave) {
+                nexacro.setPrivateProfile("login_id", sId);
+            } else {
+                nexacro.setPrivateProfile("login_id", "");
+            }
+            
+        } else {
+            // 서버에서 넘어온 행이 0개라면 아이디/비번이 틀린 것
+            this.gfnAlert("msg.account.idandpassword.check");
+        }
+    }
+};
+
 
 //역할별 프레임 제어 함수
 this.fnSetFrameByRole = function (sRole)
@@ -133,7 +141,6 @@ this.fnSetFrameByRole = function (sRole)
 		//User화면 열림
 		this.fvApp.VF.separatesize = "0,0,0,*";
 	}
-};
-]]></Script>
+};]]></Script>
   </Form>
 </FDL>
