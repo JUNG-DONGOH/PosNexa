@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formMain" width="1080" height="650" titletext="New Form" dragscrolltype="none">
+  <Form id="formMain" width="1400" height="765" titletext="New Form" dragscrolltype="none" background="coral">
     <Layouts>
-      <Layout height="650" mobileorientation="landscape" width="1080">
+      <Layout height="765" mobileorientation="landscape" width="1400">
         <Div id="Div00" taborder="0" left="330" top="200" width="320" height="60" cssclass="logo"/>
         <Grid id="Grid00" taborder="1" left="15" top="220" width="325" height="345" binddataset="ds_login" autofittype="col">
           <Formats>

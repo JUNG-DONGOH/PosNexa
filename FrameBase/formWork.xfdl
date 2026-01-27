@@ -1,8 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formWork" width="1080" height="670" titletext="New Form" background="skyblue">
+  <Form id="formWork" width="1400" height="720" titletext="New Form" background="darkmagenta">
     <Layouts>
-      <Layout height="670" width="1080"/>
+      <Layout height="720" width="1400">
+        <Div id="Div00" taborder="0" text="formWork화면이다~~" left="305" top="50" width="350" height="240" background="white"/>
+      </Layout>
     </Layouts>
   </Form>
 </FDL>

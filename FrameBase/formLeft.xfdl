@@ -1,24 +1,78 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formLeft" width="200" height="670" titletext="New Form" background="yellowgreen">
+  <Form id="formLeft" width="200" height="720" titletext="New Form">
     <Layouts>
-      <Layout height="670" mobileorientation="landscape" width="200">
-        <Grid id="Grid00" taborder="0" left="0" top="0" width="200" height="720" binddataset="gdsMenu" autofittype="col">
+      <Layout height="720" mobileorientation="landscape" width="200">
+        <Grid id="grdMenu" taborder="0" left="0" top="0" width="200" height="720" binddataset="gdsMenu" autofittype="col" scrollbartype="default default" treeusebutton="no" treeusecheckbox="false" treeuseimage="false" treeuseline="true" oncelldblclick="grdMenu_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="197"/>
               </Columns>
               <Rows>
-                <Row size="24"/>
+                <Row size="79"/>
               </Rows>
               <Band id="body">
-                <Cell text="bind:MENU_NAME" displaytype="treeitemcontrol" edittype="tree"/>
+                <Cell text="bind:MENU_NAME" displaytype="treeitemcontrol" edittype="tree" suppress="0" treelevel="bind:MENU_LEVEL"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
+
+this.grdMenu_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+   var nGridRow = this.grdMenu.getTreeRow(e.row);   
+   var nStatus  = this.grdMenu.getTreeStatus(nGridRow);
+   trace(" nStatus----> " + nStatus);
+   
+   //if(nStatus == 3) return; //여기서 고치기
+   nStatus = (nStatus == 0 ? 1 : 0);
+
+   this.grdMenu.setTreeStatus(nGridRow, nStatus);
+   
+   var objDs = obj.getBindDataset();
+   
+   //this.fn_MdiTabAdd(objDs, e.row);
+   this.fn_OpenWorkForm(objDs, e.row); 
+   this.fvApp.fvVFramset1.separatesize = "40,*,0";
+   
+};
+
+this.fn_OpenWorkForm = function (objDs, pRow)
+{
+   var strName = objDs.getColumn(pRow, "MENU_ID");
+   var strMenuName = objDs.getColumn(pRow, "MENU_NAME");
+   var strMenuUrl = objDs.getColumn(pRow, "MENU_URL");
+   trace(strMenuUrl);
+   if(strMenuUrl.length < 1) return;
+   
+//    var arrObj = this.fvApp.avWorkFrame.all;
+//    for (var i = 0 ; i < arrObj.length ; i++ ){
+//       if( arrObj[i].name == strName ) {
+//          arrObj[i].setFocus();
+//          this.fvApp.avMdiFrame.form.tabMdi.tabindex = i;
+//          return;
+//       }
+//    }
+   
+   var objParam = {
+      MENU_ID : strName,
+      MENU_NAME : strMenuName,
+      MENU_URL : strMenuUrl,
+   };
+   
+   var objCF = new ChildFrame(strName,0,0,null,null,0,0);
+   this.fvApp.fvWorkFrame.addChild(strName,objCF);
+   objCF.formurl = "FrameBase::formWork.xfdl";
+   objCF.resizable = true;
+   objCF.showtitlebar = false;
+   objCF.openstatus = "maximize";
+   objCF.param = objParam;
+   objCF.show();
+};
+]]></Script>
   </Form>
 </FDL>

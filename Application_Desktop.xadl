@@ -2,16 +2,19 @@
 <ADL version="2.0">
   <Application id="Application_Desktop" screenid="Desktop_screen" onload="Application_onload" licenseurl="NexacroN_client_license (1).xml">
     <Layout>
-      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1600" height="730" titletext="FullFrame">
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1600" height="765" titletext="FullFrame">
         <VFrameSet id="VFrameSet" showtitlebar="false" separatesize="0,0,*,0">
           <Frames>
-            <ChildFrame id="frameTop" formurl="FrameBase::formTop.xfdl" dragmovetype="none" showtitlebar="false"/>
+            <ChildFrame id="frameTop" formurl="FrameBase::formTop.xfdl" dragmovetype="none" showtitlebar="false" height="50"/>
             <HFrameSet id="HFrameSet" separatesize="200,*">
               <Frames>
                 <ChildFrame id="frameLeft" formurl="FrameBase::formLeft.xfdl" dragmovetype="none" showtitlebar="false"/>
-                <VFrameSet id="VFrameSet1" separatesize="40">
+                <VFrameSet id="VFrameSet1" separatesize="40,0,*">
                   <Frames>
-                    <ChildFrame id="frameWork" formurl="FrameBase::formWork.xfdl" showtitlebar="false" dragmovetype="none"/>
+                    <ChildFrame id="frameTap" formurl="FrameBase::formTap.xfdl" showtitlebar="false" dragmovetype="none"/>
+                    <FrameSet id="FrameSet">
+                      <Frames/>
+                    </FrameSet>
                     <ChildFrame id="frameMain" formurl="FrameBase::formMain.xfdl" dragmovetype="none" showtitlebar="false" showtitleicon="false"/>
                   </Frames>
                 </VFrameSet>
@@ -25,8 +28,12 @@
     </Layout>
   </Application>
   <Script type="xscript5.1"><![CDATA[this.VF="";
+this.fvWorkFrame="";
+this.fvVFramset1="";
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
 	this.VF=this.mainframe.VFrameSet;
+	this.fvWorkFrame=this.mainframe.VFrameSet.HFrameSet.VFrameSet1.FrameSet;
+	this.fvVFramset1=this.mainframe.VFrameSet.HFrameSet.VFrameSet1;
 };]]></Script>
 </ADL>

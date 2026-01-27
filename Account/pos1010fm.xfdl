@@ -8,7 +8,7 @@
             <Layout>
               <Static id="Static00" taborder="0" left="122" top="53" width="255" height="67" text="매장운영관리 시스템  POS" border="1px solid black" onclick="Div00_Static00_onclick"/>
               <TextField id="TxfId" taborder="1" labeltext="아이디" left="50" top="139" width="399" height="54" inputtype="email" usetrailingbutton="true"/>
-              <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="50" top="213" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged"/>
+              <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="50" top="213" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" value="1234qwer"/>
               <CheckBox id="chkIdSave" taborder="3" left="54" top="287" width="95" height="30" text="아이디 저장"/>
               <Button id="btnLogin" taborder="4" text="로그인" left="56" top="337" width="389" height="53" onclick="Div00_btnLogin_onclick"/>
               <Button id="moveId" taborder="5" text="ID찾기" left="102" top="410" width="75" height="53" onclick="Div00_Button01_onclick"/>
@@ -99,6 +99,8 @@ this.Div00_btnLogin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
     if (nRow >= 0) {		
 		// 로그인 성공: 해당 행에서 역할(role) 가져오기
         var sRole = this.fvApp.gdsAccount.getColumn(nRow, "role");
+	
+		
 		// 3. 역할별 프레임 제어 함수 호출
         this.fnSetFrameByRole(sRole);
 		

@@ -1,10 +1,40 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formTop" width="1600" height="50" titletext="New Form" background="white" onclick="formTop_onclick">
+  <Form id="formTop" width="1600" height="50" titletext="New Form" background="white" onclick="formTop_onclick" onload="formTop_onload">
     <Layouts>
       <Layout height="50" width="1600">
-        <Button id="Button00" taborder="0" left="0" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
+        <Button id="btnGoMain" taborder="0" left="20" top="0" width="170" height="50" cssclass="logo" onclick="btnGoMain_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
         <Button id="btnLogout" taborder="1" text="로그아웃" left="1482" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
+        <Static id="staUser" taborder="2" top="15" width="140" height="20" cssclass="sta_TF_Welcome" right="150" onclick="staUser_onclick" text="역할, 사용자 이름"/>
+        <Grid id="Grid00" taborder="3" left="795" top="6" width="330" height="109" binddataset="gdsAccount">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="login_id"/>
+                <Cell col="1" text="password"/>
+                <Cell col="2" text="name"/>
+                <Cell col="3" text="role"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:login_id"/>
+                <Cell col="1" text="bind:password"/>
+                <Cell col="2" text="bind:name"/>
+                <Cell col="3" text="bind:role"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="Button00" taborder="4" text="Button00" left="1150" top="0" width="120" height="50" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -31,12 +61,37 @@ this.fnMsgCallback = function (strId, strVal)
 	if(strId == "confirm.logout"){
 		if(strVal){
 		    this.fvApp.gvLogOut = "Y";
-			this.fvApp.VF.separatesize = "0,0,*";
+			this.fvApp.VF.separatesize = "0,0,*,0";
 		} 
 		else{
 			this.fvApp.gvLogOut = "N";
 		}		
 	}
+};
+
+this.btnGoMain_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+//     var objWorkFrame = fvApp.vFrameSet; // WorkFrame이 FrameSet인 경우
+// 
+//     // 1. 열려있는 모든 자식 프레임(화면)을 닫기
+//     var arrFrames = objWorkFrame.all;
+//     for (var i = arrFrames.length - 1; i >= 0; i--) {
+//         arrFrames[i].form.close();
+//     }
+
+    // 메인 화면으로 이동
+	this.fvApp.fvVFramset1.separatesize="40,0,*"
+};
+
+this.formTop_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var sName = nexacro.getPrivateProfile("name");
+	var sRole = nexacro.getPrivateProfile("role");
+	trace(sName,sRole);
+	
+	var sText = (sRole == "Admin" ? "관리자" : "사용자") + " " + sName + "님";
+	this.staUser.text=sText;
+
 };
 ]]></Script>
   </Form>
