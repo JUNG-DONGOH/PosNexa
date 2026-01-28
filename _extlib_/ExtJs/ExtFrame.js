@@ -61,7 +61,7 @@ pForm.gfnFormOnLoad = function(objForm)
 						+" "+objDate.getMilliseconds();						
 		var nElapseTime = (objDate.getTime() - nStartTime)/1000;
 		
-		objForm.parent.parent.staLodingTime.set_text("해당 화면의 loading 시간은 " +  + nElapseTime + " Sec 입니다.");
+		//objForm.parent.parent.staLodingTime.text="해당 화면의 loading 시간은 " + nElapseTime + " Sec 입니다.";
 		
 		// 키다운 이벤트 추가
 		objForm.addEventHandler("onkeydown", this.gfnOnkeydown, this);	

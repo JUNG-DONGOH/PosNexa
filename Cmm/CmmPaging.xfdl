@@ -143,7 +143,8 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
 		objBtnFirst.enable = true;
 		
 		// 현재페이지가 '1'이면 비활성화
-		if( nPage == 1 ) objBtnFirst.enable = false;
+		if( nPage <= 10 ) objBtnFirst.visible = false;
+		
 		objBtnFirst.show();
 		nLeft = nLeft + nWidth + nTermBtn;	//left값 계산	
 		
@@ -159,7 +160,7 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
 		objBtnBefore.addEventHandler("onclick", this.fnMovePage, this);	
 		objBtnBefore.enable = true;
 		// 현재페이지가 '1'이면 비활성화
-		if( nPage == 1) objBtnBefore.enable = false;
+		if( nPage == 1) objBtnBefore.visible = false;
 		nLeft = nLeft + nWidth + nTerm;	//left값 계산
 		objBtnBefore.show();
 		
@@ -194,7 +195,7 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
 		objBtnNext.enable = true;
 		objBtnNext.page = nPage +1;
 		//현재페이지가 전체페이지갯수만큼이면 비활성화
-		if( nPage >= nTotalPageC) objBtnNext.enable = false;
+		if( nPage >= nTotalPageC) objBtnNext.visible = false;
 		objBtnNext.show();
 		nLeft = nLeft + nWidth + nTermBtn; //left값 계산
 		
@@ -208,7 +209,7 @@ this.fnCreatePage = function(sFnCallback, nTotalCount, nRecords, nPage, nPageCou
 		objBtnEnd.addEventHandler("onclick", this.fnMovePage, this);
 		objBtnEnd.page = nTotalPageC;
 		//현재페이지가 전체페이지갯수만큼이면 비활성화
-		if( nPage == nTotalPageC) objBtnEnd.enable = false;
+		if( nPage >= Math.floor((nTotalPageC - 1) / 10) * 10 + 1) objBtnEnd.visible = false;
 		objBtnEnd.show();
 		nLeft = nLeft + nWidth ;	//left값 계산
 	}

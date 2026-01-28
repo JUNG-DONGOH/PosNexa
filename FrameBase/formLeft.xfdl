@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formLeft" width="200" height="720" titletext="New Form" scrollbartype="none none">
+  <Form id="formLeft" width="140" height="720" titletext="New Form" scrollbartype="none none">
     <Layouts>
-      <Layout height="720" mobileorientation="landscape" width="200">
-        <Grid id="grdMenu" taborder="0" left="0" top="0" width="200" height="720" binddataset="gdsMenu" autofittype="col" scrollbartype="none none" treeusebutton="no" treeusecheckbox="false" treeuseimage="false" treeuseline="true" oncelldblclick="grdMenu_oncelldblclick">
+      <Layout height="720" mobileorientation="landscape" width="140">
+        <Grid id="grdMenu" taborder="0" left="0" top="0" width="140" height="720" binddataset="gdsMenu" autofittype="col" scrollbartype="none none" treeusebutton="no" treeusecheckbox="false" treeuseimage="false" treeuseline="true" oncelldblclick="grdMenu_oncelldblclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -34,33 +34,36 @@ this.grdMenu_oncelldblclick = function(obj:nexacro.Grid,e:nexacro.GridClickEvent
    
    var objDs = obj.getBindDataset();
    
-   //this.fn_MdiTabAdd(objDs, e.row);
-   this.fn_OpenWorkForm(objDs, e.row); 
+   this.fnTabAdd(objDs, e.row);
+   this.fnOpenWorkForm(objDs, e.row); 
    this.fvApp.fvVFramset1.separatesize = "40,*,0";
    
 };
 
-this.fn_OpenWorkForm = function (objDs, pRow)
+this.fnOpenWorkForm = function (objDs, pRow)
 {
    var strName = objDs.getColumn(pRow, "MENU_ID");
    var strMenuName = objDs.getColumn(pRow, "MENU_NAME");
    var strMenuUrl = objDs.getColumn(pRow, "MENU_URL");
+   // 경로를 미리 만들기 (예: HOME > 메뉴명)
+   var strFullPath = this.fnGetMenuPath(pRow);
    
    if(strMenuUrl.length < 1) return;
    
-//    var arrObj = this.fvApp.avWorkFrame.all;
-//    for (var i = 0 ; i < arrObj.length ; i++ ){
-//       if( arrObj[i].name == strName ) {
-//          arrObj[i].setFocus();
-//          this.fvApp.avMdiFrame.form.tabMdi.tabindex = i;
-//          return;
-//       }
-//    }
+   var arrObj = this.fvApp.fvWorkFrame.all;
+   for (var i = 0 ; i < arrObj.length ; i++ ){
+      if( arrObj[i].name == strName ) {
+         arrObj[i].setFocus();
+         this.fvApp.fvFrameTap.form.tabMdi.tabindex = i;
+         return;
+      }
+   }
    
    var objParam = {
       MENU_ID : strName,
       MENU_NAME : strMenuName,
       MENU_URL : strMenuUrl,
+	  MENU_PATH : strFullPath
    };
    
    var objCF = new ChildFrame(strName,0,0,null,null,0,0);
@@ -72,6 +75,49 @@ this.fn_OpenWorkForm = function (objDs, pRow)
    objCF.param = objParam;
    objCF.show();
 };
-]]></Script>
+
+
+/**
+ * @description 현재 행의 레벨을 기준으로 부모 노드를 찾아 전체 경로 생성
+ * @param {number} nRow - 클릭한 그리드의 데이터셋 행 인덱스
+ */
+this.fnGetMenuPath = function(nRow)
+{
+    var objDs = this.fvApp.gdsMenu;
+    var sPath = objDs.getColumn(nRow, "MENU_NAME"); // 내 이름 먼저 담기
+    var nMyLevel = nexacro.toNumber(objDs.getColumn(nRow, "MENU_LEVEL"));
+    
+    // 만약 내가 최상위(Level 0)가 아니라면, 위로 올라가며 부모 찾기
+    if (nMyLevel > 0) {
+        var nTargetLevel = nMyLevel - 1; // 내가 찾으려는 부모의 레벨
+        
+        // 현재 행(nRow)에서 위쪽 방향으로 한 줄씩 탐색
+        for (var i = nRow - 1; i >= 0; i--) {
+            var nLevel = nexacro.toNumber(objDs.getColumn(i, "MENU_LEVEL"));
+            
+            // 나보다 한 단계 높은 부모를 찾았을 때
+            if (nLevel == nTargetLevel) {
+                var sParentName = objDs.getColumn(i, "MENU_NAME");
+                sPath = sParentName + " > " + sPath;
+                
+                nTargetLevel--; // 다음 부모(더 상위)를 찾기 위해 타겟 레벨 감소
+            }
+            
+            // 최상위 레벨(0)까지 다 찾았으면 중단
+            if (nTargetLevel < 0) break;
+        }
+    }
+
+    return "HOME > " + sPath;
+};
+
+
+this.fnTabAdd = function(objDs, pRow) {
+   var strName = objDs.getColumn(pRow, "MENU_ID");
+   var strMenuName = objDs.getColumn(pRow, "MENU_NAME");
+   
+   var objParam = { MENU_ID : strName, MENU_NAME : strMenuName };
+   this.fvApp.fvFrameTap.form.fnAddTab(objParam);
+}]]></Script>
   </Form>
 </FDL>

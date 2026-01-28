@@ -47,19 +47,19 @@
       <Rows>
         <Row>
           <Col id="MENU_GROUP">30</Col>
-          <Col id="MENU_ID">3010</Col>
-          <Col id="MENU_LEVEL">0</Col>
-          <Col id="MENU_NAME">재고관리</Col>
-          <Col id="MENU_NAME_EN">Inventory management</Col>
-          <Col id="MENU_URL">Admin::pos3010fm.xfdl</Col>
-        </Row>
-        <Row>
-          <Col id="MENU_GROUP">30</Col>
           <Col id="MENU_ID">3020</Col>
           <Col id="MENU_LEVEL">0</Col>
           <Col id="MENU_NAME">메뉴등록</Col>
           <Col id="MENU_NAME_EN">Menu registration</Col>
           <Col id="MENU_URL">Admin::pos3020fm.xfdl</Col>
+        </Row>
+        <Row>
+          <Col id="MENU_GROUP">30</Col>
+          <Col id="MENU_ID">3010</Col>
+          <Col id="MENU_LEVEL">0</Col>
+          <Col id="MENU_NAME">재고관리</Col>
+          <Col id="MENU_NAME_EN">Inventory management</Col>
+          <Col id="MENU_URL">Admin::pos3010fm.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_GROUP">30</Col>

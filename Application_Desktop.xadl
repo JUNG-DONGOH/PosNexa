@@ -2,11 +2,11 @@
 <ADL version="2.0">
   <Application id="Application_Desktop" screenid="Desktop_screen" onload="Application_onload" licenseurl="NexacroN_client_license (1).xml">
     <Layout>
-      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1600" height="765" titletext="FullFrame">
+      <MainFrame id="mainframe" showtitlebar="true" showstatusbar="true" left="0" top="0" width="1600" height="810" titletext="FullFrame">
         <VFrameSet id="VFrameSet" showtitlebar="false" separatesize="0,0,*,0">
           <Frames>
             <ChildFrame id="frameTop" formurl="FrameBase::formTop.xfdl" dragmovetype="none" showtitlebar="false" height="50"/>
-            <HFrameSet id="HFrameSet" separatesize="200,*">
+            <HFrameSet id="HFrameSet" separatesize="140,*">
               <Frames>
                 <ChildFrame id="frameLeft" formurl="FrameBase::formLeft.xfdl" dragmovetype="none" showtitlebar="false"/>
                 <VFrameSet id="VFrameSet1" separatesize="40,0,*">
@@ -30,10 +30,12 @@
   <Script type="xscript5.1"><![CDATA[this.VF="";
 this.fvWorkFrame="";
 this.fvVFramset1="";
+this.fvFrameTap="";
 this.Application_onload = function(obj:nexacro.Application,e:nexacro.LoadEventInfo)
 {
 	this.VF=this.mainframe.VFrameSet;
 	this.fvWorkFrame=this.mainframe.VFrameSet.HFrameSet.VFrameSet1.FrameSet;
 	this.fvVFramset1=this.mainframe.VFrameSet.HFrameSet.VFrameSet1;
+	this.fvFrameTap=this.mainframe.VFrameSet.HFrameSet.VFrameSet1.frameTap;
 };]]></Script>
 </ADL>

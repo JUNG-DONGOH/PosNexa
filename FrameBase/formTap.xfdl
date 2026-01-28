@@ -1,8 +1,85 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formTap" width="1400" height="40" titletext="New Form" background="skyblue">
+  <Form id="formTap" width="1400" height="40" titletext="New Form" background="skyblue" onload="formTap_onload">
     <Layouts>
-      <Layout height="40" width="1400"/>
+      <Layout height="40" width="1400">
+        <Tab id="tabMdi" taborder="0" tabindex="0" left="0" top="10" width="1190" height="30" cssclass="tab_MDI_Tab" onchanged="tabMdi_onchanged" showextrabutton="true" onextrabuttonclick="tabMdi_onextrabuttonclick">
+          <Tabpages>
+            <Tabpage id="Tabpage2" text="Tabpage2">
+              <Layouts>
+                <Layout/>
+              </Layouts>
+            </Tabpage>
+          </Tabpages>
+        </Tab>
+      </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fvApp=nexacro.getApplication();
+
+this.formTap_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.tabMdi.removeTabpage(0);
+};
+
+
+this.tabMdi_onchanged = function(obj:nexacro.Tab,e:nexacro.TabIndexChangeEventInfo)
+{
+	let sFormId = obj.tabpages[e.postindex].name;
+	
+	// 프레임이 실제 존재하는지 먼저 확인
+    let objTargetFrame = this.fvApp.fvWorkFrame[sFormId];
+    if (objTargetFrame) {
+        // 프레임이 존재하고, 그 안에 form이 로드되었을 때만 focus를 주기
+        if (objTargetFrame.form) {
+            objTargetFrame.form.setFocus();
+        }
+    } else {
+		// [디버깅용] 프레임이 아직 생성되지 않았을 때
+    }
+	
+	//Form보여주기
+	this.fvApp.fvVFramset1.separatesize = "40,*,0";
+};
+
+this.fnAddTab = function(objParam)
+{
+	this.tabMdi.insertTabpage(objParam.MENU_ID,-1,"",objParam.MENU_NAME);
+}
+
+// 탭 x 버튼 클릭시 화면 종료
+this.tabMdi_onextrabuttonclick = function(obj:nexacro.Tab,e:nexacro.TabMouseEventInfo)
+{
+	//this.fnFormClose(obj.tabpages[e.index].name, e.index);
+	var sFormId = obj.tabpages[e.index].name;
+	this.fvApp.fvWorkFrame[sFormId].form.close();
+	this.tabMdi.removeTabpage(e.index);
+}; 
+
+//formid(winid)를 이용한 화면 close
+this.fnFormClose = function(sFormId, nTabIndex)
+{
+	//화면종료
+	this.fvApp.fvWorkFrame.frames[sFormId].form.close();
+	
+	//텝 제거
+	if(this.gfnIsNull(nTabIndex)){
+		for(var i=0; i<this.tabMdi.getTabpageCount(); i++){
+			if(this.tabMdi.tabpages[i].name == sFormId){
+				this.tabMdi.removeTabpage(i);
+				break;
+			}
+		}
+	}
+	else{
+		this.tabMdi.removeTabpage(nTabIndex);
+	}
+	if(this.tabMdi.getTabpageCount() == 0)	this.fvApp.fvVFramset1.separatesize = this.fvApp.avMainOpen;	
+		
+	//데이터셋 갱신
+	var nRow = this.fvApp.gdsOpenMenu.findRow(this.FRAME_MENUCOLUMNS.winId, sFormId);
+	this.fvApp.gdsOpenMenu.deleteRow(nRow);
+
+}
+]]></Script>
   </Form>
 </FDL>

@@ -1,61 +1,105 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3020fm" width="1460" height="638" titletext="New Form" background="beige" onload="pos3020fm_onload">
+  <Form id="SamplePaging" width="1020" height="680" titletext="그리드 페이징" onload="form_onload">
     <Layouts>
-      <Layout height="638" mobileorientation="landscape" width="1460">
-        <Div id="divPage" taborder="0" left="20" right="20" url="Cmm::CmmPaging.xfdl" top="638" bottom="0"/>
-        <Div id="divPage00" taborder="1" left="20" right="20" url="Cmm::CmmPaging.xfdl" height="50" top="590" text=""/>
-        <Grid id="grd00" taborder="2" left="145" top="110" right="145" binddataset="ds_product" autofittype="col" bottom="50">
+      <Layout height="680" mobileorientation="landscape" width="1020" screenid="Desktop_screen">
+        <TextArea id="txtDesc" taborder="4" left="20" top="60" height="170" cssclass="txt_WF_Desc" value="그리드 페이징 구현 샘플이다.&#10;1. 페이지가 표현되는 영역에 Div를 생성하고 url을 Cmm::CmmPaging.xfdl 로 지정한다.&#10;2. 조회조건을 넘길 Dataset을 생성 하여 record, page, recordsOffset, pagecount 값을 설정한다.&#10;    초기 조회일 경우 page, recordsOffset, pagecount값은 default로 0으로 세팅, records값은 각 회면별 그리드에 표현될 목록수로 세팅&#10;       this.dsSearch.setColumn(nRow, &quot;records&quot;, this.fvRecords);&#10;       this.dsSearch.setColumn(nRow, &quot;recordsOffset&quot;, this.fvRecordsOffset); &#10;3. this.divPage.fnCreatePage(this.dsSearch, this.dsList, &quot;fnSearch&quot;, this.grd00); 를 호출한다" right="20" onchanged="txtDesc_onchanged"/>
+        <Div id="divSearch" taborder="1" text="" left="20" top="txtDesc:20" height="46" cssclass="div_WF_Search" right="20">
+          <Layouts>
+            <Layout>
+              <Button id="btnSearch" taborder="0" text="조회" top="9" width="60" height="26" right="20" onclick="divSearch_btnSearch_onclick" uWord="search"/>
+              <Static id="Static01" taborder="1" text="목록갯수" left="20" top="10" width="100" height="26" cssclass="sta_WF_SchLabel" uWord="listcount" minwidth="100" maxwidth=""/>
+              <Combo id="cboCnt" taborder="2" text="2" left="120" top="10" width="112" height="26" innerdataset="innerdataset" codecolumn="codecolumn" datacolumn="datacolumn" index="0" value="2">
+                <Dataset id="innerdataset">
+                  <ColumnInfo>
+                    <Column id="codecolumn" size="256"/>
+                    <Column id="datacolumn" size="256"/>
+                  </ColumnInfo>
+                  <Rows>
+                    <Row>
+                      <Col id="codecolumn">2</Col>
+                      <Col id="datacolumn">2</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">10</Col>
+                      <Col id="datacolumn">10</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">50</Col>
+                      <Col id="datacolumn">50</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">100</Col>
+                      <Col id="datacolumn">100</Col>
+                    </Row>
+                  </Rows>
+                </Dataset>
+              </Combo>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Grid id="grd00" taborder="0" left="20" top="divSearch:10" right="20" binddataset="dsList" autofittype="col" height="332">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="48"/>
+                <Column size="116"/>
+                <Column size="104"/>
+                <Column size="174"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="96"/>
               </Columns>
               <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
+                <Row size="30" band="head"/>
+                <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell text="PROD_ID"/>
-                <Cell col="1" text="PROD_NM"/>
-                <Cell col="2" text="PROD_IMG"/>
-                <Cell col="3" text="CATEGORY"/>
-                <Cell col="4" text="PRICE"/>
-                <Cell col="5" text="SALE_STATUS"/>
-                <Cell col="6" text="PROD_DESC"/>
-                <Cell col="7" text="COST_PRICE"/>
-                <Cell col="8" text="ORIGIN"/>
-                <Cell col="9" text="MANUFACTURER"/>
+                <Cell text="No"/>
+                <Cell col="1" text="ID"/>
+                <Cell col="2" text="NAME"/>
+                <Cell col="3" text="DESCRIPTION"/>
+                <Cell col="4" text="USE_YN"/>
+                <Cell col="5" text="REG_USER"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:PROD_ID"/>
-                <Cell col="1" text="bind:PROD_NM"/>
-                <Cell col="2" text="bind:PROD_IMG"/>
-                <Cell col="3" text="bind:CATEGORY"/>
-                <Cell col="4" text="bind:PRICE"/>
-                <Cell col="5" text="bind:SALE_STATUS"/>
-                <Cell col="6" text="bind:PROD_DESC"/>
-                <Cell col="7" text="bind:COST_PRICE"/>
-                <Cell col="8" text="bind:ORIGIN"/>
-                <Cell col="9" text="bind:MANUFACTURER"/>
+                <Cell text="bind:ROWNUM" displaytype="text"/>
+                <Cell col="1" text="bind:ID"/>
+                <Cell col="2" text="bind:NAME"/>
+                <Cell col="3" text="bind:DESCRIPTION"/>
+                <Cell col="4" text="bind:USE_YN"/>
+                <Cell col="5" text="bind:REG_USER"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_add" taborder="3" text="추가" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="137" onclick="btn_add_onclick"/>
-        <Button id="btn_delete" taborder="4" text="삭제" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="82" onclick="btn_delete_onclick" fittocontents="width"/>
-        <Button id="btn_save" taborder="5" text="저장" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="27" onclick="btn_save_onclick"/>
+        <Div id="divPage" taborder="2" left="20" right="20" url="Cmm::CmmPaging.xfdl" height="30" top="grd00:0"/>
+        <Static id="staTitle" taborder="3" text="그리드 페이징" left="20" top="0" width="281" height="60" cssclass="sta_WF_Title1"/>
       </Layout>
     </Layouts>
+    <Objects>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="ID" type="STRING" size="256"/>
+          <Column id="NAME" type="STRING" size="256"/>
+          <Column id="DESCRIPTION" type="STRING" size="256"/>
+          <Column id="USE_YN" type="STRING" size="256"/>
+          <Column id="REG_USER" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearch">
+        <ColumnInfo>
+          <Column id="records" type="INT" size="256"/>
+          <Column id="page" type="INT" size="256"/>
+          <Column id="recordsOffset" type="INT" size="256"/>
+          <Column id="pageCount" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsPagingInfo">
+        <ColumnInfo>
+          <Column id="totalCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
     <Script type="xscript5.1"><![CDATA[/**
 *  Nexacro Professional Training Couse
 *  @MenuPath    개발가이드 > 표준 및 기본 정의 > 그리드 페이징
@@ -86,12 +130,11 @@ this.fvPageCount=0; 		//실제표출페이지갯수
 /**
  * @description 화면 onload시 처리내역(필수)
 */
-
-this.pos3020fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
 	this.gfnFormOnLoad(this);
-	this.fnPageInit();
 };
+
 /************************************************************************************************
  * CALLBACK 콜백 처리부분(Transaction, Popup)
  ************************************************************************************************/
@@ -184,26 +227,12 @@ this.fnPagingSetting = function ()
  * 각 COMPONENT 별 EVENT 영역
  ************************************************************************************************/
 /**
- * @description 
+ * @description 조회버튼이벤트
 */
-
-
+this.divSearch_btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnPageInit(); //최초조회조건세팅
+};
 ]]></Script>
-    <Objects>
-      <Dataset id="ds_product">
-        <ColumnInfo>
-          <Column id="PROD_ID" type="INT" size="10"/>
-          <Column id="PROD_NM" type="STRING" size="100"/>
-          <Column id="PROD_IMG" type="STRING" size="500"/>
-          <Column id="CATEGORY" type="STRING" size="50"/>
-          <Column id="PRICE" type="BIGDECIMAL" size="15"/>
-          <Column id="SALE_STATUS" type="STRING" size="1"/>
-          <Column id="PROD_DESC" type="STRING" size="2000"/>
-          <Column id="COST_PRICE" type="BIGDECIMAL" size="15"/>
-          <Column id="ORIGIN" type="STRING" size="100"/>
-          <Column id="MANUFACTURER" type="STRING" size="100"/>
-        </ColumnInfo>
-      </Dataset>
-    </Objects>
   </Form>
 </FDL>

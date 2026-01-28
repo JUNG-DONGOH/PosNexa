@@ -6,6 +6,7 @@
         <Button id="btnGoMain" taborder="0" left="20" top="0" width="170" height="50" cssclass="logo" onclick="btnGoMain_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
         <Button id="btnLogout" taborder="1" text="로그아웃" left="1482" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
         <Static id="staUser" taborder="2" top="13" width="110" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1355" border="1px solid black"/>
+        <Div id="Div00" taborder="3" text="사용자사진" left="1275" top="7" width="65" height="36" border="1px solid black"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -42,13 +43,17 @@ this.fnMsgCallback = function (strId, strVal)
 
 this.btnGoMain_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-//     var objWorkFrame = fvApp.vFrameSet; // WorkFrame이 FrameSet인 경우
-// 
-//     // 1. 열려있는 모든 자식 프레임(화면)을 닫기
-//     var arrFrames = objWorkFrame.all;
+//    // 1. 열려있는 모든 자식 프레임(화면) 닫기
+//     // this.fvWorkFrame의 실제 경로를 정확히 입력해야 합니다. (예: this.fvApp.avWorkFrameSet)
+//     var objWorkFrame = this.fvApp.fvWorkFrame; // 프레임셋 변수명을 확인하세요
+//     var arrFrames = this.fvApp.fvVFramset1.all;
 //     for (var i = arrFrames.length - 1; i >= 0; i--) {
 //         arrFrames[i].form.close();
 //     }
+// 
+//     // 2. 탭을 관리하는 데이터셋 비우기 (중요!)
+//     // 보통 gdsOpenMenu 또는 gdsSelectedMenu 라는 명칭을 많이 씁니다.
+//     this.fvApp.gdsOpenMenu.clearData();
 
     // 메인 화면으로 이동
 	this.fvApp.fvVFramset1.separatesize="40,0,*"
