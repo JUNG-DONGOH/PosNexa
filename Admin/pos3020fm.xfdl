@@ -1,59 +1,72 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3020fm" width="1460" height="638" titletext="New Form" background="beige" onload="pos3020fm_onload">
+  <Form id="pos3020fm" width="1460" height="638" titletext="New Form" onload="pos3020fm_onload">
     <Layouts>
       <Layout height="638" mobileorientation="landscape" width="1460">
-        <Div id="divPage" taborder="0" left="20" right="20" url="Cmm::CmmPaging.xfdl" top="638" bottom="0"/>
-        <Div id="divPage00" taborder="1" left="20" right="20" url="Cmm::CmmPaging.xfdl" height="50" top="590" text=""/>
-        <Grid id="grd00" taborder="2" left="145" top="110" right="145" binddataset="ds_product" autofittype="col" bottom="50">
+        <Grid id="grdProduct" taborder="4" left="20" top="140" width="700" height="450" binddataset="ds_product" autofittype="col">
           <Formats>
             <Format id="default">
               <Columns>
                 <Column size="80"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="99"/>
                 <Column size="80"/>
                 <Column size="80"/>
               </Columns>
               <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
+                <Row size="24" band="head"/>
+                <Row size="30"/>
               </Rows>
               <Band id="head">
-                <Cell text="PROD_ID"/>
-                <Cell col="1" text="PROD_NM"/>
-                <Cell col="2" text="PROD_IMG"/>
-                <Cell col="3" text="CATEGORY"/>
-                <Cell col="4" text="PRICE"/>
-                <Cell col="5" text="SALE_STATUS"/>
-                <Cell col="6" text="PROD_DESC"/>
-                <Cell col="7" text="COST_PRICE"/>
-                <Cell col="8" text="ORIGIN"/>
-                <Cell col="9" text="MANUFACTURER"/>
+                <Cell text="상품이름"/>
+                <Cell col="1" text="상품이미지"/>
+                <Cell col="2" text="카테고리"/>
+                <Cell col="3" text="가격"/>
+                <Cell col="4" text="판매상태"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:PROD_ID"/>
-                <Cell col="1" text="bind:PROD_NM"/>
-                <Cell col="2" text="bind:PROD_IMG"/>
-                <Cell col="3" text="bind:CATEGORY"/>
-                <Cell col="4" text="bind:PRICE"/>
-                <Cell col="5" text="bind:SALE_STATUS"/>
-                <Cell col="6" text="bind:PROD_DESC"/>
-                <Cell col="7" text="bind:COST_PRICE"/>
-                <Cell col="8" text="bind:ORIGIN"/>
-                <Cell col="9" text="bind:MANUFACTURER"/>
+                <Cell text="bind:PROD_NM" displaytype="text" edittype="text"/>
+                <Cell col="1" text="bind:PROD_IMG" displaytype="imagecontrol"/>
+                <Cell col="2" edittype="combo" displaytype="combocontrol" combodataset="ds_category" combocodecol="CATEGORY_ID" combodatacol="CATEGORY_NAME" text="bind:CATEGORY"/>
+                <Cell col="3" text="bind:PRICE" displaytype="number" edittype="text"/>
+                <Cell col="4" text="bind:SALE_STATUS" displaytype="none"/>
               </Band>
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_add" taborder="3" text="추가" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="137" onclick="btn_add_onclick"/>
-        <Button id="btn_delete" taborder="4" text="삭제" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="82" onclick="btn_delete_onclick" fittocontents="width"/>
-        <Button id="btn_save" taborder="5" text="저장" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="27" onclick="btn_save_onclick"/>
+        <Div id="divPage" taborder="0" left="10" right="720" url="Cmm::CmmPaging.xfdl" height="40" bottom="0"/>
+        <Button id="btn_add" taborder="1" text="추가" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="137" onclick="btn_add_onclick"/>
+        <Button id="btn_delete" taborder="2" text="삭제" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="82" onclick="btn_delete_onclick" fittocontents="width"/>
+        <Button id="btn_save" taborder="3" text="저장" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="27" onclick="btn_save_onclick"/>
+        <Button id="btn_retrieve" taborder="5" text="조회" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="192" onclick="btn_retrieve_onclick" fittocontents="width"/>
+        <Static id="Static02" taborder="6" text="상세정보" left="742" top="30" width="158" height="60" cssclass="sta_WF_GuideTitle" onclick="Static02_onclick"/>
+        <Static id="Static09" taborder="7" text="" left="740" top="238" height="150" cssclass="sta_WF_DetailArea" width="700"/>
+        <Static id="Stati11" taborder="8" text="" left="740" top="189" height="50" cssclass="sta_WF_DetailArea" width="700"/>
+        <Static id="Static05" taborder="9" text="" top="140" height="50" cssclass="sta_WF_DetailArea" onclick="Static05_onclick" width="700" right="20"/>
+        <Static id="Static04" taborder="10" left="740" top="140" width="5.342465753424658%" height="50" cssclass="sta_WF_DetailLabel" onclick="Static04_onclick" text="원가"/>
+        <Static id="Static06" taborder="11" text="상품이미지" left="740" top="238" width="5.342465753424658%" height="150" cssclass="sta_WF_DetailLabel" onclick="Static06_onclick"/>
+        <Static id="Static08" taborder="12" text="상품 수정일" left="73.84%" top="140" width="6.164383561643835%" height="50" cssclass="sta_WF_DetailLabel"/>
+        <Static id="Stati14" taborder="13" text="제조사" left="740" top="189" width="5.342465753424658%" height="50" cssclass="sta_WF_DetailLabel"/>
+        <Static id="Stati20" taborder="14" text="상품설명" left="73.84%" top="238" width="6.164383561643835%" height="150" cssclass="sta_WF_DetailLabel"/>
+        <MaskEdit id="msk_COST_PRICE" taborder="15" left="823" top="145" width="250" height="40" type="number" format="#,#"/>
+        <ListBox id="lsb_pos" taborder="16" left="823" top="243" width="250" height="140" innerdataset="ds_pos" codecolumn="CODE" datacolumn="NAME"/>
+        <Calendar id="cal_UPDATE_DATE" taborder="17" left="1173" top="145" width="261" height="40"/>
+        <TextArea id="txt_PROD_DESC" taborder="18" left="1173" top="243" height="140" right="26"/>
+        <Static id="Static08_00" taborder="19" text="원산지" left="73.84%" top="189" width="6.164383561643835%" height="50" cssclass="sta_WF_DetailLabel" onclick="Static08_00_onclick"/>
+        <Static id="Stati11_00" taborder="20" text="" left="740" top="387" height="201" cssclass="sta_WF_DetailArea" width="700"/>
+        <Static id="Stati14_00" taborder="21" text="메모" left="740" top="387" width="5.342465753424658%" height="201" cssclass="sta_WF_DetailLabel"/>
+        <TextArea id="txt_memo" taborder="22" left="823" top="392" height="191" right="26" onchanged="txt_memo00_onchanged"/>
+        <Edit id="edt_ORIGIN" taborder="23" left="1173" top="194" width="261" height="40"/>
+        <Edit id="edt_MANUFACTURER" taborder="24" left="823" top="194" width="250" height="40"/>
+        <Div id="divSearch" taborder="25" left="20" top="30" width="700" height="60" border="1px solid black">
+          <Layouts>
+            <Layout>
+              <Button id="btn_findPro" taborder="0" left="638" top="9" width="40" height="40" cssclass="btn_WF_Find" onclick="divSearch_btn_findPro_onclick"/>
+              <Static id="Static00" taborder="1" text="상품검색" left="10" top="9" width="131" height="40"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Edit id="edt_SEARCH" taborder="26" left="170" top="40" width="470" height="40"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -102,7 +115,7 @@ this.fnCallback = function(svcID,errorCode,errorMsg)
 {
 	switch(svcID)
 	{
-		case "search":
+		case "selectPagingDataLoad":
 			this.fnPagingSetting(); //make paging
 			break;
 	}
@@ -132,12 +145,12 @@ this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.dsSearch.clearData();
 	var nRow = this.dsSearch.addRow();
 	this.dsSearch.setColumn(nRow, "records", this.fvRecords);
-	this.dsSearch.setColumn(nRow, "recordsOffset", this.fvRecordsOffset); 
+	this.dsSearch.setColumn(nRow, "recordsOffset", this.fvRecordsOffset);  
 	
- 	var strSvcId    = "search";
-	var strSvcUrl   = "SvcUrl::selectPagingSample.do";
-	var inData      = "dsSearch=dsSearch";
-	var outData     = "dsList=dsList dsPagingInfo=dsPagingInfo";
+ 	var strSvcId    = "selectPagingDataLoad";
+	var strSvcUrl   = "SvcUrl::selectPagingDataLoad.do";
+	var inData      = "ds_product=dsSearch";
+	var outData     = "ds_product=ds_product dsPagingInfo=dsPagingInfo";
 	var strArg      = "";
 	var callBackFnc = "fnCallback";
 	var isAsync   	= true;
@@ -188,6 +201,59 @@ this.fnPagingSetting = function ()
 */
 
 
+/**
+ * @description 그리드 셀 클릭 이벤트
+*/
+
+
+
+/**
+ * @description 상세 정보 조회 함수
+*/
+this.fnSearchDetail = function(sProdId)
+{
+    var strSvcId    = "selectProductDetail";
+    var strSvcUrl   = "SvcUrl::selectProductDetail.do";
+    var inData      = ""; 
+    var outData     = "ds_productDetail=ds_productDetail"; // 결과만 받으면 됨
+    
+    // 3. 변수값을 여기에 바로 연결 (문자열로 전송)
+    var strArg      = "p_prodId=" + nexacro.wrapQuote(sProdId); 
+    var callBackFnc = "fnCallback";
+    
+    this.gfnTransaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
+};
+
+// 팝업div 닫기버튼
+this.PopupDiv00_btnPopupClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	 this.PopupDiv00.closePopup();
+};
+
+
+// 조회버튼
+this.btn_retrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.fnPageInit();
+};
+
+// 추가버튼
+this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_product.addRow();
+};
+
+// 제거버튼
+this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_product.deleteRow(this.ds_product.rowposition);
+};
+
+// 검색버튼
+this.divSearch_btn_findPro_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.ds_product.filter("PROD_NM.indexOf('" +this.edt_SEARCH.value+"')>-1");
+};
 ]]></Script>
     <Objects>
       <Dataset id="ds_product">
@@ -198,12 +264,60 @@ this.fnPagingSetting = function ()
           <Column id="CATEGORY" type="STRING" size="50"/>
           <Column id="PRICE" type="BIGDECIMAL" size="15"/>
           <Column id="SALE_STATUS" type="STRING" size="1"/>
-          <Column id="PROD_DESC" type="STRING" size="2000"/>
-          <Column id="COST_PRICE" type="BIGDECIMAL" size="15"/>
-          <Column id="ORIGIN" type="STRING" size="100"/>
-          <Column id="MANUFACTURER" type="STRING" size="100"/>
+          <Column id="PROD_DESC" type="STRING" size="256"/>
+          <Column id="COST_PRICE" type="INT" size="256"/>
+          <Column id="ORIGIN" type="STRING" size="256"/>
+          <Column id="MANUFACTURER" type="STRING" size="256"/>
+          <Column id="REG_DATE" type="DATETIME" size="256"/>
+          <Column id="UPDATE_DATE" type="DATETIME" size="256"/>
+          <Column id="PROD_MEMO" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
+      <Dataset id="dsPagingInfo">
+        <ColumnInfo>
+          <Column id="totalCount" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="dsSearch">
+        <ColumnInfo>
+          <Column id="records" type="INT" size="256"/>
+          <Column id="page" type="INT" size="256"/>
+          <Column id="recordsOffset" type="INT" size="256"/>
+          <Column id="pageCount" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_category">
+        <ColumnInfo>
+          <Column id="CATEGORY_ID" type="STRING" size="256"/>
+          <Column id="CATEGORY_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="CATEGORY_ID">1</Col>
+            <Col id="CATEGORY_NAME">구이류</Col>
+          </Row>
+          <Row>
+            <Col id="CATEGORY_ID">2</Col>
+            <Col id="CATEGORY_NAME">식사류</Col>
+          </Row>
+          <Row>
+            <Col id="CATEGORY_ID">3</Col>
+            <Col id="CATEGORY_NAME">주류</Col>
+          </Row>
+          <Row>
+            <Col id="CATEGORY_ID">4</Col>
+            <Col id="CATEGORY_NAME">음료</Col>
+          </Row>
+        </Rows>
+      </Dataset>
     </Objects>
+    <Bind>
+      <BindItem id="item0" compid="msk_COST_PRICE" propid="value" datasetid="ds_product" columnid="COST_PRICE"/>
+      <BindItem id="item6" compid="cal_UPDATE_DATE" propid="value" datasetid="ds_product" columnid="UPDATE_DATE"/>
+      <BindItem id="item7" compid="edt_ORIGIN" propid="value" datasetid="ds_product" columnid="ORIGIN"/>
+      <BindItem id="item3" compid="edt_MANUFACTURER" propid="value" datasetid="ds_product" columnid="MANUFACTURER"/>
+      <BindItem id="item10" compid="txt_PROD_DESC" propid="value" datasetid="ds_product" columnid="PROD_DESC"/>
+      <BindItem id="item1" compid="txt_memo" propid="value" datasetid="ds_product" columnid="PROD_MEMO"/>
+    </Bind>
   </Form>
 </FDL>

@@ -177,7 +177,7 @@ this.fnSearch = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 	this.dsSearch.setColumn(nRow, "records", this.fvRecords);
 	this.dsSearch.setColumn(nRow, "recordsOffset", this.fvRecordsOffset); 
 	
- 	var strSvcId    = "search";
+ 	var strSvcId    = "search";	
 	var strSvcUrl   = "SvcUrl::selectPagingSample.do";
 	var inData      = "dsSearch=dsSearch";
 	var outData     = "dsList=dsList dsPagingInfo=dsPagingInfo";
