@@ -3,15 +3,14 @@
   <Form id="pos3020fm" width="1460" height="638" titletext="New Form" onload="pos3020fm_onload">
     <Layouts>
       <Layout height="638" mobileorientation="landscape" width="1460">
-        <Grid id="grdProduct" taborder="4" left="20" top="140" width="700" height="450" binddataset="ds_product" autofittype="col">
+        <Grid id="grdProduct" taborder="4" left="20" top="140" width="700" height="450" binddataset="ds_product" autofittype="col" oncellclick="grdProduct_oncellclick">
           <Formats>
             <Format id="default">
               <Columns>
+                <Column size="102"/>
+                <Column size="65"/>
                 <Column size="80"/>
-                <Column size="80"/>
-                <Column size="99"/>
-                <Column size="80"/>
-                <Column size="80"/>
+                <Column size="102"/>
               </Columns>
               <Rows>
                 <Row size="24" band="head"/>
@@ -19,17 +18,15 @@
               </Rows>
               <Band id="head">
                 <Cell text="상품이름"/>
-                <Cell col="1" text="상품이미지"/>
-                <Cell col="2" text="카테고리"/>
-                <Cell col="3" text="가격"/>
-                <Cell col="4" text="판매상태"/>
+                <Cell col="1" text="카테고리"/>
+                <Cell col="2" text="가격"/>
+                <Cell col="3" text="판매상태"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:PROD_NM" displaytype="text" edittype="text"/>
-                <Cell col="1" text="bind:PROD_IMG" displaytype="imagecontrol"/>
-                <Cell col="2" edittype="combo" displaytype="combocontrol" combodataset="ds_category" combocodecol="CATEGORY_ID" combodatacol="CATEGORY_NAME" text="bind:CATEGORY"/>
-                <Cell col="3" text="bind:PRICE" displaytype="number" edittype="text"/>
-                <Cell col="4" text="bind:SALE_STATUS" displaytype="none"/>
+                <Cell col="1" edittype="combo" displaytype="combocontrol" combodataset="ds_category" combocodecol="CATEGORY_ID" combodatacol="CATEGORY_NAME" text="bind:CATEGORY"/>
+                <Cell col="2" text="bind:PRICE" displaytype="number" edittype="text"/>
+                <Cell col="3" cssclass="btn_ProdStateY" displaytype="imagecontrol" text="expr:SALE_STATUS == &quot;Y&quot;?&quot;theme://images/btn_proStateY.png&quot;:&quot;theme://images/btn_proStateN.png&quot;"/>
               </Band>
             </Format>
           </Formats>
@@ -40,25 +37,23 @@
         <Button id="btn_save" taborder="3" text="저장" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="27" onclick="btn_save_onclick"/>
         <Button id="btn_retrieve" taborder="5" text="조회" top="19" width="50" height="26" cssclass="btn_WF_CRUD" right="192" onclick="btn_retrieve_onclick" fittocontents="width"/>
         <Static id="Static02" taborder="6" text="상세정보" left="742" top="30" width="158" height="60" cssclass="sta_WF_GuideTitle" onclick="Static02_onclick"/>
-        <Static id="Static09" taborder="7" text="" left="740" top="238" height="150" cssclass="sta_WF_DetailArea" width="700"/>
+        <Static id="Static09" taborder="7" text="" left="1090" top="238" height="150" cssclass="sta_WF_DetailArea" width="350"/>
         <Static id="Stati11" taborder="8" text="" left="740" top="189" height="50" cssclass="sta_WF_DetailArea" width="700"/>
         <Static id="Static05" taborder="9" text="" top="140" height="50" cssclass="sta_WF_DetailArea" onclick="Static05_onclick" width="700" right="20"/>
         <Static id="Static04" taborder="10" left="740" top="140" width="5.342465753424658%" height="50" cssclass="sta_WF_DetailLabel" onclick="Static04_onclick" text="원가"/>
-        <Static id="Static06" taborder="11" text="상품이미지" left="740" top="238" width="5.342465753424658%" height="150" cssclass="sta_WF_DetailLabel" onclick="Static06_onclick"/>
-        <Static id="Static08" taborder="12" text="상품 수정일" left="73.84%" top="140" width="6.164383561643835%" height="50" cssclass="sta_WF_DetailLabel"/>
-        <Static id="Stati14" taborder="13" text="제조사" left="740" top="189" width="5.342465753424658%" height="50" cssclass="sta_WF_DetailLabel"/>
-        <Static id="Stati20" taborder="14" text="상품설명" left="73.84%" top="238" width="6.164383561643835%" height="150" cssclass="sta_WF_DetailLabel"/>
-        <MaskEdit id="msk_COST_PRICE" taborder="15" left="823" top="145" width="250" height="40" type="number" format="#,#"/>
-        <ListBox id="lsb_pos" taborder="16" left="823" top="243" width="250" height="140" innerdataset="ds_pos" codecolumn="CODE" datacolumn="NAME"/>
-        <Calendar id="cal_UPDATE_DATE" taborder="17" left="1173" top="145" width="261" height="40"/>
-        <TextArea id="txt_PROD_DESC" taborder="18" left="1173" top="243" height="140" right="26"/>
-        <Static id="Static08_00" taborder="19" text="원산지" left="73.84%" top="189" width="6.164383561643835%" height="50" cssclass="sta_WF_DetailLabel" onclick="Static08_00_onclick"/>
-        <Static id="Stati11_00" taborder="20" text="" left="740" top="387" height="201" cssclass="sta_WF_DetailArea" width="700"/>
-        <Static id="Stati14_00" taborder="21" text="메모" left="740" top="387" width="5.342465753424658%" height="201" cssclass="sta_WF_DetailLabel"/>
-        <TextArea id="txt_memo" taborder="22" left="823" top="392" height="191" right="26" onchanged="txt_memo00_onchanged"/>
-        <Edit id="edt_ORIGIN" taborder="23" left="1173" top="194" width="261" height="40"/>
-        <Edit id="edt_MANUFACTURER" taborder="24" left="823" top="194" width="250" height="40"/>
-        <Div id="divSearch" taborder="25" left="20" top="30" width="700" height="60" border="1px solid black">
+        <Static id="Static08" taborder="11" text="상품 수정일" left="73.84%" top="140" width="6.164383561643835%" height="50" cssclass="sta_WF_DetailLabel"/>
+        <Static id="Stati14" taborder="12" text="제조사" left="740" top="189" width="5.342465753424658%" height="50" cssclass="sta_WF_DetailLabel"/>
+        <Static id="Stati20" taborder="13" text="상품설명" left="73.84%" top="238" width="6.164383561643835%" height="150" cssclass="sta_WF_DetailLabel"/>
+        <MaskEdit id="msk_COST_PRICE" taborder="14" left="823" top="145" width="250" height="40" type="number" format="#,#"/>
+        <Calendar id="cal_UPDATE_DATE" taborder="15" left="1173" top="145" width="261" height="40"/>
+        <TextArea id="txt_PROD_DESC" taborder="16" left="1173" top="243" height="140" right="26"/>
+        <Static id="Static08_00" taborder="17" text="원산지" left="73.84%" top="189" width="6.164383561643835%" height="50" cssclass="sta_WF_DetailLabel" onclick="Static08_00_onclick"/>
+        <Static id="Stati11_00" taborder="18" text="" left="1083" top="387" height="201" cssclass="sta_WF_DetailArea" width="357"/>
+        <Static id="Stati14_00" taborder="19" text="메모" left="1078" top="387" width="6.164383561643835%" height="201" cssclass="sta_WF_DetailLabel"/>
+        <TextArea id="txt_memo" taborder="20" left="1173" top="392" height="191" right="26" onchanged="txt_memo00_onchanged"/>
+        <Edit id="edt_ORIGIN" taborder="21" left="1173" top="194" width="261" height="40"/>
+        <Edit id="edt_MANUFACTURER" taborder="22" left="823" top="194" width="250" height="40"/>
+        <Div id="divSearch" taborder="23" left="20" top="30" width="700" height="60" border="1px solid black">
           <Layouts>
             <Layout>
               <Button id="btn_findPro" taborder="0" left="638" top="9" width="40" height="40" cssclass="btn_WF_Find" onclick="divSearch_btn_findPro_onclick"/>
@@ -66,7 +61,41 @@
             </Layout>
           </Layouts>
         </Div>
-        <Edit id="edt_SEARCH" taborder="26" left="170" top="40" width="470" height="40"/>
+        <Edit id="edt_SEARCH" taborder="24" left="170" top="40" width="470" height="40"/>
+        <Static id="Stati11_01" taborder="26" text="" left="740" top="238" height="350" cssclass="sta_WF_DetailArea" width="339"/>
+        <Static id="Static06" taborder="27" text="상품이미지" left="740" top="238" width="5.342465753424658%" height="350" cssclass="sta_WF_DetailLabel" onclick="Static06_onclick"/>
+        <ImageViewer id="ImageViewer00" taborder="25" left="823" top="243" width="250" height="287"/>
+        <Button id="btnSelect" taborder="28" text="이미지 선택" left="828" top="540" width="110" height="33" cssclass="btn_WF_LineRed" onclick="btnSelect_onclick"/>
+        <Button id="btnSave" taborder="29" text="등록" left="958" top="540" width="110" height="33" cssclass="btn_WF_FillBlue" onclick="btnSave_onclick"/>
+        <ImageViewer id="ImageViewer01" taborder="30" text="ImageViewer01" left="901" top="12" width="224" height="105"/>
+        <Grid id="Grid00" taborder="31" left="330" top="442" width="495" height="175" binddataset="dsFile">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="file_id"/>
+                <Cell col="1" text="file_name"/>
+                <Cell col="2" text="file_size"/>
+                <Cell col="3" text="file_type"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:file_id"/>
+                <Cell col="1" text="bind:file_name"/>
+                <Cell col="2" text="bind:file_size"/>
+                <Cell col="3" text="bind:file_type"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**
@@ -253,10 +282,116 @@ this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.divSearch_btn_findPro_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.ds_product.filter("PROD_NM.indexOf('" +this.edt_SEARCH.value+"')>-1");
+	this.fnPageInit();
+};
+
+
+// 데이터셋의 현재 행에 있는 URL을 이미지 뷰어에 세팅
+//var stateY = this.ds_product.getColumn(this.ds_product.rowposition, "SALE_STATUS");
+//this.ImageViewer00.image=theme://images/btn_prodStateY.png;
+
+this.grdProduct_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if(e.col==3){
+		var sStatus = this.ds_product.getColumn(e.row, "SALE_STATUS" );
+		sStatus = sStatus=="Y"?"N":"Y";
+		this.ds_product.setColumn(e.row,"SALE_STATUS",  sStatus);
+	}
+	
+};
+
+// 이미지 선택 버튼 클릭
+this.btnSelect_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.FileDialog00.open("이미지 선택", 1, "%MYDOCUMENT%");
+};
+
+// 닫기
+this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	var objFile = e.virtualfiles[0];
+	var sFileName = objFile.filename;
+	
+	// . 뒤에 확장자 체크 \. - 마침표 찾기, $ - 끝부분, /i -  대소문자 구분없이, test - 대조, ? - e가 있어도 되고 없어도 되고(jpg, jpeg)
+	if(!/\.(jpe?g|png|gif)$/i.test(sFileName)){
+		alert("이미지 파일을 선택하세요");
+		return;
+	}
+	
+	this.FileUpTransfer00.clearFileList();
+	this.FileUpTransfer00.addFile(sFileName, objFile);
+
+	
+// 	var nRow = this.dsImgEmp.addRow();
+// 	this.dsImgEmp.setColumn(nRow, "EMP_ID", "AA"+nRow);
+// 	this.dsImgEmp.setColumn(nRow, "EMP_NAME", "NAME"+nRow);
+// 	this.dsImgEmp.setColumn(nRow, "EMP_IMG", sFileName);	
+// 	this.dsImgEmp.setColumn(nRow, "IMAGE_ID", sFileName);
+// 	this.dsImgEmp.setColumn(nRow, "IMAGE_NAME", sFileName);
+	
+	
+	//  미리보기 기능
+	if(nexacro._Browser == "Runtime") {
+		this.imgPhoto.image = "URL('file://"+ objFile.fullpath + "')";
+	} else {
+		var reader = new FileReader();
+		reader.targetForm = this;
+		/*
+			FileReader는 파일을 읽는 도구이기 때문에, 주로 다음 상황을 기다립니다.
+			대상.addEventListener("사건의 종류", 실행할_함수)
+			load: 파일을 다 읽었을 때 (성공!)
+			error: 파일을 읽다가 에러가 났을 때
+			progress: 파일을 읽고 있는 중일 때 (진행 중...) 
+		*/		
+		reader.addEventListener("load",
+								 function() 
+								 { 
+									this.targetForm.imgPhoto.image = this.result; 
+								 }, 
+								 false
+								);
+		reader.readAsDataURL(objFile._handle);						
+	
+	}
+};
+
+this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	var objDs = e.datasets[0];	
+	var nRow = this.dsFile.addRow();
+	this.dsFile.setColumn(nRow, "file_name", objDs.getColumn(0, "file_name"));
+	this.dsFile.setColumn(nRow, "file_id"  , objDs.getColumn(0, "file_id"));
+	this.dsFile.setColumn(nRow, "file_size", objDs.getColumn(0, "file_size"));
+	
+	
+	
+// 	var objDs = e.datasets[0];	
+// 	var nRow = this.dsFile.findRow("file_name", objDs.getColumn(0, "file_name"));
+// 	this.dsFile.setColumn(nRow, "file_id"  , objDs.getColumn(0, "file_id"));
+// 	this.dsFile.setColumn(nRow, "file_size", objDs.getColumn(0, "file_size"));
+// 
+// 	this.dsImgEmp.setColumn(0, "EMP_IMG", objDs.getColumn(0, "file_id"));	
+// 	
+// 	this.fn_SaveImgEmp();
+};
+
+this.ds_product_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
+{
+
+	this.sUploadUrl = this.gfnGetServerUrl() + "upload/P03/P031/"; //\P03\P031	
+	this.ImageViewer01.image = this.sUploadUrl + this.ds_product.getColumn(e.newrow, "PROD_IMG");
+	
+};
+
+this.btnSave_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var sUrl = "SvcUrl::nexa/uploadFile.do";
+	this.FileUpTransfer00.setPostData("userDir", "P03\\P031");
+	this.FileUpTransfer00.upload(sUrl)
 };
 ]]></Script>
     <Objects>
-      <Dataset id="ds_product">
+      <Dataset id="ds_product" onrowposchanged="ds_product_onrowposchanged">
         <ColumnInfo>
           <Column id="PROD_ID" type="INT" size="10"/>
           <Column id="PROD_NM" type="STRING" size="100"/>
@@ -310,6 +445,16 @@ this.divSearch_btn_findPro_onclick = function(obj:nexacro.Button,e:nexacro.Click
           </Row>
         </Rows>
       </Dataset>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <FileUpTransfer id="FileUpTransfer00" onsuccess="FileUpTransfer00_onsuccess"/>
+      <Dataset id="dsFile">
+        <ColumnInfo>
+          <Column id="file_id" type="STRING" size="256"/>
+          <Column id="file_name" type="STRING" size="256"/>
+          <Column id="file_size" type="STRING" size="256"/>
+          <Column id="file_type" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
     <Bind>
       <BindItem id="item0" compid="msk_COST_PRICE" propid="value" datasetid="ds_product" columnid="COST_PRICE"/>
@@ -318,6 +463,7 @@ this.divSearch_btn_findPro_onclick = function(obj:nexacro.Button,e:nexacro.Click
       <BindItem id="item3" compid="edt_MANUFACTURER" propid="value" datasetid="ds_product" columnid="MANUFACTURER"/>
       <BindItem id="item10" compid="txt_PROD_DESC" propid="value" datasetid="ds_product" columnid="PROD_DESC"/>
       <BindItem id="item1" compid="txt_memo" propid="value" datasetid="ds_product" columnid="PROD_MEMO"/>
+      <BindItem id="item2" compid="ImageViewer00" propid="image" datasetid="ds_product" columnid="PROD_IMG"/>
     </Bind>
   </Form>
 </FDL>

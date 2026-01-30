@@ -37,66 +37,6 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="1" left="1052" top="20" width="653" height="253" binddataset="ds_account" autofittype="none">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="login_id"/>
-                <Cell col="1" text="password"/>
-                <Cell col="2" text="passwordCheck"/>
-                <Cell col="3" text="name"/>
-                <Cell col="4" text="role"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:login_id"/>
-                <Cell col="1" text="bind:password"/>
-                <Cell col="2" text="bind:passwordCheck"/>
-                <Cell col="3" text="bind:name"/>
-                <Cell col="4" text="bind:role"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Grid id="Grid01" taborder="2" left="1055" top="285" width="375" height="270" binddataset="gdsAccount" autofittype="col">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="137"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row size="24" band="head"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="login_id"/>
-                <Cell col="1" text="password"/>
-                <Cell col="2" text="name"/>
-                <Cell col="3" text="role"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:login_id"/>
-                <Cell col="1" text="bind:password"/>
-                <Cell col="2" text="bind:name"/>
-                <Cell col="3" text="bind:role"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
-        <Button id="Button00" taborder="3" text="Button00" left="280" top="64" width="120" height="50" onclick="Button00_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[//중복체크를 하기위한 변수

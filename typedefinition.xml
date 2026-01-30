@@ -43,6 +43,12 @@
     <Component type="JavaScript" id="DateRangePicker" classname="nexacro.DateRangePicker"/>
     <Component type="JavaScript" id="PopupDateRangePicker" classname="nexacro.PopupDateRangePicker"/>
     <Component type="JavaScript" id="SpinField" classname="nexacro.SpinField"/>
+    <Component type="JavaScript" id="WebView" classname="nexacro.WebView"/>
+    <Component type="JavaScript" id="FileDialog" classname="nexacro.FileDialog"/>
+    <Component type="JavaScript" id="FileDownload" classname="nexacro.FileDownload"/>
+    <Component type="JavaScript" id="FileDownTransfer" classname="nexacro.FileDownTransfer"/>
+    <Component type="JavaScript" id="FileUpload" classname="nexacro.FileUpload"/>
+    <Component type="JavaScript" id="FileUpTransfer" classname="nexacro.FileUpTransfer"/>
   </Components>
   <Services>
     <Service prefixid="theme" type="resource" url="./_resource_/_theme_/" version="0" cachelevel="session" include_subdir="true"/>
@@ -58,7 +64,7 @@
     <Service prefixid="Cmm" type="form" url="./Cmm/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="ExtJs" type="js" url="./_extlib_/ExtJs/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="Account" type="form" url="./Account/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
-    <Service prefixid="SvcUrl" type="JSP" version="0" cachelevel="none" include_subdir="false" communicationversion="0" url="http://localhost:8088/edupack_egov/"/>
+    <Service prefixid="SvcUrl" type="JSP" version="0" cachelevel="none" include_subdir="false" communicationversion="0" url="http://172.10.14.136:8088/edupack_egov/"/>
     <Service prefixid="Admin" type="form" url="./Admin/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="User" type="form" url="./User/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>

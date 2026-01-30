@@ -1033,6 +1033,11 @@
 	background : url('theme://images/pos_Logo.png');
 }
 
+.Button.btn_ProdStateY
+{
+	background  : url('theme://images/btn_proStateY.png');
+	-nexa-border : 0px none;
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[/*************** Form ***************/
 .Form

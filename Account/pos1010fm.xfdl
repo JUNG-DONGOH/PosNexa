@@ -16,8 +16,7 @@
               <Button id="Button01_00_00" taborder="7" text="회원가입" left="327" top="410" width="75" height="53" onclick="Div00_Button01_00_00_onclick"/>
               <Button id="Button02" taborder="8" text="보기" left="389" top="232" width="50" height="25" onclick="Div00_Button02_onclick"/>
               <Static id="Static01" taborder="9" text="SMS로그인" left="195" top="478" width="110" height="32"/>
-              <Button id="Button01" taborder="10" text="네이버" left="134" top="529" width="102" height="83"/>
-              <Button id="Button01_00" taborder="11" text="카카오톡" left="254" top="530" width="102" height="83"/>
+              <WebView id="naverLogin" taborder="10" left="175" top="520" width="200" height="80" url="http://172.10.14.136:8088/edupack_egov/external/p03/p031APIExamNaverLogin.html"/>
             </Layout>
           </Layouts>
         </Div>
@@ -141,6 +140,13 @@ this.fnSetFrameByRole = function (sRole)
 		//User화면 열림
 		this.fvApp.VF.separatesize = "0,0,0,*";
 	}
-};]]></Script>
+};
+
+//네이버 로그인
+this.btnLogin_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
   </Form>
 </FDL>
