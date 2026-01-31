@@ -1,0 +1,1135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="sort" width="1070" height="420" titletext="정렬" onload="form_onload">
+    <Layouts>
+      <Layout height="420" horizontalgap="0" mobileorientation="landscape" spacing="0px" tabletemplate="1* / 1*" verticalgap="0" width="1070">
+        <Button id="btnMultiSort" taborder="0" text="TEXT(&quot;grid.sort.multiSort&quot;,&quot;다중 정렬&quot;)" top="22" width="113" height="35" right="45" cssclass="btn_WF_GridMultiSort" onclick="btnMultiSort_onclick"/>
+        <Grid id="grdSort" taborder="1" left="55.00" top="74" binddataset="dsList" autofittype="col" right="45" showselection="true" initvalueid="iv_Grid0" oncellclick="grdSort_oncellclick" cellmovingtype="col" height="346">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="40"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="50" band="head"/>
+                <Row size="50"/>
+              </Rows>
+              <Band id="head">
+                <Cell displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="TEXT(&quot;name&quot;,&quot;Name&quot;)" expandshow="show" expandsize="22" padding="0px 0px 0px 22px"/>
+                <Cell col="2" text="TEXT(&quot;date&quot;,&quot;Date&quot;)" expandshow="show" expandsize="22" padding="0px 0px 0px 22px"/>
+                <Cell col="3" text="TEXT(&quot;amount&quot;,&quot;Amount&quot;)" expandshow="show" expandsize="22" padding="0px 0px 0px 22px"/>
+                <Cell col="4" text="TEXT(&quot;address&quot;,&quot;Address&quot;)" expandshow="show" expandsize="22" padding="0px 0px 0px 22px"/>
+                <Cell col="5" text="TEXT(&quot;company&quot;,&quot;Company&quot;)" expandshow="show" expandsize="22" padding="0px 0px 0px 22px"/>
+                <Cell col="6" text="TEXT(&quot;approval&quot;,&quot;OK&quot;)" expandshow="show" expandsize="22" padding="0px 0px 0px 22px"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:chk" displaytype="checkboxcontrol" edittype="checkbox"/>
+                <Cell col="1" text="bind:name"/>
+                <Cell col="2" text="bind:date"/>
+                <Cell col="3" text="bind:amount"/>
+                <Cell col="4" text="bind:address"/>
+                <Cell col="5" text="bind:company"/>
+                <Cell col="6" text="bind:ok" displaytype="imagecontrol"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Static id="Static00_00" taborder="2" text="22" left="912.00" top="0" width="120" height="22" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+        <Static id="Static00_00_00" taborder="3" text="17" left="912.00" top="57" width="120" height="17" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+        <Static id="Static00_00_01_00" taborder="4" text="55" left="0.00" top="235" width="55" height="40" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+        <Static id="Static00_00_01_00_00" taborder="5" text="45" left="1025" top="133" width="45" height="40" background="RGBA(255,0,0,0.14)" visible="false" textAlign="center"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="dsList">
+        <ColumnInfo>
+          <Column id="chk" type="STRING" size="256"/>
+          <Column id="id" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="address" type="STRING" size="256"/>
+          <Column id="amount" type="INT" size="256"/>
+          <Column id="date" type="STRING" size="256"/>
+          <Column id="company" type="STRING" size="256"/>
+          <Column id="ok" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="id">1</Col>
+            <Col id="name">Parry</Col>
+            <Col id="address">73 Bowman Parkway</Col>
+            <Col id="amount">11235</Col>
+            <Col id="date">2021-08-01</Col>
+            <Col id="company">Ratke and Sons</Col>
+            <Col id="chk">0</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="id">2</Col>
+            <Col id="name">Aland</Col>
+            <Col id="address">971 Melrose Hill</Col>
+            <Col id="amount">15698</Col>
+            <Col id="date">2020-06-01</Col>
+            <Col id="company">Littel and Sons</Col>
+            <Col id="chk">0</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="id">3</Col>
+            <Col id="name">Baxy</Col>
+            <Col id="address">685 Sutherland Court</Col>
+            <Col id="amount">15756</Col>
+            <Col id="date">2021-07-28</Col>
+            <Col id="company">Pfeffer-Becker</Col>
+            <Col id="chk">0</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="id">4</Col>
+            <Col id="name">Lyndsey</Col>
+            <Col id="address">8888 Daystar Avenue</Col>
+            <Col id="amount">15756</Col>
+            <Col id="date">2007-08-02</Col>
+            <Col id="company">Marquardt LLC</Col>
+            <Col id="chk">0</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdFalse.png')</Col>
+          </Row>
+          <Row>
+            <Col id="id">5</Col>
+            <Col id="name">Jennifer</Col>
+            <Col id="address">5872 American Ash Alley</Col>
+            <Col id="amount">23317</Col>
+            <Col id="date">2018-01-03</Col>
+            <Col id="company">Nader Group</Col>
+            <Col id="chk">0</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="id">6</Col>
+            <Col id="name">Fawnia</Col>
+            <Col id="address">531 1st Plaza</Col>
+            <Col id="amount">15756</Col>
+            <Col id="date">2020-08-03</Col>
+            <Col id="company">Huels and Sons</Col>
+            <Col id="chk">0</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdFalse.png')</Col>
+          </Row>
+          <Row>
+            <Col id="id">7</Col>
+            <Col id="name">Walsh</Col>
+            <Col id="address">03970 Kinsman Hill</Col>
+            <Col id="amount">23317</Col>
+            <Col id="date">2011-09-01</Col>
+            <Col id="company">Hartmann-Reinger</Col>
+            <Col id="chk">0</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">1</Col>
+            <Col id="name">Parry</Col>
+            <Col id="address">73 Bowman Parkway</Col>
+            <Col id="amount">5700</Col>
+            <Col id="date">2013-01-31</Col>
+            <Col id="company">Ratke and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">2</Col>
+            <Col id="name">Aland</Col>
+            <Col id="address">971 Melrose Hill</Col>
+            <Col id="amount">67800</Col>
+            <Col id="date">2022-04-01</Col>
+            <Col id="company">Littel and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">3</Col>
+            <Col id="name">Baxy</Col>
+            <Col id="address">685 Sutherland Court</Col>
+            <Col id="amount">6570</Col>
+            <Col id="date">2019-01-20</Col>
+            <Col id="company">Pfeffer-Becker</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">4</Col>
+            <Col id="name">Lyndsey</Col>
+            <Col id="address">8888 Daystar Avenue</Col>
+            <Col id="amount">3324</Col>
+            <Col id="date">2021-12-01</Col>
+            <Col id="company">Marquardt LLC</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">5</Col>
+            <Col id="name">Jennifer</Col>
+            <Col id="address">5872 American Ash Alley</Col>
+            <Col id="amount">4876</Col>
+            <Col id="date">2000-06-01</Col>
+            <Col id="company">Nader Group</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">6</Col>
+            <Col id="name">Fawnia</Col>
+            <Col id="address">531 1st Plaza</Col>
+            <Col id="amount">1684</Col>
+            <Col id="date">2021-07-28</Col>
+            <Col id="company">Huels and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">7</Col>
+            <Col id="name">Walsh</Col>
+            <Col id="address">03970 Kinsman Hill</Col>
+            <Col id="amount">335</Col>
+            <Col id="date">2007-08-02</Col>
+            <Col id="company">Hartmann-Reinger</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">1</Col>
+            <Col id="name">Parry</Col>
+            <Col id="address">73 Bowman Parkway</Col>
+            <Col id="amount">66756</Col>
+            <Col id="date">2018-01-03</Col>
+            <Col id="company">Ratke and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdFalse.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">2</Col>
+            <Col id="name">Aland</Col>
+            <Col id="address">971 Melrose Hill</Col>
+            <Col id="amount">31050</Col>
+            <Col id="date">2024-08-03</Col>
+            <Col id="company">Littel and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">3</Col>
+            <Col id="name">Baxy</Col>
+            <Col id="address">685 Sutherland Court</Col>
+            <Col id="amount">33500</Col>
+            <Col id="date">2010-09-01</Col>
+            <Col id="company">Pfeffer-Becker</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">4</Col>
+            <Col id="name">Lyndsey</Col>
+            <Col id="address">8888 Daystar Avenue</Col>
+            <Col id="amount">300</Col>
+            <Col id="date">2013-01-31</Col>
+            <Col id="company">Marquardt LLC</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">5</Col>
+            <Col id="name">Jennifer</Col>
+            <Col id="address">5872 American Ash Alley</Col>
+            <Col id="amount">50</Col>
+            <Col id="date">2022-05-01</Col>
+            <Col id="company">Nader Group</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdFalse.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">6</Col>
+            <Col id="name">Fawnia</Col>
+            <Col id="address">531 1st Plaza</Col>
+            <Col id="amount">60470</Col>
+            <Col id="date">2019-01-20</Col>
+            <Col id="company">Huels and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">7</Col>
+            <Col id="name">Walsh</Col>
+            <Col id="address">03970 Kinsman Hill</Col>
+            <Col id="amount">645870</Col>
+            <Col id="date">2021-08-01</Col>
+            <Col id="company">Hartmann-Reinger</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">1</Col>
+            <Col id="name">Parry</Col>
+            <Col id="address">73 Bowman Parkway</Col>
+            <Col id="amount">50</Col>
+            <Col id="date">2020-12-01</Col>
+            <Col id="company">Ratke and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">2</Col>
+            <Col id="name">Aland</Col>
+            <Col id="address">971 Melrose Hill</Col>
+            <Col id="amount">560</Col>
+            <Col id="date">2021-07-28</Col>
+            <Col id="company">Littel and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">3</Col>
+            <Col id="name">Baxy</Col>
+            <Col id="address">685 Sutherland Court</Col>
+            <Col id="amount">8940</Col>
+            <Col id="date">2007-08-02</Col>
+            <Col id="company">Pfeffer-Becker</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">4</Col>
+            <Col id="name">Lyndsey</Col>
+            <Col id="address">8888 Daystar Avenue</Col>
+            <Col id="amount">60</Col>
+            <Col id="date">2018-03-03</Col>
+            <Col id="company">Marquardt LLC</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdFalse.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">5</Col>
+            <Col id="name">Jennifer</Col>
+            <Col id="address">5872 American Ash Alley</Col>
+            <Col id="amount">1102</Col>
+            <Col id="date">2009-08-03</Col>
+            <Col id="company">Nader Group</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdFalse.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">6</Col>
+            <Col id="name">Fawnia</Col>
+            <Col id="address">531 1st Plaza</Col>
+            <Col id="amount">3260</Col>
+            <Col id="date">2022-11-01</Col>
+            <Col id="company">Huels and Sons</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+          <Row>
+            <Col id="chk">0</Col>
+            <Col id="id">7</Col>
+            <Col id="name">Walsh</Col>
+            <Col id="address">03970 Kinsman Hill</Col>
+            <Col id="amount">11</Col>
+            <Col id="date">2001-01-31</Col>
+            <Col id="company">Hartmann-Reinger</Col>
+            <Col id="ok">url('theme://images/img_WF_GrdTrue.png')</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[/**
+*  DEMO site
+*  @FileName 	sort.xfdl
+*  @Creator 	PRESALES
+*  @CreateDate 	2024/06/17
+*  @Desction   
+************** 소스 수정 이력 ****************************************************
+* Date					Modifier					Description
+*******************************************************************************
+* 2024/06/17			PRESALES					최초생성
+*******************************************************************************
+*/
+
+/*******************************************************************************************************************************
+ * FORM 변수 선언 영역
+*******************************************************************************************************************************/
+this.isCheckAll = 0;	//grid 전체 체크 여부
+this.MARKER_TYPE = "image";
+this.MARKER = ["url('theme://images/btn_WF_AscendingOrder.png')", "url('theme://images/btn_WF_DescendingOrder.png')", ""];
+/*******************************************************************************************************************************
+ * FORM EVENT 영역
+*******************************************************************************************************************************/
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fnSetGridSort(this.grdSort);
+};
+
+/*******************************************************************************************************************************
+ * Transaction 서비스호출 처리 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * Callback 영역
+*******************************************************************************************************************************/
+
+/*******************************************************************************************************************************
+ * 사용자 Function 영역
+*******************************************************************************************************************************/
+// 정렬 셋팅
+this.fnSetGridSort = function(grid)
+{
+	this.setPopDiv(grid);
+	 // 그리드 헤드 셀 클릭 정렬 기능 사용을 위한 초기화, 체크박스
+    grid.addEventHandler("onheadclick", this.gridonheadclick, this);
+}
+
+/**
+* 그리드 멀티 정렬  팝업 설정
+* @param {Grid} grid 대상 Grid Component
+*/
+this.setPopDiv = function(grid)
+{
+	//this.initGridFindReplace(this.Grid00, true);
+	let pdiv = new PopupDiv();
+	let name = this.fnGetUniqueId("pdiv_");
+	pdiv.init(name, 0, 0, 326, 280);
+	
+	grid.parent.addChild(pdiv.name, pdiv);
+ 	
+// 	pdiv.background = "#f7f7f7";
+// 	pdiv.border = "1px solid gray";
+	pdiv.addEventHandler("oncloseup", this.sortPdivOnCloseUpHandler, this);
+	pdiv.url = "grid::sort_pop.xfdl";
+	pdiv.show();
+	
+	// 대상 그리드 참조
+	pdiv.grid = grid;
+	
+	// 팝업 참조
+	grid.multiSortPopupDiv = pdiv;
+}
+
+/**
+* oncloseup Event Handler
+* @param {PopupDiv} obj Event가 발생한 PopupDiv Component
+* @param {CloseupEventInfo} e CloseupEventInfo
+*/
+this.sortPdivOnCloseUpHandler = function(obj, e)
+{
+    let grid = obj.grid;
+    let items = obj.returnvalue;
+	
+    if (!this.isNull(items))
+    {
+        this.clearAllSort(grid);
+		
+        let item;
+        for (let i = 0, len = items.length; i < len; i++)
+        {
+            item = items[i];
+            this.setSortStatus(grid, item.index, true, item.status);
+        }
+		
+        this.executeSort(grid);
+    }
+}
+
+/**
+* 다중 정렬 팝업창을 띄운다.
+* @param {Grid} grid 대상 Grid Component
+* @param {xPComp=} relativeComp 팝업창을 띄울 상대 위치(좌/하단) 기준 컴포넌트
+*/
+this.popupMultipleSort = function(grid, relativeComp)
+{
+	let pdiv = grid.multiSortPopupDiv;
+    let cells = [], column, text, index;
+    let cellCnt = grid.getCellCount("head");
+	
+    for (let i = 1; i < cellCnt; i++)
+    {
+        index = this.getBodyCellIndex(grid, i);
+        if (index > -1)
+        {
+            column = this.getBindColumnNameByIndex(grid, index);
+            if (!this.isNull(column))
+            {
+                text = grid.getCellText(-1, i);
+                cells.push(
+					{
+						column: column,
+						index: i,
+						text: text
+					});
+            }
+        }
+    }
+	
+    // 팝업창에 정렬정보 지정
+    pdiv.form.setSortInfo(grid, cells);
+	let nX = grid.getOffsetWidth()-pdiv.getOffsetWidth();
+    pdiv.trackPopupByComponent(grid, nX, 0);
+}
+
+/**
+* 정렬 상태를 지정한다. (실제 소팅 처리는 executeSort 에서 담당한다.)
+* @param {Grid} grid 대상 Grid Component
+* @param {number} headCellIndex head cell index
+* @param {boolean=} isMultiple 다중선택여부
+* @param {number=} sortStatus 정렬상태 강제 지정 (미지정시 현재 상태 반전)
+* @return {boolean} 상태 변경 여부
+*/
+this.setSortStatus = function(grid, headCellIndex, isMultiple, sortStatus)
+{
+    // Cell별 정렬정보   
+    if (this.isNull(grid.cellInfos))
+    {
+        grid.cellInfos = {};
+    }
+	
+    // 정렬대상컬럼 (순서중요)
+    if (this.isNull(grid.sortItems))
+    {
+        grid.sortItems = [];
+    }
+	
+    let bodyCellIndex = this.getBodyCellIndex(grid, headCellIndex);
+    if (bodyCellIndex < 0) return false;
+	
+    let columnName = this.getBindColumnNameByIndex(grid, bodyCellIndex);
+	
+    let cellInfo;
+	let sortItem;
+	let cellInfos = grid.cellInfos;
+	let sortItems = grid.sortItems;
+	let status;
+	
+    if (this.isNull(columnName))
+    {
+        //trace("Check Grid body cell bind value");
+        return false;
+    }
+    
+    if (columnName == "chk")
+    {
+		return false;
+    }
+	
+    if (this.isNull(isMultiple)) isMultiple = false;
+	
+    if (this.isNull(sortStatus)) sortStatus = -1;
+	
+    cellInfo = cellInfos[columnName];
+	
+    if (this.isNull(cellInfo))
+    {
+        let headText = grid.getCellText(-1, headCellIndex);
+        cellInfo = cellInfos[columnName] = {
+            index: headCellIndex,
+            status: 0,
+            text: headText
+        };
+    }
+    // set sort status
+    if (isMultiple)
+    {
+        status = cellInfo.status;
+        if (sortStatus == -1)
+        {
+            if (status == 0)
+            {
+                cellInfo.status = 1;
+            }
+            else if (status == 1)
+            {
+                cellInfo.status = 2;
+            }
+            else if (status == 2)
+            {
+                cellInfo.status = 0;
+            }
+        }
+        else
+        {
+            cellInfo.status = sortStatus;
+        }
+    }
+    else
+    {
+        for (let p in cellInfos)
+        {
+            if (!cellInfos.hasOwnProperty(p)) return;
+			
+            cellInfo = cellInfos[p];
+			
+            if (cellInfo.index == headCellIndex)
+            {
+                status = cellInfo.status;
+                if (sortStatus == -1)
+                {
+                    if (status == 0)
+                    {
+                        cellInfo.status = 1;
+                    }
+                    else if (status == 1)
+                    {
+                        cellInfo.status = 2;
+                    }
+                    else if (status == 2)
+                    {
+                        cellInfo.status = 0;
+                    }
+                }
+                else
+                {
+                    cellInfo.status = sortStatus;
+                }
+            }
+            else
+            {
+                cellInfo.status = 0;
+            }
+			
+            if (cellInfo.status == 0)
+            {
+                for (let j = 0, len2 = sortItems.length; j < len2; j++)
+                {
+                    if (sortItems[j] !== columnName)
+                    {
+                        sortItems.splice(j, 1);
+                        break;
+                    }
+                }
+            }
+        }
+    }
+	
+    let hasItem = false;
+    for (let i = 0, len = sortItems.length; i < len; i++)
+    {
+        if (sortItems[i] == columnName)
+        {
+            hasItem = true;
+            break;
+        }
+    }
+    if (!hasItem)
+    {
+        sortItems.push(columnName);
+    }
+    return true;
+}
+/**
+* head cell에 match되는 body cell을 얻어온다
+* @param {Grid} grid 대상 Grid Component
+* @param {number} headCellIndex head cell index
+*/
+this.getBodyCellIndex = function(grid, headCellIndex)
+{
+    // Max Head Row Index
+    let maxHeadRow = 0;
+    for (let i = 0, len = grid.getCellCount("head"); i < len; i++)
+    {
+        let row = grid.getCellProperty("head", i, "row");
+        if (maxHeadRow < row)
+        {
+            maxHeadRow = row;
+        }
+    }
+    // Max Body Row Index
+    let maxBodyRow = 0;
+    for (let i = 0, len = grid.getCellCount("body"); i < len; i++)
+    {
+        var row = grid.getCellProperty("body", i, "row");
+        if (maxBodyRow < row)
+        {
+            maxBodyRow = row;
+        }
+    }
+	
+    if (maxHeadRow == 0 && maxBodyRow == 0)
+    {
+        return headCellIndex;
+    }
+	
+    // Body Row 가 1개 이상일 경우
+    // Head의 row 가 Body의 row 보다 클 경우 차이 row 를 뺀 것을 대상으로 찾고
+    // Body의 row 가 Head의 row 보다 크거나 같을 경우 row index가 같은 대상을 찾는다.            
+    let cellIndex = -1;
+    let sRow = -1;
+    let nRow = parseInt(grid.getCellProperty("head", headCellIndex, "row"));
+    let nCol = parseInt(grid.getCellProperty("head", headCellIndex, "col"));
+    let nColspan = parseInt(grid.getCellProperty("head", headCellIndex, "colspan"));
+	
+    if (maxHeadRow > maxBodyRow)
+    {
+        sRow = nRow - (maxHeadRow - maxBodyRow);
+        sRow = (sRow < 0 ? 0 : sRow);
+    }
+    else
+    {
+        sRow = nRow;
+    }
+	
+    let cRow, cCol, cColspan;
+    for (let i = 0, len = grid.getCellCount("body"); i < len; i++)
+    {
+        cRow = parseInt(grid.getCellProperty("body", i, "row"));
+        cCol = parseInt(grid.getCellProperty("body", i, "col"));
+        cColspan = parseInt(grid.getCellProperty("body", i, "colspan"));
+        // 실제로 매칭되는 body cell 이 없지만 colspan으로 첫번째 항목을 찾을 경우..
+        //if (sRow == cRow && nCol <= cCol && cCol < (nCol + nColspan)) 
+        if (sRow == cRow && nCol == cCol && nColspan == cColspan)
+        {
+            cellIndex = i;
+            break;
+        }
+    }
+    return cellIndex;
+}
+
+/**
+* body cell index로 binding 된 컬럼명을 얻어온다.
+* @param {Grid} grid 대상 Grid Component
+* @param {number} index body cell index
+*/
+this.getBindColumnNameByIndex = function(grid, index)
+{	
+    let text = "";
+    let columnid = "";
+    let subCell = grid.getCellProperty("body", index, "subcell");
+    if (subCell > 0)
+    {
+        text = grid.getSubCellProperty("body", index, 0, "text");
+    }
+    else
+    {
+        text = grid.getCellProperty("body", index, "text");
+    }
+	
+    if (!this.isNull(text))
+    {
+        if (text.search(/^BIND\(/) > -1)
+        {
+            columnid = text.replace(/^BIND\(/, "");
+            columnid = columnid.substr(0, columnid.length - 1);
+        }
+        else if (text.search(/^bind:/) > -1)
+        {
+            columnid = text.replace(/^bind:/, "");
+        }
+    }
+	
+    return columnid;
+}
+
+this.fnIsAllChk = function (colID, ds)
+{
+	let allRow = ds.getRowCount();
+	
+	for(let i=0; i<allRow; ++i){
+		let chk = ds.getColumn(i, colID);
+		if(chk == 0){
+			return false;
+		}
+	}
+	
+	return true;
+};
+
+this.isNull = function(val)
+{
+    if (new String(val).valueOf() == "undefined") return true;
+    if (val == null) return true;
+    
+    let ChkStr = new String(val);
+
+    if (ChkStr == null) return true;
+    if (ChkStr.toString().length == 0 ) return true;
+    return false;
+};
+
+/**
+ * @class  유일한 ID 를 반환
+ * @param {String} prefix id 앞에 붙일 문자열
+ * @param {String} separator id 생성시 구분용 문자(default: '-' ).
+ * @return {String} id
+ * @example
+ * trace(this.gfnGetUniqueI()); 
+ * // output : 3e52d1f6-f0d2-4970-a590-ba7656b07859
+ * 
+ * trace(this.gfnGetUniqueI("Button_")); 
+ * // output : Button_4e601da1-63f4-4cfa-849b-01b8a7f14d40
+ * 
+ * trace(this.gfnGetUniqueI("", "_")); 
+ * // output : 4e601da1_63f4_4cfa_849b_01b8a7f14d40
+ * 
+ * trace(this.fnGetUniqueId("Button_", "_")); 
+ * // output : Button_4e601da1_63f4_4cfa_849b_01b8a7f14d40
+*/
+
+/**
+ * @class  alphabet character code.
+ * charvalue값 => [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, a, b, c, d, e, f]
+*/
+this._ALPHA_CHAR_CODES = [48, 49, 50, 51, 52, 53, 54, 55, 56, 57, 97, 98, 99, 100, 101, 102]
+this.fnGetUniqueId = function(prefix, separator)
+{
+	if ( this.isNull(prefix) ) prefix = "";
+	if ( this.isNull(separator) ) {
+		separator = 45;
+	} else {
+		separator = separator.charCodeAt(0);
+	}
+	let pThis = this;
+	let charcode = this._ALPHA_CHAR_CODES;
+	let math = Math;
+	let seq = 0;
+	let seq0;
+	let tmpArray = new Array(36);
+	let idx = -1;
+	
+	while (seq < 8) 
+	{
+		tmpArray[++idx] = charcode[math.random() * 16 | 0];
+		seq++;
+	}
+	seq = 0;
+	while (seq < 3) 
+	{
+		tmpArray[++idx] = separator;//45 => "-", 95=> "_"
+		seq0 = 0;
+		while (seq0 < 4) 
+		{
+			tmpArray[++idx] = charcode[math.random() * 16  | 0];
+			seq0++;
+		}
+		seq++;
+	}
+	tmpArray[++idx] = separator; //45 => "-", 95=> "_"
+	
+	let tmpStr = (new Date()).getTime();
+	tmpStr = ("0000000" + tmpStr.toString(16)).substr(-8);
+	seq = 0;
+	while (seq < 8) 
+	{
+		tmpArray[++idx] = tmpStr.charCodeAt(seq);
+		seq++;
+	}
+	seq = 0;
+	while (seq < 4) 
+	{
+		tmpArray[++idx] = charcode[math.random() * 16 | 0];
+		seq++;
+	}
+	return prefix + String.fromCharCode.apply(null, tmpArray);
+};
+
+
+/**
+* 정렬 적용
+* @param {Grid} grid 대상 Grid Component
+*/
+this.executeSort = function(grid)
+{
+    let cellInfo, sortItem;
+	let cellInfos = grid.cellInfos;
+	let sortItems = grid.sortItems;
+	let columnName, headCellIndex, status;
+	let sortString = "";
+	
+    if (this.isNull(cellInfos) || this.isNull(sortItems)) return;
+	
+    // keystring 조합
+    for (let i = 0, len = sortItems.length; i < len; i++)
+    {
+        columnName = sortItems[i];
+        status = cellInfos[columnName].status;
+		
+        if (status > 0)
+        {
+            sortString += (status == 1 ? "+" : "-") + columnName;
+        }
+    }
+	
+    let aaa = grid.getBindCellIndex("body", columnName);
+	
+    if (this.varFlag == "-" && aaa == this.colIdx1)
+    {
+        this.varFlag = "";
+        this.clearSort(grid, aaa);
+        return;
+    }
+	
+    let ds = grid.getBindDataset();
+	
+    // keystring 확인
+    let curKeyString = ds.keystring;
+    let groupKeyString = "";
+	
+    if (curKeyString.length > 0 && curKeyString.indexOf(",") < 0)
+    {
+        let sIndex = curKeyString.indexOf("S:");
+        let gIndex = curKeyString.indexOf("G:");
+		
+        if (sIndex > -1)
+        {
+            groupKeyString = "";
+        }
+        else
+        {
+            if (gIndex < 0)
+            {
+                groupKeyString = "G:" + curKeyString;
+            }
+            else
+            {
+                groupKeyString = curKeyString;
+            }
+        }
+    }
+    else
+    {
+        let temps = curKeyString.split(",");
+        let temp;
+        for (let i = 0, len = temps.length; i < len; i++)
+        {
+            temp = temps[i];
+            if (temp.length > 0 && temp.indexOf("S:") < 0)
+            {
+                if (temp.indexOf("G:") < 0)
+                {
+                    groupKeyString = "G:" + temp;
+                }
+                else
+                {
+                    groupKeyString = temp;
+                }
+            }
+        }
+    }
+	
+    if (sortString.length > 0)
+    {
+        let sortKeyString = "S:" + sortString;
+		
+        if (groupKeyString.length > 0)
+        {
+            ds.keystring = sortKeyString + "," + groupKeyString;
+        }
+        else
+        {
+            ds.keystring = sortKeyString;
+        }
+		
+        grid.sortKeyString = sortKeyString;
+    }
+    else
+    {
+        ds.keystring = groupKeyString;
+		
+        grid.sortKeyString = "";
+    }
+	
+    this.varFlag = ds.keystring.substr(2, 1);
+    this.colIdx1 = grid.getBindCellIndex("body", columnName);
+	
+    // 정렬표시
+    let index, text, marker, style;
+    for (let p in cellInfos)
+    {
+        if (!cellInfos.hasOwnProperty(p)) return;
+		
+        cellInfo = cellInfos[p];
+        status = cellInfo.status;
+        index = cellInfo.index;
+        text = cellInfo.text;
+		
+        marker = this.gfnDecode(status, 1, this.MARKER[0], 2, this.MARKER[1], this.MARKER[2]);
+		
+        if (this.MARKER_TYPE == "text")
+        {
+            grid.setCellProperty("head", index, "text", text + marker);
+        }
+        else if (this.MARKER_TYPE == "image")
+        {
+            grid.setCellProperty("head", index, "expandimage", marker);
+        }
+    }
+}
+
+
+/**
+ * @class   Grid에서 expression으로  표현할때 decode 문처럼 사용할 수 있는 기능
+ * @param  N/A 
+ * @return  {String} varRtnValue - 반환된 무자열
+ * @example
+ * this.gfnDecode();	
+ */
+this.gfnDecode = function ()
+{
+	let varRtnValue = null;
+
+	let arrArgument = this.gfnDecode.arguments;
+	let varValue = arrArgument[0];
+	let bIsDefault = false;
+	let nCount = 0;
+
+	if ((arrArgument.length % 2) == 0) 
+	{
+		nCount = arrArgument.length - 1;
+		bIsDefault = true;
+	}
+	else 
+	{
+		nCount = arrArgument.length;
+		bIsDefault = false;
+	}
+
+	for (let i = 1; i < nCount; i += 2) 
+	{
+		if (varValue == arrArgument[i]) 
+		{
+			varRtnValue = arrArgument[i + 1];
+			i = nCount;
+		}
+	}
+
+	if (varRtnValue == null && bIsDefault) 
+	{
+		varRtnValue = arrArgument[arrArgument.length - 1];
+	}
+
+	return varRtnValue;
+};
+
+/**
+* 주어진 head cell에 해당하는 정렬 상태를 제거한다.
+* @param {Grid} grid 대상 Grid Component
+* @param {number} headCellIndex head cell index
+*/
+this.clearSort = function(grid, headCellIndex)
+{
+    let bodyCellIndex = this.getBodyCellIndex(grid, headCellIndex);
+	
+    if (bodyCellIndex < 0) return;
+	
+    let columnName = this.getBindColumnNameByIndex(grid, bodyCellIndex);
+	let cellInfos = grid.cellInfos;
+	let sortItems = grid.sortItems;
+	
+    if (this.isNull(cellInfos) || this.isNull(sortItems)) return;
+	
+    if (this.isNull(columnName) || this.isNull(cellInfos[columnName])) return;
+	
+    // 정렬상태를 변경
+    cellInfos[columnName].status = 0;
+	
+    // 정렬실행
+    this.executeSort(grid);
+	
+    // 컬럼정보제거
+    for (let i = 0, len = sortItems.length; i < len; i++)
+    {
+        if (sortItems[i] == columnName)
+        {
+            sortItems.splice(i, 1);
+            break;
+        }
+    }
+	
+    // Cell 정보제거
+    delete cellInfos[columnName];
+}
+
+
+/**
+* 현재 적용된 모든 정렬 상태를 제거한다.
+* @param {Grid} grid 대상 Grid Component
+*/
+this.clearAllSort = function(grid)
+{
+    let cellInfos = grid.cellInfos;
+    let sortItems = grid.sortItems;
+	
+    if (this.isNull(cellInfos) || this.isNull(sortItems)) return;
+	
+    // 모든 정렬상태를 원래로 되돌림.
+    for (let p in cellInfos)
+    {
+        if (!cellInfos.hasOwnProperty(p)) return;
+        cellInfos[p].status = 0;
+    }
+	
+    // 정렬실행
+    this.executeSort(grid);
+	
+    // 정보 초기화
+    grid.cellInfos = {};
+    grid.sortItems = [];
+}
+/*******************************************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+*******************************************************************************************************************************/
+/**
+* @description gridonheadclick
+*/
+this.gridonheadclick = function(obj, e)
+{
+    let multiple = false;
+	
+    if (e.col == 0)
+    {
+		let colID = obj.getCellProperty("body",e.cell,"text").replace(/bind:/i,"");
+	
+		this.isCheckAll = (this.isCheckAll ?0:1);
+		
+		for(let i=0; i<this.dsList.getRowCount(); ++i){
+			this.dsList.setColumn(i, colID, this.isCheckAll);
+		}
+		
+		obj.setCellProperty("Head",0,"text",this.isCheckAll);
+    }
+    else
+    {
+        // Shift 키
+        if (e.shiftkey) multiple = true;
+		
+        // Ctrl 키
+        if (e.ctrlkey) multiple = true;
+		
+        if (this.setSortStatus(obj, e.cell, multiple))
+        {
+            this.executeSort(obj);
+        }
+    }
+}
+
+this.grdSort_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	if (e.cell == 0) {
+		let colID = obj.getCellProperty("body",e.cell,"text").replace(/bind:/i,"");
+		
+		let allchk = this.fnIsAllChk(colID,obj.getBindDataset());
+		if(allchk){
+			this.isCheckAll = 1;
+		}else{
+			this.isCheckAll = 0;
+		}
+		
+		obj.setCellProperty("Head",0,"text",this.isCheckAll);
+	}
+};
+
+this.btnMultiSort_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+    this.popupMultipleSort(this.grdSort, this.grdSort);
+};
+]]></Script>
+  </Form>
+</FDL>

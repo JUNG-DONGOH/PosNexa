@@ -3,7 +3,7 @@
   <Form id="pos3020fm" width="1460" height="638" titletext="New Form" onload="pos3020fm_onload">
     <Layouts>
       <Layout height="638" mobileorientation="landscape" width="1460">
-        <Grid id="grdProduct" taborder="4" left="20" top="140" width="700" height="450" binddataset="ds_product" autofittype="col" oncellclick="grdProduct_oncellclick">
+        <Grid id="grdProduct" taborder="4" left="20" top="140" width="700" height="450" binddataset="ds_product" autofittype="col" oncellclick="grdProduct_oncellclick" cssclass="grd_default">
           <Formats>
             <Format id="default">
               <Columns>
