@@ -3,18 +3,20 @@
   <Form id="pos1020fm" width="1600" height="720" titletext="New Form">
     <Layouts>
       <Layout height="720" width="1600">
-        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" border="1px solid black" cssclass="div_default">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" cssclass="div_card_shadow">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" left="122" top="104" width="255" height="44" text="아이디 찾기" onclick="Div00_Static00_onclick" cssclass="sta_light_blue_bg"/>
-              <Button id="btnIdSearch" taborder="1" text="아이디 찾기" left="51" top="449" width="389" height="71" onclick="Div00_btnIdSearch_onclick" cssclass="btn_primary"/>
-              <Button id="moveMain" taborder="2" left="458" top="13" width="20" height="20" cssclass="btn_MDI_AllX" onclick="Div00_Button01_onclick" text=""/>
-              <TextField id="TxfPwd" taborder="3" labeltext="비밀번호" left="55" top="280" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="비밀번호를 입력해주세요"/>
-              <Button id="btnPwdShow" taborder="4" text="보기" left="395" top="299" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
-              <TextField id="TxfName" taborder="5" labeltext="이름" left="55" top="180" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
+              <Button id="btnIdSearch" taborder="0" text="확인" left="152" top="535" width="80" height="50" onclick="Div00_btnIdSearch_onclick" cssclass="btn_login"/>
+              <Button id="moveMain" taborder="1" left="262" top="535" width="80" height="50" cssclass="btn_login" onclick="Div00_Button01_onclick" text="취소"/>
+              <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="55" top="280" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="비밀번호를 입력해주세요"/>
+              <Button id="btnPwdShow" taborder="3" text="보기" left="395" top="299" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
+              <TextField id="TxfName" taborder="4" labeltext="이름" left="55" top="180" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
+              <Div id="Div01" taborder="5" left="161" top="59" width="170" height="52" cssclass="logo"/>
             </Layout>
           </Layouts>
         </Div>
+        <Static id="Static00_00" taborder="1" left="770" top="148" width="60" height="1" border="1px solid gainsboro"/>
+        <Static id="Static01_03_02" taborder="2" text="아이디 찾기" left="770" top="160" width="120" height="60" cssclass="sta_caption"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

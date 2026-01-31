@@ -54,7 +54,7 @@
         <TextArea id="txt_memo" taborder="20" left="1173" top="392" height="191" right="26" onchanged="txt_memo00_onchanged"/>
         <Edit id="edt_ORIGIN" taborder="21" left="1173" top="194" width="261" height="40"/>
         <Edit id="edt_MANUFACTURER" taborder="22" left="823" top="194" width="250" height="40"/>
-        <Div id="divSearch" taborder="23" left="20" top="30" width="700" height="60" border="1px solid black" cssclass="div_default">
+        <Div id="divSearch" taborder="23" left="20" top="30" width="700" height="60" cssclass="div_card_shadow">
           <Layouts>
             <Layout>
               <Button id="btn_findPro" taborder="0" left="638" top="9" width="40" height="40" cssclass="btn_WF_Find" onclick="divSearch_btn_findPro_onclick"/>

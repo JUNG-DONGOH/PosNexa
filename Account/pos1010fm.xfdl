@@ -3,23 +3,26 @@
   <Form id="pos1010fm" width="1600" height="720" titletext="New Form" onload="pos1010fm_onload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1600">
-        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" cssclass="div_card_shadow">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" cssclass="div_card_shadow" text="">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" left="122" top="53" width="255" height="67" text="매장운영관리 시스템  POS" onclick="Div00_Static00_onclick" cssclass="sta_light_blue_bg"/>
-              <TextField id="TxfId" taborder="1" labeltext="아이디" left="50" top="139" width="399" height="54" inputtype="email" usetrailingbutton="true"/>
-              <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="50" top="213" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" value="1234qwer"/>
-              <CheckBox id="chkIdSave" taborder="3" left="54" top="287" width="95" height="30" text="아이디 저장"/>
-              <Button id="btnLogin" taborder="4" text="로그인" left="56" top="337" width="389" height="53" onclick="Div00_btnLogin_onclick"/>
-              <Button id="moveId" taborder="5" text="ID찾기" left="102" top="410" width="75" height="53" onclick="Div00_Button01_onclick"/>
-              <Button id="movePassword" taborder="6" text="비밀번호 찾기" left="197" top="410" width="110" height="53" onclick="Div00_Button01_00_onclick"/>
-              <Button id="Button01_00_00" taborder="7" text="회원가입" left="327" top="410" width="75" height="53" onclick="Div00_Button01_00_00_onclick"/>
-              <Button id="Button02" taborder="8" text="보기" left="389" top="232" width="50" height="25" onclick="Div00_Button02_onclick"/>
-              <Static id="Static01" taborder="9" text="SMS로그인" left="195" top="478" width="110" height="32"/>
-              <WebView id="naverLogin" taborder="10" left="175" top="520" width="200" height="80" url="http://172.10.14.136:8088/edupack_egov/external/p03/p031APIExamNaverLogin.html"/>
+              <TextField id="TxfId" taborder="0" labeltext="아이디" left="50" top="139" width="399" height="54" inputtype="email" usetrailingbutton="true"/>
+              <TextField id="TxfPwd" taborder="1" labeltext="비밀번호" left="50" top="213" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" value="1234qwer"/>
+              <CheckBox id="chkIdSave" taborder="2" left="54" top="287" width="95" height="30" text="아이디 저장"/>
+              <Button id="btnLogin" taborder="3" text="로그인" left="56" top="337" width="389" height="53" onclick="Div00_btnLogin_onclick" cssclass="btn_login"/>
+              <Button id="moveId" taborder="4" text="ID찾기" left="102" top="410" width="75" height="53" onclick="Div00_Button01_onclick" border="0px none" cssclass="btn_text_only"/>
+              <Button id="movePassword" taborder="5" text="비밀번호 찾기" left="197" top="410" width="110" height="53" onclick="Div00_Button01_00_onclick" border="0px none" cssclass="btn_text_only"/>
+              <Button id="Button01_00_00" taborder="6" text="회원가입" left="327" top="410" width="75" height="53" onclick="Div00_Button01_00_00_onclick" border="0px none" cssclass="btn_text_only"/>
+              <Button id="Button02" taborder="7" text="보기" left="389" top="232" width="50" height="25" onclick="Div00_Button02_onclick"/>
+              <Static id="Static01" taborder="8" text="SNS로그인" left="215" top="478" width="110" height="32"/>
+              <WebView id="naverLogin" taborder="9" left="175" top="520" width="200" height="80" url="http://172.10.14.136:8088/edupack_egov/external/p03/p031APIExamNaverLogin.html"/>
+              <Div id="Div01" taborder="10" left="161" top="59" width="170" height="52" cssclass="logo"/>
             </Layout>
           </Layouts>
         </Div>
+        <Static id="Static00_00" taborder="1" left="770" top="548" width="60" height="1" border="1px solid gainsboro"/>
+        <Static id="Static00_00_00" taborder="2" left="740" top="458" width="1" height="30" border="1px solid gainsboro"/>
+        <Static id="Static00_00_00_00" taborder="3" left="868" top="458" width="1" height="30" border="1px solid gainsboro"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

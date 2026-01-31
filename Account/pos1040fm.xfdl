@@ -3,18 +3,17 @@
   <Form id="pos1040fm" width="1600" height="720" titletext="New Form" onload="pos1040fm_onload">
     <Layouts>
       <Layout height="720" width="1600">
-        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" border="1px solid black" formscrollbartype="none none">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" formscrollbartype="none none" cssclass="div_card_shadow">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" left="119" top="53" width="255" height="95" text="회원가입" border="1px solid black" onclick="Div00_Static00_onclick"/>
-              <Button id="btnIdCheck" taborder="1" text="중복확인" left="365" top="307" width="81" height="30" onclick="Div00_btnIdCheck_onclick"/>
-              <TextField id="TxfId" taborder="2" labeltext="아이디" left="47" top="243" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="example@naver.com"/>
-              <TextField id="TxfPwd" taborder="3" labeltext="비밀번호" left="47" top="351" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
-              <TextField id="TxfPwdCheck" taborder="4" labeltext="비밀번호 확인" left="47" top="445" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
-              <Button id="btnPwdShow" taborder="5" text="보기" left="390" top="370" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
-              <Button id="btnPwdCheckShow" taborder="6" text="보기" left="390" top="464" width="50" height="25" onclick="Div00_btnPwdCheckShow_onclick"/>
-              <TextField id="TxfName" taborder="7" labeltext="이름" left="46" top="163" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
-              <Radio id="rdoRole" taborder="8" left="152" top="540" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
+              <Button id="btnIdCheck" taborder="0" text="중복확인" left="365" top="291" width="81" height="34" onclick="Div00_btnIdCheck_onclick" cssclass="btn_text_only"/>
+              <TextField id="TxfId" taborder="1" labeltext="아이디" left="47" top="227" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="example@naver.com"/>
+              <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="47" top="331" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
+              <TextField id="TxfPwdCheck" taborder="3" labeltext="비밀번호 확인" left="47" top="395" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
+              <Button id="btnPwdShow" taborder="4" text="보기" left="390" top="350" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
+              <Button id="btnPwdCheckShow" taborder="5" text="보기" left="390" top="414" width="50" height="25" onclick="Div00_btnPwdCheckShow_onclick"/>
+              <TextField id="TxfName" taborder="6" labeltext="이름" left="46" top="163" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
+              <Radio id="rdoRole" taborder="7" left="142" top="520" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -32,8 +31,11 @@
                   </Rows>
                 </Dataset>
               </Radio>
-              <Button id="btnConfirm" taborder="9" text="확인" left="155" top="598" width="72" height="25" onclick="Div00_btnConfirm_onclick"/>
-              <Button id="btnCancel" taborder="10" text="취소" left="255" top="598" width="72" height="25" onclick="Div00_btnCancel_onclick"/>
+              <Button id="btnConfirm" taborder="8" text="확인" left="152" top="575" width="80" height="50" onclick="Div00_btnConfirm_onclick" cssclass="btn_login"/>
+              <Button id="btnCancel" taborder="9" text="취소" left="262" top="575" width="80" height="50" onclick="Div00_btnCancel_onclick" cssclass="btn_login"/>
+              <Static id="Static00_00" taborder="10" left="210" top="118" width="60" height="1" border="1px solid gainsboro"/>
+              <Static id="Static01_03_02" taborder="11" text="회원가입" left="218" top="130" width="120" height="60" cssclass="sta_caption"/>
+              <Div id="Div01_00" taborder="12" left="161" top="59" width="170" height="52" cssclass="logo"/>
             </Layout>
           </Layouts>
         </Div>

@@ -3,19 +3,21 @@
   <Form id="pos1030fm" width="1600" height="720" titletext="New Form">
     <Layouts>
       <Layout height="720" width="1600">
-        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" border="1px solid black">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" cssclass="div_card_shadow" text="">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" left="122" top="53" width="255" height="95" text="비밀번호 찾기" border="1px solid black" onclick="Div00_Static00_onclick"/>
-              <Button id="Button00" taborder="1" text="아이디 찾기" left="56" top="430" width="389" height="71"/>
-              <Button id="Button01" taborder="2" text="NAVER" left="60" top="270" width="132" height="30"/>
-              <Button id="moveMain" taborder="3" left="458" top="13" width="20" height="20" cssclass="btn_MDI_AllX" onclick="Div00_Button01_onclick" text=""/>
-              <TextField id="TextField00" taborder="4" labeltext="아이디" left="60" top="176" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="아이디를 입력해주세요"/>
-              <TextField id="TextField00_00" taborder="5" labeltext="인증번호" left="57" top="334" width="399" height="54" inputtype="password" usetrailingbutton="false" displaynulltext="인증번호를 입력해주세요"/>
-              <Static id="Static02" taborder="6" text="시간" left="389" top="356" width="62" height="25" border="1px solid black"/>
+              <Button id="Button00" taborder="0" text="확인" left="152" top="535" width="80" height="50" cssclass="btn_login"/>
+              <Button id="Button01" taborder="1" text="NAVER" left="60" top="270" width="132" height="30"/>
+              <Button id="moveMain" taborder="2" left="262" top="535" width="80" height="50" cssclass="btn_login" onclick="Div00_Button01_onclick" text="취소"/>
+              <TextField id="TextField00" taborder="3" labeltext="아이디" left="60" top="176" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="아이디를 입력해주세요"/>
+              <TextField id="TextField00_00" taborder="4" labeltext="인증번호" left="57" top="334" width="399" height="54" inputtype="password" usetrailingbutton="false" displaynulltext="인증번호를 입력해주세요"/>
+              <Static id="Static02" taborder="5" text="시간" left="389" top="356" width="62" height="25" border="1px solid black"/>
+              <Div id="Div01_00" taborder="6" left="161" top="59" width="170" height="52" cssclass="logo"/>
             </Layout>
           </Layouts>
         </Div>
+        <Static id="Static00_00" taborder="1" left="770" top="148" width="60" height="1" border="1px solid gainsboro"/>
+        <Static id="Static01_03_02" taborder="2" text="비밀번호 찾기" left="763" top="160" width="120" height="60" cssclass="sta_caption"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[//main화면으로 이동
