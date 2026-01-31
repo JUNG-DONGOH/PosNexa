@@ -890,6 +890,7 @@
 .Div.logo
 {
 	background : url('theme://images/pos_Logo.png');
+	-nexa-border : 0px none;
 }
 
 .Button.btn_ProdStateY
@@ -1688,6 +1689,701 @@
 .Grid.grd_leftFrame .body .row[userstatus=selected] .cell[status=mouseover]
 {
     background: #2563EB;
+}
+
+/* 기본 Div - 토스 스타일 카드 */
+.Div.div_default
+{
+    background: #FFFFFF;
+    border-radius: 12px;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+.Div.div_default[status=disabled]
+{
+    background: #F2F4F6;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+/* 기본 Static - 본문 텍스트 */
+.Static.sta_default
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_default[status=disabled]
+{
+    background: transparent;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 제목 Static - 큰 텍스트 */
+.Static.sta_title
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 600 20px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_title[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 서브 제목 */
+.Static.sta_subtitle
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 600 17px "Pretendard", sans-serif;
+    letter-spacing: -0.4px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_subtitle[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 라벨 Static */
+.Static.sta_label
+{
+    background: transparent;
+    color: #4E5968;
+    cursor: default;
+    font: 500 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_label[status=disabled]
+{
+    color: #CED4DA;
+    opacity: 0.6;
+}
+
+/* 설명 텍스트 - 작고 회색 */
+.Static.sta_description
+{
+    background: transparent;
+    color: #6C757D;
+    cursor: default;
+    font: 400 13px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_description[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.5;
+}
+
+/* 캡션 - 가장 작은 텍스트 */
+.Static.sta_caption
+{
+    background: transparent;
+    color: #8B95A1;
+    cursor: default;
+    font: 400 12px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_caption[status=disabled]
+{
+    color: #CED4DA;
+    opacity: 0.5;
+}
+
+/* 강조 텍스트 - 파란색 */
+.Static.sta_primary
+{
+    background: transparent;
+    color: #3182F6;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_primary[status=disabled]
+{
+    color: #91B8FA;
+    opacity: 0.6;
+}
+
+/* 에러 텍스트 */
+.Static.sta_error
+{
+    background: transparent;
+    color: #F04438;
+    cursor: default;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_error[status=disabled]
+{
+    color: #F89B95;
+    opacity: 0.6;
+}
+
+/* 성공 텍스트 */
+.Static.sta_success
+{
+    background: transparent;
+    color: #17B26A;
+    cursor: default;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_success[status=disabled]
+{
+    color: #8DD9AF;
+    opacity: 0.6;
+}
+
+/* 경고 텍스트 */
+.Static.sta_warning
+{
+    background: transparent;
+    color: #DC6803;
+    cursor: default;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_warning[status=disabled]
+{
+    color: #FDB022;
+    opacity: 0.6;
+}
+
+/* 링크 스타일 텍스트 */
+.Static.sta_link
+{
+    background: transparent;
+    color: #3182F6;
+    cursor: pointer;
+    font: 500 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-text-decoration: underline;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_link[status=disabled]
+{
+    color: #91B8FA;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-text-decoration: none;
+}
+
+/* 배지 스타일 - 배경 있음 */
+.Static.sta_badge
+{
+    background: #E8F3FF;
+    border-radius: 16px;
+    color: #1B64DA;
+    cursor: default;
+    font: 600 13px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-padding: 4px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_badge[status=disabled]
+{
+    background: #F2F4F6;
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 중요 배지 - 빨간색 */
+.Static.sta_badge_danger
+{
+    background: #FEF3F2;
+    border-radius: 16px;
+    color: #D92D20;
+    cursor: default;
+    font: 600 13px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-padding: 4px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_badge_danger[status=disabled]
+{
+    background: #F2F4F6;
+    color: #F89B95;
+    opacity: 0.6;
+}
+
+/* 숫자 표시 - 큰 폰트 */
+.Static.sta_number
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 700 24px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_number[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 가격 표시 */
+.Static.sta_price
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 700 20px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-text-align: right;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_price[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+/* 파란색 배경 Static - 테두리 추가 */
+.Static.sta_blue_bg
+{
+    background: #3182F6;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #1B64DA;
+    -nexa-padding: 10px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_blue_bg[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-border: 2px solid #6B9DD4;
+}
+
+
+/* 진한 파란색 배경 - 큰 사이즈 */
+.Static.sta_dark_blue_bg
+{
+    background: #1B64DA;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 700 18px "Pretendard", sans-serif;
+    letter-spacing: -0.4px;
+    opacity: 1;
+    -nexa-padding: 14px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_dark_blue_bg[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    opacity: 0.6;
+}
+
+/* 파란색 배지 - 작은 사이즈 */
+.Static.sta_blue_badge
+{
+    background: #3182F6;
+    border-radius: 16px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 13px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-padding: 5px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_blue_badge[status=disabled]
+{
+    background: #D1D6DB;
+    color: #F9FAFB;
+    opacity: 0.6;
+}
+
+
+/* 기본 파란색 배경 + 테두리 */
+.Static.sta_blue_border
+{
+    background: #3182F6;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #1B64DA;
+    -nexa-padding: 10px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_blue_border[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-border: 2px solid #6B9DD4;
+}
+
+/* 연한 파란색 배경 + 테두리 */
+.Static.sta_light_blue_border
+{
+    background: #E8F3FF;
+    border-radius: 8px;
+    color: #1B64DA;
+    cursor: default;
+    font: 600 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #3182F6;
+    -nexa-padding: 8px 14px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_light_blue_border[status=disabled]
+{
+    background: #F2F4F6;
+    color: #ADB5BD;
+    opacity: 0.6;
+    -nexa-border: 2px solid #D1D6DB;
+}
+
+/* 진한 파란색 배경 + 테두리 */
+.Static.sta_dark_blue_border
+{
+    background: #1B64DA;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #1957C2;
+    -nexa-padding: 10px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_dark_blue_border[status=disabled]
+{
+    background: #6B9DD4;
+    color: #E0EDFF;
+    opacity: 0.6;
+    -nexa-border: 2px solid #4A7FB8;
+}
+
+/* 파란색 배경 Div - 테두리 있음 */
+.Div.div_blue_bg
+{
+    background: #3182F6;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #1B64DA;
+}
+
+.Div.div_blue_bg[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-border: 2px solid #6B9DD4;
+}
+
+.Div.div_blue_bg[status=mouseover]
+{
+    background: #2563EB;
+    color: #FFFFFF;
+    cursor: pointer;
+    opacity: 1;
+    -nexa-border: 2px solid #1B64DA;
+}
+
+.Div.div_blue_bg[status=focused]
+{
+    background: #1B64DA;
+    color: #FFFFFF;
+    opacity: 1;
+    -nexa-border: 2px solid #1957C2;
+}
+.Button.btn_logo
+{
+	background : url('theme://images/pos_Logo.png');
+	-nexa-border : 0px none;
+}
+
+.Button.btn_logo[userstatus=selected]
+{
+	-nexa-border : 0px none;
+}
+
+/* 입체감 강한 그림자 카드 */
+.Div.div_card_shadow
+{
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0px 8px 24px #D1D6DB;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+}
+
+.Div.div_card_shadow[status=disabled]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 4px 12px #E5E8EB;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.Div.div_card_shadow[status=mouseover]
+{
+    background: #FFFFFF;
+    box-shadow: 0px 12px 32px #ADB5BD;
+    cursor: pointer;
+    opacity: 1;
+}
+
+.Div.div_card_shadow[status=focused]
+{
+    background: #FFFFFF;
+    box-shadow: 0px 12px 40px #91B8FA;
+    color: #1B64DA;
+    opacity: 1;
+    -nexa-border: 2px solid #3182F6;
+}
+
+/* 그림자 있는 Static 카드 */
+.Static.sta_card_shadow
+{
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0px 8px 24px #D1D6DB;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 16px 20px;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_card_shadow[status=disabled]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 4px 12px #E5E8EB;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 파란색 배경 Static - 강조용 + 그림자 */
+.Static.sta_blue_bg
+{
+    background: #3182F6;
+    border-radius: 8px;
+    box-shadow: 0px 8px 24px #91B8FA;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 10px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_blue_bg[status=disabled]
+{
+    background: #91B8FA;
+    box-shadow: 0px 4px 12px #D4E9FF;
+    color: #E0EDFF;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 연한 파란색 배경 + 그림자 */
+.Static.sta_light_blue_bg
+{
+    background: #E8F3FF;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px #B1D7FF;
+    color: #1B64DA;
+    cursor: default;
+    font: 600 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 8px 14px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_light_blue_bg[status=disabled]
+{
+    background: #F2F4F6;
+    box-shadow: 0px 2px 8px #E5E8EB;
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 진한 파란색 배경 - 큰 사이즈 + 그림자 */
+.Static.sta_dark_blue_bg
+{
+    background: #1B64DA;
+    border-radius: 12px;
+    box-shadow: 0px 10px 32px #3182F6;
+    color: #FFFFFF;
+    cursor: default;
+    font: 700 18px "Pretendard", sans-serif;
+    letter-spacing: -0.4px;
+    opacity: 1;
+    -nexa-padding: 14px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_dark_blue_bg[status=disabled]
+{
+    background: #91B8FA;
+    box-shadow: 0px 5px 16px #D4E9FF;
+    color: #E0EDFF;
+    opacity: 0.6;
+}
+
+/* 파란색 배지 - 작은 사이즈 + 그림자 */
+.Static.sta_blue_badge
+{
+    background: #3182F6;
+    border-radius: 16px;
+    box-shadow: 0px 4px 12px #91B8FA;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 13px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-padding: 5px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_blue_badge[status=disabled]
+{
+    background: #D1D6DB;
+    box-shadow: 0px 2px 8px #E5E8EB;
+    color: #F9FAFB;
+    opacity: 0.6;
+}
+
+/* 파란색 카드형 배경 + 그림자 */
+.Static.sta_blue_card
+{
+    background: #2563EB;
+    border-radius: 14px;
+    box-shadow: 0px 8px 24px #5B7FF5;
+    color: #FFFFFF;
+    cursor: default;
+    font: 500 16px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 16px 20px;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_blue_card[status=disabled]
+{
+    background: #91B8FA;
+    box-shadow: 0px 4px 12px #D4E9FF;
+    color: #E0EDFF;
+    opacity: 0.6;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[/*************** Form ***************/

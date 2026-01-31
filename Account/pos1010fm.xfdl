@@ -3,10 +3,10 @@
   <Form id="pos1010fm" width="1600" height="720" titletext="New Form" onload="pos1010fm_onload">
     <Layouts>
       <Layout height="720" mobileorientation="landscape" width="1600">
-        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" border="1px solid black">
+        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" cssclass="div_card_shadow">
           <Layouts>
             <Layout>
-              <Static id="Static00" taborder="0" left="122" top="53" width="255" height="67" text="매장운영관리 시스템  POS" border="1px solid black" onclick="Div00_Static00_onclick"/>
+              <Static id="Static00" taborder="0" left="122" top="53" width="255" height="67" text="매장운영관리 시스템  POS" onclick="Div00_Static00_onclick" cssclass="sta_light_blue_bg"/>
               <TextField id="TxfId" taborder="1" labeltext="아이디" left="50" top="139" width="399" height="54" inputtype="email" usetrailingbutton="true"/>
               <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="50" top="213" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" value="1234qwer"/>
               <CheckBox id="chkIdSave" taborder="3" left="54" top="287" width="95" height="30" text="아이디 저장"/>

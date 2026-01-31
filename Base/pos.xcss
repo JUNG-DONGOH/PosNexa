@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <XCSS version="1.1">
   <CSSData><![CDATA[/* ===== Primary Button (결제, 확인 등 주요 액션) ===== */
 .Button.primary {
@@ -219,6 +219,321 @@
     background: #F9FAFB;
     color: #191F28;
     font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+/* =====================================================
+   ===== TOSS STYLE GRID (토스 스타일 그리드) =====
+   ===================================================== */
+
+/* ----- 기본 토스 그리드 ----- */
+.Grid.toss {
+    background: #FFFFFF;
+    -nexa-border: 0px none;
+    border-radius: 16px;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 0px;
+}
+
+.Grid.toss .body {
+    background: #FFFFFF;
+    color: #191F28;
+    -nexa-border: 0px none;
+    -nexa-padding: 16px 20px;
+}
+
+.Grid.toss .body .row {
+    background: #FFFFFF;
+    -nexa-border-bottom: 1px solid #F2F4F6;
+}
+
+.Grid.toss .body .row[status=mouseover] {
+    background: #F9FAFB;
+}
+
+.Grid.toss .body .row[status=selected] {
+    background: #EBF4FF;
+}
+
+.Grid.toss .body .row[userstatus=selected] {
+    background: #EBF4FF;
+    -nexa-border-left: 3px solid #0064FF;
+}
+
+.Grid.toss .body .cell {
+    background: transparent;
+    color: #191F28;
+    -nexa-border: 0px none;
+    -nexa-padding: 16px 12px;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid.toss .head {
+    background: #FFFFFF;
+    color: #8B95A1;
+    font: 500 13px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-border: 0px none;
+    -nexa-border-bottom: 1px solid #E5E8EB;
+}
+
+.Grid.toss .head .cell {
+    background: transparent;
+    color: #8B95A1;
+    -nexa-border: 0px none;
+    -nexa-padding: 14px 12px;
+    font: 500 13px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid.toss .summary {
+    background: #F9FAFB;
+    color: #191F28;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-border-top: 1px solid #E5E8EB;
+}
+
+/* ----- 토스 카드 그리드 (그림자 효과) ----- */
+.Grid.toss_card {
+    background: #FFFFFF;
+    -nexa-border: 0px none;
+    border-radius: 20px;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-box-shadow: 0px 2px 8px rgba(0, 0, 0, 0.08);
+}
+
+.Grid.toss_card .body {
+    background: #FFFFFF;
+    color: #191F28;
+    -nexa-border: 0px none;
+}
+
+.Grid.toss_card .body .row {
+    background: #FFFFFF;
+    -nexa-border-bottom: 1px solid #F2F4F6;
+}
+
+.Grid.toss_card .body .row[status=mouseover] {
+    background: linear-gradient(90deg, #F9FAFB 0%, #FFFFFF 100%);
+}
+
+.Grid.toss_card .body .row[status=selected] {
+    background: #EBF4FF;
+}
+
+.Grid.toss_card .body .cell {
+    background: transparent;
+    color: #191F28;
+    -nexa-border: 0px none;
+    -nexa-padding: 18px 16px;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid.toss_card .head {
+    background: #FFFFFF;
+    color: #8B95A1;
+    font: 600 12px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-border: 0px none;
+    -nexa-border-bottom: 1px solid #E5E8EB;
+    border-radius: 20px 20px 0px 0px;
+}
+
+.Grid.toss_card .head .cell {
+    background: transparent;
+    color: #8B95A1;
+    -nexa-border: 0px none;
+    -nexa-padding: 16px;
+    font: 600 12px "Pretendard", "Noto Sans KR", sans-serif;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.Grid.toss_card .summary {
+    background: #F9FAFB;
+    color: #191F28;
+    font: bold 16px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-border-top: 1px solid #E5E8EB;
+    border-radius: 0px 0px 20px 20px;
+}
+
+/* ----- 토스 라인 그리드 (미니멀) ----- */
+.Grid.toss_line {
+    background: transparent;
+    -nexa-border: 0px none;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid.toss_line .body {
+    background: transparent;
+    color: #191F28;
+    -nexa-border: 0px none;
+}
+
+.Grid.toss_line .body .row {
+    background: transparent;
+    -nexa-border-bottom: 1px solid #F2F4F6;
+}
+
+.Grid.toss_line .body .row[status=mouseover] {
+    background: #F9FAFB;
+    border-radius: 8px;
+}
+
+.Grid.toss_line .body .cell {
+    background: transparent;
+    color: #191F28;
+    -nexa-border: 0px none;
+    -nexa-padding: 20px 12px;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid.toss_line .head {
+    background: transparent;
+    color: #8B95A1;
+    font: 500 13px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-border: 0px none;
+    -nexa-border-bottom: 2px solid #E5E8EB;
+}
+
+.Grid.toss_line .head .cell {
+    background: transparent;
+    color: #8B95A1;
+    -nexa-border: 0px none;
+    -nexa-padding: 12px;
+}
+
+/* ----- 토스 다크 그리드 ----- */
+.Grid.toss_dark {
+    background: #1B1D1F;
+    -nexa-border: 0px none;
+    border-radius: 16px;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid.toss_dark .body {
+    background: #1B1D1F;
+    color: #FFFFFF;
+    -nexa-border: 0px none;
+}
+
+.Grid.toss_dark .body .row {
+    background: #1B1D1F;
+    -nexa-border-bottom: 1px solid #2E3033;
+}
+
+.Grid.toss_dark .body .row[status=mouseover] {
+    background: #26282B;
+}
+
+.Grid.toss_dark .body .row[status=selected] {
+    background: #0A2A52;
+}
+
+.Grid.toss_dark .body .cell {
+    background: transparent;
+    color: #FFFFFF;
+    -nexa-border: 0px none;
+    -nexa-padding: 16px 12px;
+    font: normal 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid.toss_dark .head {
+    background: #26282B;
+    color: #8B95A1;
+    font: 500 13px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-border: 0px none;
+    border-radius: 16px 16px 0px 0px;
+}
+
+.Grid.toss_dark .head .cell {
+    background: transparent;
+    color: #8B95A1;
+    -nexa-border: 0px none;
+    -nexa-padding: 14px 12px;
+}
+
+.Grid.toss_dark .summary {
+    background: #26282B;
+    color: #FFFFFF;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+    border-radius: 0px 0px 16px 16px;
+}
+
+/* ----- 그리드 셀 스타일 (공통) ----- */
+.Grid .cell.toss_primary {
+    color: #0064FF;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid .cell.toss_success {
+    color: #00C853;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid .cell.toss_danger {
+    color: #FF3B30;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid .cell.toss_warning {
+    color: #FF9500;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid .cell.toss_muted {
+    color: #8B95A1;
+    font: normal 14px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid .cell.toss_bold {
+    color: #191F28;
+    font: bold 16px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Grid .cell.toss_price {
+    color: #191F28;
+    font: bold 17px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: right;
+}
+
+.Grid .cell.toss_amount {
+    color: #0064FF;
+    font: bold 18px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: right;
+}
+
+/* ----- 그리드 상태 표시 배지 ----- */
+.Grid .cell.toss_status_complete {
+    background: #E8F5E9;
+    color: #00C853;
+    border-radius: 6px;
+    font: 600 13px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: center;
+    -nexa-padding: 6px 12px;
+}
+
+.Grid .cell.toss_status_pending {
+    background: #FFF3E0;
+    color: #FF9500;
+    border-radius: 6px;
+    font: 600 13px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: center;
+    -nexa-padding: 6px 12px;
+}
+
+.Grid .cell.toss_status_cancel {
+    background: #FFEBEE;
+    color: #FF3B30;
+    border-radius: 6px;
+    font: 600 13px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: center;
+    -nexa-padding: 6px 12px;
+}
+
+.Grid .cell.toss_status_info {
+    background: #EBF4FF;
+    color: #0064FF;
+    border-radius: 6px;
+    font: 600 13px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: center;
+    -nexa-padding: 6px 12px;
 }
 
 /* ===== Tab (메뉴 카테고리 탭) ===== */
