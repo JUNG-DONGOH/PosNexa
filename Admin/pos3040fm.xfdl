@@ -2,18 +2,7 @@
 <FDL version="2.1">
   <Form id="pos3040fm" width="1600" height="720" titletext="New Form">
     <Layouts>
-      <Layout height="720" mobileorientation="landscape" width="1600">
-        <Grid id="Grid00" taborder="0" left="30" top="110" width="737" height="590"/>
-        <Edit id="edt_SEARCH" taborder="1" left="170" top="40" width="470" height="40"/>
-        <Div id="divSearch" taborder="2" left="20" top="30" width="700" height="60" border="1px solid black">
-          <Layouts>
-            <Layout>
-              <Button id="btn_findPro" taborder="0" left="638" top="9" width="40" height="40" cssclass="btn_WF_Find" onclick="divSearch_btn_findPro_onclick"/>
-              <Static id="Static00" taborder="1" text="검색" left="10" top="9" width="131" height="40"/>
-            </Layout>
-          </Layouts>
-        </Div>
-      </Layout>
+      <Layout height="720" mobileorientation="landscape" width="1600"/>
     </Layouts>
   </Form>
 </FDL>

@@ -2520,6 +2520,43 @@
     background: transparent;
     color: #4E5968;
 }
+
+.ImageViewer.img_empProfile
+{
+   -nexa-border: 3px solid #AEC6CF;
+   -nexa-edge: ;
+   -nexa-padding: ;
+   -nexa-rtl-background-image: ;
+   -nexa-rtl-edge-image: ;
+   background: #E8F2F7;
+   border-radius: 100%;
+   box-shadow: 0px 4px 8px #AEC6CF;
+   color: #7B98A6;
+   cursor: pointer;
+   font: normal 12px/normal "Malgun Gothic";
+   letter-spacing: 0px;
+   opacity: 1;
+   word-spacing: 0px;
+}
+
+.Button.btn_empProfile
+{
+   -nexa-border: 0px none;
+   border-radius: 100%;
+   background : url('theme://mobile/btn_empProfile.png') ;
+}
+.Button.btn_empProfile[status=mouseover]
+{
+   -nexa-border: 0px none;
+   border-radius: 100%;
+   background : url('theme://mobile/btn_empProfile.png') ;
+}
+.Button.btn_empProfile[status=focused]
+{
+   -nexa-border: 0px none;
+   border-radius: 100%;
+   background : url('theme://mobile/btn_empProfile.png') ;
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[/*************** Form ***************/
 .Form

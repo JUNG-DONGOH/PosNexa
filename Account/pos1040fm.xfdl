@@ -92,7 +92,7 @@ this.Div00_btnConfirm_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	this.gfnSetValidation(this.ds_account, "login_id", "아이디","required,isemail");
 	this.gfnSetValidation(this.ds_account, "password", "비밀번호","required,minlength:8,nokorean,hasdigit");
 	this.gfnSetValidation(this.ds_account, "passwordCheck", "비밀번호", "required,equalto:password");
-	this.gfnSetValidation(this.ds_account, "number", "전화번호", "required,");
+	this.gfnSetValidation(this.ds_account, "number", "전화번호", "required,minlength:11,digits");
 	this.gfnSetValidation(this.ds_account, "role", "사용자 유형","required");	
 	
 	
@@ -170,18 +170,6 @@ this.fnCallback=function(svcId, errCd, errMsg){
         }
     }
 }
-
-
-// this.Button00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-// {
-// 	var sSvcId  = "svcSelectAccout";
-// 	var sUrl    = "SvcUrl::pos/selectAccout.do";
-// 	var inData  = "";
-// 	var outData = "gdsAccount=out_dataset";
-// 	var sParam  = "loginId='wjdehddh03@naver.com'";
-// 	this.gfnTransaction(sSvcId, sUrl, inData, outData, sParam, "fnCallback");
-// };
-
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.TxfName" propid="value" datasetid="ds_account" columnid="name"/>
