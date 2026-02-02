@@ -8,10 +8,9 @@
             <Layout>
               <Button id="btnIdSearch" taborder="0" text="확인" left="152" top="535" width="80" height="50" onclick="Div00_btnIdSearch_onclick" cssclass="btn_login"/>
               <Button id="moveMain" taborder="1" left="262" top="535" width="80" height="50" cssclass="btn_login" onclick="Div00_Button01_onclick" text="취소"/>
-              <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="55" top="280" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="비밀번호를 입력해주세요"/>
-              <Button id="btnPwdShow" taborder="3" text="보기" left="395" top="299" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
-              <TextField id="TxfName" taborder="4" labeltext="이름" left="55" top="180" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
-              <Div id="Div01" taborder="5" left="161" top="59" width="170" height="52" cssclass="logo"/>
+              <TextField id="TxfName" taborder="2" labeltext="이름" left="55" top="180" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
+              <Div id="Div01" taborder="3" left="161" top="59" width="170" height="52" cssclass="logo"/>
+              <TextField id="TxfNumber" taborder="4" labeltext="전화번호" left="55" top="254" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="전화번호를 입력하세요."/>
             </Layout>
           </Layouts>
         </Div>
@@ -26,24 +25,12 @@ this.Div00_Button01_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 	this.go("Account::pos1010fm.xfdl");
 };
 
-this.Div00_btnPwdShow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	var isPassword = this.Div00.form.TxfPwd.inputtype;
-	
-	if(isPassword=="password"){
-		this.Div00.form.TxfPwd.inputtype="text";
-	}
-	else{
-		this.Div00.form.TxfPwd.inputtype="password";
-	}
-};
-
 this.Div00_btnIdSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
     
    // 1. 사용자가 입력한 이름, 비밀번호 가져오기
     var sName = this.Div00.form.TxfName.value;
-	var sPwd = this.Div00.form.TxfPwd.value;
+	var sPwd = this.Div00.form.TxfNumber.value;
     
 	// 2. 서버로 보낼 트랜잭션 설정
     var sSvcId  = "svcSearchAccountId";
@@ -79,5 +66,8 @@ this.fnCallback = function (svcId, errCd, errMsg)
 	}
 };
 ]]></Script>
+    <Bind>
+      <BindItem id="item0" compid="Div00.form.TxfNumber" propid="value" datasetid="ds_account" columnid="name"/>
+    </Bind>
   </Form>
 </FDL>

@@ -91,7 +91,7 @@
         <Static id="Static01_03_01_03_05_00_02" taborder="64" text="안녕" left="800" top="645" width="120" height="60" cssclass="sta_dark_blue_border"/>
         <Div id="Div01" taborder="65" text="Div01" left="310" top="590" width="90" height="75" cssclass="div_blue_bg"/>
         <Div id="Div02" taborder="66" text="Div02" left="425" top="510" width="90" height="60" cssclass="div_card_shadow"/>
-        <Static id="Static02" taborder="67" text="Static02" left="962" top="574" width="120" height="60" cssclass="sta_card_shadow"/>
+        <Static id="Static02" taborder="67" text="Static02" left="960" top="585" width="120" height="60" cssclass="sta_card_shadow"/>
         <Button id="Button09" taborder="68" text="버튼" left="21" top="330" width="120" height="50" cssclass="btn_primary_clean"/>
         <Button id="Button11" taborder="69" text="버튼" left="160" top="273" width="120" height="50" cssclass="btn_login"/>
         <Button id="Button12" taborder="70" text="버튼" left="160" top="329" width="120" height="50" cssclass="btn_sub"/>
