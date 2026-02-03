@@ -245,7 +245,38 @@ this.btn_add_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 제거버튼
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	this.ds_product.deleteRow(this.ds_product.rowposition);
+	//this.ds_product.deleteRow(this.ds_product.rowposition);
+	var nRow = this.ds_product.rowposition;
+	
+	var sMsgId = "confirm.deleteproduct"; 
+    var sPopId = "confirmDelete"; // 콜백에서 구분할 ID를 직접 문자열로 지정
+    var sMsgCallback = "fnMsgcallback";
+
+    this.gfnAlert(sMsgId, "", sPopId, sMsgCallback);
+};
+
+/**
+ * 메시지 콜백 함수
+ */
+this.fnMsgcallback = function (id, rtn)
+{
+    // 1. 팝업 ID가 내가 보낸 게 맞는지 확인
+    if(id == "confirmDelete") {
+        // 2. 사용자가 '확인'을 눌렀는지 확인 (rtn 값은 프로젝트 설정에 따라 true 또는 "OK")
+        if(rtn == true || rtn == "OK") {
+            
+            // 3. 삭제할 행 번호를 다시 가져옴 (이미 삭제된 상태가 아닐 때만)
+            var nRow = this.ds_product.rowposition;
+            
+            if(nRow > -1) {
+                // 데이터셋에서 행 삭제
+                this.ds_product.deleteRow(nRow);
+                
+                // DB 저장을 위한 트랜잭션 함수 호출
+				this.fn_SaveProduct("delete");
+            }
+        }
+    }
 };
 
 // 검색버튼
@@ -269,89 +300,6 @@ this.grdProduct_oncellclick = function(obj:nexacro.Grid,e:nexacro.GridClickEvent
 	}
 	
 };
-// 
-// // 이미지 선택 버튼 클릭
-// this.btnSelect_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-// {
-// 	this.FileDialog00.open("이미지 선택", 1, "%MYDOCUMENT%");
-// };
-// 
-// // 닫기
-// this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
-// {
-// 	var objFile = e.virtualfiles[0];
-// 	var sFileName = objFile.filename;
-// 	
-// 	// . 뒤에 확장자 체크 \. - 마침표 찾기, $ - 끝부분, /i -  대소문자 구분없이, test - 대조, ? - e가 있어도 되고 없어도 되고(jpg, jpeg)
-// 	if(!/\.(jpe?g|png|gif)$/i.test(sFileName)){
-// 		alert("이미지 파일을 선택하세요");
-// 		return;
-// 	}
-// 	
-// 	this.FileUpTransfer00.clearFileList();
-// 	this.FileUpTransfer00.addFile(sFileName, objFile);
-// 
-// 	
-// // 	var nRow = this.dsImgEmp.addRow();
-// // 	this.dsImgEmp.setColumn(nRow, "EMP_ID", "AA"+nRow);
-// // 	this.dsImgEmp.setColumn(nRow, "EMP_NAME", "NAME"+nRow);
-// // 	this.dsImgEmp.setColumn(nRow, "EMP_IMG", sFileName);	
-// // 	this.dsImgEmp.setColumn(nRow, "IMAGE_ID", sFileName);
-// // 	this.dsImgEmp.setColumn(nRow, "IMAGE_NAME", sFileName);
-// 	
-// 	
-// 	//  미리보기 기능
-// 	if(nexacro._Browser == "Runtime") {
-// 		this.ImageViewer01.image = "URL('file://"+ objFile.fullpath + "')";
-// 	} else {
-// 		var reader = new FileReader();
-// 		reader.targetForm = this;
-// 		/*
-// 			FileReader는 파일을 읽는 도구이기 때문에, 주로 다음 상황을 기다립니다.
-// 			대상.addEventListener("사건의 종류", 실행할_함수)
-// 			load: 파일을 다 읽었을 때 (성공!)
-// 			error: 파일을 읽다가 에러가 났을 때
-// 			progress: 파일을 읽고 있는 중일 때 (진행 중...) 
-// 		*/		
-// 		reader.addEventListener("load",
-// 								 function() 
-// 								 { 
-// 									this.targetForm.imgPhoto.image = this.result; 
-// 								 }, 
-// 								 false
-// 								);
-// 		reader.readAsDataURL(objFile._handle);						
-// 	
-// 	}
-// };
-
-// this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
-// {
-// 	var objDs = e.datasets[0];	
-// 	var nRow = this.dsFile.addRow();
-// 	this.dsFile.setColumn(nRow, "file_name", objDs.getColumn(0, "file_name"));
-// 	this.dsFile.setColumn(nRow, "file_id"  , objDs.getColumn(0, "file_id"));
-// 	this.dsFile.setColumn(nRow, "file_size", objDs.getColumn(0, "file_size"));
-// 	
-// 	
-// 	
-// // 	var objDs = e.datasets[0];	
-// // 	var nRow = this.dsFile.findRow("file_name", objDs.getColumn(0, "file_name"));
-// // 	this.dsFile.setColumn(nRow, "file_id"  , objDs.getColumn(0, "file_id"));
-// // 	this.dsFile.setColumn(nRow, "file_size", objDs.getColumn(0, "file_size"));
-// // 
-// // 	this.dsImgEmp.setColumn(0, "EMP_IMG", objDs.getColumn(0, "file_id"));	
-// // 	
-// // 	this.fn_SaveImgEmp();
-// };
-// 
-// this.ds_product_onrowposchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSRowPosChangeEventInfo)
-// {
-// 
-// 	this.sUploadUrl = this.gfnGetServerUrl() + "upload/P03/P031/"; //\P03\P031	
-// 	this.ImageViewer01.image = this.sUploadUrl + this.ds_product.getColumn(e.newrow, "PROD_IMG");
-// 	
-// };
 
 /**
  * 1. 이미지 선택 버튼 클릭
@@ -410,31 +358,51 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
  */
 this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
 {
-	var objDs = e.datasets[0]; // 서버 응답 데이터셋
-	var sFileName = objDs.getColumn(0, "fileid"); // 서버에 실제 저장된 파일명
+	// 서버 응답 데이터셋 가져오기
+    var objDs = e.datasets[0];
 	
-	trace("파일 업로드 성공! 서버파일명: " + sFileName); // 이 로그가 찍히는지 확인
-	
-	// ds_product의 현재 행에 파일명 꽂아주기
-	var nRow = this.ds_product.rowposition;
-	this.ds_product.setColumn(nRow, "PROD_IMG", sFileName);
+    var sFileId   = objDs.getColumn(0, "file_id");
+    var sFileName = objDs.getColumn(0, "file_name");
+    var nFileSize = objDs.getColumn(0, "file_size");
+
+    // dsFile 업데이트 (기존 파일 목록 관리용)
+    // 이미 dsFile에 해당 파일명이 있는지 확인
+    var nFileRow = this.dsFile.findRow("file_name", sFileName);
+    if (nFileRow == -1) {
+        nFileRow = this.dsFile.addRow(); // 없으면 새로 추가
+    }
+    this.dsFile.setColumn(nFileRow, "file_name", sFileName);
+    this.dsFile.setColumn(nFileRow, "file_id",   sFileId);
+    this.dsFile.setColumn(nFileRow, "file_size", nFileSize);
+
+    // ds_product에 서버 파일명 저장 (주석의 핵심 기능)
+    var nProdRow = this.ds_product.rowposition;
+    
+    if (nProdRow > -1) {
+        // 중요: 반드시 String으로 형변환하여 입력 (true 방지)
+        this.ds_product.setColumn(nProdRow, "PROD_IMG", String(sFileName));
+    }
+		
+	this.ds_product.setColumn(nProdRow, "PROD_IMG", objDs.getColumn(0, "file_name"));
 		
 	// 파일명 입력 후 DB 최종 저장 실행
-	this.fn_SaveProduct();
+	this.fn_SaveProduct("save");
 
 };
 
 /**
  * 5. DB 최종 저장 (Transaction)
  */
-this.fn_SaveProduct = function()
+this.fn_SaveProduct = function(sSvcId)
 {
-	var strSvcUrl = "pos/saveProduct.do";
+	// 인자가 없으면 기본적으로 "save"를 사용하도록 설정
+	var strSvcId  = sSvcId || "save";
+	var strSvcUrl = "SvcUrl::pos/saveProduct.do";
 	var inData    = "ds_product=ds_product:U"; // 업데이트된 행(U) 전송
 	var outData   = "";
 	var strArg    = "";
 
-	this.gfnTransaction("save", strSvcUrl, inData, outData, strArg, "fnSaveProductCallback", true);
+	this.gfnTransaction(strSvcId, strSvcUrl, inData, outData, strArg, "fnSaveProductCallback", true);
 };
 
 /**
@@ -461,8 +429,12 @@ this.fnSaveProductCallback = function(id, errCode, errMsg)
 		return;
 	}
 	if(id == "save") {
-		this.alert("상품 정보가 성공적으로 저장되었습니다.");
+		this.gfnAlert("msg.addproduct.success");
 	}
+	else if(id == "delete") {
+        // 삭제 트랜잭션 성공 시 발생
+       this.gfnAlert("msg.deleteproduct.success");
+		}
 };
 
 ]]></Script>

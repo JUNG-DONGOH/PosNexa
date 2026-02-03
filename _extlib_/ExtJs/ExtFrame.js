@@ -430,7 +430,7 @@ pForm.gfnGetServerUrl = function()
 		urlPath = window.location.protocol + "//" + window.location.host;
 		urlPath+="/edupack_egov/";
 	}
-	trace("urlPath : " + urlPath);
+	//trace("urlPath : " + urlPath);
 	return urlPath;
 };
 
