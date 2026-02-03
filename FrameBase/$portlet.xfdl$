@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="form" width="1400" height="765" onload="form_onload" ondrop="form_ondrop" ondragmove="form_ondragmove" onlbuttonup="form_onlbuttonup" ontimer="form_ontimer" ontouchend="form_ontouchend">
+    <Layouts>
+      <Layout height="765" width="1400">
+        <Div id="divPortBg" taborder="0" left="200" top="116" right="40" height="570" text="">
+          <Layouts>
+            <Layout>
+              <Div id="divTile2" taborder="0" text="Div01" top="1" cssclass="div_WF_portBox" left="70" height="250" width="249">
+                <Layouts>
+                  <Layout>
+                    <Button id="btnTile" taborder="0" cssclass="btn_WF_portBg02" ondrag="fnComBtnOnDrag" text="2021 Ultimate Gray&#13;&#10;&#13;&#10;emblematic of solid and dependable elements which are everlasting and provide a firm foundation." left="0" top="0" bottom="0" right="0" textAlign="center" verticalAlign="middle" wordWrap="english" background="blue"/>
+                    <Button id="btnMove" taborder="1" cssclass="btn_WF_portMove" width="20" height="20" top="0" right="0" ondrag="fnComBtnOnDrag"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTile3" taborder="1" top="1" cssclass="div_WF_portBox" text="div_WF_portBox" left="329" height="250" width="252">
+                <Layouts>
+                  <Layout>
+                    <Button id="btnTile" taborder="0" text="2020 Classic Blue&#13;&#10;&#13;&#10;a timeless and calming color full of confidence, perfect to start the new decade." left="0" top="0" cssclass="btn_WF_portBg03" ondrag="fnComBtnOnDrag" onclick="divTile3_stMemo_onclick" bottom="0" right="0" textAlign="center" verticalAlign="middle" wordWrap="english" background="yellow"/>
+                    <Button id="btnMove" taborder="1" cssclass="btn_WF_portMove" width="20" height="20" top="0" right="0" ondrag="fnComBtnOnDrag"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTile4" taborder="2" left="591" top="1" cssclass="div_WF_portBox" height="250" right="300">
+                <Layouts>
+                  <Layout>
+                    <Button id="btnTile" taborder="0" cssclass="btn_WF_portBg04" text="2019 Living Coral&#13;&#10;&#13;&#10;an animating and life-affirming coral hue with a golden undertone that energizes and enlivens with a softer edge." ondrag="fnComBtnOnDrag" left="0" top="0" bottom="0" right="0" textAlign="center" verticalAlign="middle" wordWrap="english" background="red"/>
+                    <Button id="btnMove" taborder="1" cssclass="btn_WF_portMove" top="0" right="0" width="20" height="20" ondrag="fnComBtnOnDrag"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTile5" taborder="3" left="70" top="261" height="250" cssclass="div_WF_portBox" width="354">
+                <Layouts>
+                  <Layout>
+                    <Button id="btnTile" taborder="0" text="2018 Ultra Violet&#13;&#10;&#13;&#10;suggests the mysteries of the cosmos, the intrigue of what lies ahead, and the discoveries beyond where we are now." left="0" top="0" right="0" bottom="0" cssclass="btn_WF_portBg05" ondrag="fnComBtnOnDrag" textAlign="center" verticalAlign="middle" wordWrap="english"/>
+                    <Button id="btnMove" taborder="1" cssclass="btn_WF_portMove" height="20" width="20" right="0" bottom="0" ondrag="fnComBtnOnDrag"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+              <Div id="divTile6" taborder="4" left="434" top="261" height="250" cssclass="div_WF_portBox" right="300">
+                <Layouts>
+                  <Layout>
+                    <Button id="btnTile" taborder="0" text="2017 Greenery&#13;&#10;&#13;&#10;a grassy fresh, revitalizing shade that reflected new beginnings." left="0" top="0" right="0" bottom="0" cssclass="btn_WF_portBg06" ondrag="fnComBtnOnDrag" textAlign="center" verticalAlign="middle" wordWrap="english" background="green"/>
+                    <Button id="btnMove" taborder="1" cssclass="btn_WF_portMove" width="20" height="20" right="0" bottom="0" ondrag="fnComBtnOnDrag"/>
+                  </Layout>
+                </Layouts>
+              </Div>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Div id="divMove" taborder="1" left="917" top="113" width="173" height="328" cssclass="div_WF_portBox2" visible="false">
+          <Layouts>
+            <Layout>
+              <Button id="btnTile" taborder="2" cssclass="btn_WF_portBg01" left="0" top="0" right="0" bottom="0" textAlign="center" verticalAlign="middle" wordWrap="english"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static01_03_01_03_00" taborder="2" text="관리자 메인보드 화면" left="591" top="20" width="320" height="60" cssclass="sta_number"/>
+      </Layout>
+    </Layouts>
+    <Objects/>
+    <Script type="xscript5.1"><![CDATA[this.fvObjAni = false;
+this.fvObjDrag = false;
+this.fvTimerIdx = 0;
+this.fvTimerMax = 30;
+this.fvObjFrom;
+this.fvObjTo;
+
+this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.gfnFormOnLoad();
+};
+
+this.form_ondrop = function(obj:nexacro.Form,e:nexacro.DragEventInfo)
+{
+	if (this.fvObjAni == false) 
+	{
+		this.fvObjFrom = e.userdata;
+		this.fvObjTo = e.fromobject.parent.parent;
+
+		if (this.fvObjTo.name.indexOf("divTile") == -1) {
+			return;
+		}
+		
+		this.fvObjFrom.orgLeft = this.fvObjFrom.getOffsetLeft();
+		this.fvObjFrom.orgTop = this.fvObjFrom.getOffsetTop();
+		this.fvObjFrom.orgWidth = this.fvObjFrom.getOffsetWidth();
+		this.fvObjFrom.orgHeight = this.fvObjFrom.getOffsetHeight();
+		
+		this.fvObjTo.orgLeft = this.fvObjTo.getOffsetLeft();
+		this.fvObjTo.orgTop = this.fvObjTo.getOffsetTop();
+		this.fvObjTo.orgWidth = this.fvObjTo.getOffsetWidth();
+		this.fvObjTo.orgHeight = this.fvObjTo.getOffsetHeight();
+
+		this.fvObjAni = true;
+		this.setTimer(1, 10);
+	}	
+};
+
+this.form_ondragmove = function(obj:nexacro.Form,e:nexacro.DragEventInfo)
+{
+	this.divMove.move(e.clientx + 10, e.clienty + 10);
+};
+
+this.form_onlbuttonup = function(obj:nexacro.Form,e:nexacro.MouseEventInfo)
+{
+	if (this.fvObjDrag == true) {
+		this.fvObjDrag = false;
+		
+		this.fnRemoveDragObj();
+	}	
+};
+
+this.form_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+	if (e.timerid == 1) 
+	{
+		this.fvTimerIdx++;
+		
+		let nLeft1 = this.fnMoveAni(this.fvTimerIdx, this.fvObjFrom.orgLeft, this.fvObjTo.orgLeft - this.fvObjFrom.orgLeft, this.fvTimerMax);
+		let nTop1 = this.fnMoveAni(this.fvTimerIdx, this.fvObjFrom.orgTop, this.fvObjTo.orgTop - this.fvObjFrom.orgTop, this.fvTimerMax);
+		let nWidth1 = this.fnMoveAni(this.fvTimerIdx, this.fvObjFrom.orgWidth, this.fvObjTo.orgWidth - this.fvObjFrom.orgWidth, this.fvTimerMax);
+		let nHeight1 = this.fnMoveAni(this.fvTimerIdx, this.fvObjFrom.orgHeight, this.fvObjTo.orgHeight - this.fvObjFrom.orgHeight, this.fvTimerMax);
+
+		let nLeft2 = this.fnMoveAni(this.fvTimerIdx, this.fvObjTo.orgLeft, this.fvObjFrom.orgLeft - this.fvObjTo.orgLeft, this.fvTimerMax);
+		let nTop2 = this.fnMoveAni(this.fvTimerIdx, this.fvObjTo.orgTop, this.fvObjFrom.orgTop - this.fvObjTo.orgTop, this.fvTimerMax);
+		let nWidth2 = this.fnMoveAni(this.fvTimerIdx, this.fvObjTo.orgWidth, this.fvObjFrom.orgWidth - this.fvObjTo.orgWidth, this.fvTimerMax);
+		let nHeight2 = this.fnMoveAni(this.fvTimerIdx, this.fvObjTo.orgHeight, this.fvObjFrom.orgHeight - this.fvObjTo.orgHeight, this.fvTimerMax);
+
+		this.fvObjFrom.move(nLeft1, nTop1, nWidth1, nHeight1);
+		this.fvObjTo.move(nLeft2, nTop2, nWidth2, nHeight2);
+		
+	
+		if (this.fvTimerIdx == this.fvTimerMax) {
+			this.fvObjAni = false;
+			this.fvTimerIdx = 0;
+
+			this.killTimer(e.timerid);
+		}
+	}	
+};
+
+this.fnComBtnOnDrag = function(obj:nexacro.Button,e:nexacro.DragEventInfo)
+{
+	switch (obj.name)
+	{
+		case "btnMove" :
+		case "btnTile" :
+			this.fvObjDrag = true;
+			e.userdata = obj.parent.parent;
+			
+			this.fnMakeDragObj(obj.parent);
+			
+			return true;		
+			break;
+	}
+};
+
+this.fnMakeDragObj = function(obj)
+{
+	let nWidth = obj.getOffsetWidth();
+	let nHeight = obj.getOffsetHeight();
+	let sCssClass = obj.btnTile.cssclass;
+	let sMemo = obj.btnTile.text;
+	
+	this.divMove.form.btnTile.cssclass = sCssClass;
+	this.divMove.form.btnTile.text = sMemo;
+	
+	this.divMove.setOffsetWidth(nWidth);
+	this.divMove.setOffsetHeight(nHeight);
+	this.divMove.visible = true;
+};
+
+this.fnMoveAni = function(t, b, c, d)
+{
+	t /= d / 2;
+
+	if (t < 1) {
+		return c / 2 * t * t * t + b;
+	}
+	
+	t -= 2;
+	
+	return c / 2 * (t * t * t + 2) + b;
+};
+
+this.fnRemoveDragObj = function()
+{
+	this.divMove.visible = false;
+};
+
+this.form_ontouchend = function(obj:nexacro.Form,e:nexacro.TouchEventInfo)
+{
+	if (this.fvObjDrag == true) {
+		this.fvObjDrag = false;
+		
+		this.fnRemoveDragObj();
+	}	
+};
+]]></Script>
+  </Form>
+</FDL>

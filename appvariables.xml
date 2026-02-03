@@ -67,7 +67,7 @@
           <Col id="MENU_LEVEL">0</Col>
           <Col id="MENU_NAME">매출통계</Col>
           <Col id="MENU_NAME_EN">Sales statistics</Col>
-          <Col id="MENU_URL">Admin::pos3030fm.xfdl</Col>
+          <Col id="MENU_URL">Admin::pos3040fm.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_GROUP">30</Col>
@@ -75,7 +75,7 @@
           <Col id="MENU_LEVEL">0</Col>
           <Col id="MENU_NAME">인사관리</Col>
           <Col id="MENU_NAME_EN">Human Resources Management</Col>
-          <Col id="MENU_URL">Admin::pos3040fm.xfdl</Col>
+          <Col id="MENU_URL">Admin::pos3030fm.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_GROUP">30</Col>

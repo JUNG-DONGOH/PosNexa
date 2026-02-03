@@ -61,7 +61,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Edit id="edt_SEARCH" taborder="23" left="170" top="40" width="470" height="40"/>
+        <Edit id="edt_SEARCH" taborder="23" left="170" top="40" width="470" height="40" displaynulltext="상품명 검색"/>
         <Static id="Static06" taborder="25" text="상품이미지" left="740" top="238" width="5.342465753424658%" height="350" cssclass="sta_light_blue_bg" onclick="Static06_onclick"/>
         <Button id="btnSelect" taborder="26" text="이미지 선택" left="831" top="540" width="230" height="33" cssclass="btn_WF_LineRed" onclick="btnSelect_onclick"/>
         <ImageViewer id="ImageViewer01" taborder="27" left="823" top="243" width="250" height="287"/>
@@ -209,25 +209,25 @@ this.fnPagingSetting = function ()
 /**
  * @description 상세 정보 조회 함수
 */
-this.fnSearchDetail = function(sProdId)
-{
-    var strSvcId    = "selectProductDetail";
-    var strSvcUrl   = "SvcUrl::selectProductDetail.do";
-    var inData      = ""; 
-    var outData     = "ds_productDetail=ds_productDetail"; // 결과만 받으면 됨
-    
-    // 3. 변수값을 여기에 바로 연결 (문자열로 전송)
-    var strArg      = "p_prodId=" + nexacro.wrapQuote(sProdId); 
-    var callBackFnc = "fnCallback";
-    
-    this.gfnTransaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
-};
-
-// 팝업div 닫기버튼
-this.PopupDiv00_btnPopupClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	 this.PopupDiv00.closePopup();
-};
+// this.fnSearchDetail = function(sProdId)
+// {
+//     var strSvcId    = "selectProductDetail";
+//     var strSvcUrl   = "SvcUrl::selectProductDetail.do";
+//     var inData      = ""; 
+//     var outData     = "ds_productDetail=ds_productDetail"; // 결과만 받으면 됨
+//     
+//     // 3. 변수값을 여기에 바로 연결 (문자열로 전송)
+//     var strArg      = "p_prodId=" + nexacro.wrapQuote(sProdId); 
+//     var callBackFnc = "fnCallback";
+//     
+//     this.gfnTransaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
+// };
+// 
+// // 팝업div 닫기버튼
+// this.PopupDiv00_btnPopupClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+// {
+// 	 this.PopupDiv00.closePopup();
+// };
 
 
 // 조회버튼
