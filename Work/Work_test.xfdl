@@ -96,6 +96,8 @@
         <Button id="Button11" taborder="69" text="버튼" left="160" top="273" width="120" height="50" cssclass="btn_login"/>
         <Button id="Button12" taborder="70" text="버튼" left="160" top="329" width="120" height="50" cssclass="btn_sub"/>
         <Button id="Button13" taborder="71" text="버튼" left="21" top="389" width="120" height="50" cssclass="btn_text_only"/>
+        <Button id="Button14" taborder="72" text="버튼" left="160" top="386" width="120" height="50" cssclass="btn_WF_FillRed"/>
+        <Button id="Button14_00" taborder="73" text="버튼" left="160" top="444" width="120" height="50" cssclass="btn_WF_FillGreen"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvPushNum      = 0;    // 숫자를 누른 상태

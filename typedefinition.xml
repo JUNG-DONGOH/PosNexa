@@ -64,7 +64,7 @@
     <Service prefixid="Cmm" type="form" url="./Cmm/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="ExtJs" type="js" url="./_extlib_/ExtJs/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="Account" type="form" url="./Account/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
-    <Service prefixid="SvcUrl" type="JSP" version="0" cachelevel="none" include_subdir="false" communicationversion="0" url="http://localhost:8088/edupack_egov/"/>
+    <Service prefixid="SvcUrl" type="JSP" version="0" cachelevel="none" include_subdir="false" communicationversion="0" url="http://172.10.14.136:8088/edupack_egov/"/>
     <Service prefixid="Admin" type="form" url="./Admin/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
     <Service prefixid="User" type="form" url="./User/" version="0" cachelevel="session" include_subdir="false" communicationversion="0"/>
   </Services>

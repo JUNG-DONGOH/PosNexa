@@ -1,0 +1,155 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos3031pu" width="550" height="600" titletext="New Form" onload="pos3031pu_onload">
+    <Layouts>
+      <Layout height="600" mobileorientation="landscape" width="550">
+        <Static id="staName" taborder="0" text="근무자 이름+상세기록" left="21" top="11" width="310" height="26" cssclass="sta_subtitle"/>
+        <Grid id="Grid01" taborder="1" left="20" top="55" width="510" height="50" binddataset="ds_emp_pop" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="시급"/>
+                <Cell col="1" text="보너스"/>
+                <Cell col="2" text="공제금"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:hourly_wage" displaytype="maskeditcontrol" edittype="mask" maskeditformat="#,#" maskeditpostfixtext="원"/>
+                <Cell col="1" text="bind:bonus_pay" displaytype="maskeditcontrol" edittype="mask" maskeditformat="#,#" maskeditpostfixtext="원"/>
+                <Cell col="2" text="bind:deduction_pay" edittype="mask" displaytype="maskeditcontrol" maskeditformat="#,#" maskeditpostfixtext="원"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Grid id="Grid00" taborder="2" left="20" top="140" width="510" height="180" binddataset="ds_empwork" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="127"/>
+                <Column size="124"/>
+                <Column size="132"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="일한 날짜"/>
+                <Cell col="1" text="일한 시간"/>
+                <Cell col="2" text="특이사항"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:work_date" displaytype="date" calendardateformat="yyyy-MM-dd "/>
+                <Cell col="1" text="bind:working_hours"/>
+                <Cell col="2" text="bind:memo"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_delete" taborder="3" text="삭제" top="331" width="72" height="48" cssclass="btn_outline" right="31" onclick="btn_delete_onclick" fittocontents="width"/>
+        <Button id="btn_add" taborder="4" text="추가" top="331" width="72" height="48" cssclass="btn_outline" right="113" onclick="btn_add_onclick"/>
+        <Grid id="Grid02" taborder="5" left="20" top="410" width="510" height="50" binddataset="ds_emp_pop" autofittype="col">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row size="24" band="head"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="총 근무시간"/>
+                <Cell col="1" text="급여"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:total_hours" displaytype="maskeditcontrol" maskeditformat="#,###" maskeditpostfixtext="시간" accessibilityenable="true"/>
+                <Cell col="1" text="bind:total_salary" maskeditpostfixtext="원" maskeditformat="#,###" displaytype="maskeditcontrol" accessibilityenable="true"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
+        <Button id="btn_delete00" taborder="6" text="취소" top="531" width="72" height="48" cssclass="btn_outline" right="201" onclick="btn_delete_onclick" fittocontents="width"/>
+        <Button id="btn_add00" taborder="7" text="저장" top="531" width="72" height="48" cssclass="btn_outline" right="283" onclick="btn_add_onclick"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[
+this.pos3031pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+    var objDs = this.getOwnerFrame().p_dsEmp;
+ 
+    if (objDs) {
+		// 내 팝업용 데이터셋을 완전히 비웁니다.
+        this.ds_emp_pop.clearData();
+		var nRow = this.ds_emp_pop.addRow();
+        this.ds_emp_pop.copyRow(nRow, objDs, 0);
+    }
+	this.staName.text="📄" + this.ds_emp_pop.getColumn(0,"name") + " 님의 상세정보";
+	
+    this.fn_searchWorkLog();
+};
+
+this.fn_searchWorkLog = function()
+{
+    // 이미 받아온 데이터셋(ds_emp_pop)의 0번 행에서 사번을 꺼내기
+    var sEmpId = this.ds_emp_pop.getColumn(0, "emp_id");
+	
+    if (this.gfnIsNull(sEmpId)) {
+        this.alert("사원 정보가 없습니다.");
+        return;
+    }
+
+    // 서버에 이 사번만 골라줘 라고 요청 (sArgs)
+    var sParam = "emp_id=" + nexacro.wrapQuote(sEmpId);
+    
+    this.gfnTransaction(
+        "svcWorkLog", 
+        "SvcUrl::pos/WorkLogList.do", 
+        "", 
+        "ds_empwork=ds_empwork", // 상세 기록을 담을 새 바구니
+        sParam, 
+        "fnCallback"
+    );
+};
+]]></Script>
+    <Objects>
+      <Dataset id="ds_emp_pop">
+        <ColumnInfo>
+          <Column id="emp_id" type="STRING" size="256"/>
+          <Column id="link_account" type="STRING" size="256"/>
+          <Column id="name" type="STRING" size="256"/>
+          <Column id="role" type="STRING" size="256"/>
+          <Column id="number" type="STRING" size="256"/>
+          <Column id="hourly_wage" type="STRING" size="256"/>
+          <Column id="work_status" type="STRING" size="256"/>
+          <Column id="hire_date" type="DATE" size="256"/>
+          <Column id="emp_img" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+          <Column id="schedule_type" type="STRING" size="256"/>
+          <Column id="total_hours" type="FLOAT" size="256"/>
+          <Column id="total_salary" type="STRING" size="256"/>
+          <Column id="bonus_pay" type="INT" size="256"/>
+          <Column id="deduction_pay" type="INT" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_empwork">
+        <ColumnInfo>
+          <Column id="log_id" type="STRING" size="256"/>
+          <Column id="emp_id" type="STRING" size="256"/>
+          <Column id="work_date" type="STRING" size="256"/>
+          <Column id="working_hours" type="STRING" size="256"/>
+          <Column id="memo" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

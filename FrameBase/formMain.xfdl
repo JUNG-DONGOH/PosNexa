@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="form" width="1400" height="765" onload="form_onload" ondrop="form_ondrop" ondragmove="form_ondragmove" onlbuttonup="form_onlbuttonup" ontimer="form_ontimer" ontouchend="form_ontouchend">
+  <Form id="form" width="1400" height="765" onload="form_onload" ondrop="form_ondrop" ondragmove="form_ondragmove" onlbuttonup="form_onlbuttonup" ontimer="form_ontimer" ontouchend="form_ontouchend" scrollbartype="none none">
     <Layouts>
       <Layout height="765" width="1400">
         <Div id="divPortBg" taborder="0" left="200" top="116" right="40" height="570" text="">
