@@ -3,7 +3,7 @@
   <Form id="pos3030fm" width="1460" height="638" titletext="New Form" onload="pos3030fm_onload">
     <Layouts>
       <Layout height="638" mobileorientation="landscape" width="1460">
-        <Div id="divSearch" taborder="1" left="30" top="30" width="700" height="60" cssclass="div_card_shadow" text="">
+        <Div id="divSearch" taborder="1" left="30" top="30" width="860" height="60" cssclass="div_card_shadow" text="">
           <Layouts>
             <Layout/>
           </Layouts>
@@ -22,7 +22,9 @@
         </Div>
         <Div id="Div01" taborder="4" left="30" top="140" width="860" height="458" cssclass="div_card_shadow">
           <Layouts>
-            <Layout/>
+            <Layout>
+              <Grid id="Grid00" taborder="0" left="707" top="110" width="375" height="270"/>
+            </Layout>
           </Layouts>
         </Div>
         <Grid id="Grid00" taborder="3" left="30" top="140" width="860" height="458" binddataset="ds_emp" autofittype="col" onselectchanged="Grid00_onselectchanged" autoenter="select">
@@ -60,11 +62,13 @@
         <Static id="Static00" taborder="6" text="직원검색" left="44" top="40" width="131" height="40" cssclass="sta_blue_badge"/>
         <Static id="Static04" taborder="7" left="972" top="245" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="유형" cssclass="sta_light_blue_bg"/>
         <Static id="Static04_02" taborder="8" left="972" top="320" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="메모" cssclass="sta_light_blue_bg"/>
-        <Button id="btn_retrieve" taborder="9" text="조회" top="22" width="78" height="51" cssclass="btn_outline" right="242" onclick="btn_retrieve_onclick" fittocontents="width"/>
-        <Button id="btn_delete" taborder="10" text="삭제" top="22" width="78" height="51" cssclass="btn_outline" right="154" onclick="btn_delete_onclick" fittocontents="width"/>
-        <Button id="btn_save" taborder="11" text="저장" top="22" width="78" height="51" cssclass="btn_outline" right="66" onclick="btn_save_onclick"/>
+        <Button id="btn_retrieve" taborder="9" text="조회" top="22" width="78" height="51" cssclass="btn_outline" right="240" onclick="btn_retrieve_onclick" fittocontents="width"/>
+        <Button id="btn_save" taborder="11" text="저장" top="22" width="78" height="51" cssclass="btn_outline" right="64" onclick="btn_save_onclick"/>
         <Button id="btn_popup" taborder="12" text="급여 및 근무 상세 기록" left="1035" top="440" width="270" height="50" cssclass="btn_outline" onclick="btn_popup_onclick"/>
         <Button id="btn_popup00" taborder="13" left="1035" top="510" width="270" height="50" cssclass="btn_outline" text="근로계약서"/>
+        <Radio id="rdoStatus" taborder="14" left="714" top="45" width="169" height="30" codecolumn="statusId" datacolumn="statusName" columncount="2" innerdataset="ds_empStatus" index="0" text="재직자" value="ACTIVE" onitemchanged="rdoStatus_onitemchanged"/>
+        <Button id="btn_delete" taborder="10" text="삭제" top="22" width="78" height="51" cssclass="btn_outline" right="152" onclick="btn_delete_onclick" fittocontents="width"/>
+        <Button id="btn_backup" taborder="15" text="복구" top="22" width="78" height="51" cssclass="btn_outline" right="152" fittocontents="width" onclick="btn_backup_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -85,6 +89,7 @@
           <Column id="total_salary" type="INT" size="256"/>
           <Column id="bonus_pay" type="INT" size="256"/>
           <Column id="deduction_pay" type="INT" size="256"/>
+          <Column id="status" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_temp">
@@ -104,7 +109,24 @@
           <Column id="total_salary" type="INT" size="256"/>
           <Column id="bonus_pay" type="INT" size="256"/>
           <Column id="deduction_pay" type="INT" size="256"/>
+          <Column id="status" type="STRING" size="256"/>
         </ColumnInfo>
+      </Dataset>
+      <Dataset id="ds_empStatus">
+        <ColumnInfo>
+          <Column id="statusId" type="STRING" size="256"/>
+          <Column id="statusName" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="statusId">ACTIVE</Col>
+            <Col id="statusName">재직자</Col>
+          </Row>
+          <Row>
+            <Col id="statusId">INACTIVE</Col>
+            <Col id="statusName">퇴사자</Col>
+          </Row>
+        </Rows>
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[/**
@@ -112,6 +134,7 @@
  */
 this.pos3030fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	this.btn_backup.visible=false;
     this.fn_search(); // 공통 조회 함수 호출
 };
 
@@ -137,8 +160,12 @@ this.fnCallback = function(svcId, errCode, errMsg)
     }
 
     if (svcId == "svcEmpLoad") {
-        // 데이터 로드 직후 첫 번째 행 이미지 출력
-        this.fn_setEmpImage();
+		this.fn_applyFilter();
+    }
+	// 저장 후 알림 및 재조회
+    if (svcId == "saveEmpInfo") {
+        this.gfnAlert("msg.delete.success");
+        this.fn_search(); // 상태가 바뀌었으니 다시 조회해서 리스트 갱신
     }
 };
 
@@ -174,21 +201,49 @@ this.Grid00_onselectchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEven
 };
 
 /**
- * 검색 버튼 클릭
+ * 상태(라디오)와 이름(검색어)을 결합한 필터 적용 함수
  */
-this.btn_findEmp_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.fn_applyFilter = function()
 {
-    var sName = this.edt_SEARCH.value;
+    var sName = this.edt_SEARCH.value;      // 검색창에 입력된 이름
+    var sStatus = this.rdoStatus.value;       // 라디오 버튼에서 선택된 'ACTIVE' 또는 'INACTIVE'
     
-    if (this.gfnIsNull(sName)) {
-        this.ds_emp.filter(""); // 검색어 없으면 전체 보여주기
-    } else {
-        // 대소문자 구분 없이 검색하려면 toLowerCase() 활용 가능
-        this.ds_emp.filter("name.indexOf('" + sName + "') > -1");
+    var sFilter = "";
+
+    // 상태 조건: 라디오에서 선택된 값과 데이터셋의 status 컬럼을 비교합니다.
+    sFilter = "status == '" + sStatus + "'";
+
+    // 이름 조건: 검색어가 있을 때만 '재직자이면서 이름이 포함된' 식의 AND(&&) 조건을 추가합니다.
+    if (!this.gfnIsNull(sName)) {
+        sFilter += " && name.indexOf('" + sName + "') > -1";
     }
-    
-    // 필터 후 첫 번째 행으로 이미지 업데이트
+
+    this.ds_emp.filter(sFilter);
     this.fn_setEmpImage();
+	
+	// 퇴사자(INACTIVE)일 때만 복구 버튼 보이게 설정
+    if (sStatus == "INACTIVE") {
+		this.btn_delete.visible=false;
+        this.btn_backup.visible=true;
+    } else {
+		this.btn_delete.visible=true;
+        this.btn_backup.visible=false;
+    }
+};
+
+/**
+ * 직원검색 -> 버튼 클릭 이벤트
+ */
+this.btn_findEmp_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
+{
+    this.fn_applyFilter();
+};
+
+/**
+ * 라디오 버튼 -> 변경 이벤트  */
+this.rdoStatus_onitemchanged = function(obj:nexacro.Radio, e:nexacro.ItemChangeEventInfo)
+{
+    this.fn_applyFilter();
 };
 
 /**
@@ -198,7 +253,7 @@ this.btn_popup_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	var nRow = this.ds_emp.rowposition; // 선택된 줄 번호
     if(nRow < 0) {
-        this.alert("사원을 선택해 주세요.");
+        this.gfnAlert("msg.emp.select");
         return;
     }
 
@@ -234,6 +289,85 @@ this.fnPopupCallback = function(sId, sVal)
 this.btn_retrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	 this.fn_search();
+};
+
+// 삭제 버튼 클릭 이벤트
+
+this.btn_delete_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
+{
+    var nRow = this.ds_emp.rowposition;
+    if (nRow < 0) {
+        this.gfnAlert("msg.emp.select");
+        return;
+    }
+
+    var sName = this.ds_emp.getColumn(nRow, "name");
+    
+    var sMsgId = "msg.emp.delete"; 
+    var sPopId = "confirmEmpDelete";      
+    var sMsgCallback = "fnMsgcallback";
+
+    this.gfnAlert(sMsgId, [sName], sPopId, sMsgCallback);
+};
+
+// 복구 버튼 클릭 이벤트
+this.btn_backup_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
+{
+    var nRow = this.ds_emp.rowposition;
+    if (nRow < 0) return;
+
+    var sName = this.ds_emp.getColumn(nRow, "name"); 
+    
+    var sMsgId = "msg.emp.backup"; 
+    var sPopId = "confirmEmpBackup";    
+    var sMsgCallback = "fnMsgcallback";
+
+    this.gfnAlert(sMsgId, [sName], sPopId, sMsgCallback);
+};
+
+// 저장 버튼
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+
+/**
+ * 메시지 콜백 함수
+ */
+this.fnMsgcallback = function (id, rtn)
+{
+    // 사용자가 확인(OK/true)을 누른 경우만 실행
+    if(rtn == true || rtn == "OK") {
+        var nRow = this.ds_emp.rowposition;
+        if(nRow < 0) return;
+
+        // 삭제 컨펌 후 확인을 누른 경우
+        if(id == "confirmEmpDelete") {
+            this.ds_emp.setColumn(nRow, "status", "INACTIVE");
+            this.fn_saveEmp(); // 저장 트랜잭션 호출
+        }
+        
+        // 복구 컨펌 후 확인을 누른 경우
+        else if(id == "confirmEmpBackup") {
+            this.ds_emp.setColumn(nRow, "status", "ACTIVE");
+            this.fn_saveEmp(); // 저장 트랜잭션 호출
+        }
+    }
+};
+
+/**
+ * 인사 정보 저장 트랜잭션 (서버로 전송)
+ */
+this.fn_saveEmp = function()
+{
+    var sSvcId    = "saveEmpInfo";
+    var sUrl      = "SvcUrl::pos/saveEmpInfo.do"; // 서버 컨트롤러 매핑 주소
+    var inData    = "ds_emp=ds_emp:U";           // 수정된(U) 정보만 전송
+    var outData   = "";
+    var sArg      = "";
+    var sCallback = "fnCallback";
+    
+    this.gfnTransaction(sSvcId, sUrl, inData, outData, sArg, sCallback);
 };
 
 ]]></Script>

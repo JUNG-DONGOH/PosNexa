@@ -289,6 +289,7 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="total_salary" type="INT" size="256"/>
           <Column id="bonus_pay" type="INT" size="256"/>
           <Column id="deduction_pay" type="INT" size="256"/>
+          <Column id="status" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
       <Dataset id="ds_empwork" oncolumnchanged="ds_empwork_oncolumnchanged">
