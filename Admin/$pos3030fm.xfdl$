@@ -8,24 +8,24 @@
             <Layout/>
           </Layouts>
         </Div>
-        <Edit id="edt_SEARCH" taborder="0" left="190" top="40" width="470" height="40" displaynulltext="직원명, 직급 검색"/>
-        <Div id="Div00" taborder="2" left="945" top="100" width="450" height="520" cssclass="div_card_shadow">
+        <Edit id="edt_SEARCH" taborder="0" left="190" top="40" width="470" height="40" displaynulltext="직원명 검색"/>
+        <Div id="Div00" taborder="2" left="945" top="100" width="450" height="498" cssclass="div_card_shadow">
           <Layouts>
             <Layout>
               <Static id="Static01_03_01_02" taborder="0" text="직원 상세정보" left="10" top="9" width="120" height="41" cssclass="sta_badge"/>
               <ImageViewer id="ImageViewer00" taborder="1" left="173" top="9" width="120" height="120" cssclass="img_empProfile"/>
               <Button id="Button00" taborder="2" left="258" top="94" width="50" height="50" cssclass="btn_empProfile"/>
               <Edit id="edt_schedule_type" taborder="3" left="123" top="152" width="250" height="40"/>
-              <TextArea id="txt_memo" taborder="4" left="123" top="342" height="78" right="77" onchanged="txt_memo00_onchanged"/>
+              <TextArea id="txt_memo" taborder="4" left="123" top="222" height="78" right="77" onchanged="txt_memo00_onchanged"/>
             </Layout>
           </Layouts>
         </Div>
-        <Div id="Div01" taborder="4" left="30" top="110" width="860" height="506" cssclass="div_card_shadow">
+        <Div id="Div01" taborder="4" left="30" top="140" width="860" height="458" cssclass="div_card_shadow">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="3" left="30" top="115" width="860" height="506" binddataset="ds_emp" autofittype="col" onselectchanged="Grid00_onselectchanged">
+        <Grid id="Grid00" taborder="3" left="30" top="140" width="860" height="458" binddataset="ds_emp" autofittype="col" onselectchanged="Grid00_onselectchanged" autoenter="select">
           <Formats>
             <Format id="default">
               <Columns>
@@ -47,11 +47,11 @@
                 <Cell col="4" text="고용일"/>
               </Band>
               <Band id="body">
-                <Cell text="bind:name"/>
-                <Cell col="1" text="bind:role"/>
-                <Cell col="2" text="bind:number" displaytype="mask" maskeditformat="###-####-####" edittype="none" maskedittype="string"/>
+                <Cell text="bind:name" edittype="normal"/>
+                <Cell col="1" text="bind:role" edittype="normal"/>
+                <Cell col="2" text="bind:number" displaytype="mask" maskeditformat="###-####-####" edittype="normal" maskedittype="string"/>
                 <Cell col="3" text="bind:work_status"/>
-                <Cell col="4" text="bind:hire_date" displaytype="date" calendardateformat="yyyy-MM-dd "/>
+                <Cell col="4" text="bind:hire_date" displaytype="calendarcontrol" calendardateformat="yyyy-MM-dd " edittype="date"/>
               </Band>
             </Format>
           </Formats>
@@ -59,20 +59,16 @@
         <Button id="btn_findEmp" taborder="5" left="672" top="40" width="40" height="40" cssclass="btn_WF_Find" text="" onclick="btn_findEmp_onclick"/>
         <Static id="Static00" taborder="6" text="직원검색" left="44" top="40" width="131" height="40" cssclass="sta_blue_badge"/>
         <Static id="Static04" taborder="7" left="972" top="245" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="유형" cssclass="sta_light_blue_bg"/>
-        <Static id="Static04_00" taborder="8" left="972" top="310" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="일한시간" cssclass="sta_light_blue_bg"/>
-        <Static id="Static04_01" taborder="9" left="972" top="375" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="급여" cssclass="sta_light_blue_bg"/>
-        <Static id="Static04_02" taborder="10" left="972" top="440" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="메모" cssclass="sta_light_blue_bg"/>
-        <MaskEdit id="msk_total_salary" taborder="11" left="1068" top="380" width="250" height="40" type="number" format="#,##" enable="false" postfixtext="원"/>
-        <Button id="btn_retrieve" taborder="12" text="조회" top="22" width="78" height="51" cssclass="btn_outline" right="311" onclick="btn_retrieve_onclick" fittocontents="width"/>
-        <Button id="btn_add" taborder="13" text="추가" top="22" width="78" height="51" cssclass="btn_outline" right="223" onclick="btn_add_onclick"/>
-        <Button id="btn_delete" taborder="14" text="삭제" top="22" width="78" height="51" cssclass="btn_outline" right="135" onclick="btn_delete_onclick" fittocontents="width"/>
-        <Button id="btn_save" taborder="15" text="저장" top="22" width="78" height="51" cssclass="btn_outline" right="47" onclick="btn_save_onclick"/>
-        <Button id="btn_popup" taborder="16" text="급여 및 근무 상세 기록" left="1045" top="542" width="270" height="50" cssclass="btn_outline" onclick="btn_popup_onclick"/>
-        <MaskEdit id="edt_total_hours" taborder="17" left="1068" top="315" width="250" height="40" type="number" format="#,###" enable="false" postfixtext="시간"/>
+        <Static id="Static04_02" taborder="8" left="972" top="320" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="메모" cssclass="sta_light_blue_bg"/>
+        <Button id="btn_retrieve" taborder="9" text="조회" top="22" width="78" height="51" cssclass="btn_outline" right="242" onclick="btn_retrieve_onclick" fittocontents="width"/>
+        <Button id="btn_delete" taborder="10" text="삭제" top="22" width="78" height="51" cssclass="btn_outline" right="154" onclick="btn_delete_onclick" fittocontents="width"/>
+        <Button id="btn_save" taborder="11" text="저장" top="22" width="78" height="51" cssclass="btn_outline" right="66" onclick="btn_save_onclick"/>
+        <Button id="btn_popup" taborder="12" text="급여 및 근무 상세 기록" left="1035" top="440" width="270" height="50" cssclass="btn_outline" onclick="btn_popup_onclick"/>
+        <Button id="btn_popup00" taborder="13" left="1035" top="510" width="270" height="50" cssclass="btn_outline" text="근로계약서"/>
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="ds_emp">
+      <Dataset id="ds_emp" oncolumnchanged="ds_emp_oncolumnchanged">
         <ColumnInfo>
           <Column id="emp_id" type="STRING" size="256"/>
           <Column id="link_account" type="STRING" size="256"/>
@@ -229,17 +225,22 @@ this.btn_popup_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.fnPopupCallback = function(sId, sVal)
 {
     // 팝업에서 저장이 완료되어 "save" 같은 값을 리턴했을 경우 재조회
-    if(sId == "popSalary" && sVal == "save") {
+    if (sId == "popSalary" && sVal == "save") {
         this.fn_search(); 
     }
 };
+
+// 조회 버튼
+this.btn_retrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	 this.fn_search();
+};
+
 ]]></Script>
     <Bind>
       <BindItem id="item0" compid="Div00.form.edt_schedule_type" propid="value" datasetid="ds_emp" columnid="schedule_type"/>
       <BindItem id="item3" compid="Div00.form.txt_memo" propid="value" datasetid="ds_emp" columnid="memo"/>
-      <BindItem id="item4" compid="msk_total_salary" propid="value" datasetid="ds_emp" columnid="total_salary"/>
       <BindItem id="item2" compid="Div00.form.ImageViewer00" propid="image" datasetid="ds_emp" columnid="emp_img"/>
-      <BindItem id="item5" compid="edt_total_hours" propid="value" datasetid="ds_emp" columnid="total_hours"/>
     </Bind>
   </Form>
 </FDL>
