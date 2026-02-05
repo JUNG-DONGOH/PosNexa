@@ -14,7 +14,7 @@
             <Layout>
               <Static id="Static01_03_01_02" taborder="0" text="직원 상세정보" left="10" top="9" width="120" height="41" cssclass="sta_badge"/>
               <ImageViewer id="ImageViewer00" taborder="1" left="173" top="9" width="120" height="120" cssclass="img_empProfile"/>
-              <Button id="Button00" taborder="2" left="258" top="94" width="50" height="50" cssclass="btn_empProfile"/>
+              <Button id="btn_uploadfile" taborder="2" left="258" top="94" width="50" height="50" cssclass="btn_empProfile" onclick="Div00_btn_uploadfile_onclick"/>
               <Edit id="edt_schedule_type" taborder="3" left="123" top="152" width="250" height="40"/>
               <TextArea id="txt_memo" taborder="4" left="123" top="222" height="78" right="77" onchanged="txt_memo00_onchanged"/>
             </Layout>
@@ -27,7 +27,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="3" left="30" top="140" width="860" height="458" binddataset="ds_emp" autofittype="col" onselectchanged="Grid00_onselectchanged" autoenter="select">
+        <Grid id="Grid00" taborder="3" left="30" top="140" width="860" height="458" binddataset="ds_emp" autofittype="col" onselectchanged="Grid00_onselectchanged" autoenter="select" oncloseup="Grid00_oncloseup">
           <Formats>
             <Format id="default">
               <Columns>
@@ -50,10 +50,10 @@
               </Band>
               <Band id="body">
                 <Cell text="bind:name" edittype="normal"/>
-                <Cell col="1" text="bind:role" edittype="normal"/>
+                <Cell col="1" text="bind:role" edittype="combo" displaytype="combocontrol" combodataset="ds_role" combocodecol="role_ID" combodatacol="role_NAME"/>
                 <Cell col="2" text="bind:number" displaytype="mask" maskeditformat="###-####-####" edittype="normal" maskedittype="string"/>
-                <Cell col="3" text="bind:work_status"/>
-                <Cell col="4" text="bind:hire_date" displaytype="calendarcontrol" calendardateformat="yyyy-MM-dd " edittype="date"/>
+                <Cell col="3" text="bind:work_status" displaytype="combocontrol" edittype="combo" combodataset="ds_work_status" combocodecol="workStatus_ID" combodatacol="workStatus_NAME"/>
+                <Cell col="4" text="bind:hire_date" displaytype="calendarcontrol" calendardateformat="yyyy-MM-dd " edittype="date" calendarautoselect="false" calendardisplaynulltype="none" calendareditformat="yyyy-MM-dd "/>
               </Band>
             </Format>
           </Formats>
@@ -67,8 +67,8 @@
         <Button id="btn_popup" taborder="12" text="급여 및 근무 상세 기록" left="1035" top="440" width="270" height="50" cssclass="btn_outline" onclick="btn_popup_onclick"/>
         <Button id="btn_popup00" taborder="13" left="1035" top="510" width="270" height="50" cssclass="btn_outline" text="근로계약서"/>
         <Radio id="rdoStatus" taborder="14" left="714" top="45" width="169" height="30" codecolumn="statusId" datacolumn="statusName" columncount="2" innerdataset="ds_empStatus" index="0" text="재직자" value="ACTIVE" onitemchanged="rdoStatus_onitemchanged"/>
-        <Button id="btn_delete" taborder="10" text="삭제" top="22" width="78" height="51" cssclass="btn_outline" right="152" onclick="btn_delete_onclick" fittocontents="width"/>
-        <Button id="btn_backup" taborder="15" text="복구" top="22" width="78" height="51" cssclass="btn_outline" right="152" fittocontents="width" onclick="btn_backup_onclick"/>
+        <Button id="btn_delete" taborder="10" text="퇴사" top="22" width="78" height="51" cssclass="btn_outline" right="152" onclick="btn_delete_onclick" fittocontents="width"/>
+        <Button id="btn_backup" taborder="15" text="재직" top="22" width="78" height="51" cssclass="btn_outline" right="152" fittocontents="width" onclick="btn_backup_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -128,16 +128,137 @@
           </Row>
         </Rows>
       </Dataset>
+      <Dataset id="ds_work_status">
+        <ColumnInfo>
+          <Column id="workStatus_ID" type="STRING" size="256"/>
+          <Column id="workStatus_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="workStatus_ID">근무</Col>
+            <Col id="workStatus_NAME">근무</Col>
+          </Row>
+          <Row>
+            <Col id="workStatus_ID">퇴근</Col>
+            <Col id="workStatus_NAME">퇴근</Col>
+          </Row>
+          <Row>
+            <Col id="workStatus_ID">휴무</Col>
+            <Col id="workStatus_NAME">휴뮤</Col>
+          </Row>
+          <Row>
+            <Col id="workStatus_ID">퇴직</Col>
+            <Col id="workStatus_NAME">퇴직</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <Dataset id="ds_role">
+        <ColumnInfo>
+          <Column id="role_ID" type="STRING" size="256"/>
+          <Column id="role_NAME" type="STRING" size="256"/>
+        </ColumnInfo>
+        <Rows>
+          <Row>
+            <Col id="role_ID">Admin</Col>
+            <Col id="role_NAME">관리자</Col>
+          </Row>
+          <Row>
+            <Col id="role_ID">User</Col>
+            <Col id="role_NAME">사용자</Col>
+          </Row>
+        </Rows>
+      </Dataset>
+      <FileDialog id="FileDialog00" onclose="FileDialog00_onclose"/>
+      <FileUpTransfer id="FileUpTransfer00" onsuccess="FileUpTransfer00_onsuccess"/>
+      <Dataset id="dsFile">
+        <ColumnInfo>
+          <Column id="file_id" type="STRING" size="256"/>
+          <Column id="file_name" type="STRING" size="256"/>
+          <Column id="file_size" type="STRING" size="256"/>
+          <Column id="file_type" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
     </Objects>
-    <Script type="xscript5.1"><![CDATA[/**
+    <Script type="xscript5.1"><![CDATA[/************************************************************************************************
+ * FORM EVENT 영역
+ ************************************************************************************************/
+/**
  * 폼 로드 시 실행: 데이터 조회
  */
 this.pos3030fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.btn_backup.visible=false;
-    this.fn_search(); // 공통 조회 함수 호출
+    this.btn_backup.visible = false; //
+    this.fn_search();                // 공통 조회 함수 호출
 };
 
+/************************************************************************************************
+ * CALLBACK 콜백 처리부분(Transaction, Popup, Message)
+ ************************************************************************************************/
+/**
+ * 트랜잭션 콜백 함수
+ */
+this.fnCallback = function(svcId, errCode, errMsg)
+{
+    if (errCode < 0) {
+        this.alert("오류 발생: " + errMsg);
+        return;
+    }
+
+    // 1. 조회 성공 시 필터 적용
+    if (svcId == "svcEmpLoad") {
+        this.fn_applyFilter();
+    }
+
+    // 2. 저장 작업별 메시지 분기 처리 (svcId 활용)
+    if (svcId == "saveEmpInfo") {
+        this.gfnAlert("msg.save.success"); // 일반 저장 성공
+        this.fn_search(); 
+    }
+    else if (svcId == "deleteEmpInfo") {
+        this.gfnAlert("msg.action.success"); // 퇴사 처리 성공
+        this.fn_search(); 
+    }
+    else if (svcId == "backupEmpInfo") {
+        this.gfnAlert("msg.action.success"); // 복구 처리 성공
+        this.fn_search(); 
+    }
+};
+
+/**
+ * 팝업 콜백
+ */
+this.fnPopupCallback = function(sId, sVal)
+{
+    if (sId == "popSalary" && sVal == "save") {
+        this.fn_search(); 
+    }
+};
+
+/**
+ * 메시지 콜백 함수
+ */
+this.fnMsgcallback = function (id, rtn)
+{
+    if(rtn == true || rtn == "OK") {
+        var nRow = this.ds_emp.rowposition;
+        if(nRow < 0) return;
+
+        // 삭제 컨펌 후 확인 시
+        if(id == "confirmEmpDelete") {
+            this.ds_emp.setColumn(nRow, "status", "INACTIVE");
+            this.fn_saveEmp("deleteEmpInfo"); // 삭제용 ID 전달
+        }
+        // 복구 컨펌 후 확인 시
+        else if(id == "confirmEmpBackup") {
+            this.ds_emp.setColumn(nRow, "status", "ACTIVE");
+            this.fn_saveEmp("backupEmpInfo"); // 복구용 ID 전달
+        }
+    }
+};
+
+/************************************************************************************************
+ * CRUD 및 TRANSACTION 서비스 호출 처리
+ ************************************************************************************************/
 /**
  * [공통] 데이터 조회 함수
  */
@@ -150,22 +271,63 @@ this.fn_search = function()
 };
 
 /**
- * 트랜잭션 콜백 함수
+ * [공통] 인사 정보 저장 트랜잭션 (서버 전송)
  */
-this.fnCallback = function(svcId, errCode, errMsg)
+this.fn_saveEmp = function(sSvcId)
 {
-    if (errCode < 0) {
-        this.alert("조회 오류: " + errMsg);
-        return;
+    // 인자가 없으면 기본적으로 "saveEmpInfo" 사용
+    var strSvcId  = sSvcId || "saveEmpInfo";
+    var sUrl      = "SvcUrl::pos/saveEmpInfo.do"; 
+    var inData    = "ds_emp=ds_emp:U"; 
+    var outData   = "";
+    var sArg      = "";
+    var sCallback = "fnCallback";
+    
+    this.gfnTransaction(strSvcId, sUrl, inData, outData, sArg, sCallback);
+};
+
+/************************************************************************************************
+ * 사용자 FUNCTION 영역
+ ************************************************************************************************/
+/**
+ * 상태(라디오)와 이름(검색어)을 결합한 필터 적용 함수
+ */
+this.fn_applyFilter = function()
+{
+    var sName = this.edt_SEARCH.value;      
+    var sStatus = this.rdoStatus.value;      
+    var sFilter = "";
+
+	// 퇴사자(INACTIVE)일 경우 전체 행 검사
+    if (sStatus == "INACTIVE") {
+        this.ds_emp.enableevent=false; // 표준 속성 설정 방식 사용
+        
+        // rowcountnf는 필터와 상관없이 데이터셋 전체 실제 행 개수를 가져옴
+        for (var i = 0; i < this.ds_emp.getRowCountNF(); i++) {
+            if (this.ds_emp.getColumnNF(i, "status") == "INACTIVE") {
+                this.ds_emp.setColumnNF(i, "work_status", "퇴직");
+            }
+        }
+        
+        this.ds_emp.enableevent=true; 
+    }
+	
+    sFilter = "status == '" + sStatus + "'"; //
+
+    if (!this.gfnIsNull(sName)) {
+        sFilter += " && name.indexOf('" + sName + "') > -1"; //
     }
 
-    if (svcId == "svcEmpLoad") {
-		this.fn_applyFilter();
-    }
-	// 저장 후 알림 및 재조회
-    if (svcId == "saveEmpInfo") {
-        this.gfnAlert("msg.delete.success");
-        this.fn_search(); // 상태가 바뀌었으니 다시 조회해서 리스트 갱신
+    this.ds_emp.filter(sFilter);
+    this.fn_setEmpImage();
+    
+    // 퇴사자(INACTIVE)일 때만 복구 버튼 보이게 설정
+    if (sStatus == "INACTIVE") {
+        this.btn_delete.visible = false;
+        this.btn_backup.visible = true;
+    } else {
+        this.btn_delete.visible = true;
+        this.btn_backup.visible = false;
     }
 };
 
@@ -175,124 +337,78 @@ this.fnCallback = function(svcId, errCode, errMsg)
 this.fn_setEmpImage = function()
 {
     var nRow = this.ds_emp.rowposition; 
-    
-    // 데이터가 없는 경우 처리
     if (nRow < 0) {
-        this.Div00.form.ImageViewer00.image="";
+        this.Div00.form.ImageViewer00.image = ""; //
         return;
     }
 
     var sImgNm = this.ds_emp.getColumn(nRow, "emp_img");
-    
     if (sImgNm) {
-        // 경로 구성 (프로젝트 규칙에 맞게 조정)
-        var sFullUrl = this.gfnGetServerUrl() + "upload/P03/P031/" + sImgNm;
-        this.Div00.form.ImageViewer00.image=sFullUrl;
+        var sFullUrl = this.gfnGetServerUrl() + "upload/P03/P031/" + sImgNm; //
+        this.Div00.form.ImageViewer00.image = sFullUrl; //
     } else {
-        this.Div00.form.ImageViewer00.image=""; 
+        this.Div00.form.ImageViewer00.image = ""; //
     }
 };
 
-/*그리드 행 변경 시 이벤트 (이미지 동기화) */
-
-this.Grid00_onselectchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
+/************************************************************************************************
+ * 각 COMPONENT 별 EVENT 영역
+ ************************************************************************************************/
+// 조회 버튼
+this.btn_retrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	 this.fn_setEmpImage();
+     this.fn_search();
 };
 
-/**
- * 상태(라디오)와 이름(검색어)을 결합한 필터 적용 함수
- */
-this.fn_applyFilter = function()
+// 저장 버튼
+this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-    var sName = this.edt_SEARCH.value;      // 검색창에 입력된 이름
-    var sStatus = this.rdoStatus.value;       // 라디오 버튼에서 선택된 'ACTIVE' 또는 'INACTIVE'
-    
-    var sFilter = "";
-
-    // 상태 조건: 라디오에서 선택된 값과 데이터셋의 status 컬럼을 비교합니다.
-    sFilter = "status == '" + sStatus + "'";
-
-    // 이름 조건: 검색어가 있을 때만 '재직자이면서 이름이 포함된' 식의 AND(&&) 조건을 추가합니다.
-    if (!this.gfnIsNull(sName)) {
-        sFilter += " && name.indexOf('" + sName + "') > -1";
-    }
-
-    this.ds_emp.filter(sFilter);
-    this.fn_setEmpImage();
+    //this.fn_saveEmp("saveEmpInfo");
 	
-	// 퇴사자(INACTIVE)일 때만 복구 버튼 보이게 설정
-    if (sStatus == "INACTIVE") {
-		this.btn_delete.visible=false;
-        this.btn_backup.visible=true;
-    } else {
-		this.btn_delete.visible=true;
-        this.btn_backup.visible=false;
-    }
+	// 사진 저장
+	var sUrl = "SvcUrl::nexa/uploadFile.do";
+	this.FileUpTransfer00.setPostData("userDir", "P03\\P031"); // 저장 경로 설정
+	this.FileUpTransfer00.upload(sUrl);
 };
 
-/**
- * 직원검색 -> 버튼 클릭 이벤트
- */
+// 직원검색 버튼 클릭
 this.btn_findEmp_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
     this.fn_applyFilter();
 };
 
-/**
- * 라디오 버튼 -> 변경 이벤트  */
+// 라디오 버튼 변경 이벤트
 this.rdoStatus_onitemchanged = function(obj:nexacro.Radio, e:nexacro.ItemChangeEventInfo)
 {
     this.fn_applyFilter();
 };
 
-/**
- * 급여계산기 팝업 호출
- */
+// 그리드 선택 변경 시 이미지 동기화
+this.Grid00_onselectchanged = function(obj:nexacro.Grid,e:nexacro.GridSelectEventInfo)
+{
+     this.fn_setEmpImage();
+};
+
+// 급여계산기 팝업 호출
 this.btn_popup_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var nRow = this.ds_emp.rowposition; // 선택된 줄 번호
+    var nRow = this.ds_emp.rowposition; 
     if(nRow < 0) {
         this.gfnAlert("msg.emp.select");
         return;
     }
 
-    // ds_temp를 깨끗이 비우고 한 줄을 추가
     this.ds_temp.clearData();
     this.ds_temp.addRow();
-
-    // ds_emp의 선택된 행(nRow)을 ds_temp의 0번 행으로 복사합니다.
     this.ds_temp.copyRow(0, this.ds_emp, nRow);
 
-    // 이제 딱 한 명의 정보만 담긴 ds_temp를 팝업에 넘기기
-    var oArg = {
-        p_dsEmp : this.ds_temp, 
-    };
-
+    var oArg = { p_dsEmp : this.ds_temp };
     var sTitle = "상세정보";
     var oOption = {title:sTitle};
     this.gfnOpenPopup("popSalary", "Admin::pos3031pu.xfdl", oArg, "fnPopupCallback", oOption);
 };
 
-/**
- * 팝업 콜백
- */
-this.fnPopupCallback = function(sId, sVal)
-{
-    // 팝업에서 저장이 완료되어 "save" 같은 값을 리턴했을 경우 재조회
-    if (sId == "popSalary" && sVal == "save") {
-        this.fn_search(); 
-    }
-};
-
-// 조회 버튼
-this.btn_retrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	 this.fn_search();
-};
-
-// 삭제 버튼 클릭 이벤트
-
+// 삭제 버튼 클릭
 this.btn_delete_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
     var nRow = this.ds_emp.rowposition;
@@ -300,74 +416,100 @@ this.btn_delete_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
         this.gfnAlert("msg.emp.select");
         return;
     }
-
     var sName = this.ds_emp.getColumn(nRow, "name");
-    
-    var sMsgId = "msg.emp.delete"; 
-    var sPopId = "confirmEmpDelete";      
-    var sMsgCallback = "fnMsgcallback";
-
-    this.gfnAlert(sMsgId, [sName], sPopId, sMsgCallback);
+    this.gfnAlert("msg.emp.delete", [sName], "confirmEmpDelete", "fnMsgcallback");
 };
 
-// 복구 버튼 클릭 이벤트
+// 복구 버튼 클릭
 this.btn_backup_onclick = function(obj:nexacro.Button, e:nexacro.ClickEventInfo)
 {
     var nRow = this.ds_emp.rowposition;
     if (nRow < 0) return;
-
     var sName = this.ds_emp.getColumn(nRow, "name"); 
-    
-    var sMsgId = "msg.emp.backup"; 
-    var sPopId = "confirmEmpBackup";    
-    var sMsgCallback = "fnMsgcallback";
-
-    this.gfnAlert(sMsgId, [sName], sPopId, sMsgCallback);
+    this.gfnAlert("msg.emp.backup", [sName], "confirmEmpBackup", "fnMsgcallback");
 };
 
-// 저장 버튼
-this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+this.Grid00_oncloseup = function(obj:nexacro.Grid,e:nexacro.GridEditEventInfo)
 {
+	// 달력 선택이 끝나고 팝업이 닫히는 순간 호출
+    // 현재 그리드에 입력된 값을 바인딩된 데이터셋에 즉시 반영
+    obj.updateToDataset();
+};
+
+// 파일 선택하기
+this.Div00_btn_uploadfile_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// 파일 선택창 열기
+	this.FileDialog00.open("이미지 선택", 1, "%MYDOCUMENT%");
+};
+
+/**
+ * 파일 선택 후 창 닫힐 때 (미리보기 및 업로드 준비)
+ */
+/**
+ * 파일 선택 후 창 닫힐 때 (미리보기 및 업로드 준비)
+ */
+this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialogEventInfo)
+{
+	var objFile = e.virtualfiles[0];
+	if(!objFile) return; // 선택 취소 시 종료
+	var sFileName = objFile.filename;
 	
+	
+	// 확장자 체크 (jpg, jpeg, png, gif)
+	if(!/\.(jpe?g|png|gif)$/i.test(sFileName)){
+		alert("이미지 파일을 선택하세요");
+		return;
+	}
+	// 업로드 대상 클리어 후 추가
+	this.FileUpTransfer00.clearFileList();
+	this.FileUpTransfer00.addFile(sFileName, objFile);
+	
+
+	
+	// 미리보기 기능
+	if(nexacro._Browser == "Runtime") {
+		this.Div00.form.ImageViewer00.image = "URL('file://"+ objFile.fullpath + "')";
+	} else {
+		var reader = new FileReader();
+		reader.targetForm = this;
+		reader.addEventListener("load", function() {
+			this.targetForm.Div00.form.ImageViewer00.image = this.result; 
+		}, false);
+		reader.readAsDataURL(objFile._handle);
+	}
 };
 
-/**
- * 메시지 콜백 함수
- */
-this.fnMsgcallback = function (id, rtn)
-{
-    // 사용자가 확인(OK/true)을 누른 경우만 실행
-    if(rtn == true || rtn == "OK") {
-        var nRow = this.ds_emp.rowposition;
-        if(nRow < 0) return;
 
-        // 삭제 컨펌 후 확인을 누른 경우
-        if(id == "confirmEmpDelete") {
-            this.ds_emp.setColumn(nRow, "status", "INACTIVE");
-            this.fn_saveEmp(); // 저장 트랜잭션 호출
-        }
-        
-        // 복구 컨펌 후 확인을 누른 경우
-        else if(id == "confirmEmpBackup") {
-            this.ds_emp.setColumn(nRow, "status", "ACTIVE");
-            this.fn_saveEmp(); // 저장 트랜잭션 호출
-        }
+/**
+ *  파일 업로드 성공 시 (서버 파일명을 ds_emp에 저장)
+ */
+this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
+{
+	// 서버 응답 데이터셋 가져오기
+    var objDs = e.datasets[0];
+	
+    var sFileId   = objDs.getColumn(0, "file_id");
+    var sFileName = objDs.getColumn(0, "file_name");
+    var nFileSize = objDs.getColumn(0, "file_size");
+
+    // dsFile 업데이트 (기존 파일 목록 관리용)
+    // 이미 dsFile에 해당 파일명이 있는지 확인
+    var nFileRow = this.dsFile.findRow("file_name", sFileName);
+
+    if (nFileRow == -1) {
+        nFileRow = this.dsFile.addRow(); // 없으면 새로 추가
     }
-};
+    this.dsFile.setColumn(nFileRow, "file_name", sFileName);
+    this.dsFile.setColumn(nFileRow, "file_id",   sFileId);
+    this.dsFile.setColumn(nFileRow, "file_size", nFileSize);
 
-/**
- * 인사 정보 저장 트랜잭션 (서버로 전송)
- */
-this.fn_saveEmp = function()
-{
-    var sSvcId    = "saveEmpInfo";
-    var sUrl      = "SvcUrl::pos/saveEmpInfo.do"; // 서버 컨트롤러 매핑 주소
-    var inData    = "ds_emp=ds_emp:U";           // 수정된(U) 정보만 전송
-    var outData   = "";
-    var sArg      = "";
-    var sCallback = "fnCallback";
-    
-    this.gfnTransaction(sSvcId, sUrl, inData, outData, sArg, sCallback);
+	// ds_product에 서버 파일명 저장 (주석의 핵심 기능)
+    var nProdRow = this.ds_emp.rowposition;
+	this.ds_emp.setColumn(nProdRow, "emp_img", sFileName);
+	
+	this.fn_saveEmp("saveEmpInfo");
+
 };
 
 ]]></Script>
