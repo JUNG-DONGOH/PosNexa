@@ -4,9 +4,9 @@
     <Layouts>
       <Layout height="50" width="1600">
         <Button id="btnGoMain" taborder="0" left="20" top="0" width="170" height="50" cssclass="btn_logo" onclick="btnGoMain_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
-        <Button id="btnLogout" taborder="1" text="로그아웃" left="1482" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
-        <Static id="staUser" taborder="2" top="13" width="110" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1355" border="1px solid black"/>
-        <Div id="Div00" taborder="3" text="사용자사진" left="1275" top="7" width="65" height="36" border="1px solid black"/>
+        <Button id="btnLogout" taborder="1" text="로그아웃" left="1482" top="7" width="108" height="37" onclick="btnLogout_onclick" cssclass="btn_login"/>
+        <Static id="staUser" taborder="2" top="13" width="110" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1355"/>
+        <Button id="btnNotice" taborder="3" top="13" width="24" height="24" onclick="btnNotice_onclick" cssclass="btn_TF_PushN" right="268"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

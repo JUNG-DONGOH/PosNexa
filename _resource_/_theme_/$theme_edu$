@@ -1,0 +1,2557 @@
+﻿/*******************************************************
+  PROJECT NAME : EduProjectN24
+  CREATION DATES : 2024.9.3
+  DRAFTER : Education 
+  DISTRIBUTION DATE : 2024.11.18
+  AMENDER :
+  MODIIFICATION DATES :
+*******************************************************/
+/*************** MainFrame ***************/
+.MainFrame
+{
+	-nexa-border : 1px solid #00103f;
+	background : #ffffff;
+}
+.MainFrame[status=deactivate]
+{
+/*	opacity : 70%;*/
+}
+/*************** Form ***************/
+.Form
+{
+	background : #ffffff;
+/*	letter-spacing : -1px;*/
+	color : #000000;
+}
+.Form[userstatus=contents]
+{
+	background : transparent;
+}
+.Form.frm_MainBg
+{
+	background : #f4f6fd;
+}
+/*************** ChildFrame / FrameSet ***************/
+.ChildFrame,.FrameSet,.HFrameSet,.TileFrameSet,.VFrameSet
+{
+	background : #ffffff;
+}
+
+/*************** TitleBarControl ***************/
+.TitleBarControl
+{
+	-nexa-padding : 0px 0px 0px 10px;
+	background : #1b292b;
+	color : #ffffff;
+	font : -nexa-define(--Bold14px);
+}
+.TitleBarControl .closebutton
+{
+	-nexa-icon : url('theme://images/btn_TITLE_Close.png');
+}
+.TitleBarControl .closebutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .closebutton[userstatus=pushed]
+{
+	-nexa-icon : url('theme://images/btn_TITLE_CloseP.png');
+	background : #ffffff;
+}
+.TitleBarControl .closebutton[status=disabled]
+{
+	-nexa-icon : url('theme://images/btn_TITLE_CloseD.png');
+}
+.TitleBarControl .maxbutton
+{
+	-nexa-icon : url('theme://images/btn_TITLE_Max.png');
+}
+.TitleBarControl .maxbutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .maxbutton[userstatus=pushed]
+{
+	-nexa-icon : url('theme://images/btn_TITLE_MaxP.png');
+	background : #ffffff;
+}
+.TitleBarControl .maxbutton[status=disabled]
+{
+	-nexa-icon : url('theme://images/btn_TITLE_MaxD.png');
+}
+.TitleBarControl .minbutton
+{
+	-nexa-icon : url('theme://images/btn_TITLE_Min.png');
+}
+.TitleBarControl .minbutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .minbutton[userstatus=pushed]
+{
+	-nexa-icon : url('theme://images/btn_TITLE_MinP.png');
+	background : #ffffff;
+}
+.TitleBarControl .minbutton[status=disabled]
+{
+	-nexa-icon : url('theme://images/btn_TITLE_MinD.png');
+}
+.TitleBarControl .normalbutton
+{
+	-nexa-icon : url('theme://images/btn_TITLE_Normal.png');
+}
+.TitleBarControl .normalbutton[status=mouseover]
+{
+	background : #495455;
+}
+.TitleBarControl .normalbutton[userstatus=pushed]
+{
+	-nexa-icon : url('theme://images/btn_TITLE_NormalP.png');
+	background : #ffffff;
+}
+.TitleBarControl .normalbutton[status=disabled]
+{
+	-nexa-icon : url('theme://images/btn_TITLE_NormalD.png');
+}
+.TitleBarControl .titleicon
+{
+	-nexa-icon : url('theme://images/titlebar_icon.png');
+	-nexa-text-padding : 0px 0px 0px 10px;	
+}
+/*************** StatusBarControl ***************/
+.StatusBarControl
+{
+	-nexa-border : 1px solid #c2c2c2;
+	-nexa-padding : 0px 0px 0px 10px;
+	background : #ebebeb;
+	color : #1b292b;
+	font : -nexa-define(--Bold14px);
+}
+.StatusBarControl .resizegrip
+{
+	-nexa-icon : url('theme://images/icon_SB_Grip.png');
+}
+.StatusBarControl .progressbar
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.StatusBarControl .progressbar .progressbaritem
+{
+	background : #b4b9c6;
+}
+
+/**************** GuideArea *****************/
+.Static.sta_WF_GTitle
+{
+	-nexa-border : 1px solid #b4b9c6;
+	background : #dee3eb;
+	color : #3e4044;
+	font : -nexa-define(--Bold12px);
+	-nexa-text-align : center;
+	letter-spacing : 1px;	
+}
+.Static.sta_WF_GLabel
+{
+	-nexa-border : 1px solid #b4b9c6;
+	background : #f4f6fa;
+	color : #3e4044;
+	font : -nexa-define(--Default12px);
+	-nexa-text-align : center;
+	letter-spacing : 1px;	
+}
+.Static.sta_WF_GArea
+{
+	-nexa-border : 1px solid #b4b9c6;
+	background : #ffffff;
+}
+.Static.sta_WF_GStatus
+{
+	color : #3e4044;
+	font : -nexa-define(--Con13px);	
+}
+.Static.sta_WF_GSize
+{
+	-nexa-text-align: center;
+	background	: #ff0000;
+	color		: #000000;
+	font		: -nexa-define(--Bold12px);
+	opacity 	: 0.3;
+	-nexa-word-wrap : char;
+}
+.Static.sta_WF_GLineV
+{
+	-nexa-edge 	: URL('theme://images/sta_WF_GLineV.png') 5px 2px;
+}
+.Static.sta_WF_GLineH
+{
+	-nexa-edge 	: URL('theme://images/sta_WF_GLineH.png') 5px 2px;
+}
+.Static.sta_WF_GTxt
+{
+	color		: #ff000c;
+	font		: normal 13px/normal "Consolas","Arial Black";
+}
+.Static.sta_WF_GDes
+{
+	color : #006c83;
+	font : bold -nexa-define(--lineheight13px) ;
+	-nexa-word-wrap : char;
+}
+/*************** Static ***************/
+.Static
+{
+/*	No Style Applied*/
+}
+.Static[status=disabled]
+{
+	color : #a9a9a9;
+}
+/*************** Edit ***************/
+.Edit
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;	
+}
+.Edit[status=mouseover],
+.Edit[status=focused]
+{
+	-nexa-border : 1px solid #2f59bf;
+}
+.Edit[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;	
+}
+.Edit[status=readonly]
+{
+	background : #f5f5f5;
+}
+.Edit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.Edit.edt_WF_Essential
+{
+	-nexa-border : 1px solid #c15e3b;
+	background : url('theme://images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+/*************** MaskEdit ***************/
+.MaskEdit
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MaskEdit[status=mouseover],
+.MaskEdit[status=focused]
+{
+	-nexa-border : 1px solid #2f59bf;
+}
+.MaskEdit[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;	
+}
+.MaskEdit[status=readonly]
+{
+	background : #f5f5f5;
+}
+.MaskEdit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.MaskEdit[userstatus=invalidtext]
+{
+	color : #b71d26;
+}
+.MaskEdit.msk_WF_Essential
+{
+	-nexa-border : 1px solid #c15e3b;
+	background : url('theme://images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+/*************** TextArea ***************/
+.TextArea
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+	-nexa-word-wrap : char;
+}
+.TextArea[status=mouseover],
+.TextArea[status=focused]
+{
+	-nexa-border : 1px solid #2f59bf;
+}
+.TextArea[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;	
+}
+.TextArea[status=readonly]
+{
+	background : #f5f5f5;
+}
+.TextArea[userstatus=nulltext]
+{
+	color : #acacac;
+}
+.TextArea.txt_WF_Essential
+{
+	-nexa-border : 1px solid #c15e3b;
+	background : url('theme://images/icon_Essential.png') no-repeat left top #fef7eb;
+}
+
+/*************** ListBox / ListBoxControl ***************/
+.ListBox, .ListBoxControl
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ListBox[status=disabled],
+.ListBoxControl[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ListBox .listboxitem, 
+.ListBoxControl .listboxitem
+{
+	-nexa-padding : 6px 8px;
+}
+.ListBox .listboxitem[status=mouseover],
+.ListBoxControl .listboxitem[status=mouseover]
+{
+	color : #2f59bf;
+}
+.ListBox .listboxitem[userstatus=selected],
+.ListBoxControl .listboxitem[userstatus=selected]
+{
+	background : #2f59bf;
+	color : #ffffff;
+}
+/*************** Combo ***************/
+.Combo
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Combo[status=mouseover]
+{
+	-nexa-border : 1px solid #2f59bf;
+}
+.Combo[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Combo[status=readonly]
+{
+	background : #f5f5f5;
+}
+.Combo .comboedit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+
+/*************** MultiCombo  ***************/
+.MultiCombo
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiCombo[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.MultiCombo[status=readonly]
+{
+	background : #f5f5f5;
+}
+.MultiCombo[status=mouseover]
+{
+	-nexa-border : 1px solid #2f59bf;
+}
+.MultiCombo .multicombolist
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.MultiCombo .multicombolist .multicomboedit
+{
+	-nexa-border : 0px none,0px none,1px solid #acacac;
+	background : #f9f9fa;
+	-nexa-padding : 8px;
+}
+/*************** Calendar  ***************/
+.Calendar
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.Calendar[status=mouseover],
+.Calendar[status=focused]
+{
+	-nexa-border : 1px solid #2f59bf;
+}
+.Calendar[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.Calendar[status=readonly]
+{
+	background : #f5f5f5;
+}
+.Calendar[userstatus=invalidtext]
+{
+	color : #b71d26;
+}
+.Calendar .calendaredit[userstatus=nulltext]
+{
+	color : #acacac;
+}
+/*************** DatePickerControl  ***************/
+.DatePickerControl
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.DatePickerControl .head
+{
+	background : #002795;
+}
+
+.DatePickerControl .head .monthstatic
+{
+	color : #ffffff;
+}
+.DatePickerControl .head .yearstatic
+{
+	color : #ffffff;
+}
+.DatePickerControl .body .weekband
+{
+	background : #e1e1e1;
+}
+.DatePickerControl .body .weekitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DatePickerControl .body .weekitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DatePickerControl .body .dayitem[status=mouseover]
+{
+	background : #f3f3f3;
+}
+.DatePickerControl .body .dayitem[userstatus=saturday]
+{
+	color : #0f62d6;
+}
+.DatePickerControl .body .dayitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+.DatePickerControl .body .dayitem[userstatus=sunday]
+{
+	color : #e33645;
+}
+.DatePickerControl .body .dayitem[userstatus=today]
+{
+	background : #daedfe;
+}
+.DatePickerControl .body .dayitem[userstatus=trailingday]
+{
+	color : #a9a9a9;
+}
+.DatePickerControl .body .yearitem[status=mouseover]
+{
+	background : #daedfe;
+}
+.DatePickerControl .body .yearitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+.DatePickerControl .body .monthitem[status=mouseover]
+{
+	background : #daedfe;
+}
+.DatePickerControl .body .monthitem[userstatus=selected]
+{
+	background : #4788f7;
+	color : #ffffff;
+}
+/*************** StepControl **************/
+.StepControl 
+{
+	-nexa-padding : 0px 0px 5px;
+}
+.StepControl .stepitem
+{
+	-nexa-icon : url('theme://images/stp_WF_Item.png');
+}
+.StepControl .stepitem[userstatus=selected]
+{
+	-nexa-icon : url('theme://images/stp_WF_ItemS.png');
+}
+/*************** FileDownload ***************/
+.FileDownload
+{
+	-nexa-border : 1px solid #364f60;
+	background : #4e7890;
+	color : #ffffff;
+}
+.FileDownload[status=mouseover],
+.FileDownload[userstatus=pushed]
+{
+	-nexa-border : 1px solid #364f60;
+	background : #364f60;
+}
+.FileDownload[status=disabled]
+{
+	opacity : 70%;
+}
+/*************** FileUpload ***************/
+.FileUpload .fileuploaditem .fileuploaditembutton
+{
+	-nexa-border : 1px solid #364f60;
+	background : #4e7890;
+	-nexa-padding : 8px;
+	color : #ffffff;
+}
+
+.FileUpload .fileuploaditem .fileuploaditembutton[status=mouseover],
+.FileUpload .fileuploaditem .fileuploaditembutton[userstatus=pushed]
+{
+	-nexa-border : 1px solid #364f60;
+	background : #364f60;
+}
+.FileUpload .fileuploaditem .fileuploaditembutton[status=disabled]
+{
+	opacity : 70%;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.FileUpload .fileuploaditem .fileuploaditemedit[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+/*************** ImageViewer ***************/
+.ImageViewer
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ImageViewer[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ImageViewer .imagetext
+{
+	-nexa-text-align : center;
+}
+/*************** Div / PopupDiv ***************/
+.Div, .PopupDiv
+{
+	/*No style applied*/
+}
+/*************** GroupBox ***************/
+.GroupBox .groupboxcontents
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.GroupBox .groupboxcontents[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+}
+.GroupBox .groupboxtitle
+{
+	-nexa-padding : 0px 10px;
+	background : #ffffff;	
+}
+.GroupBox .groupboxtitle[status=disabled]
+{
+	color : #a9a9a9;		
+}
+/*************** ProgressBar ***************/
+.ProgressBar,
+.ProgressBarControl
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.ProgressBar[status=disabled],
+.ProgressBarControl[status=disabled]
+{
+	-nexa-border : 1px solid #e6e6e6;
+	background : #f9f9f9;
+	color : #a9a9a9;
+}
+.ProgressBar .progressbaritem,
+.ProgressBarControl .progressbaritem
+{
+	background : #2f59bf;
+}
+.ProgressBar .progressbaritem[status=disabled],
+.ProgressBarControl .progressbaritem[status=disabled]
+{
+	background : #e1e7f5;
+}
+.ProgressBar .progressbartext,
+.ProgressBarControl .progressbartext
+{
+	-nexa-padding : 0px 8px ;
+	color : #ffffff;
+}
+.ProgressBar .progressbartext[status=disabled],
+.ProgressBarControl .progressbartext[status=disabled]
+{
+	color : #a9a9a9;
+}
+/*************** Menu ***************/
+.Menu
+{
+	background : #002795;
+}
+.Menu[status=disabled]
+{
+	background : #f9f9f9;
+}
+.Menu .menuitem
+{
+	color : #ccdaff;
+	-nexa-padding : 0px 15px;
+}
+.Menu .menuitem[status=disabled]
+{
+	color : #a9a9a9;
+}
+.Menu .menuitem[status=mouseover],
+.Menu .menuitem[userstatus=selected]
+{
+	color : #ffffff;
+}
+/*************** PopupMenu/PopupMenuControl ***************/
+.PopupMenu,
+.PopupMenuControl
+{
+	-nexa-border : 1px solid #acacac;
+	background : #ffffff;
+}
+.PopupMenu .popupmenuitem,
+.PopupMenuControl .popupmenuitem
+{
+	-nexa-padding : 8px;
+}
+.PopupMenu .popupmenuitem[status=mouseover],
+.PopupMenuControl .popupmenuitem[status=mouseover]
+{
+	background : #f7f7f7;
+}
+.PopupMenu .popupmenuitem[userstatus=selected],
+.PopupMenuControl .popupmenuitem[userstatus=selected]
+{
+	background : #e0e6f5;
+}
+.PopupMenu .popupmenuitem[status=disabled],
+.PopupMenuControl .popupmenuitem[status=disabled]
+{
+	color : #a9a9a9;	
+}
+.PopupMenu .popupmenuitem .popupmenuitemcheckbox,
+.PopupMenuControl .popupmenuitem .popupmenuitemcheckbox
+{
+	-nexa-icon : url('theme://images/mnu_WF_ChkIcon.png');	
+}
+.PopupMenu .popupmenuitem .popupmenuitemexpandimage,
+.PopupMenuControl .popupmenuitem .popupmenuitemexpandimage
+{
+	-nexa-icon : url('theme://images/mnu_WF_Expand.png');	
+}
+.PopupMenu .popupmenuitem .popupmenuitemhotkeytext,
+.PopupMenuControl .popupmenuitem .popupmenuitemhotkeytext
+{
+	font : -nexa-define(--Default11px);
+	-nexa-padding : 0px 0px 0px 3px;
+}
+.PopupMenu .popupmenuitem .popupmenuitemtext,
+.PopupMenuControl .popupmenuitem .popupmenuitemtext
+{
+	-nexa-padding : 0px 10px ;
+}
+
+/* ===== Static (제목, 라벨) ===== */
+.Static.title {
+    color: #191F28;
+    font: bold 24px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: left;
+}
+
+.Static.subtitle {
+    color: #4E5968;
+    font: 600 18px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: left;
+}
+
+.Static.label {
+    color: #191F28;
+    font: 500 16px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: left;
+}
+
+.Static.caption {
+    color: #6B7684;
+    font: normal 14px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: left;
+}
+
+/* ===== Price Display (가격 표시) ===== */
+.Static.price {
+    color: #191F28;
+    font: bold 28px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: right;
+}
+
+.Static.price_large {
+    color: #0064FF;
+    font: bold 36px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-text-align: right;
+}
+
+/* ===== Edit (입력 필드) ===== */
+.Edit.input {
+    background: #FFFFFF;
+    color: #191F28;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 12px;
+    font: normal 16px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 14px 16px;
+}
+
+.Edit.input[status=focused] {
+    -nexa-border: 2px solid #0064FF;
+    background: #FFFFFF;
+}
+
+.Edit.input[status=disabled] {
+    background: #F9FAFB;
+    color: #9EA4AA;
+}
+
+/* ===== Div (카드, 패널) ===== */
+.Div.card {
+    background: #FFFFFF;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 16px;
+}
+
+.Div.card_selected {
+    background: #EBF4FF;
+    -nexa-border: 2px solid #0064FF;
+    border-radius: 16px;
+}
+
+/* ===== Static으로 카드 배경 만들기 ===== */
+.Static.card_bg {
+    background: #FFFFFF;
+    -nexa-border: 1px solid #E5E8EB;
+    border-radius: 16px;
+    -nexa-padding: 20px;
+}
+
+.Static.card_bg_selected {
+    background: #EBF4FF;
+    -nexa-border: 2px solid #0064FF;
+    border-radius: 16px;
+    -nexa-padding: 20px;
+}
+
+/* ===== Tab (메뉴 카테고리 탭) ===== */
+.Tab.category {
+    background: #FFFFFF;
+    -nexa-border: 0px none;
+}
+
+.Tab.category .tabbuttonitem {
+    background: #F9FAFB;
+    color: #6B7684;
+    -nexa-border: 0px none;
+    border-radius: 8px;
+    font: 500 15px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 12px 20px;
+}
+
+.Tab.category .tabbuttonitem[status=mouseover] {
+    background: #E5E8EB;
+}
+
+.Tab.category .tabbuttonitem[userstatus=selected] {
+    background: #0064FF;
+    color: #FFFFFF;
+    font: 600 15px "Pretendard", "Noto Sans KR", sans-serif;
+}
+
+.Tab.category .tabpage {
+    background: #FFFFFF;
+}
+
+.Tab.category .nextbutton {
+    background: #F9FAFB;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+.Tab.category .prevbutton {
+    background: #F9FAFB;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+/* ===== Badge (수량, 알림) ===== */
+.Static.badge {
+    background: #FF3B30;
+    color: #FFFFFF;
+    border-radius: 12px;
+    font: bold 12px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 4px 8px;
+    -nexa-text-align: center;
+}
+
+.Static.badge_blue {
+    background: #0064FF;
+    color: #FFFFFF;
+    border-radius: 12px;
+    font: bold 12px "Pretendard", "Noto Sans KR", sans-serif;
+    -nexa-padding: 4px 8px;
+    -nexa-text-align: center;
+}
+
+.Div.logo
+{
+	background : url('theme://images/pos_Logo.png');
+	-nexa-border : 0px none;
+}
+
+.Button.btn_ProdStateY
+{
+	background  : url('theme://images/btn_proStateY.png');
+	-nexa-border : 0px none;
+}
+
+.Button.btn_category_blue
+{
+    background: #3182F6;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 18px 16px;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Button.btn_category_blue[status=disabled]
+{
+    background: #91B8FA;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.Button.btn_category_blue[status=focused]
+{
+    background: #2563EB;
+}
+
+.Button.btn_category_blue[status=mouseover]
+{
+    background: #2563EB;
+}
+
+.Button.btn_category_blue[userstatus=pushed]
+{
+    background: #1B64DA;
+}
+
+.Button.btn_category_blue[userstatus=selected]
+{
+    background: #1B64DA;
+    -nexa-border: 2px solid #1A56C8;
+}
+
+
+.Button.btn_category_green
+{
+    background: #0FB58C;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 18px 16px;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Button.btn_category_green[status=disabled]
+{
+    background: #7DD4C1;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.Button.btn_category_green[status=focused]
+{
+    background: #0D9B75;
+}
+
+.Button.btn_category_green[status=mouseover]
+{
+    background: #0D9B75;
+}
+
+.Button.btn_category_green[userstatus=pushed]
+{
+    background: #0B8165;
+}
+
+.Button.btn_category_green[userstatus=selected]
+{
+    background: #0B8165;
+    -nexa-border: 2px solid #096B55;
+}
+
+.Button.btn_category_purple
+{
+    background: #8B5CF6;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 18px 16px;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Button.btn_category_purple[status=disabled]
+{
+    background: #C4A5FA;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.Button.btn_category_purple[status=focused]
+{
+    background: #7C3AED;
+}
+
+.Button.btn_category_purple[status=mouseover]
+{
+    background: #7C3AED;
+}
+
+.Button.btn_category_purple[userstatus=pushed]
+{
+    background: #6D28D9;
+}
+
+.Button.btn_category_purple[userstatus=selected]
+{
+    background: #6D28D9;
+    -nexa-border: 2px solid #5B21B6;
+}
+
+.Button.btn_category_orange
+{
+    background: #FF8A3C;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 18px 16px;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Button.btn_category_orange[status=disabled]
+{
+    background: #FFC49D;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.Button.btn_category_orange[status=focused]
+{
+    background: #FF7324;
+}
+
+.Button.btn_category_orange[status=mouseover]
+{
+    background: #FF7324;
+}
+
+.Button.btn_category_orange[userstatus=pushed]
+{
+    background: #F56B1A;
+}
+
+.Button.btn_category_orange[userstatus=selected]
+{
+    background: #F56B1A;
+    -nexa-border: 2px solid #E55F10;
+}
+
+.Button.btn_category_pink
+{
+    background: #F472B6;
+    border-radius: 10px;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 18px 16px;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Button.btn_category_pink[status=disabled]
+{
+    background: #FAB8DA;
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.Button.btn_category_pink[status=focused]
+{
+    background: #EC4899;
+}
+
+.Button.btn_category_pink[status=mouseover]
+{
+    background: #EC4899;
+}
+
+.Button.btn_category_pink[userstatus=pushed]
+{
+    background: #DB2777;
+}
+
+.Button.btn_category_pink[userstatus=selected]
+{
+    background: #DB2777;
+    -nexa-border: 2px solid #BE185D;
+}
+
+.Button.btn_text[userstatus=selected]
+{
+    background: #F2F4F6;
+}
+
+/* 카테고리/칩 버튼 (Chip) */
+.Button.btn_chip
+{
+    background: #F2F4F6;
+    border-radius: 20px;
+    color: #4E5968;
+    cursor: pointer;
+    font: 500 14px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-padding: 8px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_chip[status=disabled]
+{
+    background: #F2F4F6;
+    color: #D1D6DB;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_chip[status=focused]
+{
+    background: #E5E8EB;
+}
+
+.Button.btn_chip[status=mouseover]
+{
+    background: #E5E8EB;
+}
+
+.Button.btn_chip[userstatus=pushed]
+{
+    background: #D1D6DB;
+}
+
+.Button.btn_chip[userstatus=selected]
+{
+    background: #191F28;
+    color: #FFFFFF;
+}
+
+/* 기본 그리드 - 외곽 테두리 */
+.Grid.grd_default
+{
+    background: #FFFFFF;
+    border-radius: 8px;
+    color: #191F28;
+    cursor: default;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #2563EB;
+}
+
+.Grid.grd_default[status=disabled]
+{
+    background: #F2F4F6;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.Grid.grd_default[status=mouseover]
+{
+    opacity: 1;
+}
+
+.Grid.grd_default[status=focused]
+{
+    opacity: 1;
+}
+
+.Grid.grd_default[status=readonly]
+{
+    background: #F9FAFB;
+    color: #6C757D;
+    cursor: default;
+    opacity: 1;
+}
+
+/* 헤더 셀 - 파란색 */
+.Grid.grd_default .head .row .cell
+{
+    background: #3182F6;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 1px solid #2563EB;
+}
+
+.Grid.grd_default .head .row .cell[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.Grid.grd_default .head .row .cell[status=mouseover]
+{
+    background: #2563EB;
+    opacity: 1;
+}
+
+.Grid.grd_default .head .row .cell[status=focused]
+{
+    background: #1B64DA;
+    opacity: 1;
+}
+
+.Grid.grd_default .head .row .cell[status=readonly]
+{
+    background: #3182F6;
+    color: #E0EDFF;
+    opacity: 0.8;
+}
+
+/* 바디 셀 - 기본 */
+.Grid.grd_default .body .row .cell
+{
+    background: #FFFFFF;
+    color: #191F28;
+    cursor: default;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+.Grid.grd_default .body .row .cell[status=disabled]
+{
+    background: #F9FAFB;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+.Grid.grd_default .body .row .cell[status=mouseover]
+{
+    background: #F9FAFB;
+    opacity: 1;
+}
+
+.Grid.grd_default .body .row .cell[status=focused]
+{
+    background: #E8F3FF;
+    color: #1B64DA;
+    opacity: 1;
+}
+
+.Grid.grd_default .body .row .cell[status=readonly]
+{
+    background: #F9FAFB;
+    color: #6C757D;
+    cursor: default;
+    opacity: 1;
+}
+
+/* 선택된 행 - 파란색 배경 */
+.Grid.grd_default .body .row[userstatus=selected] .cell
+{
+    background: #E8F3FF;
+    color: #1B64DA;
+    font: 500 14px "Pretendard", sans-serif;
+    opacity: 1;
+}
+
+.Grid.grd_default .body .row[userstatus=selected] .cell[status=mouseover]
+{
+    background: #D4E9FF;
+    opacity: 1;
+}
+
+.Grid.grd_default .body .row[userstatus=selected] .cell[status=focused]
+{
+    background: #D4E9FF;
+    opacity: 1;
+}
+
+/* 좌측 프레임 그리드 */
+.Grid.grd_leftFrame
+{
+    background: #FFFFFF;
+    color: #191F28;
+    font: 600 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+}
+
+/* 헤더 셀 */
+.Grid.grd_leftFrame .head .row .cell
+{
+    background: #3182F6;
+    color: #FFFFFF;
+    font: 600 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    -nexa-border: 1px solid #2563EB;
+}
+
+/* 바디 셀 - 기본 */
+.Grid.grd_leftFrame .body .row .cell
+{
+    background: #FFFFFF;
+    color: #191F28;
+    font: 600 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+/* 마우스 올렸을 때 */
+.Grid.grd_leftFrame .body .row .cell[status=mouseover]
+{
+    background: #E8F3FF;
+}
+
+/* 선택된 행 - 파란색 배경 */
+.Grid.grd_leftFrame .body .row[userstatus=selected] .cell
+{
+    background: #3182F6;
+    color: #FFFFFF;
+    font: 600 14px "Pretendard", sans-serif;
+}
+
+/* 선택된 행에 마우스 올렸을 때 */
+.Grid.grd_leftFrame .body .row[userstatus=selected] .cell[status=mouseover]
+{
+    background: #2563EB;
+}
+
+/* 기본 Div - 토스 스타일 카드 */
+.Div.div_default
+{
+    background: #FFFFFF;
+    border-radius: 12px;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+.Div.div_default[status=disabled]
+{
+    background: #F2F4F6;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+/* 기본 Static - 본문 텍스트 */
+.Static.sta_default
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_default[status=disabled]
+{
+    background: transparent;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+/* 기본 Static - 본문 텍스트 (오른쪽 정렬) */
+.Static.sta_defaultRight
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: right;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_defaultRight[status=disabled]
+{
+    background: transparent;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+/* 제목 Static - 큰 텍스트 */
+.Static.sta_title
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 600 20px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_title[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 제목 Static - 큰 텍스트 (오른쪽 정렬) */
+.Static.sta_titleRight
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 600 20px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-text-align: right;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_titleRight[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+
+
+/* 서브 제목 */
+.Static.sta_subtitle
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 600 17px "Pretendard", sans-serif;
+    letter-spacing: -0.4px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_subtitle[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 라벨 Static */
+.Static.sta_label
+{
+    background: transparent;
+    color: #4E5968;
+    cursor: default;
+    font: 500 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_label[status=disabled]
+{
+    color: #CED4DA;
+    opacity: 0.6;
+}
+
+/* 설명 텍스트 - 작고 회색 */
+.Static.sta_description
+{
+    background: transparent;
+    color: #6C757D;
+    cursor: default;
+    font: 400 13px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_description[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.5;
+}
+
+/* 캡션 - 가장 작은 텍스트 */
+.Static.sta_caption
+{
+    background: transparent;
+    color: #8B95A1;
+    cursor: default;
+    font: 400 12px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_caption[status=disabled]
+{
+    color: #CED4DA;
+    opacity: 0.5;
+}
+
+/* 강조 텍스트 - 파란색 */
+.Static.sta_primary
+{
+    background: transparent;
+    color: #3182F6;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_primary[status=disabled]
+{
+    color: #91B8FA;
+    opacity: 0.6;
+}
+
+/* 에러 텍스트 */
+.Static.sta_error
+{
+    background: transparent;
+    color: #F04438;
+    cursor: default;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_error[status=disabled]
+{
+    color: #F89B95;
+    opacity: 0.6;
+}
+
+/* 성공 텍스트 */
+.Static.sta_success
+{
+    background: transparent;
+    color: #17B26A;
+    cursor: default;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_success[status=disabled]
+{
+    color: #8DD9AF;
+    opacity: 0.6;
+}
+
+/* 경고 텍스트 */
+.Static.sta_warning
+{
+    background: transparent;
+    color: #DC6803;
+    cursor: default;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_warning[status=disabled]
+{
+    color: #FDB022;
+    opacity: 0.6;
+}
+
+/* 링크 스타일 텍스트 */
+.Static.sta_link
+{
+    background: transparent;
+    color: #3182F6;
+    cursor: pointer;
+    font: 500 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-text-decoration: underline;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_link[status=disabled]
+{
+    color: #91B8FA;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-text-decoration: none;
+}
+
+/* 배지 스타일 - 배경 있음 */
+.Static.sta_badge
+{
+    background: #E8F3FF;
+    border-radius: 16px;
+    color: #1B64DA;
+    cursor: default;
+    font: 600 13px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-padding: 4px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_badge[status=disabled]
+{
+    background: #F2F4F6;
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 중요 배지 - 빨간색 */
+.Static.sta_badge_danger
+{
+    background: #FEF3F2;
+    border-radius: 16px;
+    color: #D92D20;
+    cursor: default;
+    font: 600 13px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-padding: 4px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_badge_danger[status=disabled]
+{
+    background: #F2F4F6;
+    color: #F89B95;
+    opacity: 0.6;
+}
+
+/* 숫자 표시 - 큰 폰트 */
+.Static.sta_number
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 700 24px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-text-align: left;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_number[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 가격 표시 */
+.Static.sta_price
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 700 20px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-text-align: right;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_price[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+/* 파란색 배경 Static - 테두리 추가 */
+.Static.sta_blue_bg
+{
+    background: #3182F6;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #1B64DA;
+    -nexa-padding: 10px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_blue_bg[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-border: 2px solid #6B9DD4;
+}
+
+
+/* 진한 파란색 배경 - 큰 사이즈 */
+.Static.sta_dark_blue_bg
+{
+    background: #1B64DA;
+    border-radius: 12px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 700 18px "Pretendard", sans-serif;
+    letter-spacing: -0.4px;
+    opacity: 1;
+    -nexa-padding: 14px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_dark_blue_bg[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    opacity: 0.6;
+}
+
+/* 파란색 배지 - 작은 사이즈 */
+.Static.sta_blue_badge
+{
+    background: #3182F6;
+    border-radius: 16px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 13px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-padding: 5px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_blue_badge[status=disabled]
+{
+    background: #D1D6DB;
+    color: #F9FAFB;
+    opacity: 0.6;
+}
+
+
+/* 기본 파란색 배경 + 테두리 */
+.Static.sta_blue_border
+{
+    background: #3182F6;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #1B64DA;
+    -nexa-padding: 10px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_blue_border[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-border: 2px solid #6B9DD4;
+}
+
+/* 연한 파란색 배경 + 테두리 */
+.Static.sta_light_blue_border
+{
+    background: #E8F3FF;
+    border-radius: 8px;
+    color: #1B64DA;
+    cursor: default;
+    font: 600 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #3182F6;
+    -nexa-padding: 8px 14px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_light_blue_border[status=disabled]
+{
+    background: #F2F4F6;
+    color: #ADB5BD;
+    opacity: 0.6;
+    -nexa-border: 2px solid #D1D6DB;
+}
+
+/* 진한 파란색 배경 + 테두리 */
+.Static.sta_dark_blue_border
+{
+    background: #1B64DA;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #1957C2;
+    -nexa-padding: 10px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_dark_blue_border[status=disabled]
+{
+    background: #6B9DD4;
+    color: #E0EDFF;
+    opacity: 0.6;
+    -nexa-border: 2px solid #4A7FB8;
+}
+
+/* 파란색 배경 Div - 테두리 있음 */
+.Div.div_blue_bg
+{
+    background: #3182F6;
+    border-radius: 8px;
+    color: #FFFFFF;
+    cursor: default;
+    font: 600 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 2px solid #1B64DA;
+}
+
+.Div.div_blue_bg[status=disabled]
+{
+    background: #91B8FA;
+    color: #E0EDFF;
+    cursor: not-allowed;
+    opacity: 0.6;
+    -nexa-border: 2px solid #6B9DD4;
+}
+
+.Div.div_blue_bg[status=mouseover]
+{
+    background: #2563EB;
+    color: #FFFFFF;
+    cursor: pointer;
+    opacity: 1;
+    -nexa-border: 2px solid #1B64DA;
+}
+
+.Div.div_blue_bg[status=focused]
+{
+    background: #1B64DA;
+    color: #FFFFFF;
+    opacity: 1;
+    -nexa-border: 2px solid #1957C2;
+}
+.Button.btn_logo
+{
+	background : url('theme://images/pos_Logo.png');
+	-nexa-border : 0px none;
+}
+
+.Button.btn_logo[userstatus=selected]
+{
+	-nexa-border : 0px none;
+}
+
+/* 입체감 강한 그림자 카드 */
+.Div.div_card_shadow
+{
+    background: #FFFFFF;
+    border-radius: 16px;
+    box-shadow: 0px 8px 24px #D1D6DB;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+}
+
+.Div.div_card_shadow[status=disabled]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 4px 12px #E5E8EB;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
+/* 연한 파란색 배경 + 그림자 */
+.Static.sta_light_blue_bg
+{
+    background: #E8F3FF;
+    border-radius: 8px;
+    box-shadow: 0px 4px 12px #B1D7FF;
+    color: #1B64DA;
+    cursor: default;
+    font: 600 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 8px 14px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_light_blue_bg[status=disabled]
+{
+    background: #F2F4F6;
+    box-shadow: 0px 2px 8px #E5E8EB;
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+/* 파란색 카드형 배경 + 그림자 */
+.Static.sta_blue_card
+{
+    background: #2563EB;
+    border-radius: 14px;
+    box-shadow: 0px 8px 24px #5B7FF5;
+    color: #FFFFFF;
+    cursor: default;
+    font: 500 16px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 16px 20px;
+    -nexa-text-align: left;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_blue_card[status=disabled]
+{
+    background: #91B8FA;
+    box-shadow: 0px 4px 12px #D4E9FF;
+    color: #E0EDFF;
+    opacity: 0.6;
+}
+
+/* 대형 버튼 (Large) - 부드러운 그림자 */
+.Button.btn_large
+{
+    background: #3182F6;
+    border-radius: 10px;
+    box-shadow: 0px 3px 10px #E0EDFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 600 18px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-padding: 18px 24px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_large[status=disabled]
+{
+    background: #E4E7EC;
+    box-shadow: 0px 2px 6px #F2F4F6;
+    color: #B0B8C1;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_large[status=focused]
+{
+    background: #1B64DA;
+    box-shadow: 0px 4px 12px #D4E9FF;
+}
+
+.Button.btn_large[status=mouseover]
+{
+    background: #1B64DA;
+    box-shadow: 0px 4px 12px #D4E9FF;
+}
+
+.Button.btn_large[userstatus=pushed]
+{
+    background: #1957C2;
+    box-shadow: 0px 2px 6px #E0EDFF;
+}
+
+.Button.btn_large[userstatus=selected]
+{
+    background: #1957C2;
+    box-shadow: 0px 2px 6px #E0EDFF;
+}
+
+/* 소형 버튼 (Small) - 부드러운 그림자 */
+.Button.btn_small
+{
+    background: #3182F6;
+    border-radius: 6px;
+    box-shadow: 0px 1px 4px #E0EDFF;
+    color: #FFFFFF;
+    cursor: pointer;
+    font: 500 14px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-padding: 10px 14px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_small[status=disabled]
+{
+    background: #E4E7EC;
+    box-shadow: 0px 1px 2px #F2F4F6;
+    color: #B0B8C1;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_small[status=focused]
+{
+    background: #1B64DA;
+    box-shadow: 0px 2px 6px #D4E9FF;
+}
+
+.Button.btn_small[status=mouseover]
+{
+    background: #1B64DA;
+    box-shadow: 0px 2px 6px #D4E9FF;
+}
+
+.Button.btn_small[userstatus=pushed]
+{
+    background: #1957C2;
+    box-shadow: 0px 1px 2px #E0EDFF;
+}
+
+.Button.btn_small[userstatus=selected]
+{
+    background: #1957C2;
+    box-shadow: 0px 1px 2px #E0EDFF;
+}
+
+/* 프라이머리 버튼 (Primary) - 연한 파란색 */
+.Button.btn_primary
+{
+    background: #E8F3FF;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px #D4E9FF;
+    color: #3182F6;
+    cursor: pointer;
+    font: 600 16px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-padding: 15px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_primary[status=disabled]
+{
+    background: #F2F4F6;
+    box-shadow: 0px 1px 4px #E5E8EB;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_primary[status=focused]
+{
+    background: #D4E9FF;
+    box-shadow: 0px 3px 10px #B1D7FF;
+    color: #1B64DA;
+}
+
+.Button.btn_primary[status=mouseover]
+{
+    background: #D4E9FF;
+    box-shadow: 0px 3px 10px #B1D7FF;
+    color: #1B64DA;
+}
+
+.Button.btn_primary[userstatus=pushed]
+{
+    background: #C0DEFF;
+    box-shadow: 0px 1px 4px #D4E9FF;
+    color: #1957C2;
+}
+
+.Button.btn_primary[userstatus=selected]
+{
+    background: #C0DEFF;
+    box-shadow: 0px 1px 4px #D4E9FF;
+    color: #1957C2;
+}
+
+/* 세컨더리 버튼 (Secondary) - 연한 회색 */
+.Button.btn_secondary
+{
+    background: #F9FAFB;
+    border-radius: 8px;
+    box-shadow: 0px 1px 4px #E5E8EB;
+    color: #4E5968;
+    cursor: pointer;
+    font: 600 16px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-padding: 15px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_secondary[status=disabled]
+{
+    background: #F2F4F6;
+    box-shadow: none;
+    color: #D1D6DB;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_secondary[status=focused]
+{
+    background: #EBEDF0;
+    box-shadow: 0px 2px 6px #D1D6DB;
+    color: #191F28;
+}
+
+.Button.btn_secondary[status=mouseover]
+{
+    background: #EBEDF0;
+    box-shadow: 0px 2px 6px #D1D6DB;
+    color: #191F28;
+}
+
+.Button.btn_secondary[userstatus=pushed]
+{
+    background: #E5E8EB;
+    box-shadow: none;
+}
+
+.Button.btn_secondary[userstatus=selected]
+{
+    background: #E5E8EB;
+    box-shadow: none;
+}
+
+/* 아웃라인 버튼 (Outline) */
+.Button.btn_outline
+{
+    background: #FFFFFF;
+    border-radius: 8px;
+    box-shadow: 0px 1px 4px #E5E8EB;
+    color: #3182F6;
+    cursor: pointer;
+    font: 600 16px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-border: 1px solid #E5E8EB;
+    -nexa-padding: 15px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_outline[status=disabled]
+{
+    background: #FFFFFF;
+    box-shadow: none;
+    color: #D1D6DB;
+    cursor: not-allowed;
+    opacity: 1;
+    -nexa-border: 1px solid #F2F4F6;
+}
+
+.Button.btn_outline[status=focused]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 2px 6px #D1D6DB;
+    color: #1B64DA;
+    -nexa-border: 1px solid #3182F6;
+}
+
+.Button.btn_outline[status=mouseover]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 2px 6px #D1D6DB;
+    color: #1B64DA;
+}
+
+.Button.btn_outline[userstatus=pushed]
+{
+    background: #F2F4F6;
+    box-shadow: none;
+}
+
+.Button.btn_outline[userstatus=selected]
+{
+    background: #E8F3FF;
+    box-shadow: 0px 1px 4px #D4E9FF;
+    color: #1B64DA;
+    -nexa-border: 1px solid #3182F6;
+}
+
+/* 위험 버튼 (Danger) - 배경 진하게, 글씨 연하게 */
+.Button.btn_danger
+{
+    background: #FEE4E2;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px #FECDCA;
+    color: #F97066;
+    cursor: pointer;
+    font: 600 16px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-padding: 15px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_danger[status=disabled]
+{
+    background: #F2F4F6;
+    box-shadow: 0px 1px 4px #E5E8EB;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_danger[status=focused]
+{
+    background: #FECDCA;
+    box-shadow: 0px 3px 10px #F89B95;
+    color: #F04438;
+}
+
+.Button.btn_danger[status=mouseover]
+{
+    background: #FECDCA;
+    box-shadow: 0px 3px 10px #F89B95;
+    color: #F04438;
+}
+
+.Button.btn_danger[userstatus=pushed]
+{
+    background: #F89B95;
+    box-shadow: 0px 1px 4px #FECDCA;
+    color: #D92D20;
+}
+
+.Button.btn_danger[userstatus=selected]
+{
+    background: #F89B95;
+    box-shadow: 0px 1px 4px #FECDCA;
+    color: #D92D20;
+}
+
+/* 성공 버튼 (Success) - 배경 진하게, 글씨 연하게 */
+.Button.btn_success
+{
+    background: #D1FADF;
+    border-radius: 8px;
+    box-shadow: 0px 2px 8px #A6F4C5;
+    color: #47CD89;
+    cursor: pointer;
+    font: 600 16px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-padding: 15px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_success[status=disabled]
+{
+    background: #F2F4F6;
+    box-shadow: 0px 1px 4px #E5E8EB;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_success[status=focused]
+{
+    background: #A6F4C5;
+    box-shadow: 0px 3px 10px #8DD9AF;
+    color: #17B26A;
+}
+
+.Button.btn_success[status=mouseover]
+{
+    background: #A6F4C5;
+    box-shadow: 0px 3px 10px #8DD9AF;
+    color: #17B26A;
+}
+
+.Button.btn_success[userstatus=pushed]
+{
+    background: #8DD9AF;
+    box-shadow: 0px 1px 4px #A6F4C5;
+    color: #099250;
+}
+
+.Button.btn_success[userstatus=selected]
+{
+    background: #8DD9AF;
+    box-shadow: 0px 1px 4px #A6F4C5;
+    color: #099250;
+}
+
+
+/* 로그인 메인 버튼 - 깔끔한 화이트 */
+.Button.btn_login
+{
+    background: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0px 1px 3px #E5E8EB;
+    color: #191F28;
+    cursor: pointer;
+    font: 500 16px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-border: 1px solid #D1D6DB;
+    -nexa-padding: 14px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_login[status=disabled]
+{
+    background: #F9FAFB;
+    box-shadow: none;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 1;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+.Button.btn_login[status=focused]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 2px 6px #D1D6DB;
+    color: #191F28;
+    -nexa-border: 1px solid #8B95A1;
+}
+
+.Button.btn_login[status=mouseover]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 2px 6px #D1D6DB;
+    color: #191F28;
+}
+
+.Button.btn_login[userstatus=pushed]
+{
+    background: #F2F4F6;
+    box-shadow: none;
+    color: #191F28;
+}
+
+/* 서브 버튼 - 아이디 찾기, 비밀번호 찾기, 회원가입 */
+.Button.btn_sub
+{
+    background: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: none;
+    color: #6C757D;
+    cursor: pointer;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-border: 1px solid #E5E8EB;
+    -nexa-padding: 10px 16px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_sub[status=disabled]
+{
+    background: #F9FAFB;
+    box-shadow: none;
+    color: #D1D6DB;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_sub[status=focused]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 1px 3px #E5E8EB;
+    color: #4E5968;
+    -nexa-border: 1px solid #ADB5BD;
+}
+
+.Button.btn_sub[status=mouseover]
+{
+    background: #F9FAFB;
+    color: #4E5968;
+}
+
+.Button.btn_sub[userstatus=pushed]
+{
+    background: #F2F4F6;
+    color: #4E5968;
+}
+
+/* 프라이머리 버튼 (강조용) - 로그인 완료 등 */
+.Button.btn_primary_clean
+{
+    background: #FFFFFF;
+    border-radius: 6px;
+    box-shadow: 0px 1px 3px #E5E8EB;
+    color: #3182F6;
+    cursor: pointer;
+    font: 600 16px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-border: 1px solid #3182F6;
+    -nexa-padding: 14px 20px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_primary_clean[status=disabled]
+{
+    background: #F9FAFB;
+    box-shadow: none;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 1;
+    -nexa-border: 1px solid #E5E8EB;
+}
+
+.Button.btn_primary_clean[status=focused]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 2px 6px #D1D6DB;
+    color: #1B64DA;
+    -nexa-border: 1px solid #1B64DA;
+}
+
+.Button.btn_primary_clean[status=mouseover]
+{
+    background: #F9FAFB;
+    box-shadow: 0px 2px 6px #D1D6DB;
+    color: #1B64DA;
+}
+
+.Button.btn_primary_clean[userstatus=pushed]
+{
+    background: #E8F3FF;
+    color: #1957C2;
+}
+
+/* 텍스트 링크 스타일 버튼 */
+.Button.btn_text
+{
+    background: transparent;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #6C757D;
+    cursor: pointer;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 8px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_text[status=disabled]
+{
+    background: transparent;
+    color: #D1D6DB;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_text[status=focused]
+{
+    background: #F9FAFB;
+    color: #4E5968;
+}
+
+.Button.btn_text[status=mouseover]
+{
+    background: #F9FAFB;
+    color: #4E5968;
+}
+
+.Button.btn_text[userstatus=pushed]
+{
+    background: #F2F4F6;
+    color: #191F28;
+}
+
+/* 텍스트만 보이는 버튼 - 테두리 없음 */
+.Button.btn_text_only
+{
+    background: transparent;
+    border-radius: 4px;
+    box-shadow: none;
+    color: #6C757D;
+    cursor: pointer;
+    font: 400 14px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-padding: 8px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+.Button.btn_text_only[status=disabled]
+{
+    background: transparent;
+    color: #D1D6DB;
+    cursor: not-allowed;
+    opacity: 1;
+}
+
+.Button.btn_text_only[status=focused]
+{
+    background: transparent;
+    color: #191F28;
+}
+
+.Button.btn_text_only[status=mouseover]
+{
+    background: transparent;
+    color: #191F28;
+}
+
+.Button.btn_text_only[userstatus=pushed]
+{
+    background: transparent;
+    color: #4E5968;
+}
+
+.ImageViewer.img_empProfile
+{
+   -nexa-border: 3px solid #AEC6CF;
+   -nexa-edge: ;
+   -nexa-padding: ;
+   -nexa-rtl-background-image: ;
+   -nexa-rtl-edge-image: ;
+   background: #E8F2F7;
+   border-radius: 100%;
+   box-shadow: 0px 4px 8px #AEC6CF;
+   color: #7B98A6;
+   cursor: pointer;
+   font: normal 12px/normal "Malgun Gothic";
+   letter-spacing: 0px;
+   opacity: 1;
+   word-spacing: 0px;
+}
+
+.Button.btn_empProfile
+{
+   -nexa-border: 0px none;
+   border-radius: 100%;
+   background : url('theme://mobile/btn_empProfile.png') ;
+}
+.Button.btn_empProfile[status=mouseover]
+{
+   -nexa-border: 0px none;
+   border-radius: 100%;
+   background : url('theme://mobile/btn_empProfile.png') ;
+}
+.Button.btn_empProfile[status=focused]
+{
+   -nexa-border: 0px none;
+   border-radius: 100%;
+   background : url('theme://mobile/btn_empProfile.png') ;
+}

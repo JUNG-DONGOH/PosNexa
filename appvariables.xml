@@ -49,7 +49,7 @@
           <Col id="MENU_GROUP">30</Col>
           <Col id="MENU_ID">3020</Col>
           <Col id="MENU_LEVEL">0</Col>
-          <Col id="MENU_NAME">메뉴등록</Col>
+          <Col id="MENU_NAME">🍴 메뉴등록</Col>
           <Col id="MENU_NAME_EN">Menu registration</Col>
           <Col id="MENU_URL">Admin::pos3020fm.xfdl</Col>
         </Row>
@@ -57,7 +57,7 @@
           <Col id="MENU_GROUP">30</Col>
           <Col id="MENU_ID">3010</Col>
           <Col id="MENU_LEVEL">0</Col>
-          <Col id="MENU_NAME">재고관리</Col>
+          <Col id="MENU_NAME">📦 재고관리</Col>
           <Col id="MENU_NAME_EN">Inventory management</Col>
           <Col id="MENU_URL">Admin::pos3010fm.xfdl</Col>
         </Row>
@@ -65,7 +65,7 @@
           <Col id="MENU_GROUP">30</Col>
           <Col id="MENU_ID">3030</Col>
           <Col id="MENU_LEVEL">0</Col>
-          <Col id="MENU_NAME">매출통계</Col>
+          <Col id="MENU_NAME">📊 매출통계</Col>
           <Col id="MENU_NAME_EN">Sales statistics</Col>
           <Col id="MENU_URL">Admin::pos3040fm.xfdl</Col>
         </Row>
@@ -73,14 +73,14 @@
           <Col id="MENU_GROUP">30</Col>
           <Col id="MENU_ID">3040</Col>
           <Col id="MENU_LEVEL">0</Col>
-          <Col id="MENU_NAME">인사관리</Col>
+          <Col id="MENU_NAME">👥 인사관리</Col>
           <Col id="MENU_NAME_EN">Human Resources Management</Col>
           <Col id="MENU_URL">Admin::pos3030fm.xfdl</Col>
         </Row>
         <Row>
           <Col id="MENU_GROUP">30</Col>
           <Col id="MENU_ID">3050</Col>
-          <Col id="MENU_NAME">시스템 설정</Col>
+          <Col id="MENU_NAME">⚙️ 시스템 설정</Col>
           <Col id="MENU_LEVEL">0</Col>
           <Col id="MENU_NAME_EN">system settings</Col>
           <Col id="MENU_URL"/>
@@ -215,8 +215,8 @@
         </Row>
         <Row>
           <Col id="MSG_ID">msg.addproduct.success</Col>
-          <Col id="MSG_TEXT">상품이 등록되었습니다.</Col>
-          <Col id="MSG_TEXT_EN"> Your product has been successfully registered.</Col>
+          <Col id="MSG_TEXT">상품이 저장 되었습니다.</Col>
+          <Col id="MSG_TEXT_EN"> The product has been saved.</Col>
           <Col id="MSG_TYPE">A</Col>
           <Col id="MSG_ICON">INF</Col>
         </Row>

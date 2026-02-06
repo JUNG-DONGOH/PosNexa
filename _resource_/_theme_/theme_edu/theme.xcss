@@ -1391,6 +1391,28 @@
     opacity: 0.6;
 }
 
+/* 기본 Static - 본문 텍스트 (오른쪽 정렬) */
+.Static.sta_defaultRight
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 400 15px "Pretendard", sans-serif;
+    letter-spacing: -0.3px;
+    opacity: 1;
+    -nexa-text-align: right;
+    -nexa-vertical-align: middle;
+}
+
+.Static.sta_defaultRight[status=disabled]
+{
+    background: transparent;
+    color: #ADB5BD;
+    cursor: not-allowed;
+    opacity: 0.6;
+}
+
+
 /* 제목 Static - 큰 텍스트 */
 .Static.sta_title
 {
@@ -1409,6 +1431,27 @@
     color: #ADB5BD;
     opacity: 0.6;
 }
+
+/* 제목 Static - 큰 텍스트 (오른쪽 정렬) */
+.Static.sta_titleRight
+{
+    background: transparent;
+    color: #191F28;
+    cursor: default;
+    font: 600 20px "Pretendard", sans-serif;
+    letter-spacing: -0.5px;
+    opacity: 1;
+    -nexa-text-align: right;
+    -nexa-vertical-align: top;
+}
+
+.Static.sta_titleRight[status=disabled]
+{
+    color: #ADB5BD;
+    opacity: 0.6;
+}
+
+
 
 /* 서브 제목 */
 .Static.sta_subtitle

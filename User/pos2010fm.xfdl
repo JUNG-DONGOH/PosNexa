@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2010fm" width="1600" height="740" titletext="New Form" background="green" onload="pos2010fm_onload">
+  <Form id="pos2010fm" width="1600" height="740" titletext="New Form" onload="pos2010fm_onload">
     <Layouts>
       <Layout height="740" mobileorientation="landscape" width="1600">
-        <Button id="btnLogout" taborder="0" text="로그아웃" left="1482" top="13" width="108" height="24" onclick="btnLogout_onclick"/>
+        <Button id="btnLogout" taborder="0" text="로그아웃" left="1482" top="3" width="108" height="45" onclick="btnLogout_onclick" cssclass="btn_login"/>
         <Button id="Button00" taborder="1" left="0" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom"/>
-        <Static id="staUser" taborder="2" top="13" width="110" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1355" border="1px solid black"/>
+        <Static id="staUser" taborder="2" top="13" width="110" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1355"/>
+        <Button id="btnNotice" taborder="3" top="13" width="24" height="24" onclick="btnNotice_onclick" cssclass="btn_TF_PushN" right="265"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

@@ -26,7 +26,7 @@
               <Band id="body">
                 <Cell text="bind:PROD_NM" displaytype="text" edittype="text"/>
                 <Cell col="1" edittype="combo" displaytype="combocontrol" combodataset="ds_category" combocodecol="CATEGORY_ID" combodatacol="CATEGORY_NAME" text="bind:CATEGORY"/>
-                <Cell col="2" text="bind:PRICE" displaytype="number" edittype="text"/>
+                <Cell col="2" text="bind:PRICE" displaytype="maskeditcontrol" edittype="mask" maskeditpostfixtext="원" maskeditformat="#,###"/>
                 <Cell col="3" cssclass="btn_ProdStateY" displaytype="imagecontrol" text="expr:SALE_STATUS == &quot;Y&quot;?&quot;theme://images/btn_proStateY.png&quot;:&quot;theme://images/btn_proStateN.png&quot;"/>
               </Band>
             </Format>
@@ -44,7 +44,7 @@
         <Static id="Static08" taborder="10" text="상품 수정일" left="73.84%" top="140" width="6.164383561643835%" height="50" cssclass="sta_light_blue_bg"/>
         <Static id="Stati14" taborder="11" text="제조사" left="740" top="189" width="5.342465753424658%" height="50" cssclass="sta_light_blue_bg"/>
         <Static id="Stati20" taborder="12" text="상품설명" left="73.84%" top="238" width="6.164383561643835%" height="150" cssclass="sta_light_blue_bg"/>
-        <MaskEdit id="msk_COST_PRICE" taborder="13" left="823" top="145" width="250" height="40" type="number" format="#,#"/>
+        <MaskEdit id="msk_COST_PRICE" taborder="13" left="823" top="145" width="250" height="40" type="number" format="#,###" postfixtext="원"/>
         <Calendar id="cal_UPDATE_DATE" taborder="14" left="1173" top="145" width="261" height="40"/>
         <TextArea id="txt_PROD_DESC" taborder="15" left="1173" top="243" height="140" right="26"/>
         <Static id="Static08_00" taborder="16" text="원산지" left="73.84%" top="189" width="6.164383561643835%" height="50" cssclass="sta_light_blue_bg" onclick="Static08_00_onclick"/>
@@ -206,30 +206,6 @@ this.fnPagingSetting = function ()
 
 
 
-/**
- * @description 상세 정보 조회 함수
-*/
-// this.fnSearchDetail = function(sProdId)
-// {
-//     var strSvcId    = "selectProductDetail";
-//     var strSvcUrl   = "SvcUrl::selectProductDetail.do";
-//     var inData      = ""; 
-//     var outData     = "ds_productDetail=ds_productDetail"; // 결과만 받으면 됨
-//     
-//     // 3. 변수값을 여기에 바로 연결 (문자열로 전송)
-//     var strArg      = "p_prodId=" + nexacro.wrapQuote(sProdId); 
-//     var callBackFnc = "fnCallback";
-//     
-//     this.gfnTransaction(strSvcId, strSvcUrl, inData, outData, strArg, callBackFnc);
-// };
-// 
-// // 팝업div 닫기버튼
-// this.PopupDiv00_btnPopupClose_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-// {
-// 	 this.PopupDiv00.closePopup();
-// };
-
-
 // 조회버튼
 this.btn_retrieve_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
@@ -344,13 +320,25 @@ this.FileDialog00_onclose = function(obj:nexacro.FileDialog,e:nexacro.FileDialog
 };
 
 /**
- * 3. 저장 버튼 클릭 (실제 서버로 파일 전송)
+ * 3. 저장 버튼 클릭 
  */
 this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var sUrl = "SvcUrl::nexa/uploadFile.do";
-	this.FileUpTransfer00.setPostData("userDir", "P03\\P031"); // 저장 경로 설정
-	this.FileUpTransfer00.upload(sUrl);
+    this.gfnClearValidation(this.ds_product);
+    this.gfnSetValidation(this.ds_product, "PROD_NM", "상품이름", "required");   
+    if (this.gfnValidation(this.ds_product, "U") == false) return;
+
+    // 사진 변경 여부 확인 (FileUpTransfer에 대기 중인 파일이 있는지 확인)
+    if (this.FileUpTransfer00.filelist.length > 0) {
+        // [사진이 있는 경우] 업로드 시작 -> 성공(onsuccess) 시점에 DB 저장 호출
+        var sUrl = "SvcUrl::nexa/uploadFile.do";
+        this.FileUpTransfer00.setPostData("userDir", "P03\\P031");
+        this.FileUpTransfer00.upload(sUrl);
+    } 
+    else {
+        // [사진이 없는 경우] 즉시 DB 저장 호출
+        this.fn_SaveProduct("save");
+    }
 };
 
 /**
@@ -358,36 +346,19 @@ this.btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
  */
 this.FileUpTransfer00_onsuccess = function(obj:nexacro.FileUpTransfer,e:nexacro.FileUpTransferEventInfo)
 {
-	// 서버 응답 데이터셋 가져오기
     var objDs = e.datasets[0];
-	
-    var sFileId   = objDs.getColumn(0, "file_id");
     var sFileName = objDs.getColumn(0, "file_name");
-    var nFileSize = objDs.getColumn(0, "file_size");
-
-    // dsFile 업데이트 (기존 파일 목록 관리용)
-    // 이미 dsFile에 해당 파일명이 있는지 확인
+	
+	// 이미 dsFile에 해당 파일명이 있는지 확인
     var nFileRow = this.dsFile.findRow("file_name", sFileName);
     if (nFileRow == -1) {
         nFileRow = this.dsFile.addRow(); // 없으면 새로 추가
     }
-    this.dsFile.setColumn(nFileRow, "file_name", sFileName);
-    this.dsFile.setColumn(nFileRow, "file_id",   sFileId);
-    this.dsFile.setColumn(nFileRow, "file_size", nFileSize);
-
-    // ds_product에 서버 파일명 저장 (주석의 핵심 기능)
-    var nProdRow = this.ds_product.rowposition;
+    var nRow = this.ds_product.rowposition;
+    this.ds_product.setColumn(nRow, "PROD_IMG", sFileName);
     
-    if (nProdRow > -1) {
-        // 중요: 반드시 String으로 형변환하여 입력 (true 방지)
-        this.ds_product.setColumn(nProdRow, "PROD_IMG", String(sFileName));
-    }
-		
-	this.ds_product.setColumn(nProdRow, "PROD_IMG", objDs.getColumn(0, "file_name"));
-		
-	// 파일명 입력 후 DB 최종 저장 실행
-	this.fn_SaveProduct("save");
-
+    // 파일 업로드 완료 후 비로소 DB 저장 실행
+    this.fn_SaveProduct("save");
 };
 
 /**
