@@ -10,8 +10,8 @@
               <TextField id="TxfId" taborder="1" labeltext="아이디" left="47" top="227" width="399" height="54" inputtype="email" usetrailingbutton="true" displaynulltext="example@naver.com"/>
               <TextField id="TxfPwd" taborder="2" labeltext="비밀번호" left="47" top="331" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
               <TextField id="TxfPwdCheck" taborder="3" labeltext="비밀번호 확인" left="47" top="395" width="399" height="54" inputtype="password" useleadingbutton="false" usetrailingbutton="false" onchanged="Div00_TextField00_00_onchanged" displaynulltext="영문+숫자 8자 이상"/>
-              <Button id="btnPwdShow" taborder="4" text="보기" left="390" top="350" width="50" height="25" onclick="Div00_btnPwdShow_onclick"/>
-              <Button id="btnPwdCheckShow" taborder="5" text="보기" left="390" top="414" width="50" height="25" onclick="Div00_btnPwdCheckShow_onclick"/>
+              <Button id="btnPwdShow" taborder="4" left="413" top="353" width="20" height="20" onclick="Div00_btnPwdShow_onclick" cssclass="btn_notvisible"/>
+              <Button id="btnPwdCheckShow" taborder="5" left="413" top="417" width="20" height="20" onclick="Div00_btnPwdCheckShow_onclick" cssclass="btn_notvisible"/>
               <TextField id="TxfName" taborder="6" labeltext="이름" left="46" top="163" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
               <Radio id="rdoRole" taborder="7" left="142" top="520" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
                 <Dataset id="innerdataset">
@@ -63,9 +63,11 @@ this.Div00_btnPwdShow_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 	
 	if(isPassword=="password"){
 		this.Div00.form.TxfPwd.inputtype="text";
+		this.Div00.form.btnPwdShow.cssclass="btn_visible";
 	}
 	else{
 		this.Div00.form.TxfPwd.inputtype="password";
+		this.Div00.form.btnPwdShow.cssclass="btn_notvisible";
 	}
 };
 
@@ -76,9 +78,11 @@ this.Div00_btnPwdCheckShow_onclick = function(obj:nexacro.Button,e:nexacro.Click
 	
 	if(isPassword=="password"){
 		this.Div00.form.TxfPwdCheck.inputtype="text";
+		this.Div00.form.btnPwdCheckShow.cssclass="btn_visible";
 	}
 	else{
 		this.Div00.form.TxfPwdCheck.inputtype="password";
+		this.Div00.form.btnPwdCheckShow.cssclass="btn_notvisible";
 	}
 };
 

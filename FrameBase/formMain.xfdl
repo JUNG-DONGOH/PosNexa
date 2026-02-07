@@ -69,7 +69,7 @@ this.fvObjTo;
 
 this.form_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
-	this.gfnFormOnLoad();
+	this.gfnFormOnLoad(obj);
 };
 
 this.form_ondrop = function(obj:nexacro.Form,e:nexacro.DragEventInfo)

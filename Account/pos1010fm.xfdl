@@ -13,7 +13,7 @@
               <Button id="moveId" taborder="4" text="ID찾기" left="102" top="410" width="75" height="53" onclick="Div00_Button01_onclick" border="0px none" cssclass="btn_text_only"/>
               <Button id="movePassword" taborder="5" text="비밀번호 찾기" left="197" top="410" width="110" height="53" onclick="Div00_Button01_00_onclick" border="0px none" cssclass="btn_text_only"/>
               <Button id="Button01_00_00" taborder="6" text="회원가입" left="327" top="410" width="75" height="53" onclick="Div00_Button01_00_00_onclick" border="0px none" cssclass="btn_text_only"/>
-              <Button id="Button02" taborder="7" text="보기" left="389" top="232" width="50" height="25" onclick="Div00_Button02_onclick"/>
+              <Button id="Button02" taborder="7" left="417" top="235" width="20" height="20" onclick="Div00_Button02_onclick" cssclass="btn_notvisible"/>
               <Static id="Static01" taborder="8" text="SNS로그인" left="215" top="478" width="110" height="32"/>
               <WebView id="naverLogin" taborder="9" left="187" top="520" width="200" height="80" url="http://172.10.14.136:8088/edupack_egov/external/p03/p031APIExamNaverLogin.html"/>
               <Div id="Div01" taborder="10" left="161" top="59" width="170" height="52" cssclass="logo"/>
@@ -46,9 +46,11 @@ this.Div00_Button02_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
 	
 	if(isPassword=="password"){
 		this.Div00.form.TxfPwd.inputtype="text";
+		this.Div00.form.Button02.cssclass="btn_visible";
 	}
 	else{
 		this.Div00.form.TxfPwd.inputtype="password";
+		this.Div00.form.Button02.cssclass="btn_notvisible";
 	}
 
 };

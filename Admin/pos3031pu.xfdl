@@ -126,17 +126,28 @@ this.fn_searchWorkLog = function()
 
 this.fnCallback = function(svcId, errCode, errMsg)
 {
-    if (svcId == "svcWorkLog") {
+	if (errCode < 0) return;
+
+	else if (svcId == "save" || svcId == "delete") {
+        // 1. 먼저 알림창을 띄우고, 확인 버튼을 누르면 팝업을 닫도록 콜백(fnSaveMsgCallback)을 연결합니다.
+        this.gfnAlert("msg.save.success", "", "saveSuccess", "fnSaveMsgCallback");
+    }
+	
+    else if (svcId == "svcWorkLog") {
         this.fn_recalculateAll();
     }
-	if (svcId == "save"){
-		//저장되었습니다.
-		this.gfnAlert("msg.save.success");	
-	}
+	
 	else if(svcId == "delete") {
         // 삭제 트랜잭션 성공 시 발생
        this.gfnAlert("msg.delete.success");
 	}
+};
+
+this.fnSaveMsgCallback = function(sId, bRtn)
+{
+    if (sId == "saveSuccess") {
+        this.close("save");
+    }
 };
 
 /**
@@ -187,9 +198,6 @@ this.fn_recalculateAll = function()
     // 데이터셋 업데이트
     this.ds_emp_pop.setColumn(0, "total_hours", nTotalHours);
     this.ds_emp_pop.setColumn(0, "total_salary", nFinalSalary);
-	
-	// 데이터셋의 변경사항을 컴포넌트들에 즉시 반영
-    this.ds_emp_pop.applyChange();
 };
 
 // 일한 시간 row 추가

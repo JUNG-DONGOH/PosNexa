@@ -2600,6 +2600,37 @@
    border-radius: 100%;
    background : url('theme://mobile/btn_empProfile.png') ;
 }
+.Button.btn_visible
+{
+	background  : url('theme://images/btn_visible.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_visible[status=focused]
+{
+	background  : url('theme://images/btn_visible.png');
+	-nexa-border : 0px none;
+}
+
+.Button.btn_visible[status=mouseover]
+{
+	background  : url('theme://images/btn_visible.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_notvisible
+{
+	background  : url('theme://images/btn_notvisible.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_notvisible[status=mouseover]
+{
+	background  : url('theme://images/btn_notvisible.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_notvisible[status=focused]
+{
+	background  : url('theme://images/btn_notvisible.png');
+	-nexa-border : 0px none;
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[/*************** Form ***************/
 .Form
