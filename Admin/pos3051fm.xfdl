@@ -22,6 +22,7 @@
       </Dataset>
     </Objects>
     <Script type="xscript5.1"><![CDATA[this.fv_selectedTable = null; // 현재 마우스로 클릭해서 선택한 테이블 객체
+this.fvApp = nexacro.getApplication();
 
 // 폼 로드 시: DB에 저장된 기존 배치를 불러오기
 this.pos3051fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
@@ -35,13 +36,12 @@ this.pos3051fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 this.fn_search = function()
 {
     var sSvcId    = "searchLayout";
-    var sUrl      = "SvcUrl::pos/searchTableLayout.do"; // 컨트롤러RequestMapping과 일치
+    var sUrl      = "SvcUrl::pos/searchTableLayout.do";
     var inData    = ""; 
     var outData   = "ds_table=ds_table";
     var sArg      = "";
     var sCallback = "fnCallback";
     
-    // 공통 트랜잭션 함수 호출
     this.gfnTransaction(sSvcId, sUrl, inData, outData, sArg, sCallback);
 };
 
@@ -57,6 +57,8 @@ this.fnCallback = function(svcId, errCode, errMsg)
     } 
     else if (svcId == "saveLayout") {
           this.gfnAlert("msg.save.success");
+		  // 저장을 하면 즉각적으로 user화면에서도 조회되게끔 설정
+		  this.fvApp.fvFrameUser.form.fn_searchTable();
     }
 };
 
@@ -260,7 +262,7 @@ this.pos3051fm_ondrop = function(obj:nexacro.Form,e:nexacro.DragEventInfo)
 // 초기화 버튼
 this.btn_reset_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var sMsgId = "msg.reset"; // "초기화 하기겠습니까?" 메시지 ID
+	var sMsgId = "msg.reset"; // "초기화 하시겠습니까?" 메시지 ID
     var arrArg = ""; 
     var sPopId = "popResetConfirm"; // 콜백에서 구분할 ID
     var sCallback = "fn_msgCallback"; // 콜백 함수명
