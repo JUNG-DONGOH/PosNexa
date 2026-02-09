@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos2021ly" width="230" height="200" titletext="New Form" border="1px solid black" borderRadius="10px" onload="pos2021ly_onload">
+    <Layouts>
+      <Layout height="200" width="230">
+        <Static id="staProName" taborder="0" text="메뉴이름" left="8" top="6" width="152" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;,&quot;맑은 고딕&quot;"/>
+        <Static id="Static00" taborder="2" text="Static00" left="123" top="6" width="97" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;" textAlign="right"/>
+        <ImageViewer id="ImageViewer00" taborder="1" left="0" top="34" width="228" height="164" borderRadius="0px 0px 10px 10px"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="ImageViewer00" propid="image" datasetid="gdsProductMenu" columnid="PROD_IMG"/>
+      <BindItem id="item1" compid="staProName" propid="text" datasetid="gdsProductMenu" columnid="PROD_NM"/>
+      <BindItem id="item3" compid="Static00" propid="text" datasetid="gdsProductMenu" columnid="PRICE"/>
+    </Bind>
+    <Script type="xscript5.1"><![CDATA[
+this.pos2021ly_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	var pDiv = this.parent; // 나를 감싸고 있는 objDiv를 참조
+    
+    this.staProName.text=pDiv.u_prod_nm;
+	
+	var nPrice = nexacro.toNumber(pDiv.u_price);
+	this.Static00.text=nPrice.toLocaleString() + "원";
+    
+    // 이미지 파일명만 있다면 경로와 조합해서 설정
+	var sFullUrl = this.gfnGetServerUrl() + "upload/P03/P031/";
+    this.ImageViewer00.image= sFullUrl + pDiv.u_prod_img;
+	
+
+};
+]]></Script>
+  </Form>
+</FDL>

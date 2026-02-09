@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos2030fm" width="400" height="765" titletext="New Form">
+    <Layouts>
+      <Layout height="765" mobileorientation="landscape" width="400">
+        <Static id="Static01_03_01_03_00_00" taborder="0" text="장바구니 화면" left="55" top="300" width="290" height="130" cssclass="sta_number"/>
+      </Layout>
+    </Layouts>
+  </Form>
+</FDL>
