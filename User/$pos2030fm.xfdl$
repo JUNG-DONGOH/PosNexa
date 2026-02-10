@@ -12,15 +12,16 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="btn_all" taborder="1" text="결제" top="637" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_all_onclick"/>
+        <Button id="btn_pay" taborder="1" text="결제" top="637" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_pay_onclick"/>
         <Button id="btn_all00" taborder="2" text="영수증 조회" top="700" width="170" height="51" cssclass="btn_outline" right="204" fittocontents="none" onclick="btn_all_onclick"/>
-        <Button id="btn_all00_00" taborder="3" text="전체 취소" top="700" width="170" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_all_onclick"/>
+        <Button id="btnAllDelete" taborder="3" text="전체 취소" top="700" width="170" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btnAllDelete_onclick"/>
       </Layout>
     </Layouts>
-    <Script type="xscript5.1"><![CDATA[this.fn_drawCartList = function()
+    <Script type="xscript5.1"><![CDATA[this.fvApp=nexacro.getApplication();
+this.fn_drawCartList = function(bIsNew) // 새로 생긴건지 아닌지
 {
-    var dsCart = nexacro.getApplication().gdsCart; // 전역 데이터셋 참조
-    var sCurrentTable = nexacro.getApplication().gvSelectedTableId;
+    var dsCart = this.fvApp.gdsCart; // 전역 데이터셋 참조
+    var sCurrentTable = this.fvApp.gvSelectedTableId;
 
     // 현재 테이블 주문건만 필터링
     dsCart.filter("TABLE_ID == '" + sCurrentTable + "'");
@@ -31,7 +32,6 @@
         this.divCartArea.removeChild(arrComp[i].name).destroy();
     }
 
-    // 3. 요청하신 규격 설정 ($357x113, 상하 28px)
     var nTop = 0;
     var nWidth = 357;
     var nHeight = 113;
@@ -40,27 +40,59 @@
     for (var i = 0; i < dsCart.rowcount; i++) {
         var sId = "div_cart_item_" + i;
         var curTop = nTop + (i * (nHeight + nGapY));
-
         // 주문 항목용 Div 생성
         var objDiv = new Div(sId, 0, curTop, nWidth, nHeight, 0, null);
         
         // 데이터 주입 (카드 폼에서 꺼내 쓸 값들)
+		objDiv.u_prod_id=dsCart.getColumn(i,"PROD_ID");
         objDiv.u_prod_nm = dsCart.getColumn(i, "PROD_NM");
         objDiv.u_count   = dsCart.getColumn(i, "COUNT");
         objDiv.u_price   = dsCart.getColumn(i, "PRICE");
 
         this.divCartArea.addChild(sId, objDiv);
         
-        // 실제 개별 주문 항목 디자인 (예: pos_cart_item.xfdl)
-        objDiv.set_url("User::pos2031ly.xfdl"); 
+        objDiv.url="User::pos2031ly.xfdl"; 
         objDiv.show();
     }
-    
-//     // 하단 총 금액 표시 (이 폼 안에 staTotalSum이 있다고 가정)
-//     var nTotal = dsCart.getSum("COUNT * PRICE");
-//     this.staTotalSum.set_text(nTotal.toLocaleString() + "원");
-    
+	
     this.divCartArea.form.resetScroll();
-};]]></Script>
+	
+	if (bIsNew) {
+        // true면 맨 아래로 가라~
+        var nMaxScroll = this.divCartArea.form.vscrollbar.max;
+        this.divCartArea.form.scrollTo(0, nMaxScroll);
+    }
+	
+	// 현재 테이블의 TOTAL_PRICE 컬럼 값만 싹 더함
+	var nFinalSum = dsCart.getSum("TOTAL_PRICE");
+
+	// 결제 버튼 텍스트 변경
+	this.btn_pay.text=nFinalSum.toLocaleString() + "원 결제하기";
+};
+
+// 전체 취소 할때 버튼 이벤트
+this.btnAllDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var dsCart = nexacro.getApplication().gdsCart;
+    var sCurrentTable = nexacro.getApplication().gvSelectedTableId;
+
+    // 데이터셋에서 현재 테이블 ID와 일치하는 데이터만 반복해서 삭제
+    for (var i = dsCart.rowcount - 1; i >= 0; i--) {
+        if (dsCart.getColumn(i, "TABLE_ID") == sCurrentTable) {
+            dsCart.deleteRow(i);
+        }
+    }
+
+    // 데이터가 삭제되었으니 화면을 다시 그려주기
+    this.fn_drawCartList();
+};
+
+
+// 결제하기
+this.btn_pay_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
+};
+]]></Script>
   </Form>
 </FDL>

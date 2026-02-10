@@ -2631,6 +2631,36 @@
 	background  : url('theme://images/btn_notvisible.png');
 	-nexa-border : 0px none;
 }
+.Button.btn_plus
+{
+	background : url('theme://images/btn_plus.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_plus[status=mouseover]
+{
+	background : url('theme://images/btn_plus.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_plus[userstatus=selected]
+{
+	background : url('theme://images/btn_plus.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_minus
+{
+	background : url('theme://images/btn_minus.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_minus[status=mouseover]
+{
+	background : url('theme://images/btn_minus.png');
+	-nexa-border : 0px none;
+}
+.Button.btn_minus[userstatus=selected]
+{
+	background : url('theme://images/btn_minus.png');
+	-nexa-border : 0px none;	
+}
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[/*************** Form ***************/
 .Form

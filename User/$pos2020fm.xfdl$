@@ -21,7 +21,7 @@
         <Button id="btn_drink" taborder="6" text="음료수" top="60" width="87" height="51" cssclass="btn_outline" fittocontents="none" onclick="btn_drink_onclick" left="428"/>
         <Button id="btn_meal" taborder="7" text="식사류" top="61" width="87" height="51" cssclass="btn_outline" fittocontents="none" onclick="btn_meal_onclick" left="234"/>
         <Static id="Static00" taborder="8" text="상하 15px 좌우 60px 4줄씩" left="610" top="50" width="269" height="54"/>
-        <Grid id="Grid00" taborder="10" left="823" top="45" width="375" height="270" binddataset="gdsCart">
+        <Grid id="Grid00" taborder="10" left="810" top="45" width="375" height="270" binddataset="gdsCart">
           <Formats>
             <Format id="default">
               <Columns>
@@ -39,18 +39,18 @@
               </Rows>
               <Band id="head">
                 <Cell text="TABLE_ID"/>
-                <Cell col="1" text="PROD_NM"/>
-                <Cell col="2" text="PROD_IMG"/>
-                <Cell col="3" text="CATEGORY"/>
+                <Cell col="1" text="PROD_ID"/>
+                <Cell col="2" text="PROD_NM"/>
+                <Cell col="3" text="PROD_IMG"/>
                 <Cell col="4" text="COUNT"/>
                 <Cell col="5" text="PRICE"/>
                 <Cell col="6" text="TOTAL_PRICE"/>
               </Band>
               <Band id="body">
                 <Cell text="bind:TABLE_ID"/>
-                <Cell col="1" text="bind:PROD_NM"/>
-                <Cell col="2" text="bind:PROD_IMG"/>
-                <Cell col="3" text="bind:CATEGORY"/>
+                <Cell col="1" text="bind:PROD_ID"/>
+                <Cell col="2" text="bind:PROD_NM"/>
+                <Cell col="3" text="bind:PROD_IMG"/>
                 <Cell col="4" text="bind:COUNT"/>
                 <Cell col="5" text="bind:PRICE"/>
                 <Cell col="6" text="bind:TOTAL_PRICE"/>
@@ -66,7 +66,7 @@ this.pos2020fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	// 전역 변수에 담긴 테이블 ID꺼내기
     var sId = this.fvApp.gvSelectedTableId;
 	
-	// 상단 테이블 몇번인지 표시
+	// 상단 테이블 몇번인지 표시	
     this.staTableName.text=sId + "번 테이블🍴 주문 관리";
 	
 	// 메뉴 데이터셋 필터 초기화 (전체 선택 상태)
@@ -117,6 +117,7 @@ this.fn_drawMenuCards = function()
 
         // Div 생성 및 배치
         var objDiv = new Div(sId, curLeft, curTop, nWidth, nHeight);
+		objDiv.u_prod_id = ds.getColumn(i, "PROD_ID");
         objDiv.u_prod_nm = ds.getColumn(i, "PROD_NM");
         objDiv.u_price   = ds.getColumn(i, "PRICE");
         objDiv.u_prod_img = ds.getColumn(i, "PROD_IMG");
@@ -175,59 +176,76 @@ this.btn_drink_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 // 주문내역 추가
 this.fn_addCart = function(sProdId, sName, nPrice)
 {
-//     var dsCart = this.fvApp.gdsCart;
-//     var sCurrentTable = this.fvApp.gvSelectedTableId; 
-// 
-//     // 현재 테이블에 동일한 메뉴가 있는지 검색
-//     var nRow = dsCart.findRowExpr("TABLE_ID == '" + sCurrentTable + "' && PROD_ID == '" + sProdId + "'");
-//     
-//     if (nRow > -1) {
-//         // 기존 항목 수량 증가
-//         var nCnt = nexacro.toNumber(dsCart.getColumn(nRow, "COUNT")) + 1;
-//         dsCart.setColumn(nRow, "COUNT", nCnt);
-//     } else {
-//         // 신규 항목 데이터 추가
-//         var nNewRow = dsCart.addRow();
-//         dsCart.setColumn(nNewRow, "TABLE_ID", sCurrentTable);
-//         dsCart.setColumn(nNewRow, "PROD_ID", sProdId);
-//         dsCart.setColumn(nNewRow, "PROD_NM", sName);
-//         dsCart.setColumn(nNewRow, "COUNT", 1);
-//         dsCart.setColumn(nNewRow, "PRICE", nPrice);
-//     }
+    var dsCart = this.fvApp.gdsCart;
+    var sCurrentTable = this.fvApp.gvSelectedTableId; 
+
+    // 현재 테이블에 동일한 메뉴가 있는지 검색
+    var nRow = dsCart.findRowExpr("TABLE_ID == '" + sCurrentTable + "' && PROD_ID == '" + sProdId + "'");
+    var bIsNew = false;
+	
+    if (nRow > -1) {
+        // 기존 항목 수량 증가
+        var nCnt = nexacro.toNumber(dsCart.getColumn(nRow, "COUNT")) + 1;
+        dsCart.setColumn(nRow, "COUNT", nCnt);
+		dsCart.setColumn(nRow, "TOTAL_PRICE", nCnt * nPrice);
+    } else {
+        // 신규 항목 데이터 추가
+		bIsNew = true;
+        var nNewRow = dsCart.addRow();
+        dsCart.setColumn(nNewRow, "TABLE_ID", sCurrentTable);
+        dsCart.setColumn(nNewRow, "PROD_ID", sProdId);
+        dsCart.setColumn(nNewRow, "PROD_NM", sName);
+        dsCart.setColumn(nNewRow, "COUNT", 1);
+        dsCart.setColumn(nNewRow, "PRICE", nPrice);
+		dsCart.setColumn(nNewRow, "TOTAL_PRICE", nPrice); // 신규 합계
+    }
+    
+    // 장바구니 화면 갱신
+    this.Div00.form.fn_drawCartList(bIsNew);
+};
+
+// 수량 변경으로 인한 화면 업데이트
+this.fn_updateCartCount = function(sProdId, nDelta)
+{
     var dsCart = this.fvApp.gdsCart;
     var sCurrentTable = this.fvApp.gvSelectedTableId;
 
-    // 현재 테이블 주문건만 필터링
-    dsCart.filter("TABLE_ID == '" + sCurrentTable + "'");
+    // 수정할 행 찾기 (현재 테이블 ID와 상품 ID 기준)
+    var nRow = dsCart.findRowExpr("TABLE_ID == '" + sCurrentTable + "' && PROD_ID == '" + sProdId + "'");
 
-   // 기존 컴포넌트 초기화
-    var arrComp = this.divCartArea.form.components;
-    for (var i = arrComp.length - 1; i >= 0; i--) {
-        this.divCartArea.removeChild(arrComp[i].name).destroy();
+    if (nRow > -1) {
+        var nCurrentCnt = nexacro.toNumber(dsCart.getColumn(nRow, "COUNT"));
+        var nNewCnt = nCurrentCnt + nDelta;
+
+        if (nNewCnt > 0) {
+            // 수량이 1 이상이면 수량만 업데이트
+            dsCart.setColumn(nRow, "COUNT", nNewCnt);
+        } else {
+            // 수량이 0이 되면 해당 행 삭제
+            dsCart.deleteRow(nRow);
+        }
+
+        // 화면 갱신 (오른쪽 주문내역 폼 다시 그리기)
+        this.Div00.form.fn_drawCartList();
     }
+};
 
-    var nTop = 0, nWidth = 357, nHeight = 113, nGapY = 28;
-
-    for (var i = 0; i < dsCart.rowcount; i++) {
-        var sId = "div_cart_item_" + i;
-        var curTop = nTop + (i * (nHeight + nGapY));
-
-        var objDiv = new Div(sId, 0, curTop, nWidth, nHeight, 0, null);
+// 해당 메뉴만 제거
+this.fn_deleteCartItem = function(sProdId)
+{
+    var dsCart = this.fvApp.gdsCart;
+    var sCurrentTable = this.fvApp.gvSelectedTableId;
+    
+    // 데이터셋에서 해당 테이블의 특정 상품 행 찾기
+    var nRow = dsCart.findRowExpr("TABLE_ID == '" + sCurrentTable + "' && PROD_ID == '" + sProdId + "'");
+    
+    if (nRow > -1) {
+		// 데이터 행 지우기
+        dsCart.deleteRow(nRow);
         
-        // [핵심] 바인딩 대신 각 Div에 개별 데이터 주입
-        objDiv.u_prod_id = dsCart.getColumn(i, "PROD_ID");
-        objDiv.u_prod_nm = dsCart.getColumn(i, "PROD_NM");
-        objDiv.u_count   = dsCart.getColumn(i, "COUNT");
-        objDiv.u_price   = dsCart.getColumn(i, "PRICE");
-
-        this.divCartArea.addChild(sId, objDiv);
-        objDiv.set_url("User::pos_cart_item.xfdl"); 
-        objDiv.show();
+		// 다시 그리기
+        this.Div00.form.fn_drawCartList();
     }
-	
-	
-    // 장바구니 화면 갱신
-    this.Div00.form.fn_drawCartList();
 };]]></Script>
   </Form>
 </FDL>
