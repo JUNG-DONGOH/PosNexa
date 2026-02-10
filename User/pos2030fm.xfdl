@@ -3,7 +3,7 @@
   <Form id="pos2030fm" width="400" height="765" titletext="New Form">
     <Layouts>
       <Layout height="765" mobileorientation="landscape" width="400">
-        <Div id="divCartArea" taborder="4" left="22" top="75" width="357" height="552" border="0px none black" borderRadius="10px" formscrollbartype="autoindicator autoindicator"/>
+        <Div id="divCartArea" taborder="3" left="22" top="75" width="357" height="552" border="0px none black" borderRadius="10px" formscrollbartype="autoindicator autoindicator"/>
         <Div id="Div00" taborder="0" left="0" top="0" width="400" height="50" background="lightskyblue">
           <Layouts>
             <Layout>
@@ -13,8 +13,7 @@
           </Layouts>
         </Div>
         <Button id="btn_pay" taborder="1" text="결제" top="637" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_pay_onclick"/>
-        <Button id="btn_all00" taborder="2" text="영수증 조회" top="700" width="170" height="51" cssclass="btn_outline" right="204" fittocontents="none" onclick="btn_all_onclick"/>
-        <Button id="btnAllDelete" taborder="3" text="전체 취소" top="700" width="170" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btnAllDelete_onclick"/>
+        <Button id="btnAllDelete" taborder="2" text="전체 취소" top="700" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btnAllDelete_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp=nexacro.getApplication();
@@ -65,9 +64,10 @@ this.fn_drawCartList = function(bIsNew) // 새로 생긴건지 아닌지
 	
 	// 현재 테이블의 TOTAL_PRICE 컬럼 값만 싹 더함
 	var nFinalSum = dsCart.getSum("TOTAL_PRICE");
+	var nFinalCountSum = dsCart.getSum("nexacro.toNumber(COUNT)");
 
 	// 결제 버튼 텍스트 변경
-	this.btn_pay.text=nFinalSum.toLocaleString() + "원 결제하기";
+	this.btn_pay.text="("+nFinalCountSum+") "+nFinalSum.toLocaleString() + "원 결제";
 };
 
 // 전체 취소 할때 버튼 이벤트

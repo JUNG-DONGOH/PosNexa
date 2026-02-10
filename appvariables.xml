@@ -1891,6 +1891,19 @@
         <Column id="TOTAL_PRICE" type="INT" size="50"/>
       </ColumnInfo>
     </Dataset>
+    <Dataset id="gdsReceiptInfo">
+      <ColumnInfo>
+        <Column id="shop_name" type="STRING" size="255"/>
+        <Column id="biz_reg_no" type="STRING" size="20"/>
+        <Column id="rep_name" type="STRING" size="50"/>
+        <Column id="rep_tel" type="STRING" size="20"/>
+        <Column id="post_code" type="STRING" size="10"/>
+        <Column id="addr_basic" type="STRING" size="255"/>
+        <Column id="addr_detail" type="STRING" size="255"/>
+        <Column id="bottom_msg" type="STRING" size="4000"/>
+        <Column id="merchant_no" type="STRING" size="50"/>
+      </ColumnInfo>
+    </Dataset>
   </Datasets>
   <Variables>
     <Variable id="gv_var1" initval="App Variable Value1"/>

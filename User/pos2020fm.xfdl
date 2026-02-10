@@ -214,12 +214,14 @@ this.fn_updateCartCount = function(sProdId, nDelta)
     var nRow = dsCart.findRowExpr("TABLE_ID == '" + sCurrentTable + "' && PROD_ID == '" + sProdId + "'");
 
     if (nRow > -1) {
+		var nPrice = nexacro.toNumber(dsCart.getColumn(nRow, "PRICE")); // 단가 가져오기
         var nCurrentCnt = nexacro.toNumber(dsCart.getColumn(nRow, "COUNT"));
         var nNewCnt = nCurrentCnt + nDelta;
 
         if (nNewCnt > 0) {
-            // 수량이 1 이상이면 수량만 업데이트
+            // 수량이 1 이상이면 수량, 총 가격 업데이트
             dsCart.setColumn(nRow, "COUNT", nNewCnt);
+			dsCart.setColumn(nRow, "TOTAL_PRICE", nNewCnt * nPrice);
         } else {
             // 수량이 0이 되면 해당 행 삭제
             dsCart.deleteRow(nRow);
