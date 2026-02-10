@@ -1,11 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2021ly" width="230" height="200" titletext="New Form" border="1px solid black" borderRadius="10px" onload="pos2021ly_onload">
+  <Form id="btnTra" width="230" height="200" titletext="New Form" border="1px solid black" borderRadius="10px" onload="pos2021ly_onload">
     <Layouts>
       <Layout height="200" width="230">
         <Static id="staProName" taborder="0" text="메뉴이름" left="8" top="6" width="152" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;,&quot;맑은 고딕&quot;"/>
         <Static id="Static00" taborder="2" text="Static00" left="123" top="6" width="97" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;" textAlign="right"/>
         <ImageViewer id="ImageViewer00" taborder="1" left="0" top="34" width="228" height="164" borderRadius="0px 0px 10px 10px"/>
+        <Button id="btnTransparency" taborder="3" left="3" top="5" width="220" height="190" border="0px none" borderRadius="10px" background="transparent" onclick="btnTransparency_onclick"/>
       </Layout>
     </Layouts>
     <Bind>
@@ -28,6 +29,16 @@ this.pos2021ly_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
     this.ImageViewer00.image= sFullUrl + pDiv.u_prod_img;
 	
 
+};
+
+// 투명 버튼을 누르면
+this.btnTransparency_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var pDiv = this.parent; // 부모 Div에 저장된 정보 참조
+    
+    // 메인 폼에 정의된 장바구니 추가 함수 호출
+    var objMainForm = this.getOwnerFrame().form;
+	objMainForm.fn_addCart(pDiv.u_prod_id, pDiv.u_prod_nm, pDiv.u_price);
 };
 ]]></Script>
   </Form>

@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos2031ly" width="357" height="113" titletext="New Form" borderRadius="10px" border="1px solid black">
+    <Layouts>
+      <Layout height="113" mobileorientation="landscape" width="357">
+        <Static id="Static00" taborder="0" text="메뉴이름" left="10" top="7" width="122" height="23"/>
+        <Static id="Static01" taborder="1" text="수량" left="70" top="70" width="30" height="37"/>
+        <Button id="Button00" taborder="2" text="-" left="25" top="73" width="30" height="30"/>
+        <Button id="Button00_00" taborder="3" text="+" left="115" top="73" width="30" height="30"/>
+        <Static id="Static00_00" taborder="4" text="가격" left="150" top="30" width="40" height="23"/>
+        <MaskEdit id="MaskEdit00" taborder="5" left="10" top="30" width="122" height="23"/>
+        <MaskEdit id="MaskEdit00_00" taborder="6" left="228" top="73" width="122" height="30"/>
+        <Static id="Static00_00_00" taborder="7" text="총 합계" left="230" top="41" width="50" height="23"/>
+      </Layout>
+    </Layouts>
+    <Bind>
+      <BindItem id="item0" compid="Static00" propid="text" datasetid="gdsCart" columnid="PROD_NM"/>
+      <BindItem id="item1" compid="MaskEdit00" propid="value" datasetid="gdsCart" columnid="PRICE"/>
+      <BindItem id="item2" compid="MaskEdit00_00" propid="value" datasetid="gdsCart" columnid="TOTAL_PRICE"/>
+      <BindItem id="item3" compid="Static01" propid="text" datasetid="gdsCart" columnid="COUNT"/>
+    </Bind>
+  </Form>
+</FDL>

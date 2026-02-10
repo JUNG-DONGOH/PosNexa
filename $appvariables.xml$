@@ -1886,7 +1886,6 @@
         <Column id="TABLE_ID" type="INT" size="100"/>
         <Column id="PROD_NM" type="STRING" size="100"/>
         <Column id="PROD_IMG" type="STRING" size="500"/>
-        <Column id="CATEGORY" type="STRING" size="50"/>
         <Column id="COUNT" type="STRING" size="500"/>
         <Column id="PRICE" type="BIGDECIMAL" size="15"/>
         <Column id="TOTAL_PRICE" type="INT" size="50"/>

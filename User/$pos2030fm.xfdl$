@@ -3,8 +3,64 @@
   <Form id="pos2030fm" width="400" height="765" titletext="New Form">
     <Layouts>
       <Layout height="765" mobileorientation="landscape" width="400">
-        <Static id="Static01_03_01_03_00_00" taborder="0" text="장바구니 화면" left="55" top="300" width="290" height="130" cssclass="sta_number"/>
+        <Div id="divCartArea" taborder="4" left="22" top="75" width="357" height="552" border="0px none black" borderRadius="10px" formscrollbartype="autoindicator autoindicator"/>
+        <Div id="Div00" taborder="0" left="0" top="0" width="400" height="50" background="lightskyblue">
+          <Layouts>
+            <Layout>
+              <Static id="Static01_03_01_03_00_00" taborder="0" text="주문 내역" left="5" top="8" width="290" height="35" cssclass="sta_number"/>
+              <Static id="Static00" taborder="1" text="357x113 상하 28px" left="210" top="8" width="120" height="35"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Button id="btn_all" taborder="1" text="결제" top="637" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_all_onclick"/>
+        <Button id="btn_all00" taborder="2" text="영수증 조회" top="700" width="170" height="51" cssclass="btn_outline" right="204" fittocontents="none" onclick="btn_all_onclick"/>
+        <Button id="btn_all00_00" taborder="3" text="전체 취소" top="700" width="170" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_all_onclick"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.fn_drawCartList = function()
+{
+    var dsCart = nexacro.getApplication().gdsCart; // 전역 데이터셋 참조
+    var sCurrentTable = nexacro.getApplication().gvSelectedTableId;
+
+    // 현재 테이블 주문건만 필터링
+    dsCart.filter("TABLE_ID == '" + sCurrentTable + "'");
+
+    // 이 폼 안에 있는 동적 생성용 Div(예: divCartArea) 초기화
+    var arrComp = this.divCartArea.form.components;
+    for (var i = arrComp.length - 1; i >= 0; i--) {
+        this.divCartArea.removeChild(arrComp[i].name).destroy();
+    }
+
+    // 3. 요청하신 규격 설정 ($357x113, 상하 28px)
+    var nTop = 0;
+    var nWidth = 357;
+    var nHeight = 113;
+    var nGapY = 28;
+
+    for (var i = 0; i < dsCart.rowcount; i++) {
+        var sId = "div_cart_item_" + i;
+        var curTop = nTop + (i * (nHeight + nGapY));
+
+        // 주문 항목용 Div 생성
+        var objDiv = new Div(sId, 0, curTop, nWidth, nHeight, 0, null);
+        
+        // 데이터 주입 (카드 폼에서 꺼내 쓸 값들)
+        objDiv.u_prod_nm = dsCart.getColumn(i, "PROD_NM");
+        objDiv.u_count   = dsCart.getColumn(i, "COUNT");
+        objDiv.u_price   = dsCart.getColumn(i, "PRICE");
+
+        this.divCartArea.addChild(sId, objDiv);
+        
+        // 실제 개별 주문 항목 디자인 (예: pos_cart_item.xfdl)
+        objDiv.set_url("User::pos2031ly.xfdl"); 
+        objDiv.show();
+    }
+    
+//     // 하단 총 금액 표시 (이 폼 안에 staTotalSum이 있다고 가정)
+//     var nTotal = dsCart.getSum("COUNT * PRICE");
+//     this.staTotalSum.set_text(nTotal.toLocaleString() + "원");
+    
+    this.divCartArea.form.resetScroll();
+};]]></Script>
   </Form>
 </FDL>

@@ -3,7 +3,7 @@
   <Form id="pos2010fm" width="1600" height="765" titletext="New Form" onload="pos2010fm_onload" background="" onactivate="pos2010fm_onactivate" ontimer="pos2010fm_ontimer" onclose="pos2010fm_onclose">
     <Layouts>
       <Layout height="765" mobileorientation="landscape" width="1600">
-        <Button id="btnLogout" taborder="0" text="로그아웃" left="1481" top="6" width="108" height="37" onclick="btnLogout_onclick" cssclass="btn_login"/>
+        <Button id="btnLogout" taborder="0" text="로그아웃" top="3" width="108" height="44" onclick="btnLogout_onclick" cssclass="btn_login" right="12"/>
         <Button id="Button00" taborder="1" left="20" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom" border="0px none"/>
         <Static id="staUser" taborder="2" top="13" width="110" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1355"/>
         <Button id="btnNotice" taborder="3" top="13" width="24" height="24" onclick="btnNotice_onclick" cssclass="btn_TF_PushN" right="257"/>
