@@ -91,7 +91,15 @@ this.btnAllDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo
 // 결제하기
 this.btn_pay_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	
+	// 현재 보고 있는 테이블 ID를 고정값으로 전달
+    var oArg = { pvTableId : this.fvApp.gvSelectedTableId }; 
+    
+    var sPopupId = "receiptPopup";
+    var sUrl = "User::pos2032pu.xfdl";
+    var sPopupCallback = "fnCallPopup";
+    var oOption = {title : "결제 및 영수증"}; 
+
+    this.gfnOpenPopup(sPopupId, sUrl, oArg, sPopupCallback, oOption);
 };
 ]]></Script>
   </Form>

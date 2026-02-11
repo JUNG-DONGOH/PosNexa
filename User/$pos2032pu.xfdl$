@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos2032pu" width="550" height="720" titletext="New Form" onload="pos2032pu_onload">
+    <Layouts>
+      <Layout height="720" width="550">
+        <Static id="staTableName" taborder="0" text="테이블 번호" left="20" top="10" width="242" height="35" cssclass="sta_number"/>
+        <Div id="Div00" taborder="1" left="19" top="57" width="513" height="138" border="1px solid black">
+          <Layouts>
+            <Layout>
+              <Static id="Static00" taborder="0" text="주문내역 및 수량" left="8" top="16" width="200" height="41"/>
+              <Static id="Static01" taborder="1" text="가격" left="303" top="16" width="200" height="41" textAlign="right"/>
+            </Layout>
+          </Layouts>
+        </Div>
+        <Static id="Static00_00" taborder="2" text="할인" left="28" top="210" width="143" height="36"/>
+        <Button id="Button00" taborder="3" text="%" left="28" top="251" width="50" height="50"/>
+        <Button id="Button01" taborder="4" text="원" left="93" top="251" width="50" height="50"/>
+        <MaskEdit id="MaskEdit00" taborder="5" left="28" top="315" width="212" height="45"/>
+        <MaskEdit id="MaskEdit00_00" taborder="6" left="280" top="315" width="237" height="45"/>
+        <Static id="Static01" taborder="7" text="할인금액" left="280" top="264" width="143" height="36"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.pos2032pu_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	// 부모가 던져준 ID를 변수에 담기
+    var sTableId = this.getOwnerFrame().pvTableId; 
+    var dsCart = nexacro.getApplication().gdsCart;
+
+    // 전달받은 ID로만 필터링
+    dsCart.filter("TABLE_ID == '" + sTableId + "'");
+
+    // 합계 금액 등을 화면에 표시
+    var nTotal = dsCart.getSum("TOTAL_PRICE");
+    //this.staTotal.set_text(nTotal.toLocaleString() + "원");
+
+    this.staTableName.text=sTableId + "번 테이블";
+};
+]]></Script>
+  </Form>
+</FDL>
