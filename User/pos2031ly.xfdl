@@ -13,7 +13,6 @@
       </Layout>
     </Layouts>
     <Bind>
-      <BindItem id="item0" compid="staName" propid="text" datasetid="gdsCart" columnid="PROD_NM"/>
       <BindItem id="item3" compid="staCount" propid="text" datasetid="gdsCart" columnid="COUNT"/>
     </Bind>
     <Script type="xscript5.1"><![CDATA[this.pos2031ly_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)

@@ -8,7 +8,6 @@
           <Layouts>
             <Layout>
               <Static id="Static01_03_01_03_00_00" taborder="0" text="주문 내역" left="5" top="8" width="290" height="35" cssclass="sta_number"/>
-              <Static id="Static00" taborder="1" text="357x113 상하 28px" left="210" top="8" width="120" height="35"/>
             </Layout>
           </Layouts>
         </Div>
