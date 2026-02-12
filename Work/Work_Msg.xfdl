@@ -3,40 +3,46 @@
   <Form id="Work_Msg" width="1280" height="720" titletext="New Form">
     <Layouts>
       <Layout height="720" width="1280">
-        <Div id="Div00" taborder="1" text="Div00" left="52" top="68" width="537" height="191" fittocontents="height" border="1px solid black">
+        <Div id="Div01" taborder="1" text="Div01" left="726" top="64" width="537" height="316" border="1px solid black" fittocontents="height">
           <Layouts>
             <Layout>
-              <Grid id="Grid00" taborder="0" left="35" top="11" width="432" binddataset="gdsMessage" autofittype="col" scrollbartype="autoindicator autoindicator" bottom="-750">
-                <Formats>
-                  <Format id="default">
-                    <Columns>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                      <Column size="80"/>
-                    </Columns>
-                    <Rows>
-                      <Row band="head" size="24"/>
-                      <Row size="24"/>
-                    </Rows>
-                    <Band id="head">
-                      <Cell text="MSG_ID"/>
-                      <Cell col="1" text="MSG_TEXT"/>
-                      <Cell col="2" text="MSG_TEXT_EN"/>
-                      <Cell col="3" text="MSG_TYPE"/>
-                      <Cell col="4" text="MSG_ICON"/>
-                    </Band>
-                    <Band id="body">
-                      <Cell text="bind:MSG_ID"/>
-                      <Cell col="1" text="bind:MSG_TEXT"/>
-                      <Cell col="2" text="bind:MSG_TEXT_EN"/>
-                      <Cell col="3" text="bind:MSG_TYPE"/>
-                      <Cell col="4" text="bind:MSG_ICON"/>
-                    </Band>
-                  </Format>
-                </Formats>
-              </Grid>
+              <Div id="Div00" taborder="0" text="Div00" left="13" top="20" width="509" height="191" fittocontents="height" border="1px solid black">
+                <Layouts>
+                  <Layout>
+                    <Grid id="Grid00" taborder="0" left="35" top="11" width="432" binddataset="gdsMessage" autofittype="col" scrollbartype="autoindicator autoindicator" bottom="-750">
+                      <Formats>
+                        <Format id="default">
+                          <Columns>
+                            <Column size="80"/>
+                            <Column size="80"/>
+                            <Column size="80"/>
+                            <Column size="80"/>
+                            <Column size="80"/>
+                          </Columns>
+                          <Rows>
+                            <Row band="head" size="24"/>
+                            <Row size="24"/>
+                          </Rows>
+                          <Band id="head">
+                            <Cell text="MSG_ID"/>
+                            <Cell col="1" text="MSG_TEXT"/>
+                            <Cell col="2" text="MSG_TEXT_EN"/>
+                            <Cell col="3" text="MSG_TYPE"/>
+                            <Cell col="4" text="MSG_ICON"/>
+                          </Band>
+                          <Band id="body">
+                            <Cell text="bind:MSG_ID"/>
+                            <Cell col="1" text="bind:MSG_TEXT"/>
+                            <Cell col="2" text="bind:MSG_TEXT_EN"/>
+                            <Cell col="3" text="bind:MSG_TYPE"/>
+                            <Cell col="4" text="bind:MSG_ICON"/>
+                          </Band>
+                        </Format>
+                      </Formats>
+                    </Grid>
+                  </Layout>
+                </Layouts>
+              </Div>
             </Layout>
           </Layouts>
         </Div>
