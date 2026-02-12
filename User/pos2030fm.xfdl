@@ -67,6 +67,13 @@ this.fn_drawCartList = function(bIsNew) // 새로 생긴건지 아닌지
 
 	// 결제 버튼 텍스트 변경
 	this.btn_pay.text="("+nFinalCountSum+") "+nFinalSum.toLocaleString() + "원 결제";
+	
+	// 데이터가 0건이면 버튼 비활성화, 1건 이상이면 활성화
+    if (nFinalCountSum > 0) {
+        this.btn_pay.enable=true;
+    } else {
+        this.btn_pay.enable=false;
+    }
 };
 
 // 전체 취소 할때 버튼 이벤트
@@ -99,6 +106,16 @@ this.btn_pay_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
     var oOption = {title : "결제 및 영수증"}; 
 
     this.gfnOpenPopup(sPopupId, sUrl, oArg, sPopupCallback, oOption);
+};
+
+// 팝업 콜백
+this.fnCallPopup = function(sId, sVal)
+{
+   if (sId == "receiptPopup") {
+        if (sVal == "cancel") {
+            this.gfnAlert("msg.payment.canceled"); 
+        }
+    }
 };
 ]]></Script>
   </Form>

@@ -117,7 +117,7 @@ this.Div00_btn_save_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventIn
     var strSvcID    = "saveReceipt";
     var strURL      = "SvcUrl::pos/saveReceiptInfo.do";
     var strInDs     = "ds_input=ds_receiptInfo:U";
-    var strOutDs    = "";
+    var strOutDs    = "gdsReceiptInfo=gdsReceiptInfo";
     var strArg      = "";
     var strCallBack = "fn_callBack";
 

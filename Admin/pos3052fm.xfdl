@@ -3,7 +3,7 @@
   <Form id="pos3052fm" width="550" height="730" titletext="New Form" background="white">
     <Layouts>
       <Layout height="730" width="550">
-        <Div id="Div02" taborder="0" left="15" top="13" width="520" height="607" cssclass="div_card_shadow" formscrollbartype="none none" formscrolltype="none" fittocontents="height">
+        <Div id="Div02" taborder="0" left="15" top="13" width="520" height="627" cssclass="div_card_shadow" formscrollbartype="none none" formscrolltype="none" fittocontents="height">
           <Layouts>
             <Layout>
               <Static id="Static01_01" taborder="0" text="---------------------------------------------------------------------------------" left="15" top="59" width="495" height="40" cssclass="sta_subtitle"/>
@@ -41,18 +41,24 @@
         <Static id="Static01_00" taborder="2" left="29" top="46" width="120" height="39" cssclass="sta_title" text="16,000원"/>
         <Static id="Static01_00_00" taborder="3" left="36" top="290" width="154" height="40" cssclass="sta_title" text="숙성 삼겹살 X 1"/>
         <Static id="Static01_00_00_00" taborder="4" left="36" top="349" width="154" height="40" cssclass="sta_title" text="합계"/>
-        <Button id="btn_print" taborder="5" text="출력" top="655" width="78" height="51" cssclass="btn_outline" onclick="Div00_btn_edit_onclick" left="193"/>
-        <Button id="btn_save" taborder="6" text="닫기" top="655" width="78" height="51" cssclass="btn_outline" onclick="Div00_btn_save_onclick" left="291"/>
+        <Button id="btn_print" taborder="5" text="출력" top="665" width="78" height="51" cssclass="btn_outline" onclick="Div00_btn_edit_onclick" left="193"/>
+        <Button id="btn_cancel" taborder="6" text="닫기" top="665" width="78" height="51" cssclass="btn_outline" left="291" onclick="btn_cancel_onclick"/>
       </Layout>
     </Layouts>
+    <Script type="xscript5.1"><![CDATA[this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.parent.parent.close("");
+};
+
+]]></Script>
     <Bind>
-      <BindItem id="item0" compid="Div02.form.Static01_02_00" propid="text" datasetid="ds_receiptInfo" columnid="rep_name"/>
-      <BindItem id="item1" compid="Div02.form.Static01_00_00_01" propid="text" datasetid="ds_receiptInfo" columnid="biz_reg_no"/>
-      <BindItem id="item2" compid="Div02.form.Static01_03_00_00" propid="text" datasetid="ds_receiptInfo" columnid="rep_tel"/>
-      <BindItem id="item3" compid="Div02.form.Static01_00_01_01_00" propid="text" datasetid="ds_receiptInfo" columnid="addr_basic"/>
-      <BindItem id="item4" compid="Div02.form.Static01_00_01_00_00_00" propid="text" datasetid="ds_receiptInfo" columnid="merchant_no"/>
-      <BindItem id="item5" compid="Div02.form.Static01_05" propid="text" datasetid="ds_receiptInfo" columnid="bottom_msg"/>
-      <BindItem id="item6" compid="Static01" propid="text" datasetid="ds_receiptInfo" columnid="shop_name"/>
+      <BindItem id="item0" compid="Static01" propid="text" datasetid="gdsReceiptInfo" columnid="shop_name"/>
+      <BindItem id="item1" compid="Div02.form.Static01_02_00" propid="text" datasetid="gdsReceiptInfo" columnid="rep_name"/>
+      <BindItem id="item2" compid="Div02.form.Static01_00_00_01" propid="text" datasetid="gdsReceiptInfo" columnid="biz_reg_no"/>
+      <BindItem id="item3" compid="Div02.form.Static01_03_00_00" propid="text" datasetid="gdsReceiptInfo" columnid="rep_tel"/>
+      <BindItem id="item4" compid="Div02.form.Static01_00_01_01_00" propid="text" datasetid="gdsReceiptInfo" columnid="addr_basic"/>
+      <BindItem id="item5" compid="Div02.form.Static01_00_01_00_00_00" propid="text" datasetid="gdsReceiptInfo" columnid="merchant_no"/>
+      <BindItem id="item6" compid="Div02.form.Static01_05" propid="text" datasetid="gdsReceiptInfo" columnid="bottom_msg"/>
     </Bind>
   </Form>
 </FDL>

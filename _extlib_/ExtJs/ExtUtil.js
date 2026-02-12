@@ -1208,6 +1208,22 @@ pForm.gfnIsTime = function(strTime)
 		return true;
 	}
 };
+/**
+ * @class 현재 날짜와 시간을 합친 14자리 문자열을 반환한다.
+ * @return {String} 14자리 일시(YYYYMMDDHHMMSS) 문자열
+ */
+pForm.gfnGetDateTime = function() 
+{
+    var d = new Date();
+    var s = d.getFullYear()
+          + ((d.getMonth() + 1) + "").padLeft(2, '0')
+          + (d.getDate() + "").padLeft(2, '0')
+          + (d.getHours() + "").padLeft(2, '0')
+          + (d.getMinutes() + "").padLeft(2, '0')
+          + (d.getSeconds() + "").padLeft(2, '0');
+    return s;
+};
+
 
 /**
  * @class 현재일자를 구한다. <br>
