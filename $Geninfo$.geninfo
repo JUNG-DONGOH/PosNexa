@@ -34,7 +34,7 @@
       <File url="Work\SamplePaging.xfdl" checksum="20260202160253" errormsg=""/>
       <File url="Cmm\CmmPaging.xfdl" checksum="20260202160253" errormsg=""/>
       <File url="Work\sort.xfdl" checksum="20260202160253" errormsg=""/>
-      <File url="Work\Work_Msg.xfdl" checksum="20260202160253" errormsg=""/>
+      <File url="Work\Work_Msg.xfdl" checksum="20260212175745" errormsg=""/>
       <File url="Work\Work_test.xfdl" checksum="20260211100634" errormsg=""/>
       <File url="Cmm\CmmAlert.xfdl" checksum="20260202160253" errormsg=""/>
       <File url="Cmm\CmmCalendarFromTo.xfdl" checksum="20260202160253" errormsg=""/>
@@ -69,7 +69,7 @@
       <File url="User\pos2030fm.xfdl" checksum="20260212100442" errormsg=""/>
       <File url="User\pos2021ly.xfdl" checksum="20260210104931" errormsg=""/>
       <File url="User\pos2031ly.xfdl" checksum="20260211181840" errormsg=""/>
-      <File url="Admin\pos3052fm.xfdl" checksum="20260212160343" errormsg="Expected identifier. : C:\Edupack24\workspace\edupack_egov\src\main\p03\project031\Admin\pos3052fm.xfdl [Line : 28]"/>
+      <File url="Admin\pos3052fm.xfdl" checksum="20260212175440" errormsg=""/>
       <File url="User\pos2032pu.xfdl" checksum="20260212154553" errormsg=""/>
     </Info>
   </GenInfo>
