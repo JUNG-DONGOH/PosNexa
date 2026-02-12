@@ -1925,6 +1925,30 @@
         <Column id="merchant_no" type="STRING" size="50"/>
       </ColumnInfo>
     </Dataset>
+    <Dataset id="gdsSalesMaster">
+      <ColumnInfo>
+        <Column id="sale_id" type="STRING" size="20"/>
+        <Column id="receipt_id" type="INT" size="11"/>
+        <Column id="table_id" type="STRING" size="10"/>
+        <Column id="sale_date" type="STRING" size="14"/>
+        <Column id="total_amt" type="BIGDECIMAL" size="16"/>
+        <Column id="discount_amt" type="BIGDECIMAL" size="16"/>
+        <Column id="pay_amt" type="BIGDECIMAL" size="16"/>
+        <Column id="pay_method" type="STRING" size="20"/>
+        <Column id="discount_type" type="STRING" size="20"/>
+      </ColumnInfo>
+    </Dataset>
+    <Dataset id="gdsSalesDetail">
+      <ColumnInfo>
+        <Column id="detail_id" type="INT" size="11"/>
+        <Column id="sale_id" type="STRING" size="20"/>
+        <Column id="prod_nm" type="STRING" size="100"/>
+        <Column id="count" type="INT" size="5"/>
+        <Column id="price" type="BIGDECIMAL" size="16"/>
+        <Column id="total_price" type="BIGDECIMAL" size="16"/>
+        <Column id="prod_id" type="INT" size="256"/>
+      </ColumnInfo>
+    </Dataset>
   </Datasets>
   <Variables>
     <Variable id="gv_var1" initval="App Variable Value1"/>
