@@ -305,6 +305,13 @@
           <Col id="MSG_ICON">INF</Col>
         </Row>
         <Row>
+          <Col id="MSG_ID">msg.print.success</Col>
+          <Col id="MSG_TEXT">출력되었습니다.</Col>
+          <Col id="MSG_TEXT_EN">It has been printed.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
           <Col id="MSG_ID">msg.call.nofile</Col>
           <Col id="MSG_TEXT">해당하는 메뉴에 Program File이 등록되지 않았습니다.</Col>
           <Col id="MSG_TEXT_EN">the requested menu does not exist!</Col>

@@ -3,7 +3,7 @@
   <Form id="pos2020fm" width="1600" height="765" titletext="New Form" onload="pos2020fm_onload">
     <Layouts>
       <Layout height="765" width="1600">
-        <Div id="divMenuArea" taborder="8" left="40" top="126" width="1100" height="624" border="1px solid black" formscrollbartype="autoindicator autoindicator">
+        <Div id="divMenuArea" taborder="8" left="40" top="126" width="1100" height="624" border="0px none black" formscrollbartype="autoindicator autoindicator">
           <Layouts>
             <Layout/>
           </Layouts>

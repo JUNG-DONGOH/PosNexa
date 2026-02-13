@@ -115,6 +115,9 @@ this.fnCallPopup = function(sId, sVal)
         if (sVal == "cancel") {
             this.gfnAlert("msg.payment.canceled"); 
         }
+		else if(sVal == "complete"){
+			this.parent.parent.go("User::pos2010fm.xfdl");
+		}
     }
 };
 ]]></Script>
