@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2011ly" width="200" height="200" titletext="New Form" borderRadius="10px" onload="pos2011ly_onload" border="1px solid black">
+  <Form id="pos2011ly" width="200" height="200" titletext="테이블 화면" borderRadius="10px" onload="pos2011ly_onload" border="1px solid black">
     <Layouts>
       <Layout height="200" mobileorientation="landscape" width="200">
         <Static id="staTableName" taborder="0" text="테이블 번호" left="8" top="6" width="113" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;,&quot;맑은 고딕&quot;"/>

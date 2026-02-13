@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formTap" width="1400" height="40" titletext="New Form" background="skyblue" onload="formTap_onload">
+  <Form id="formTap" width="1396" height="40" titletext="New Form" background="skyblue" onload="formTap_onload">
     <Layouts>
-      <Layout height="40" width="1400">
+      <Layout height="40" width="1396">
         <Tab id="tabMdi" taborder="0" tabindex="0" left="0" top="10" width="1190" height="30" cssclass="tab_MDI_Tab" onchanged="tabMdi_onchanged" showextrabutton="true" onextrabuttonclick="tabMdi_onextrabuttonclick">
           <Tabpages>
             <Tabpage id="Tabpage2" text="Tabpage2">

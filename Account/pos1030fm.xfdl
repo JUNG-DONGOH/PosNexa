@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1030fm" width="1600" height="720" titletext="New Form">
+  <Form id="pos1030fm" width="1536" height="729" titletext="비밀번호 찾기 화면">
     <Layouts>
-      <Layout height="720" width="1600">
-        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" cssclass="div_card_shadow" text="">
+      <Layout height="729" width="1536">
+        <Div id="Div00" taborder="0" left="522" top="39" width="493" height="651" cssclass="div_card_shadow" text="">
           <Layouts>
             <Layout>
               <Button id="Button00" taborder="0" text="확인" left="152" top="535" width="80" height="50" cssclass="btn_login"/>
@@ -13,11 +13,11 @@
               <TextField id="TextField00_00" taborder="4" labeltext="인증번호" left="57" top="334" width="399" height="54" inputtype="password" usetrailingbutton="false" displaynulltext="인증번호를 입력해주세요"/>
               <Static id="Static02" taborder="5" text="시간" left="389" top="356" width="62" height="25" border="1px solid black"/>
               <Div id="Div01_00" taborder="6" left="161" top="59" width="170" height="52" cssclass="logo"/>
+              <Static id="Static01_03_02" taborder="7" text="비밀번호 찾기" left="208" top="126" width="120" height="40" cssclass="sta_caption"/>
+              <Static id="Static00_00" taborder="8" left="216" top="118" width="60" height="1" border="1px solid gainsboro"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static00_00" taborder="1" left="770" top="148" width="60" height="1" border="1px solid gainsboro"/>
-        <Static id="Static01_03_02" taborder="2" text="비밀번호 찾기" left="763" top="160" width="120" height="60" cssclass="sta_caption"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[//main화면으로 이동

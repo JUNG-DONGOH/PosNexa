@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3051fm" width="1460" height="638" titletext="New Form" onload="pos3051fm_onload" ondrag="pos3051fm_ondrag" ondragmove="pos3051fm_ondragmove" ondrop="pos3051fm_ondrop" background="url('..\_resource_\_theme_\theme_edu\images\img.postable.png') repeat left top">
+  <Form id="pos3051fm" width="1460" height="638" titletext="테이블 관리화면" onload="pos3051fm_onload" ondrag="pos3051fm_ondrag" ondragmove="pos3051fm_ondragmove" ondrop="pos3051fm_ondrop" background="url('..\_resource_\_theme_\theme_edu\images\img.postable.png') repeat left top">
     <Layouts>
       <Layout height="638" mobileorientation="landscape" width="1460">
         <Button id="btn_save" taborder="0" text="저장" top="11" width="72" height="48" cssclass="btn_outline" right="23" onclick="btn_save_onclick"/>

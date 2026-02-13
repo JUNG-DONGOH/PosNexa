@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1020fm" width="1600" height="720" titletext="New Form">
+  <Form id="pos1020fm" width="1536" height="729" titletext="아이디 찾기 화면">
     <Layouts>
-      <Layout height="720" width="1600">
-        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" cssclass="div_card_shadow">
+      <Layout height="729" width="1536">
+        <Div id="Div00" taborder="0" left="522" top="39" width="493" height="651" cssclass="div_card_shadow">
           <Layouts>
             <Layout>
               <Button id="btnIdSearch" taborder="0" text="확인" left="152" top="535" width="80" height="50" onclick="Div00_btnIdSearch_onclick" cssclass="btn_login"/>
@@ -11,11 +11,11 @@
               <TextField id="TxfName" taborder="2" labeltext="이름" left="55" top="180" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
               <Div id="Div01" taborder="3" left="161" top="59" width="170" height="52" cssclass="logo"/>
               <TextField id="TxfNumber" taborder="4" labeltext="전화번호" left="55" top="254" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="전화번호를 입력하세요."/>
+              <Static id="Static00_00" taborder="5" left="216" top="118" width="60" height="1" border="1px solid gainsboro"/>
+              <Static id="Static01_03_02" taborder="6" text="아이디 찾기" left="215" top="130" width="120" height="60" cssclass="sta_caption"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static00_00" taborder="1" left="770" top="148" width="60" height="1" border="1px solid gainsboro"/>
-        <Static id="Static01_03_02" taborder="2" text="아이디 찾기" left="770" top="160" width="120" height="60" cssclass="sta_caption"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

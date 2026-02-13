@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3031pu" width="550" height="550" titletext="New Form" onload="pos3031pu_onload">
+  <Form id="pos3031pu" width="550" height="550" titletext="근무상세 관리 화면" onload="pos3031pu_onload">
     <Layouts>
       <Layout height="550" mobileorientation="landscape" width="550">
         <Static id="staName" taborder="0" text="근무자 이름+상세기록" left="21" top="11" width="310" height="26" cssclass="sta_subtitle"/>

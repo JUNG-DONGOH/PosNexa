@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos1010fm" width="1600" height="720" titletext="New Form" onload="pos1010fm_onload">
+  <Form id="pos1010fm" width="1536" height="729" titletext="로그인 화면" onload="pos1010fm_onload">
     <Layouts>
-      <Layout height="720" mobileorientation="landscape" width="1600">
-        <Div id="Div00" taborder="0" left="554" top="35" width="493" height="651" cssclass="div_card_shadow" text="">
+      <Layout height="729" mobileorientation="landscape" width="1536">
+        <Div id="Div00" taborder="0" left="522" top="39" width="493" height="651" cssclass="div_card_shadow" text="">
           <Layouts>
             <Layout>
               <TextField id="TxfId" taborder="0" labeltext="아이디" left="50" top="139" width="399" height="54" inputtype="email" usetrailingbutton="true"/>
@@ -11,18 +11,18 @@
               <CheckBox id="chkIdSave" taborder="2" left="54" top="287" width="95" height="30" text="아이디 저장"/>
               <Button id="btnLogin" taborder="3" text="로그인" left="56" top="337" width="389" height="53" onclick="Div00_btnLogin_onclick" cssclass="btn_login"/>
               <Button id="moveId" taborder="4" text="ID찾기" left="102" top="410" width="75" height="53" onclick="Div00_Button01_onclick" border="0px none" cssclass="btn_text_only"/>
-              <Button id="movePassword" taborder="5" text="비밀번호 찾기" left="197" top="410" width="110" height="53" onclick="Div00_Button01_00_onclick" border="0px none" cssclass="btn_text_only"/>
-              <Button id="Button01_00_00" taborder="6" text="회원가입" left="327" top="410" width="75" height="53" onclick="Div00_Button01_00_00_onclick" border="0px none" cssclass="btn_text_only"/>
+              <Button id="movePassword" taborder="5" text="비밀번호 찾기" left="191" top="410" width="110" height="53" onclick="Div00_Button01_00_onclick" border="0px none" cssclass="btn_text_only"/>
+              <Button id="Button01_00_00" taborder="6" text="회원가입" left="318" top="410" width="81" height="53" onclick="Div00_Button01_00_00_onclick" border="0px none" cssclass="btn_text_only"/>
               <Button id="Button02" taborder="7" left="417" top="235" width="20" height="20" onclick="Div00_Button02_onclick" cssclass="btn_notvisible"/>
               <Static id="Static01" taborder="8" text="SNS로그인" left="215" top="478" width="110" height="32"/>
-              <WebView id="naverLogin" taborder="9" left="187" top="520" width="200" height="80" url="http://172.10.14.136:8088/edupack_egov/external/p03/p031APIExamNaverLogin.html"/>
+              <WebView id="naverLogin" taborder="9" left="183" top="520" width="200" height="80" url="http://172.10.14.136:8088/edupack_egov/external/p03/p031APIExamNaverLogin.html"/>
               <Div id="Div01" taborder="10" left="161" top="59" width="170" height="52" cssclass="logo"/>
             </Layout>
           </Layouts>
         </Div>
-        <Static id="Static00_00" taborder="1" left="770" top="548" width="60" height="1" border="1px solid gainsboro"/>
-        <Static id="Static00_00_00" taborder="2" left="740" top="458" width="1" height="30" border="1px solid gainsboro"/>
-        <Static id="Static00_00_00_00" taborder="3" left="868" top="458" width="1" height="30" border="1px solid gainsboro"/>
+        <Static id="Static00_00" taborder="1" left="738" top="548" width="60" height="1" border="1px solid gainsboro"/>
+        <Static id="Static00_00_00" taborder="2" left="707" top="463" width="1" height="30" border="1px solid gainsboro"/>
+        <Static id="Static00_00_00_00" taborder="3" left="829" top="463" width="1" height="30" border="1px solid gainsboro"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();

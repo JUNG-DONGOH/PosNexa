@@ -5,7 +5,7 @@
       <Layout height="200" width="230">
         <Static id="staProName" taborder="0" text="메뉴이름" left="8" top="6" width="152" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;,&quot;맑은 고딕&quot;"/>
         <Static id="Static00" taborder="2" text="Static00" left="123" top="6" width="97" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;" textAlign="right"/>
-        <ImageViewer id="ImageViewer00" taborder="1" left="0" top="34" width="228" height="164" borderRadius="0px 0px 10px 10px"/>
+        <ImageViewer id="ImageViewer00" taborder="1" left="0" top="34" width="228" height="164" borderRadius="0px 0px 10px 10px" fittocontents="both"/>
         <Button id="btnTransparency" taborder="3" left="3" top="5" width="220" height="190" border="0px none" borderRadius="10px" background="transparent" onclick="btnTransparency_onclick"/>
       </Layout>
     </Layouts>

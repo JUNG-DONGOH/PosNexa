@@ -116,9 +116,15 @@ this.fnCallPopup = function(sId, sVal)
             this.gfnAlert("msg.payment.canceled"); 
         }
 		else if(sVal == "complete"){
-			this.parent.parent.go("User::pos2010fm.xfdl");
+			 this.getOwnerFrame().formurl="User::pos2010fm.xfdl";
 		}
     }
+};
+
+// 주문 버튼
+this.btnOrder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	
 };
 ]]></Script>
   </Form>

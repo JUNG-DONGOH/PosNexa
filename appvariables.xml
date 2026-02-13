@@ -291,6 +291,20 @@
           <Col id="MSG_ICON">INF</Col>
         </Row>
         <Row>
+          <Col id="MSG_ID">confirm.delete.receipt</Col>
+          <Col id="MSG_TEXT">선택한 매출 내역을 반품하시겠습니까?</Col>
+          <Col id="MSG_TEXT_EN">Would you like to return the selected sales details?</Col>
+          <Col id="MSG_TYPE">C</Col>
+          <Col id="MSG_ICON">CFN</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.payment.refund</Col>
+          <Col id="MSG_TEXT">정상적으로 반품 처리되었습니다.</Col>
+          <Col id="MSG_TEXT_EN">The return has been processed normally.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
           <Col id="MSG_ID">msg.reset</Col>
           <Col id="MSG_TEXT">초기화 하시겠습니까?</Col>
           <Col id="MSG_TEXT_EN"> Do you want to reset?</Col>

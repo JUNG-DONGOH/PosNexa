@@ -1,10 +1,10 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2012pu" width="550" height="730" titletext="New Form" onload="pos2012pu_onload">
+  <Form id="pos2012pu" width="550" height="730" titletext="반품처리 화면" onload="pos2012pu_onload">
     <Layouts>
       <Layout height="730" mobileorientation="landscape" width="550">
         <Button id="btnCancel" taborder="0" text="취소" width="87" height="51" cssclass="btn_outline" fittocontents="none" left="283" bottom="19" onclick="btnCancel_onclick"/>
-        <Button id="btnDelete" taborder="1" text="삭제" height="51" cssclass="btn_outline" fittocontents="none" left="180" bottom="19" onclick="btnDelete_onclick" width="87"/>
+        <Button id="btnDelete" taborder="1" text="반품" height="51" cssclass="btn_outline" fittocontents="none" left="180" bottom="19" onclick="btnDelete_onclick" width="87"/>
         <Grid id="Grid00" taborder="2" left="30" top="133" width="490" height="505" binddataset="dsSalesMaster" autofittype="col" scrollbartype="autoindicator autoindicator">
           <Formats>
             <Format id="default">
@@ -62,12 +62,6 @@ this.fn_searchMaster = function()
     // Calendar 컴포넌트에서 날짜 값 읽기
     var sStartDate = this.Div00.form.cal_start.value;
     var sEndDate   = this.Div00.form.cal_end.value;
-    
-    // 유효성 검사 (날짜가 비어있으면 진행하지 않음)
-    if(!sStartDate || !sEndDate) {
-        this.alert("조회 시작일과 종료일을 모두 선택해주세요.");
-        return;
-    }
 
     var strSvcId    = "searchSalesMaster";
     var strSvcUrl   = "SvcUrl::pos/searchSalesMaster.do";
@@ -93,7 +87,7 @@ this.fn_callback = function(svcID, errCD, errMSG)
     }
 	
 	if (svcID == "deleteSale") {
-        this.alert("정상적으로 반품(삭제) 처리되었습니다.");
+        this.gfnAlert("msg.payment.refund");
         // 삭제 후 목록을 다시 조회하거나, 현재 상태를 유지합니다.
         this.fn_searchMaster(); 
     }
@@ -102,26 +96,35 @@ this.fn_callback = function(svcID, errCD, errMSG)
 // 삭제버튼 시 매출 제거
 this.btnDelete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-var ds = this.dsSalesMaster;
-    
-    // 1. 선택된 행이 있는지 확인
-    if (ds.rowposition < 0) {
-        this.alert("삭제할 항목을 선택해주세요.");
-        return;
-    }
-    
-    // 2. 사용자 확인 (실수 방지)
-    if (!this.confirm("선택한 매출 내역을 삭제하시겠습니까?\n(관련 상세 내역도 함께 삭제됩니다)")) {
-        return;
-    }
-    
-    // 3. 데이터셋에서 행 삭제
-    // deleteRow를 하면 데이터셋 상태가 'deleted'로 변경되어 서버로 전송됩니다.
-    ds.deleteRow(ds.rowposition);
-    
-    // 4. 서버에 반영 (트랜잭션 호출)
-    this.fn_delete();
+	var ds = this.dsSalesMaster;
+
+	// 메세지
+	var sMsgId = "confirm.delete.receipt"; 
+    var sPopId = "confirmDelete"; // 콜백에서 구분할 ID를 직접 문자열로 지정
+    var sMsgCallback = "fnMsgcallback";
+
+    this.gfnAlert(sMsgId, "", sPopId, sMsgCallback);
 };
+
+/**
+ * 메시지 콜백 함수
+ */
+this.fnMsgcallback = function (id, rtn)
+{
+    // 1. 팝업 ID가 내가 보낸 게 맞는지 확인
+    if(id == "confirmDelete") {
+        if(rtn == true ) {
+            // 3. 데이터셋에서 행 삭제
+			// deleteRow를 하면 데이터셋 상태가 'deleted'로 변경되어 서버로 전송됩니다.
+			this.dsSalesMaster.deleteRow(this.dsSalesMaster.rowposition);
+    
+			// 4. 서버에 반영 (트랜잭션 호출)
+			this.fn_delete();
+        }
+    }
+};
+
+
 
 this.fn_delete = function()
 {
@@ -139,6 +142,12 @@ this.fn_delete = function()
 this.btn_findEmp_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fn_searchMaster();
+};
+
+// 취소 버튼
+this.btnCancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.close();
 };
 ]]></Script>
     <Objects>

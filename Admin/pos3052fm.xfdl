@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3052fm" width="550" height="730" titletext="New Form" background="white" onload="pos3052fm_onload" scrollbartype="none none">
+  <Form id="pos3052fm" width="550" height="730" titletext="영수증 화면" background="white" onload="pos3052fm_onload" scrollbartype="none none">
     <Layouts>
       <Layout height="730" width="550">
         <Div id="Div02" taborder="0" left="20" top="13" width="510" height="647" cssclass="div_card_shadow" formscrollbartype="none none" formscrolltype="none" fittocontents="none" text="">

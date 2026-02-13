@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3030fm" width="1460" height="638" titletext="New Form" onload="pos3030fm_onload">
+  <Form id="pos3030fm" width="1460" height="638" titletext="인사관리 화면" onload="pos3030fm_onload">
     <Layouts>
       <Layout height="638" mobileorientation="landscape" width="1460">
         <Div id="divSearch" taborder="1" left="30" top="30" width="860" height="60" cssclass="div_card_shadow" text="">
