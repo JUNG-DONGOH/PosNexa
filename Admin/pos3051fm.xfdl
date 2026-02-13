@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3051fm" width="1460" height="638" titletext="테이블 관리화면" onload="pos3051fm_onload" ondrag="pos3051fm_ondrag" ondragmove="pos3051fm_ondragmove" ondrop="pos3051fm_ondrop" background="url('..\_resource_\_theme_\theme_edu\images\img.postable.png') repeat left top">
+  <Form id="pos3051fm" width="1396" height="619" titletext="테이블 관리화면" onload="pos3051fm_onload" ondrag="pos3051fm_ondrag" ondragmove="pos3051fm_ondragmove" ondrop="pos3051fm_ondrop" background="url('..\_resource_\_theme_\theme_edu\images\img.postable.png') repeat left top">
     <Layouts>
-      <Layout height="638" mobileorientation="landscape" width="1460">
+      <Layout height="619" mobileorientation="landscape" width="1396">
         <Button id="btn_save" taborder="0" text="저장" top="11" width="72" height="48" cssclass="btn_outline" right="23" onclick="btn_save_onclick"/>
-        <MaskEdit id="edtTable" taborder="1" left="960" top="20" width="110" height="33" postfixtext="개"/>
-        <Static id="Static01_03_01" taborder="2" text="* 테이블 개수를 입력해주세요." left="960" top="65" width="196" height="30" cssclass="sta_error"/>
+        <MaskEdit id="edtTable" taborder="1" left="897" top="20" width="110" height="33" postfixtext="개"/>
+        <Static id="Static01_03_01" taborder="2" text="* 테이블 개수를 입력해주세요." left="897" top="65" width="196" height="30" cssclass="sta_error"/>
         <Button id="btn_generate" taborder="3" text="생성" top="12" width="72" height="48" cssclass="btn_outline" right="304" fittocontents="width" onclick="btn_generate_onclick"/>
         <Button id="btn_delete" taborder="4" text="삭제" top="11" width="72" height="48" cssclass="btn_outline" right="110" onclick="btn_delete_onclick" fittocontents="width"/>
         <Button id="btn_reset" taborder="5" text="초기화" top="12" width="92" height="48" cssclass="btn_outline" right="197" fittocontents="width" onclick="btn_reset_onclick"/>

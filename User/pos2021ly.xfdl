@@ -1,12 +1,12 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="btnTra" width="230" height="200" titletext="New Form" border="1px solid black" borderRadius="10px" onload="pos2021ly_onload">
+  <Form id="btnTra" width="250" height="189" titletext="New Form" border="1px solid black" borderRadius="10px" onload="pos2021ly_onload">
     <Layouts>
-      <Layout height="200" width="230">
+      <Layout height="189" width="250">
         <Static id="staProName" taborder="0" text="메뉴이름" left="8" top="6" width="152" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;,&quot;맑은 고딕&quot;"/>
-        <Static id="Static00" taborder="2" text="Static00" left="123" top="6" width="97" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;" textAlign="right"/>
-        <ImageViewer id="ImageViewer00" taborder="1" left="0" top="34" width="228" height="164" borderRadius="0px 0px 10px 10px" fittocontents="both"/>
-        <Button id="btnTransparency" taborder="3" left="3" top="5" width="220" height="190" border="0px none" borderRadius="10px" background="transparent" onclick="btnTransparency_onclick"/>
+        <Static id="Static00" taborder="2" text="Static00" left="143" top="6" width="97" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;" textAlign="right"/>
+        <ImageViewer id="ImageViewer00" taborder="1" left="0" top="29" width="248" height="160" borderRadius="0px 0px 10px 10px" fittocontents="none" border="0px none" stretch="fit"/>
+        <Button id="btnTransparency" taborder="3" left="10" top="9" width="230" height="170" border="0px none" borderRadius="10px" background="transparent" onclick="btnTransparency_onclick" text=""/>
       </Layout>
     </Layouts>
     <Bind>

@@ -3,7 +3,7 @@
   <Form id="pos3052fm" width="550" height="730" titletext="영수증 화면" background="white" onload="pos3052fm_onload" scrollbartype="none none">
     <Layouts>
       <Layout height="730" width="550">
-        <Div id="Div02" taborder="0" left="20" top="13" width="510" height="647" cssclass="div_card_shadow" formscrollbartype="none none" formscrolltype="none" fittocontents="none" text="">
+        <Div id="Div02" taborder="0" left="20" top="13" width="510" height="627" cssclass="div_card_shadow" formscrollbartype="none none" formscrolltype="none" fittocontents="none" text="">
           <Layouts>
             <Layout>
               <Static id="Static01_01" taborder="0" text="---------------------------------------------------------------------------------" left="15" top="59" width="495" height="40" cssclass="sta_subtitle"/>

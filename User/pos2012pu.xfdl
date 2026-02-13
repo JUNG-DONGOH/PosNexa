@@ -1,11 +1,11 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2012pu" width="550" height="730" titletext="반품처리 화면" onload="pos2012pu_onload">
+  <Form id="pos2012pu" width="550" titletext="반품처리 화면" onload="pos2012pu_onload" height="550">
     <Layouts>
-      <Layout height="730" mobileorientation="landscape" width="550">
-        <Button id="btnCancel" taborder="0" text="취소" width="87" height="51" cssclass="btn_outline" fittocontents="none" left="283" bottom="19" onclick="btnCancel_onclick"/>
-        <Button id="btnDelete" taborder="1" text="반품" height="51" cssclass="btn_outline" fittocontents="none" left="180" bottom="19" onclick="btnDelete_onclick" width="87"/>
-        <Grid id="Grid00" taborder="2" left="30" top="133" width="490" height="505" binddataset="dsSalesMaster" autofittype="col" scrollbartype="autoindicator autoindicator">
+      <Layout height="550" mobileorientation="landscape" width="550">
+        <Button id="btnCancel" taborder="0" text="취소" width="87" height="51" cssclass="btn_outline" fittocontents="none" left="283" bottom="37" onclick="btnCancel_onclick"/>
+        <Button id="btnDelete" taborder="1" text="반품" height="51" cssclass="btn_outline" fittocontents="none" left="180" bottom="37" onclick="btnDelete_onclick" width="87"/>
+        <Grid id="Grid00" taborder="2" left="30" top="100" width="490" height="336" binddataset="dsSalesMaster" autofittype="col" scrollbartype="autoindicator autoindicator">
           <Formats>
             <Format id="default">
               <Columns>
@@ -36,7 +36,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Div id="Div00" taborder="3" left="30" top="40" width="490" height="46" cssclass="div_card_shadow">
+        <Div id="Div00" taborder="3" left="30" top="20" width="490" height="46" cssclass="div_card_shadow">
           <Layouts>
             <Layout>
               <Calendar id="cal_start" taborder="0" left="118" top="8" width="150" height="30"/>

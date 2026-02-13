@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2031ly" width="357" height="113" titletext="New Form" borderRadius="10px" border="1px solid black" onload="pos2031ly_onload" cssclass="btn_TITLE_MinD">
+  <Form id="pos2031ly" width="355" height="109" titletext="New Form" borderRadius="10px" border="1px solid black" onload="pos2031ly_onload" cssclass="btn_TITLE_MinD">
     <Layouts>
-      <Layout height="113" mobileorientation="landscape" width="357">
+      <Layout height="109" mobileorientation="landscape" width="355">
         <Static id="staName" taborder="0" text="메뉴이름" left="10" top="7" width="122" height="23"/>
         <Static id="staCount" taborder="1" text="1" left="72" top="69" width="30" height="33" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;" textAlign="center"/>
         <Button id="btnPlus" taborder="2" left="115" top="76" width="20" height="20" onclick="btnPlus_onclick" cssclass="btn_plus"/>

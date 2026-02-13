@@ -1,9 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2030fm" width="400" height="765" titletext="New Form">
+  <Form id="pos2030fm" width="400" height="729" titletext="New Form">
     <Layouts>
-      <Layout height="765" mobileorientation="landscape" width="400">
-        <Div id="divCartArea" taborder="3" left="22" top="75" width="357" height="552" border="0px none black" borderRadius="10px" formscrollbartype="autoindicator autoindicator"/>
+      <Layout height="729" mobileorientation="landscape" width="400">
+        <Div id="divCartArea" taborder="3" left="22" top="60" width="357" height="520" border="0px none black" borderRadius="10px" formscrollbartype="autoindicator autoindicator"/>
         <Div id="Div00" taborder="0" left="0" top="0" width="400" height="50" background="lightskyblue">
           <Layouts>
             <Layout>
@@ -11,8 +11,8 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="btn_pay" taborder="1" text="결제" top="637" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_pay_onclick"/>
-        <Button id="btnAllDelete" taborder="2" text="전체 취소" top="700" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btnAllDelete_onclick"/>
+        <Button id="btn_pay" taborder="1" text="결제" top="597" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_pay_onclick"/>
+        <Button id="btnAllDelete" taborder="2" text="전체 취소" top="660" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btnAllDelete_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp=nexacro.getApplication();
@@ -31,9 +31,9 @@ this.fn_drawCartList = function(bIsNew) // 새로 생긴건지 아닌지
     }
 
     var nTop = 0;
-    var nWidth = 357;
-    var nHeight = 113;
-    var nGapY = 28;
+    var nWidth = 355;
+    var nHeight = 111;
+    var nGapY = 25;
 
     for (var i = 0; i < dsCart.rowcount; i++) {
         var sId = "div_cart_item_" + i;

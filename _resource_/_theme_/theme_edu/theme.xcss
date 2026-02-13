@@ -2186,7 +2186,6 @@
     letter-spacing: -0.5px;
     opacity: 1;
     -nexa-border: 1px solid #E5E8EB;
-    -nexa-padding: 15px 20px;
     -nexa-text-align: center;
     -nexa-vertical-align: middle;
 }
@@ -2349,7 +2348,6 @@
     letter-spacing: -0.5px;
     opacity: 1;
     -nexa-border: 1px solid #D1D6DB;
-    -nexa-padding: 14px 20px;
     -nexa-text-align: center;
     -nexa-vertical-align: middle;
 }
@@ -2660,6 +2658,18 @@
 {
 	background : url('theme://images/btn_minus.png');
 	-nexa-border : 0px none;	
+}
+.Button.btn_logo[status=mouseover]
+{
+	-nexa-border : 0px none;
+}
+.Button.btn_logo[userstatus=pushed]
+{
+	-nexa-border : 0px none;
+}
+.Button.btn_logo[status=disabled]
+{
+	-nexa-border : 0px none;
 }
 ]]></CSSData>
   <CSSData type="desktop"><![CDATA[/*************** Form ***************/

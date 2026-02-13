@@ -15,7 +15,7 @@
               <Button id="Button01_00_00" taborder="6" text="회원가입" left="318" top="410" width="81" height="53" onclick="Div00_Button01_00_00_onclick" border="0px none" cssclass="btn_text_only"/>
               <Button id="Button02" taborder="7" left="417" top="235" width="20" height="20" onclick="Div00_Button02_onclick" cssclass="btn_notvisible"/>
               <Static id="Static01" taborder="8" text="SNS로그인" left="215" top="478" width="110" height="32"/>
-              <WebView id="naverLogin" taborder="9" left="183" top="520" width="200" height="80" url="http://172.10.14.136:8088/edupack_egov/external/p03/p031APIExamNaverLogin.html"/>
+              <WebView id="naverLogin" taborder="9" left="185" top="520" width="200" height="80" url="http://172.10.14.136:8088/edupack_egov/external/p03/p031APIExamNaverLogin.html"/>
               <Div id="Div01" taborder="10" left="161" top="59" width="170" height="52" cssclass="logo"/>
             </Layout>
           </Layouts>
