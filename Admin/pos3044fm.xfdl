@@ -1,0 +1,151 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos3044fm" width="1396" height="560" titletext="순수익 화면" onload="pos3044fm_onload">
+    <Layouts>
+      <Layout height="560" mobileorientation="landscape" width="1396">
+        <ChartJS id="chtNetProfit" taborder="0" text="ChartJS00" left="0" top="0" width="1396" height="560"/>
+      </Layout>
+    </Layouts>
+    <Script type="xscript5.1"><![CDATA[/**
+* POS 시스템 - 순수익 분석 차트 (세탁 완료 버전)
+*/
+
+this.pos3044fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+    this.fn_search();
+};
+
+this.fn_search = function() {
+    var strSvcId    = "getMonthlyProfit";
+    var strSvcUrl   = "SvcUrl::pos/getMonthlyProfit.do"; 
+    var strOutDs    = "ds_profit=out_monthly_profit"; 
+    this.transaction(strSvcId, strSvcUrl, "", strOutDs, "", "fn_callback");
+};
+
+/**
+* POS 시스템 - 순수익 분석 (에러 수정 및 만 원 단위 버전)
+*/
+
+this.fn_callback = function(svcId, errCode, errMsg)
+{
+    if(errCode < 0) return;
+    
+    if(svcId == "getMonthlyProfit") {
+        // 데이터가 0건이면 차트를 그리지 않음 (null 에러 방지)
+        if(this.ds_profit.rowcount == 0) return;
+
+        this.ds_profit.set_enableevent(false);
+        var lastYear = "";
+        
+        for(var i=0; i<this.ds_profit.rowcount; i++) {
+            // [A] 단위 변환: 원 -> 만 원 (10,000으로 나눔)
+            var val = nexacro.toNumber(this.ds_profit.getColumn(i, "NET_PROFIT"));
+            var manWon = Math.round(val / 10000); // 소수점 없이 깔끔하게 반올림
+            this.ds_profit.setColumn(i, "NET_PROFIT", manWon);
+            
+            // [B] 색상 설정: 양수 빨강(#e74c3c), 음수 파랑(#3498db)
+            // 데이터셋에 PROFIT_COLOR 컬럼이 반드시 생성되어 있어야 합니다.
+            var color = (manWon >= 0) ? "#e74c3c" : "#3498db";
+            this.ds_profit.setColumn(i, "PROFIT_COLOR", color);
+            
+            // [C] 날짜 포맷팅: 2월 ('25)
+            var fullDate = this.ds_profit.getColumn(i, "SALE_MONTH"); 
+            var dateParts = fullDate.split("-");
+            var curYear = dateParts[0];
+            var shortYear = curYear.substring(2, 4);
+            var curMonth = parseInt(dateParts[1]);
+            
+            if (curYear !== lastYear) {
+                this.ds_profit.setColumn(i, "SALE_MONTH", curMonth + "월 ('" + shortYear + ")");
+                lastYear = curYear;
+            } else {
+                this.ds_profit.setColumn(i, "SALE_MONTH", curMonth + "월");
+            }
+        }
+        this.ds_profit.set_enableevent(true);
+        this.fnCreateChart();
+    }
+};
+
+this.fnCreateChart = function() {
+    var chart = this.chtNetProfit; 
+    var canvas = chart.getCanvas();
+    DxChart.reset(canvas);
+    
+    new DxChartLine({
+        id: canvas.id,
+        elem: canvas,
+        binddataset: this.ds_profit,
+        data: ["bind:NET_PROFIT"],
+        options: this.fnGetOption(canvas)
+    }).wave();
+};
+
+this.fnGetOption = function (canvas) {
+    return {
+        // [중요] DxChartLine에서는 colors에 bind가 안 될 경우 첫 번째 색상을 고정합니다.
+        // 대신 틱마크(점) 색상을 데이터별로 다르게 하고 싶다면 아래 설정을 따르세요.
+        colors: ['#e74c3c'], 
+        text: { Color: '#000000', FontStyle: 'bold 16px Malgun Gothic' },
+        labels: { 
+            Above: true, 
+            AboveFontStyle: 'bold 14px Malgun Gothic',
+            // 숫자에 콤마를 찍어 읽기 편하게 만듭니다.
+            AboveCallback: function(v) { return nexacro.getFormattedNumber(v, "#,###") + "만"; }
+        },
+        tickmarks: { 
+            Style: 'filledcircle', 
+            Size: 8,
+            // [포인트 색상 변경] 점 색상을 데이터셋의 PROFIT_COLOR로 바인딩
+            Color: "bind:PROFIT_COLOR" 
+        },
+        margin: { Left: 120, Right: 50, Top: 80, Bottom: 120 },
+        title: {
+            Text: "월별 순수익 분석 (단위: 만 원)",
+            FontStyle: "bold 24px Malgun Gothic",
+            Y: 30
+        },
+        xaxis: {
+            Use: true,
+            Labels: ["bind:SALE_MONTH"],
+            LabelsFont: "bold 16px Malgun Gothic",
+            Title: "판매월",
+            TitleFontStyle: "bold 18px Malgun Gothic"
+        },
+        yaxis: {
+            Use: true,
+            ScaleMin: -5000, // 만 원 단위이므로 범위를 넉넉히 (-5,000만 원)
+            ScaleMax: 10000, // (1억 원)
+            Title: "순수익 (만 원)",
+            LabelsFont: "bold 16px Malgun Gothic",
+            LabelFormat: "#,###",
+            Hlines: [{Value: 0, Color: "red", LineWidth: 3}] 
+        },
+        tooltips: {
+            Data: '%{key}: %{value}만 원',
+            Effect: 'fade',
+            FormattedKeyLabels: ['순수익']
+        },
+        key: {
+            Data: ['순수익'],
+            Position: 'margin',
+            Valign: "bottom",
+            PositionOffsetY: 60,
+            FontStyle: "bold 16px Malgun Gothic"
+        }
+    };
+};]]></Script>
+    <Objects>
+      <Dataset id="ds_profit">
+        <ColumnInfo>
+          <Column id="SALE_MONTH" type="STRING" size="10"/>
+          <Column id="TOTAL_REVENUE" type="BIGDECIMAL" size="256"/>
+          <Column id="TOTAL_FOOD_COST" type="BIGDECIMAL" size="256"/>
+          <Column id="LABOR_COST" type="BIGDECIMAL" size="256"/>
+          <Column id="NET_PROFIT" type="BIGDECIMAL" size="256"/>
+          <Column id="PROFIT_COLOR" type="STRING" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+  </Form>
+</FDL>

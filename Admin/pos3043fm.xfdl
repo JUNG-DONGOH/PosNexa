@@ -1,41 +1,9 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3043fm" width="1396" height="560" titletext="순수익 통계 화면" onload="pos3043fm_onload" ontimer="pos3043fm_ontimer">
+  <Form id="pos3043fm" width="1396" height="560" titletext="세부 매출통계 화면" onload="pos3043fm_onload" ontimer="pos3043fm_ontimer">
     <Layouts>
       <Layout height="560" width="1396">
-        <ChartJS id="chtSalesExpenses" taborder="1" text="ChartJS00" left="70" top="40" width="580" height="490" onclick="ChartJS00_onclick"/>
-        <ChartJS id="chtNetProfit" taborder="1" text="ChartJS00" left="715" top="45" width="650" height="450"/>
-        <Grid id="Grid00" taborder="2" left="574" top="143" width="375" height="270" binddataset="ds_profit">
-          <Formats>
-            <Format id="default">
-              <Columns>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-                <Column size="80"/>
-              </Columns>
-              <Rows>
-                <Row band="head" size="24"/>
-                <Row size="24"/>
-              </Rows>
-              <Band id="head">
-                <Cell text="SALE_MONTH"/>
-                <Cell col="1" text="TOTAL_REVENUE"/>
-                <Cell col="2" text="TOTAL_FOOD_COST"/>
-                <Cell col="3" text="LABOR_COST"/>
-                <Cell col="4" text="NET_PROFIT"/>
-              </Band>
-              <Band id="body">
-                <Cell text="bind:SALE_MONTH"/>
-                <Cell col="1" text="bind:TOTAL_REVENUE"/>
-                <Cell col="2" text="bind:TOTAL_FOOD_COST"/>
-                <Cell col="3" text="bind:LABOR_COST"/>
-                <Cell col="4" text="bind:NET_PROFIT"/>
-              </Band>
-            </Format>
-          </Formats>
-        </Grid>
+        <ChartJS id="chtBarBasic" taborder="1" text="ChartJS00" left="0" top="0" width="1396" height="560" onclick="ChartJS00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -85,10 +53,7 @@ this.fn_search = function()
 * [최종] 월별 손익 분석 - 데이터 변환 및 차트 출력
 */
 
-// 1. 서비스 콜백 (데이터 검증 완료 버전)
-/**
-* 월별 손익 분석 - 최종 통합본 (타입 에러 박멸 버전)
-*/
+
 
 // 1. 조회 실행
 this.fn_search = function()
@@ -103,80 +68,96 @@ this.fn_search = function()
     this.transaction(strSvcId, strSvcUrl, strInDs, strOutDs, strParam, strCallbacks);
 };
 
-// 2. 서비스 콜백
+
 /**
-* [최종] 월별 손익 분석 - 데이터셋 ID 완전 일치 버전
+* POS 경영 분석 - 매출/원가/인건비 비교 차트
 */
 
-// 1. 서비스 콜백
+
 this.fn_callback = function(svcId, errCode, errMsg)
 {
-    if(errCode < 0) return this.alert("조회 실패: " + errMsg);
+    if(errCode < 0) return;
     
     if(svcId == "getMonthlyProfit") {
-        // [핵심] 수신된 BIGDECIMAL 객체를 순수 Number로 변환
-        this.ds_profit.set_enableevent(false);
+        this.ds_profit.enableevent=false;
+        
+        var lastYear = "";
         for(var i=0; i<this.ds_profit.rowcount; i++) {
-            this.ds_profit.setColumn(i, "TOTAL_REVENUE", nexacro.toNumber(this.ds_profit.getColumn(i, "TOTAL_REVENUE")));
-            this.ds_profit.setColumn(i, "TOTAL_FOOD_COST", nexacro.toNumber(this.ds_profit.getColumn(i, "TOTAL_FOOD_COST")));
-            this.ds_profit.setColumn(i, "LABOR_COST", nexacro.toNumber(this.ds_profit.getColumn(i, "LABOR_COST")));
-            this.ds_profit.setColumn(i, "NET_PROFIT", nexacro.toNumber(this.ds_profit.getColumn(i, "NET_PROFIT")));
+            // [A] 단위 조정: 백만 원 (1,000,000)
+            var unit = 1000000; 
+            this.ds_profit.setColumn(i, "TOTAL_REVENUE", (nexacro.toNumber(this.ds_profit.getColumn(i, "TOTAL_REVENUE")) / unit).toFixed(2));
+            this.ds_profit.setColumn(i, "TOTAL_FOOD_COST", (nexacro.toNumber(this.ds_profit.getColumn(i, "TOTAL_FOOD_COST")) / unit).toFixed(2));
+            this.ds_profit.setColumn(i, "LABOR_COST", (nexacro.toNumber(this.ds_profit.getColumn(i, "LABOR_COST")) / unit).toFixed(2));
+            
+            // [B] X축 날짜 커스텀: 2월 ('25) 방식
+            var fullDate = this.ds_profit.getColumn(i, "SALE_MONTH"); 
+            var dateParts = fullDate.split("-");
+            var curYear  = dateParts[0];
+            var shortYear = curYear.substring(2, 4);
+            var curMonth = parseInt(dateParts[1]);
+            
+            if (curYear !== lastYear) {
+                this.ds_profit.setColumn(i, "SALE_MONTH", curMonth + "월 ('" + shortYear + ")");
+                lastYear = curYear;
+            } else {
+                this.ds_profit.setColumn(i, "SALE_MONTH", curMonth + "월");
+            }
         }
         this.ds_profit.set_enableevent(true);
-
-        // 차트 그리기 실행
-        this.fn_drawSalesExpensesChart(); 
-        this.fn_drawNetProfitChart();
+        this.fnCreateChart();
     }
 };
 
-// 2. 차트 1: 매출, 원가, 인건비
-this.fn_drawSalesExpensesChart = function()
-{
-    var canvas = this.chtSalesExpenses.getCanvas();
+this.fnCreateChart = function() {
+    var canvas = this.chtBarBasic.getCanvas();
     DxChart.reset(canvas);
-
+    
     new DxChartBar({
-        id: "sales_exp_chart",
+        id: canvas.id,
         elem: canvas,
         binddataset: this.ds_profit,
-        options: {
-            title: { Text: "Monthly Revenue & Expenses" },
-            margin: { Left: 80, Right: 40, Top: 50, Bottom: 50 },
-            bars: [
-                { Data: ["bind:TOTAL_REVENUE"],  Label: "Revenue", Color: "#2980b9" },
-                { Data: ["bind:TOTAL_FOOD_COST"], Label: "Food Cost", Color: "#e67e22" },
-                { Data: ["bind:LABOR_COST"],      Label: "Labor Cost", Color: "#f39c12" }
-            ],
-            xaxis: { Labels: ["bind:SALE_MONTH"] },
-            yaxis: { LabelFormat: "#,###" }
-        }
-    }).draw();
+        data: ["bind:TOTAL_REVENUE", "bind:TOTAL_FOOD_COST", "bind:LABOR_COST"],
+        options: this.fnGetOption(canvas)
+    }).wave();
 };
 
-// 3. 차트 2: 순수익
-this.fn_drawNetProfitChart = function()
-{
-    var canvas = this.chtNetProfit.getCanvas();
-    DxChart.reset(canvas);
-
-    new DxChartBar({
-        id: "net_profit_chart",
-        elem: canvas,
-        binddataset: this.ds_profit,
-        options: {
-            title: { Text: "Monthly Net Profit" },
-            margin: { Left: 80, Right: 40, Top: 50, Bottom: 50 },
-            bars: [
-                { Data: ["bind:NET_PROFIT"], Label: "Net Profit", Color: "#27ae60" }
-            ],
-            xaxis: { Labels: ["bind:SALE_MONTH"] },
-            yaxis: { 
-                LabelFormat: "#,###",
-                Hlines: [{ Value: 0, Color: "red", Dash: true, LineWidth: 2 }] 
-            }
+this.fnGetOption = function (canvas) {
+    return {
+        colors: ['#2980b9', '#e67e22', '#f39c12'], 
+        // 폰트가 커졌으므로 마진을 넉넉하게 조정
+        margin: { Left: 100, Right: 40, Top: 80, Bottom: 100, Inner: 20 },
+        title: {
+            Text : "월별 매출 및 비용 현황 (단위: 백만 원)",
+            FontStyle : "24px bold Malgun Gothic", // 타이틀 대폭 확대
+            Y : 30
+        },
+        xaxis: {
+            Labels : ["bind:SALE_MONTH"],
+            Title : "판매월",
+            TitleFontStyle: "16px bold Malgun Gothic",
+            LabelsFont: "14px bold Malgun Gothic" // X축 라벨 확대
+        },
+        yaxis: {
+            Title : "금액 (백만)",
+            TitleFontStyle: "16px bold Malgun Gothic",
+            LabelsFont: "14px Malgun Gothic", // Y축 라벨 확대
+            LabelFormat: "#,###",
+            Tickmarks : true
+        },
+        tooltips: {
+            // 툴팁 폰트도 엔진 설정에 따라 크기가 조절됩니다.
+            Data : '%{key}: %{value} 백만 원',
+            FormattedKeyLabels: ['총 매출액', '메뉴 원가', '인건비'],
+            Effect : 'fade'
+        },
+        key: {
+            Data : ['총 매출액', '메뉴 원가', '인건비'],
+            Position : 'margin',
+            Valign: "bottom",
+            PositionOffsetY : 50,
+            FontStyle: "14px bold Malgun Gothic" // 범례 폰트 확대
         }
-    }).draw();
+    };
 };]]></Script>
   </Form>
 </FDL>

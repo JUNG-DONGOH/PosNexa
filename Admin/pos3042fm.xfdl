@@ -119,17 +119,18 @@ this.fn_drawMenuPieChart = function()
         options: {
             title: { 
                 Text: "메뉴 판매 (TOP 5)", 
+				FontStyle: "bold 22px Malgun Gothic",
                 Y: 20,
                 // 서브 타이틀 설정 추가
                 Subtitle: sSubtitle, 
                 SubtitleOffsetY: 10
             },
             radius: 160,
-            margin: { Left: 10, Right: 10, Top: 80, Bottom: 10 }, // 서브 타이틀 공간 확보를 위해 Top 마진 약간 상향
             
             labels: {
                 Position: 'inside',
                 Data: ["bind:display_text"], 
+				FontStyle: "15px Malgun Gothic",
             },
             
             tooltips: {

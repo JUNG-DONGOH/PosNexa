@@ -109,6 +109,7 @@ new DxChartBar({
     data: ["bind:total_payout_man"],
     options: {
         title: { Text: "월별 총 인건비 현황", Subtitle: dateRange },
+		FontStyle: "bold 24px Malgun Gothic",
         colors: ['#2ecc71'], 
         // [수정] Bottom을 50에서 70으로 변경하여 오른쪽 차트와 높이를 맞춤
         margin: { Left: 110, Right: 30, Top: 80, Bottom: 70 }, 
@@ -126,6 +127,7 @@ new DxChartBar({
     data: ["bind:total_bonus_man", "bind:total_deduction_man"],
     options: {
         title: { Text: "보너스 및 공제금 세부 내역", Subtitle: dateRange },
+		FontStyle: "bold 24px Malgun Gothic",
         colors: ['#f1c40f', '#e74c3c'], 
         // Bottom이 70이므로 위 차트와 동일하게 설정됨
         margin: { Left: 100, Right: 30, Top: 80, Bottom: 70 }, 

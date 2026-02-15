@@ -4,8 +4,10 @@
     <Layouts>
       <Layout height="619" mobileorientation="landscape" width="1396">
         <Button id="btnEmpStatistics" taborder="0" text="급여 통계" top="10" width="135" height="35" cssclass="btn_outline" right="1251" fittocontents="none" onclick="btnEmpStatistics_onclick"/>
-        <Button id="btnMenu" taborder="1" text="메뉴 판매 순위" top="10" width="135" height="35" cssclass="btn_outline" right="1107" onclick="btnMenu_onclick"/>
+        <Button id="btnMenu" taborder="1" text="메뉴 판매 순위" top="10" width="135" height="35" cssclass="btn_outline" right="1101" onclick="btnMenu_onclick"/>
         <Div id="divArea" taborder="2" left="0" top="59" width="1396" height="560" border="0px none"/>
+        <Button id="btnMoney" taborder="3" text="매출 통계" top="10" width="135" height="35" cssclass="btn_outline" right="951" onclick="btnMoney_onclick"/>
+        <Button id="btnMoney00" taborder="4" text="순수익" top="10" width="135" height="35" cssclass="btn_outline" right="801" onclick="btnMoney00_onclick"/>
       </Layout>
     </Layouts>
     <Objects>
@@ -35,6 +37,16 @@ this.btnEmpStatistics_onclick = function(obj:nexacro.Button,e:nexacro.ClickEvent
 this.btnMenu_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.divArea.url="Admin::pos3042fm.xfdl";
+};
+
+this.btnMoney_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divArea.url="Admin::pos3043fm.xfdl";
+};
+
+this.btnMoney00_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	this.divArea.url="Admin::pos3044fm.xfdl";
 };
 ]]></Script>
   </Form>
