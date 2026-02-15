@@ -1,0 +1,146 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos3041fm" width="1396" height="560" titletext="급여통계 화면" onload="pos3041fm_onload">
+    <Layouts>
+      <Layout height="560" mobileorientation="landscape" width="1396">
+        <ChartJS id="chtSalaryTotal" taborder="0" text="ChartJS00" left="42" top="40" width="655" height="480"/>
+        <ChartJS id="chtSalaryDetail" taborder="1" text="ChartJS00" left="697" top="40" width="655" height="480"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_salaryStats">
+        <ColumnInfo>
+          <Column id="work_month" type="STRING" size="10"/>
+          <Column id="total_hours" type="BIGDECIMAL" size="256"/>
+          <Column id="total_payout" type="BIGDECIMAL" size="256"/>
+          <Column id="total_bonus" type="INT" size="256"/>
+          <Column id="total_deduction" type="INT" size="256"/>
+          <Column id="emp_count" type="INT" size="256"/>
+          <Column id="reg_date" type="DATETIME" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[this.pos3041fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+	this.fn_getSalaryStats();
+	this.fn_drawSalaryCharts();
+};
+
+
+
+/**
+ * @description 통계 데이터를 서버에서 가져오는 함수
+ */
+this.fn_getSalaryStats = function()
+{
+    // 1. 서비스 경로 및 파라미터 설정
+    var strSvcId    = "getSalaryStats";
+    var strSvcUrl   = "SvcUrl::pos/getSalaryStats.do";      // 서버의 Controller 매핑 주소
+    var strInDs     = "";                            // 서버로 보낼 데이터셋 (조회조건이 있다면 추가)
+    var strOutDs    = "ds_salaryStats=out_stats";    // [중요] 서버 결과(out_stats)를 우리 데이터셋(ds_salaryStats)에 매핑
+    var strArg      = "";                            // 추가 인자값
+    var strCallback = "fn_statCallback";             // 통신 완료 후 호출될 콜백 함수명
+    
+    // 2. 트랜잭션 호출
+    this.transaction(strSvcId, strSvcUrl, strInDs, strOutDs, strArg, strCallback);
+};
+
+/**
+ * @description 트랜잭션 결과 처리 콜백
+ */
+this.fn_statCallback = function(svcId, errCode, errMsg)
+{
+    if (errCode < 0) {
+        this.alert("데이터를 가져오지 못했습니다: " + errMsg);
+        return;
+    }
+    
+    if (svcId == "getSalaryStats") {
+        // 데이터가 ds_salaryStats에 들어왔으므로 차트를 다시 그립니다.
+        this.fn_drawSalaryCharts();
+    }
+};
+
+
+
+this.fn_drawSalaryCharts = function()
+{
+    var ds = this.ds_salaryStats;
+    if(ds.rowcount == 0) return;
+
+    // 1. [데이터 가공] 만 원 단위 변환 + 연도별 월 레이블 가공 (기존 로직 유지)
+    ds.set_enableevent(false);
+    var cols = ["total_payout", "total_bonus", "total_deduction"];
+    for(var j=0; j<cols.length; j++) {
+        if (!ds.getColumnInfo(cols[j] + "_man")) ds.addColumn(cols[j] + "_man", "BIGDECIMAL");
+    }
+    if (!ds.getColumnInfo("month_display")) ds.addColumn("month_display", "STRING");
+
+    var prevYear = "";
+    for (var i = 0; i < ds.rowcount; i++) {
+        for(var k=0; k<cols.length; k++) {
+            var nVal = ds.getColumn(i, cols[k]) || 0;
+            ds.setColumn(i, cols[k] + "_man", Math.round(nVal / 10000));
+        }
+        var fullDate = ds.getColumn(i, "work_month");
+        var parts = fullDate.split("-");
+        var currYear = parts[0];
+        var currMonth = parseInt(parts[1]) + "월";
+
+        if (i == 0 || currYear != prevYear) {
+            ds.setColumn(i, "month_display", currMonth + " ('" + currYear.substring(2) + ")");
+        } else {
+            ds.setColumn(i, "month_display", currMonth);
+        }
+        prevYear = currYear;
+    }
+    ds.set_enableevent(true);
+
+    // 2. [기간 추출] 서브타이틀에 들어갈 시작/종료월 정보
+    var startMonth = ds.getColumn(0, "work_month");
+    var endMonth = ds.getColumn(ds.rowcount - 1, "work_month");
+    var dateRange = "(" + startMonth + " ~ " + endMonth + ")";
+
+  // --- 차트 1: 총 인건비 지출 (왼쪽) ---
+var canvas1 = this.chtSalaryTotal.getCanvas();
+DxChart.reset(canvas1);
+new DxChartBar({
+    id: canvas1.id, elem: canvas1, binddataset: ds,
+    data: ["bind:total_payout_man"],
+    options: {
+        title: { Text: "월별 총 인건비 현황", Subtitle: dateRange },
+        colors: ['#2ecc71'], 
+        // [수정] Bottom을 50에서 70으로 변경하여 오른쪽 차트와 높이를 맞춤
+        margin: { Left: 110, Right: 30, Top: 80, Bottom: 70 }, 
+        xaxis: { Labels: ["bind:month_display"] },
+        yaxis: { ScaleUnitsPost: " 만 원", ScaleThousand: true },
+        tooltips: { Data: '총 지급액: %{value_formatted} 만 원' }
+    }
+}).grow();
+
+// --- 차트 2: 보너스 및 공제금 상세 (오른쪽) ---
+var canvas2 = this.chtSalaryDetail.getCanvas();
+DxChart.reset(canvas2);
+new DxChartBar({
+    id: canvas2.id, elem: canvas2, binddataset: ds,
+    data: ["bind:total_bonus_man", "bind:total_deduction_man"],
+    options: {
+        title: { Text: "보너스 및 공제금 세부 내역", Subtitle: dateRange },
+        colors: ['#f1c40f', '#e74c3c'], 
+        // Bottom이 70이므로 위 차트와 동일하게 설정됨
+        margin: { Left: 100, Right: 30, Top: 80, Bottom: 70 }, 
+        xaxis: { Labels: ["bind:month_display"] },
+        yaxis: { ScaleUnitsPost: " 만 원", ScaleThousand: true },
+        key: { 
+            Data: ['총 보너스', '총 공제금'], 
+            Position: 'bottom',
+            PositionY: 20
+        },
+        tooltips: { Data: '%{key}: %{value_formatted} 만 원' }
+    }
+	}).grow();
+};
+
+]]></Script>
+  </Form>
+</FDL>

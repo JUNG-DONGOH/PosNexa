@@ -34,9 +34,9 @@
         </Grid>
         <Div id="divPage" taborder="0" left="37" right="693" url="Cmm::CmmPaging.xfdl" height="40" bottom="0"/>
         <Button id="btn_add" taborder="1" text="추가" top="19" width="78" height="51" cssclass="btn_outline" right="189" onclick="btn_add_onclick"/>
-        <Button id="btn_delete" taborder="2" text="삭제" top="19" width="78" height="51" cssclass="btn_outline" right="106" onclick="btn_delete_onclick" fittocontents="width"/>
+        <Button id="btn_delete" taborder="2" text="삭제" top="19" width="78" height="51" cssclass="btn_outline" right="106" onclick="btn_delete_onclick" fittocontents="none"/>
         <Button id="btn_save" taborder="3" text="저장" top="19" width="78" height="51" cssclass="btn_outline" right="23" onclick="btn_save_onclick"/>
-        <Button id="btn_retrieve" taborder="5" text="조회" top="19" width="78" height="51" cssclass="btn_outline" right="272" onclick="btn_retrieve_onclick" fittocontents="width"/>
+        <Button id="btn_retrieve" taborder="5" text="조회" top="19" width="78" height="51" cssclass="btn_outline" right="272" onclick="btn_retrieve_onclick" fittocontents="none"/>
         <Static id="Static09" taborder="6" text="" left="1030" top="218" height="150" cssclass="sta_light_blue_bg" width="350"/>
         <Static id="Stati11" taborder="7" text="" left="746" top="169" height="50" cssclass="sta_light_blue_bg" width="634"/>
         <Static id="Static05" taborder="8" text="" top="120" height="50" cssclass="sta_light_blue_bg" onclick="Static05_onclick" width="634" right="16"/>
@@ -64,7 +64,7 @@
         <Edit id="edt_SEARCH" taborder="23" left="170" top="40" width="470" height="40" displaynulltext="상품명 검색"/>
         <Static id="Static06" taborder="25" text="상품이미지" left="740" top="218" width="5.300859598853868%" height="350" cssclass="sta_light_blue_bg" onclick="Static06_onclick"/>
         <Button id="btnSelect" taborder="26" text="이미지 선택" left="823" top="520" width="197" height="33" cssclass="btn_WF_LineRed" onclick="btnSelect_onclick"/>
-        <ImageViewer id="ImageViewer01" taborder="27" left="823" top="223" width="197" height="287"/>
+        <ImageViewer id="ImageViewer01" taborder="27" left="823" top="223" width="197" height="287" stretch="fit"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[/**

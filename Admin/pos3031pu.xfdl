@@ -54,7 +54,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_delete" taborder="3" text="삭제" top="325" width="72" height="48" cssclass="btn_outline" right="31" onclick="btn_delete_onclick" fittocontents="width"/>
+        <Button id="btn_delete" taborder="3" text="삭제" top="325" width="72" height="48" cssclass="btn_outline" right="31" onclick="btn_delete_onclick" fittocontents="none"/>
         <Button id="btn_add" taborder="4" text="추가" top="325" width="72" height="48" cssclass="btn_outline" right="113" onclick="btn_add_onclick"/>
         <Grid id="Grid02" taborder="5" left="20" top="390" width="510" height="50" binddataset="ds_emp_pop" autofittype="col">
           <Formats>
@@ -78,7 +78,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Button id="btn_cancel" taborder="6" text="취소" top="475" width="72" height="48" cssclass="btn_outline" right="201" fittocontents="width" onclick="btn_cancel_onclick"/>
+        <Button id="btn_cancel" taborder="6" text="취소" top="475" width="72" height="48" cssclass="btn_outline" right="201" fittocontents="none" onclick="btn_cancel_onclick"/>
         <Button id="btn_save" taborder="7" text="저장" top="475" width="72" height="48" cssclass="btn_outline" right="283" onclick="btn_save_onclick"/>
         <Static id="Static01_03_01" taborder="8" text="* 은 필수입력 항목입니다." left="20" top="332" width="199" height="40" cssclass="sta_error"/>
         <Static id="Static01_03_01_00" taborder="9" text="* " left="83" top="64" width="10" height="10" cssclass="sta_error"/>

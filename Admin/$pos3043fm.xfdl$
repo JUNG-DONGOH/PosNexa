@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<FDL version="2.1">
+  <Form id="pos3043fm" width="1396" height="560" titletext="순수익 통계 화면" onload="pos3043fm_onload">
+    <Layouts>
+      <Layout height="560" width="1396">
+        <ChartJS id="ChartJS00" taborder="1" text="ChartJS00" left="1012" top="70" width="120" height="60" onclick="ChartJS00_onclick"/>
+      </Layout>
+    </Layouts>
+    <Objects>
+      <Dataset id="ds_profit">
+        <ColumnInfo>
+          <Column id="SALE_MONTH" type="STRING" size="10"/>
+          <Column id="TOTAL_REVENUE" type="BIGDECIMAL" size="256"/>
+          <Column id="TOTAL_FOOD_COST" type="BIGDECIMAL" size="256"/>
+          <Column id="LABOR_COST" type="BIGDECIMAL" size="256"/>
+          <Column id="NET_PROFIT" type="BIGDECIMAL" size="256"/>
+        </ColumnInfo>
+      </Dataset>
+    </Objects>
+    <Script type="xscript5.1"><![CDATA[
+this.pos3043fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+{
+    this.fn_search(); // 데이터 조회
+};
+
+// 서버 데이터 조회 트랜잭션
+this.fn_search = function()
+{
+    var strSvcId    = "getMonthlyProfit";
+    var strSvcUrl   = "SvcUrl::pos/getMonthlyProfit.do";
+    var strInDs     = "";
+    var strOutDs    = "ds_profit=out_monthly_profit"; // 서버 결과셋 매핑
+    var strParam    = "";
+    var strCallbacks = "fn_callback";
+    
+    this.transaction(strSvcId, strSvcUrl, strInDs, strOutDs, strParam, strCallbacks);
+};
+
+// 콜백 함수
+this.fn_callback = function(svcId, errCode, errMsg)
+{
+    if(errCode < 0) {
+        this.alert("조회 실패: " + errMsg);
+        return;
+    }
+    
+    // 데이터 로드 후 차트 갱신
+    //this.chart_profit.draw();
+};
+
+]]></Script>
+  </Form>
+</FDL>
