@@ -1928,7 +1928,7 @@
         <Column id="TABLE_ID" type="INT" size="100"/>
         <Column id="PROD_ID" type="INT" size="100"/>
         <Column id="PROD_NM" type="STRING" size="100"/>
-        <Column id="COUNT" type="STRING" size="500"/>
+        <Column id="COUNT" type="INT" size="500"/>
         <Column id="PRICE" type="BIGDECIMAL" size="15"/>
         <Column id="TOTAL_PRICE" type="INT" size="50"/>
       </ColumnInfo>

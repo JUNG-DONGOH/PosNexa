@@ -23,7 +23,7 @@ this.fn_search = function() {
 };
 
 /**
-* POS 시스템 - 순수익 분석 (에러 수정 및 만 원 단위 버전)
+* POS 시스템 - 순수익 분석 
 */
 
 this.fn_callback = function(svcId, errCode, errMsg)
@@ -84,7 +84,6 @@ this.fnCreateChart = function() {
 this.fnGetOption = function (canvas) {
     return {
         // [중요] DxChartLine에서는 colors에 bind가 안 될 경우 첫 번째 색상을 고정합니다.
-        // 대신 틱마크(점) 색상을 데이터별로 다르게 하고 싶다면 아래 설정을 따르세요.
         colors: ['#e74c3c'], 
         text: { Color: '#000000', FontStyle: 'bold 16px Malgun Gothic' },
         labels: { 

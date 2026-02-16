@@ -70,24 +70,24 @@ this.fn_search = function()
 
 
 /**
-* POS 경영 분석 - 매출/원가/인건비 비교 차트
+* POS 시스템 경영 분석 - 단위(만 원) 및 가독성 최적화
 */
-
 
 this.fn_callback = function(svcId, errCode, errMsg)
 {
     if(errCode < 0) return;
     
     if(svcId == "getMonthlyProfit") {
-        this.ds_profit.enableevent=false;
+        this.ds_profit.set_enableevent(false);
         
         var lastYear = "";
         for(var i=0; i<this.ds_profit.rowcount; i++) {
-            // [A] 단위 조정: 백만 원 (1,000,000)
-            var unit = 1000000; 
-            this.ds_profit.setColumn(i, "TOTAL_REVENUE", (nexacro.toNumber(this.ds_profit.getColumn(i, "TOTAL_REVENUE")) / unit).toFixed(2));
-            this.ds_profit.setColumn(i, "TOTAL_FOOD_COST", (nexacro.toNumber(this.ds_profit.getColumn(i, "TOTAL_FOOD_COST")) / unit).toFixed(2));
-            this.ds_profit.setColumn(i, "LABOR_COST", (nexacro.toNumber(this.ds_profit.getColumn(i, "LABOR_COST")) / unit).toFixed(2));
+            // [A] 단위 조정: 원 -> 만 원 (10,000으로 나눔)
+            // 소수점보다는 정수형태가 읽기 편하므로 Math.round 적용
+            var unit = 10000; 
+            this.ds_profit.setColumn(i, "TOTAL_REVENUE", Math.round(nexacro.toNumber(this.ds_profit.getColumn(i, "TOTAL_REVENUE")) / unit));
+            this.ds_profit.setColumn(i, "TOTAL_FOOD_COST", Math.round(nexacro.toNumber(this.ds_profit.getColumn(i, "TOTAL_FOOD_COST")) / unit));
+            this.ds_profit.setColumn(i, "LABOR_COST", Math.round(nexacro.toNumber(this.ds_profit.getColumn(i, "LABOR_COST")) / unit));
             
             // [B] X축 날짜 커스텀: 2월 ('25) 방식
             var fullDate = this.ds_profit.getColumn(i, "SALE_MONTH"); 
@@ -108,6 +108,44 @@ this.fn_callback = function(svcId, errCode, errMsg)
     }
 };
 
+this.fnGetOption = function (canvas) {
+    return {
+        colors: ['#2980b9', '#e67e22', '#f39c12'], 
+        margin: { Left: 100, Right: 40, Top: 80, Bottom: 100, Inner: 20 },
+        title: {
+            Text : "월별 매출 및 비용 현황 (단위: 만 원)",
+            FontStyle : "bold 26px Malgun Gothic", // 타이틀 더 강조
+            Y : 30
+        },
+        xaxis: {
+            Labels : ["bind:SALE_MONTH"],
+            Title : "판매월",
+            TitleFontStyle: "bold 16px Malgun Gothic",
+            LabelsFont: "bold 15px Malgun Gothic" 
+        },
+        yaxis: {
+            Title : "금액 (만 원)",
+            TitleFontStyle: "bold 16px Malgun Gothic",
+            LabelsFont: "14px Malgun Gothic", 
+            LabelFormat: "#,###", // 천 단위 콤마 추가로 가독성 확보
+            Tickmarks : true
+        },
+        tooltips: {
+            // 툴팁에서도 '만 원'으로 명시
+            Data : '%{key}: %{value}만 원',
+            FormattedKeyLabels: ['총 매출액', '메뉴 원가', '인건비'],
+            Effect : 'fade'
+        },
+        key: {
+            Data : ['총 매출액', '메뉴 원가', '인건비'],
+            Position : 'margin',
+            Valign: "bottom",
+            PositionOffsetY : 50,
+            FontStyle: "bold 15px Malgun Gothic"
+        }
+    };
+};
+
 this.fnCreateChart = function() {
     var canvas = this.chtBarBasic.getCanvas();
     DxChart.reset(canvas);
@@ -120,44 +158,6 @@ this.fnCreateChart = function() {
         options: this.fnGetOption(canvas)
     }).wave();
 };
-
-this.fnGetOption = function (canvas) {
-    return {
-        colors: ['#2980b9', '#e67e22', '#f39c12'], 
-        // 폰트가 커졌으므로 마진을 넉넉하게 조정
-        margin: { Left: 100, Right: 40, Top: 80, Bottom: 100, Inner: 20 },
-        title: {
-            Text : "월별 매출 및 비용 현황 (단위: 백만 원)",
-            FontStyle : "24px bold Malgun Gothic", // 타이틀 대폭 확대
-            Y : 30
-        },
-        xaxis: {
-            Labels : ["bind:SALE_MONTH"],
-            Title : "판매월",
-            TitleFontStyle: "16px bold Malgun Gothic",
-            LabelsFont: "14px bold Malgun Gothic" // X축 라벨 확대
-        },
-        yaxis: {
-            Title : "금액 (백만)",
-            TitleFontStyle: "16px bold Malgun Gothic",
-            LabelsFont: "14px Malgun Gothic", // Y축 라벨 확대
-            LabelFormat: "#,###",
-            Tickmarks : true
-        },
-        tooltips: {
-            // 툴팁 폰트도 엔진 설정에 따라 크기가 조절됩니다.
-            Data : '%{key}: %{value} 백만 원',
-            FormattedKeyLabels: ['총 매출액', '메뉴 원가', '인건비'],
-            Effect : 'fade'
-        },
-        key: {
-            Data : ['총 매출액', '메뉴 원가', '인건비'],
-            Position : 'margin',
-            Valign: "bottom",
-            PositionOffsetY : 50,
-            FontStyle: "14px bold Malgun Gothic" // 범례 폰트 확대
-        }
-    };
-};]]></Script>
+]]></Script>
   </Form>
 </FDL>
