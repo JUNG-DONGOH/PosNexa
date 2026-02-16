@@ -11,7 +11,7 @@
         <Static id="Static01_03_01_03_00" taborder="4" text="pos정보 또는 사업자 이름 등...." left="0" top="669" width="1600" height="60" cssclass="sta_number"/>
         <Static id="staClock" taborder="6" text="현재 시간 보여주기" top="12" width="173" height="26" onclick="Static01_onclick" cssclass="sta_TF_Welcome" right="250" textAlign="center"/>
         <Button id="btnRefund" taborder="7" text="반품" left="1404" top="560" width="120" height="50" tabstop="true" onclick="btnRefund_onclick" cssclass="btn_outline"/>
-        <Button id="Button01" taborder="8" text="이동" left="1404" top="435" width="120" height="50"/>
+        <Button id="btnOrder" taborder="8" text="주문내역" left="1404" top="435" width="120" height="50" cssclass="btn_outline" onclick="btnOrder_onclick"/>
         <Button id="Button02" taborder="9" text="단체" left="1404" top="495" width="120" height="50"/>
         <Static id="staShopName" taborder="10" text="가게 이름" top="12" width="173" height="26" textAlign="right" cssclass="sta_TF_Welcome" right="431"/>
         <Static id="Static00_00_00" taborder="11" top="11" width="1" height="30" border="1px solid gainsboro" right="415"/>
@@ -237,6 +237,20 @@ this.btnRefund_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 this.btnSearch_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.fn_searchCartAll();
+};
+
+// 주문내역 조회
+this.btnOrder_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	// 현재 보고 있는 테이블 ID를 고정값으로 전달
+    var oArg = { pvTableId : this.fvApp.gvSelectedTableId }; 
+    
+    var sPopupId = "receiptPopup";
+    var sUrl = "User::pos2013pu.xfdl";
+    var sPopupCallback = "fnCallPopup";
+    var oOption = {title : "주문 내역"}; 
+
+    this.gfnOpenPopup(sPopupId, sUrl, oArg, sPopupCallback, oOption);
 };
 ]]></Script>
     <Objects>
