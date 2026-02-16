@@ -13,7 +13,7 @@
               <Button id="btnPwdShow" taborder="4" left="413" top="353" width="20" height="20" onclick="Div00_btnPwdShow_onclick" cssclass="btn_notvisible"/>
               <Button id="btnPwdCheckShow" taborder="5" left="413" top="417" width="20" height="20" onclick="Div00_btnPwdCheckShow_onclick" cssclass="btn_notvisible"/>
               <TextField id="TxfName" taborder="6" labeltext="이름" left="46" top="163" width="399" height="54" inputtype="text" usetrailingbutton="false" displaynulltext="이름을 입력하세요."/>
-              <Radio id="rdoRole" taborder="7" left="157" top="520" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="2" innerdataset="innerdataset" index="0" text="사용자" value="Admin">
+              <Radio id="rdoRole" taborder="7" left="133" top="526" width="226" height="30" codecolumn="codecolumn" datacolumn="datacolumn" columncount="3" innerdataset="innerdataset" index="0" text="사용자" value="Admin" onitemchanged="Div00_rdoRole_onitemchanged">
                 <Dataset id="innerdataset">
                   <ColumnInfo>
                     <Column id="codecolumn" size="256"/>
@@ -27,6 +27,10 @@
                     <Row>
                       <Col id="codecolumn">Admin</Col>
                       <Col id="datacolumn">관리자</Col>
+                    </Row>
+                    <Row>
+                      <Col id="codecolumn">Table</Col>
+                      <Col id="datacolumn">테이블</Col>
                     </Row>
                   </Rows>
                 </Dataset>

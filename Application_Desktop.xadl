@@ -21,7 +21,7 @@
               </Frames>
             </HFrameSet>
             <ChildFrame id="frameLogin" formurl="Account::pos1010fm.xfdl" dragmovetype="none" showtitlebar="false"/>
-            <ChildFrame id="frameUser" formurl="User::pos2010fm.xfdl" dragmovetype="none" showtitlebar="false"/>
+            <ChildFrame id="frameUser" dragmovetype="none" showtitlebar="false"/>
           </Frames>
         </VFrameSet>
       </MainFrame>

@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2030fm" width="400" height="729" titletext="New Form">
+  <Form id="pos2030fm" width="400" height="729" titletext="주문 내역 화면">
     <Layouts>
       <Layout height="729" mobileorientation="landscape" width="400">
         <Div id="divCartArea" taborder="3" left="22" top="60" width="357" height="520" border="0px none black" borderRadius="10px" formscrollbartype="autoindicator autoindicator">
@@ -104,7 +104,6 @@ this.btn_pay_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	// 현재 보고 있는 테이블 ID를 고정값으로 전달
     var oArg = { pvTableId : this.fvApp.gvSelectedTableId }; 
-    
     var sPopupId = "receiptPopup";
     var sUrl = "User::pos2032pu.xfdl";
     var sPopupCallback = "fnCallPopup";

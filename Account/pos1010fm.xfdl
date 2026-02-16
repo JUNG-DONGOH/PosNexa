@@ -146,9 +146,23 @@ this.fnSetFrameByRole = function (sRole)
 		//Admin화면 열림
 		this.fvApp.VF.separatesize = "50,*,0,0";
 	}
-	else {
+	if(sRole=="User"){
 		//User화면 열림
 		this.fvApp.VF.separatesize = "0,0,0,*";
+		this.fvApp.fvFrameUser.formurl="User::pos2010fm.xfdl";
+	}
+	if(sRole=="Table"){
+		var sMyTableId = this.fvApp.gdsAccount.getColumn(0, "name"); 
+        
+        // 1. 전역 변수에 테이블 번호 주입 (이걸 해야 주문화면에서 인지함)
+        this.fvApp.gvSelectedTableId = sMyTableId;
+
+        // 2. 프레임 속성에도 저장 (부모-자식 간 데이터 전달용)
+        this.fvApp.fvFrameUser.u_tableId = sMyTableId;
+		
+		//User화면 열림
+		this.fvApp.VF.separatesize = "0,0,0,*";
+		this.fvApp.fvFrameUser.formurl="User::pos2020fm.xfdl";
 	}
 };
 
