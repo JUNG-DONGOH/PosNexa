@@ -13,8 +13,8 @@
         <Button id="btnRefund" taborder="7" text="반품" left="1404" top="565" width="120" height="50" tabstop="true" onclick="btnRefund_onclick" cssclass="btn_outline"/>
         <Button id="btnOrder" taborder="8" text="주문내역" left="1404" top="500" width="120" height="50" cssclass="btn_outline" onclick="btnOrder_onclick"/>
         <Static id="staShopName" taborder="9" text="가게 이름" top="12" width="173" height="26" textAlign="right" cssclass="sta_TF_Welcome" right="431"/>
-        <Static id="Static00_00_00" taborder="10" top="11" width="1" height="30" border="1px solid gainsboro" right="415"/>
-        <Static id="Static00_00_00_00" taborder="11" top="11" width="1" height="30" border="1px solid gainsboro" right="259"/>
+        <Static id="Static00_00_00" taborder="10" top="11" width="1" height="30" border="1px solid gainsboro" right="420"/>
+        <Static id="Static00_00_00_00" taborder="11" top="11" width="1" height="30" border="1px solid gainsboro" right="255"/>
         <Button id="btnSearch" taborder="12" text="조회" left="1404" top="435" width="120" height="50" cssclass="btn_outline" onclick="btnSearch_onclick"/>
       </Layout>
     </Layouts>

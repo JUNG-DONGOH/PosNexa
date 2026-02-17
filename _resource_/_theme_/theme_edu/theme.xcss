@@ -2671,7 +2671,136 @@
 {
 	-nexa-border : 0px none;
 }
-]]></CSSData>
+
+
+
+/* 1. 그리드 전체: 외곽선 제거 (변동 없음) */
+.Grid.grdStyle
+{
+	background : #ffffff;
+	-nexa-border : 0px none;
+}
+
+/* 2. 본문 셀 기본 상태 (변동 없음) */
+.Grid.grdStyle .body .row .cell
+{
+	background : #ffffff;
+	color : #2c3e50;                  /* 기본 글자색 (진한 네이비 그레이) */
+	-nexa-border : 0px none;
+	-nexa-padding : 0px;
+	font : 14px "Pretendard", "Malgun Gothic", sans-serif;
+	-nexa-text-align : center;
+}
+
+/* 3. 마우스 오버 상태: 이미지 속 연한 블루 배경 적용 */
+.Grid.grdStyle .body .row .cell[status=mouseover]
+{
+	/* 기존 연한 그레이에서 화사한 연블루로 변경 */
+	background : #f0f7ff;             
+	color : #2c3e50;                  /* 글자색 유지 */
+	cursor : pointer;
+	-nexa-border : 0px none;
+}
+
+/* 4. 선택된 상태: 선명한 블루 텍스트 + 연블루 배경 + 오른쪽 강조선 */
+.Grid.grdStyle .body .row .cell[userstatus=selected]
+{
+	/* 배경: 어두운 네이비 대신 밝고 선명한 연블루 틴트 적용 */
+	background : #e1f0ff;             
+	
+	/* 글자: 배경이 밝아졌으므로 포인트 컬러인 선명한 블루로 강조 */
+	color : #5a8dee;                  
+	font : bold 14px "Pretendard", "Malgun Gothic", sans-serif;
+	
+	/* 오른쪽 테두리: '상품검색' 버튼과 같은 선명한 블루 적용 */
+	/* (상, 우, 하, 좌 순서) */
+	-nexa-border : 0px none, 5px solid #5a8dee, 0px none, 0px none;
+}
+
+/* 1. 그리드 전체: 이미지 속 버튼과 동일한 선명한 블루 테두리 및 라운딩 */
+.Grid.grd_POS
+{
+	background : #ffffff;
+	/* 상품검색 버튼의 선명한 블루색으로 경계선 적용 */
+	-nexa-border : 1px solid #5a8dee; 
+	border-radius : 8px;               
+}
+
+/* 2. 헤더 스타일: 선명한 블루 배경 + 화이트 글자 (대비 극대화) */
+.Grid.grd_POS .head .row .cell
+{
+	/* 상품검색 버튼의 블루 컬러 적용 */
+	background : #5a8dee;             
+	color : #ffffff;                  
+	font : bold 13px "Pretendard", "Malgun Gothic", sans-serif;
+	/* 헤더 내부 선도 블루 톤에 맞춰 자연스럽게 조정 */
+	-nexa-border : 1px solid #4a7dce;  
+	-nexa-text-align : center;
+}
+
+/* 3. 본문 셀 스타일: 칸 구분 유지 및 기본 네이비 글자색 */
+.Grid.grd_POS .body .row .cell
+{
+	background : #ffffff;
+	color : #2c3e50;                  
+	-nexa-border : 1px solid #eef1f6;  
+	-nexa-padding : 0px 5px;           
+	font : 13px "Pretendard", "Malgun Gothic", sans-serif;
+}
+
+/* 4. 마우스 오버 상태: '원가' 라벨처럼 아주 연한 블루 배경 적용 */
+.Grid.grd_POS .body .row .cell[status=mouseover]
+{
+	/* 이미지 속 연블루 배경색 적용 */
+	background : #f0f7ff;             
+	cursor : pointer;
+}
+
+/* 5. 선택 상태: 배경색만 변경 (글자색 고정) */
+.Grid.grd_POS .body .row .cell[userstatus=selected]
+{
+	/* 마우스 오버보다 한 단계 더 선명한 연블루 배경 */
+	background : #e1f0ff;             
+	color : #2c3e50;                  /* 요청하신 대로 글자색은 고정 */
+	font : bold 13px "Pretendard", "Malgun Gothic", sans-serif;
+	
+	
+}
+
+.Static.stc_POS_Label
+{
+	/* 배경: 로고색(#27366f)의 느낌을 살린 아주 연한 블루 그레이 */
+	background : #f0f3f8;
+	
+	/* 테두리: 왼쪽만 사파이어 네이비 포인트로 강조 */
+	-nexa-border : 0px none, 0px none, 0px none, 4px solid #34448b;
+	border-radius : 4px;
+	
+	/* 텍스트 설정 */
+	color : #27366f;
+	font : bold 13px "Pretendard", "Malgun Gothic", sans-serif;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : left;
+}
+
+
+.Static.stc_POS_Title
+{
+	/* 배경: 로고색 배경에 흰색 글씨로 강한 대비 (그리드 헤더와 통일) */
+	background : #27366f;
+	color : #ffffff;
+	
+	/* 모서리: 둥글게 처리하여 세련된 느낌 */
+	border-radius : 8px 8px 0px 0px; 
+	
+	/* 텍스트 설정 */
+	font : bold 14px "Pretendard", "Malgun Gothic", sans-serif;
+	-nexa-vertical-align : middle;
+	-nexa-text-align : left;
+	
+	/* 은은한 구분선 추가 */
+	-nexa-border : 0px none, 0px none, 1px solid #1a254a, 0px none;
+}]]></CSSData>
   <CSSData type="desktop"><![CDATA[/*************** Form ***************/
 .Form
 {
@@ -4569,6 +4698,7 @@
 	-nexa-icon : url('theme://images/btn_MDI_AllX.png');
 	-nexa-padding : 0px ;	
 }
+
 .Tab.tab_MDI_Tab .tabbuttonitem,
 .Tab.tab_MDI_Tab .tabbuttonitem[status=mouseover],
 .Tab.tab_MDI_Tab .tabbuttonitem[status=focused]
@@ -4594,6 +4724,8 @@
 {
 	-nexa-text-align : left;
 }
+
+
 .Static.sta_MDI_Bg
 {
 	background : #eef1f6;

@@ -55,14 +55,6 @@
         </Row>
         <Row>
           <Col id="MENU_GROUP">30</Col>
-          <Col id="MENU_ID">3010</Col>
-          <Col id="MENU_LEVEL">0</Col>
-          <Col id="MENU_NAME">📦 재고관리</Col>
-          <Col id="MENU_NAME_EN">Inventory management</Col>
-          <Col id="MENU_URL">Admin::pos3010fm.xfdl</Col>
-        </Row>
-        <Row>
-          <Col id="MENU_GROUP">30</Col>
           <Col id="MENU_ID">3030</Col>
           <Col id="MENU_LEVEL">0</Col>
           <Col id="MENU_NAME">📊 매출통계</Col>

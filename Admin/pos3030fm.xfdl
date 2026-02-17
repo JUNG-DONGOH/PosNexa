@@ -61,15 +61,15 @@
         </Grid>
         <Button id="btn_findEmp" taborder="5" left="672" top="40" width="40" height="40" cssclass="btn_WF_Find" text="" onclick="btn_findEmp_onclick"/>
         <Static id="Static00" taborder="6" text="직원검색" left="44" top="40" width="131" height="40" cssclass="sta_blue_badge"/>
-        <Static id="Static04" taborder="7" left="972" top="245" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="유형" cssclass="sta_light_blue_bg"/>
-        <Static id="Static04_02" taborder="8" left="972" top="330" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="메모" cssclass="sta_light_blue_bg"/>
+        <Static id="Static04" taborder="7" left="972" top="245" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="유형" cssclass="sta_badge"/>
+        <Static id="Static04_02" taborder="8" left="972" top="330" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="메모" cssclass="sta_badge"/>
         <Button id="btn_retrieve" taborder="9" text="조회" top="22" width="78" height="51" cssclass="btn_outline" right="240" onclick="btn_retrieve_onclick" fittocontents="none"/>
         <Button id="btn_save" taborder="11" text="저장" top="22" width="78" height="51" cssclass="btn_outline" right="64" onclick="btn_save_onclick"/>
         <Button id="btn_popup" taborder="12" text="급여 및 근무 상세 기록" left="1035" top="533" width="270" height="50" cssclass="btn_outline" onclick="btn_popup_onclick"/>
         <Radio id="rdoStatus" taborder="13" left="714" top="45" width="169" height="30" codecolumn="statusId" datacolumn="statusName" columncount="2" innerdataset="ds_empStatus" index="0" text="재직자" value="ACTIVE" onitemchanged="rdoStatus_onitemchanged"/>
         <Button id="btn_delete" taborder="10" text="퇴사" top="22" width="78" height="51" cssclass="btn_outline" right="152" onclick="btn_delete_onclick" fittocontents="none"/>
         <Button id="btn_backup" taborder="14" text="재직" top="22" width="78" height="51" cssclass="btn_outline" right="152" fittocontents="none" onclick="btn_backup_onclick"/>
-        <Static id="Static04_02_00" taborder="15" left="972" top="443" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="시급" cssclass="sta_light_blue_bg"/>
+        <Static id="Static04_02_00" taborder="15" left="972" top="443" width="5.342465753424658%" height="50" onclick="Static04_onclick" text="시급" cssclass="sta_badge"/>
       </Layout>
     </Layouts>
     <Objects>
