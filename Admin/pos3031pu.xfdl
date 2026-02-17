@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="550" mobileorientation="landscape" width="550">
         <Static id="staName" taborder="0" text="근무자 이름+상세기록" left="21" top="11" width="310" height="26" cssclass="sta_subtitle"/>
-        <Grid id="Grid01" taborder="1" left="20" top="60" width="510" height="50" binddataset="ds_emp_pop" autofittype="col">
+        <Grid id="Grid01" taborder="1" left="20" top="60" width="510" height="50" binddataset="ds_emp_pop" autofittype="col" cssclass="grd_POS">
           <Formats>
             <Format id="default">
               <Columns>
@@ -29,7 +29,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid00" taborder="2" left="20" top="140" width="510" height="170" binddataset="ds_empwork" autofittype="col">
+        <Grid id="Grid00" taborder="2" left="20" top="140" width="510" height="170" binddataset="ds_empwork" autofittype="col" cssclass="grd_POS">
           <Formats>
             <Format id="default">
               <Columns>
@@ -56,7 +56,7 @@
         </Grid>
         <Button id="btn_delete" taborder="3" text="삭제" top="325" width="72" height="48" cssclass="btn_outline" right="31" onclick="btn_delete_onclick" fittocontents="none"/>
         <Button id="btn_add" taborder="4" text="추가" top="325" width="72" height="48" cssclass="btn_outline" right="113" onclick="btn_add_onclick"/>
-        <Grid id="Grid02" taborder="5" left="20" top="390" width="510" height="50" binddataset="ds_emp_pop" autofittype="col">
+        <Grid id="Grid02" taborder="5" left="20" top="390" width="510" height="50" binddataset="ds_emp_pop" autofittype="col" cssclass="grd_POS">
           <Formats>
             <Format id="default">
               <Columns>

@@ -2756,3 +2756,28 @@
 	/* 은은한 구분선 추가 */
 	-nexa-border : 0px none, 0px none, 1px solid #1a254a, 0px none;
 }
+
+
+/* 1. 테이블 컨테이너: 그림자와 라운딩으로 입체감 부여 */
+.Div.div_POS_Table
+{
+	background : #ffffff;             /* 배경은 깔끔한 화이트 */
+	-nexa-border : 1px solid #dcdcdc; /* 부드러운 외곽선 */
+	border-radius : 12px;             /* 둥근 모서리로 세련미 강조 */
+	/* 그림자를 사용하여 화면에서 떠 있는 듯한 깊이감 형성 */
+	box-shadow : 4px 4px 15px rgba(0, 0, 0, 0.1); 
+	cursor : pointer;
+}
+
+/* 2. 테이블 번호 레이블: 상단에 포인트 컬러 적용 */
+.Static.sta_POS_TableNum
+{
+	/* 상품검색 버튼과 동일한 선명한 블루를 헤더로 사용 */
+	background : #5a8dee; 
+	color : #ffffff;
+	font : bold 16pt "Pretendard", "Arial";
+	-nexa-text-align : center;
+	-nexa-vertical-align : middle;
+	/* 상단만 둥글게 처리하여 카드 헤더 느낌 구현 */
+	border-radius : 10px 10px 0px 0px; 
+}

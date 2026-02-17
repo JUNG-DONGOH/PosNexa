@@ -28,7 +28,7 @@
             </Layout>
           </Layouts>
         </Div>
-        <Grid id="Grid00" taborder="3" left="30" top="140" width="860" height="458" binddataset="ds_emp" autofittype="col" onselectchanged="Grid00_onselectchanged" autoenter="select" oncloseup="Grid00_oncloseup">
+        <Grid id="Grid00" taborder="3" left="30" top="140" width="860" height="458" binddataset="ds_emp" autofittype="col" onselectchanged="Grid00_onselectchanged" autoenter="select" oncloseup="Grid00_oncloseup" cssclass="grd_POS">
           <Formats>
             <Format id="default">
               <Columns>

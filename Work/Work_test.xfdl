@@ -146,6 +146,8 @@
             </Format>
           </Formats>
         </Grid>
+        <Div id="Div03" taborder="101" text="Div03" left="1050" top="391" width="200" height="150" cssclass="div_POS_Table"/>
+        <Static id="Static06" taborder="102" text="1번" left="1123" top="580" width="120" height="60" cssclass="sta_POS_TableNum"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvPushNum      = 0;    // 숫자를 누른 상태
