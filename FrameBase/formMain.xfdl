@@ -6,7 +6,7 @@
         <Div id="Div02" taborder="0" left="98" top="194" width="367" height="230" cssclass="div_card_shadow">
           <Layouts>
             <Layout>
-              <Static id="staTodayRevenue" taborder="0" text="오늘 매출액" left="78" top="66" width="210" height="154" textAlign="center"/>
+              <Static id="staTodayRevenue" taborder="0" text="오늘 매출액" left="12" top="66" width="350" height="154" textAlign="center" fittocontents="none"/>
               <Static id="Static00" taborder="1" text="오늘 매출액" left="10" top="10" width="233" height="51" cssclass="sta_number"/>
             </Layout>
           </Layouts>
@@ -114,9 +114,6 @@ this.fn_callback = function(svcId, errCode, errMsg)
         //  (초록색 + 큰 폰트)
         objStatic.color="#27ae60";
         objStatic.font="bold 48px 'Malgun Gothic'";
-        
-        // 텍스트가 잘리지 않도록 너비 자동 조정 (필요 시)
-        objStatic.fittocontents="width";
     }
 };
 

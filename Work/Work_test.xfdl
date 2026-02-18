@@ -100,31 +100,7 @@
         <Button id="Button14_00" taborder="73" text="버튼" left="160" top="444" width="120" height="50" cssclass="btn_WF_FillGreen"/>
         <Static id="Static03" taborder="74" text="defaultRight 오른쪽 정렬" left="730" top="250" width="170" height="60" cssclass="sta_defaultRight"/>
         <Static id="Static05" taborder="75" text="titleRight오른쪽정렬" left="700" top="196" width="220" height="60" cssclass="sta_titleRight"/>
-        <Div id="Div01_00" taborder="76" left="1370" top="23" width="282" height="387" cssclass="div_card_shadow"/>
-        <Static id="Static00_00" taborder="77" left="1388" top="32" height="41" cssclass="sta_cm_box05" width="257"/>
-        <Static id="stCalc00" taborder="78" left="1385" top="32" height="41" width="257"/>
-        <Static id="Static04_00" taborder="79" left="1385" top="67" cssclass="sta_WF_box03" width="250" bottom="334"/>
-        <Button id="Button00_00" taborder="80" text="7" left="1399" top="172" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="Button01_00" taborder="81" text="8" left="1459" top="172" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="Button02_00" taborder="82" text="9" left="1515" top="172" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="Button03_00" taborder="83" text="6" left="1515" top="225" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="Button04_00" taborder="84" text="4" left="1399" top="225" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="Button05_00_00" taborder="85" text="5" left="1459" top="225" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="Button06_00" taborder="86" text="3" left="1515" top="278" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="Button07_00" taborder="87" text="1" left="1399" top="278" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="Button08_00" taborder="88" text="2" left="1459" top="278" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="btnBack00" taborder="89" left="1399" top="119" width="48" height="48" cssclass="btn_WF_calculatorBack" onclick="fn_comBtnOnClick" text=""/>
-        <Button id="Button10_00" taborder="90" text="0" left="1399" top="331" width="108" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_callNumOnClick"/>
-        <Button id="btn_culator00" taborder="91" text="." left="1515" top="331" width="48" height="48" cssclass="btn_WF_calculatorNum" onclick="fn_comBtnOnClick"/>
-        <Button id="btnDivision00" taborder="92" top="119" width="48" height="48" cssclass="btn_WF_division" onclick="fn_comBtnOnClick" left="1573" text="%"/>
-        <Button id="btnMultiple00" taborder="93" left="1573" top="172" width="48" height="48" cssclass="btn_WF_multiple" onclick="fn_comBtnOnClick" text="X"/>
-        <Button id="btnMinus00" taborder="94" left="1573" top="225" width="48" height="48" cssclass="btn_WF_minus" onclick="fn_comBtnOnClick" text="-"/>
-        <Button id="btnPlus00" taborder="95" left="1573" top="278" width="48" cssclass="btn_WF_plus" height="48" onclick="fn_comBtnOnClick" text="+"/>
-        <Button id="btnAnd00" taborder="96" left="1573" top="331" width="48" cssclass="btn_WF_result" height="48" onclick="fn_comBtnOnClick" text="="/>
-        <Button id="btnCE00" taborder="97" text="CE" left="1457" top="119" width="48" height="48" cssclass="btn_WF_calculatorNum" font="18px &quot;Arial&quot;" onclick="fn_comBtnOnClick"/>
-        <Button id="btnC00" taborder="98" text="C" left="1515" top="119" width="48" height="48" cssclass="btn_WF_calculatorNum" font="18px &quot;Arial&quot;" onclick="fn_comBtnOnClick"/>
-        <Static id="stNum00" taborder="99" text="0" left="1385" top="67" height="46" cssclass="sta_WF_calculatorTotal" width="250" background="#ffffff" border="1px solid silver" textAlign="right" padding="0px 10px 0px 0px" font="normal 700 20pt/normal &quot;gothic&quot;,&quot;Gulim&quot;"/>
-        <Grid id="Grid01" taborder="100" left="620" top="23" width="190" height="143" binddataset="Dataset0" cssclass="grd_POS">
+        <Grid id="Grid01" taborder="76" left="620" top="23" width="190" height="143" binddataset="Dataset0" cssclass="grd_POS">
           <Formats>
             <Format id="default">
               <Columns>
@@ -146,8 +122,11 @@
             </Format>
           </Formats>
         </Grid>
-        <Div id="Div03" taborder="101" text="Div03" left="1050" top="391" width="200" height="150" cssclass="div_POS_Table"/>
-        <Static id="Static06" taborder="102" text="1번" left="1123" top="580" width="120" height="60" cssclass="sta_POS_TableNum"/>
+        <Div id="Div03" taborder="77" text="Div03" left="918" top="273" width="200" height="150" cssclass="div_POS_Table"/>
+        <Static id="Static06" taborder="78" text="1번" left="1123" top="580" width="120" height="60" cssclass="sta_POS_TableNum"/>
+        <Static id="Static07" taborder="79" text="Static07" left="160" top="630" width="120" height="60" cssclass="stc_Footer_Info"/>
+        <Static id="Static08" taborder="80" text="Static08" left="400" top="635" width="120" height="60" cssclass="stc_Footer_Sub"/>
+        <Div id="Div04" taborder="81" text="Div04" left="940" top="106" width="200" height="150" cssclass="div_POS_Card_Empty"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvPushNum      = 0;    // 숫자를 누른 상태

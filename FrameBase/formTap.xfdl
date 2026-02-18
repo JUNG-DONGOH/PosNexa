@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formTap" width="1396" height="40" titletext="New Form" onload="formTap_onload" border="0px none">
+  <Form id="formTap" width="1396" height="40" titletext="tap화면" onload="formTap_onload" border="0px none">
     <Layouts>
       <Layout height="40" width="1396">
         <Tab id="tabMdi" taborder="0" tabindex="0" left="0" top="9" width="1190" height="30" onchanged="tabMdi_onchanged" showextrabutton="true" onextrabuttonclick="tabMdi_onextrabuttonclick" cssclass="tab_MDI_Tab">

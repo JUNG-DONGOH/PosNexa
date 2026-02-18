@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="550" width="550">
         <Button id="btnCancel" taborder="0" text="닫기" width="87" height="51" cssclass="btn_outline" fittocontents="none" left="232" bottom="37" onclick="btnCancel_onclick"/>
-        <Grid id="Grid00" taborder="1" left="30" top="100" width="490" height="336" binddataset="ds_cart" autofittype="col">
+        <Grid id="Grid00" taborder="1" left="30" top="100" width="490" height="336" binddataset="ds_cart" autofittype="col" cssclass="grd_POS">
           <Formats>
             <Format id="default">
               <Columns>

@@ -1,15 +1,15 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formTop" width="1536" height="50" titletext="New Form" background="white" onclick="formTop_onclick" onload="formTop_onload" cssclass="formTop" border="0px none, 0px none, 1px solid #e2e8f0, 0px none" ontimer="formTop_ontimer" onclose="formTop_onclose">
+  <Form id="formTop" width="1536" height="50" titletext="상단화면" onclick="formTop_onclick" onload="formTop_onload" cssclass="formTop" border="0px none, 0px none, 1px solid #e2e8f0, 0px none" ontimer="formTop_ontimer" onclose="formTop_onclose" background="white">
     <Layouts>
       <Layout height="50" width="1536">
         <Button id="btnGoMain" taborder="0" left="20" top="0" width="170" height="48" cssclass="btn_logo" onclick="btnGoMain_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom" border="0px none"/>
         <Button id="btnLogout" taborder="1" text="로그아웃" left="1417" top="8" width="108" height="35" onclick="btnLogout_onclick" cssclass="btn_login" textAlign="center"/>
-        <Static id="staUser" taborder="2" top="13" width="110" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1290"/>
-        <Static id="staClock" taborder="4" text="현재 시간 보여주기" top="12" width="173" height="26" onclick="Static01_onclick" cssclass="sta_TF_Welcome" right="250" textAlign="center"/>
-        <Static id="Static00_00_00_00" taborder="3" top="11" width="1" height="30" border="1px solid gainsboro" right="255" onclick="Static00_00_00_00_onclick"/>
-        <Static id="Static00_00_00" taborder="5" top="11" width="1" height="30" border="1px solid gainsboro" right="420"/>
-        <Static id="staShopName" taborder="6" text="가게 이름" top="12" width="173" height="26" textAlign="right" cssclass="sta_TF_Welcome" right="431"/>
+        <Static id="staUser" taborder="2" top="13" width="126" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" left="1274"/>
+        <Static id="staClock" taborder="4" text="현재 시간 보여주기" top="12" width="173" height="26" onclick="Static01_onclick" cssclass="sta_TF_Welcome" right="270" textAlign="center"/>
+        <Static id="staShopName" taborder="6" text="가게 이름" top="12" width="173" height="26" textAlign="right" cssclass="sta_TF_Welcome" right="451"/>
+        <Static id="Static00_00_00" taborder="5" top="11" width="1" height="30" border="1px solid gainsboro" right="440"/>
+        <Static id="Static00_00_00_00" taborder="3" top="11" width="1" height="30" border="1px solid gainsboro" right="269" onclick="Static00_00_00_00_onclick"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp = nexacro.getApplication();
@@ -81,7 +81,7 @@ this.fn_updateTime = function()
     var sSec   = objDate.getSeconds().toString().padLeft(2, "0");
     
     // 최종 문자열 조합 (예: 2026-02-09 (월) 14:30:05)
-    var sFullTime = sYear + "-" + sMonth + "-" + sDate + " (" + sDay + ") " 
+    var sFullTime = "🕒"+sYear + "-" + sMonth + "-" + sDate + " (" + sDay + ") " 
                   + sHour + ":" + sMin + ":" + sSec;
     
     // 화면의 Static 컴포넌트에 값 적용
@@ -95,7 +95,7 @@ this.fnUpdateUserInfo = function(obj:nexacro.NormalDataset, e:nexacro.DSLoadEven
         var sRole = obj.getColumn(0, "role");
 		var sRoleNm = (sRole == "Admin" ? "관리자" : "사용자");
 		var sName = obj.getColumn(0, "name");
-        this.staUser.text= sRoleNm + "   "+sName + "님"; 
+        this.staUser.text= "👤"+sRoleNm + "   "+sName + "님"; 
     }
 };
 
