@@ -7,8 +7,8 @@
         <Static id="Static00" taborder="2" text="Static00" left="143" top="6" width="97" height="24" font="bold 16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;" textAlign="right"/>
         <ImageViewer id="ImageViewer00" taborder="1" left="0" top="29" width="248" height="160" borderRadius="0px 0px 10px 10px" fittocontents="none" border="0px none" stretch="fit"/>
         <Button id="btnTransparency" taborder="3" left="10" top="9" width="230" height="170" border="0px none" borderRadius="10px" background="transparent" onclick="btnTransparency_onclick" text=""/>
-        <ImageViewer id="ImageViewer01" taborder="4" left="85" top="79" width="80" height="30" background="url('theme://images/btn_proStateN.png') repeat right top" visible="false" border="0px none"/>
         <Static id="st_overlay" taborder="5" left="0" top="0" width="250" height="189" background="#555555" borderRadius="10px" opacity="0.5" visible="false"/>
+        <ImageViewer id="ImageViewer01" taborder="4" left="85" top="79" width="80" height="30" background="url('theme://images/btn_proStateN.png') repeat right top" visible="false" border="0px none"/>
       </Layout>
     </Layouts>
     <Bind>
