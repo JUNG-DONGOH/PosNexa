@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2020fm" width="1536" height="729" titletext="주문 화면" onload="pos2020fm_onload">
+  <Form id="pos2020fm" width="1536" height="729" titletext="주문 화면" onload="pos2020fm_onload" ontimer="pos2020fm_ontimer">
     <Layouts>
       <Layout height="729" width="1536">
         <Div id="divMenuArea" taborder="8" left="40" top="111" width="1060" height="604" border="0px none black" formscrollbartype="autoindicator autoindicator">
@@ -47,7 +47,6 @@ this.pos2020fm_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 	// 메뉴 데이터셋 필터 초기화 (전체 선택 상태)
     this.fvApp.gdsProductMenu.filter(""); 
 
-    // 동적 Div 생성 함수 호출
     this.fn_drawMenuCards();
 	// 주문내역 호출
 	this.Div00.form.fn_drawCartList();
