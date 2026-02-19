@@ -1771,6 +1771,32 @@
     opacity: 0.6;
 }
 
+/* 다크 회색 배지 - 관리/퇴사자 상태용 */
+.Static.sta_dark_badge
+{
+    /* 기존 블루(#3182F6)에서 묵직한 다크 블루그레이로 변경 */
+    background: #455a64;
+    border-radius: 16px;
+    color: #FFFFFF;
+    cursor: default;
+    /* 폰트 굵기를 600으로 유지하여 가독성 확보 */
+    font: 600 13px "Pretendard", sans-serif;
+    letter-spacing: -0.2px;
+    opacity: 1;
+    -nexa-padding: 4px 12px;
+    -nexa-text-align: center;
+    -nexa-vertical-align: middle;
+}
+
+/* 비활성 또는 읽기 전용 상태 */
+.Static.sta_dark_badge[status=disabled]
+{
+    /* 배경을 더 어두운 회색으로 톤다운 */
+    background: #cfd8dc;
+    color: #78909c;
+    opacity: 0.5;
+}
+
 
 /* 기본 파란색 배경 + 테두리 */
 .Static.sta_blue_border
@@ -2758,6 +2784,53 @@
 	font : bold 13px "Pretendard", "Malgun Gothic", sans-serif;
 	
 	
+}
+
+/* 1. 그리드 전체 외곽선 */
+.Grid.grd_Retiree
+{
+	background : #f7f9fa;               /* 그리드 기본 배경도 연한 회색조 */
+	-nexa-border : 1px solid #455a64; 
+	border-radius : 8px;               
+}
+
+/* 2. 헤더 스타일: 어두운 다크 그레이 */
+.Grid.grd_Retiree .head .row .cell
+{
+	background : #455a64;             
+	color : #ffffff;                  
+	font : bold 13px "Pretendard", "Malgun Gothic", sans-serif;
+	-nexa-border : 1px solid #37474f;  
+}
+
+/* 3. 본문 셀 스타일: 기본 배경을 연회색(#f7f9fa)으로 설정 */
+.Grid.grd_Retiree .body .row .cell
+{
+	background : #f7f9fa;             /* 하얀색 대신 차분한 연회색 */
+	color : #34495e;                  
+	-nexa-border : 1px solid #d1d9e0;  /* 구분선도 조금 더 선명하게 */
+	font : 13px "Pretendard", "Malgun Gothic", sans-serif;
+}
+
+/* 4. [추가] 줄무늬 스타일: 짝수 행에 조금 더 진한 회색 적용 */
+.Grid.grd_Retiree .body .row .cell[userstatus=alternate]
+{
+	background : #edf1f3;             /* 기본보다 한 단계 더 어두운 회색 */
+}
+
+/* 5. 마우스 오버 상태: 강조를 위한 미드 그레이 */
+.Grid.grd_Retiree .body .row .cell[status=mouseover]
+{
+	background : #e2e8ec;             
+	cursor : pointer;
+}
+
+/* 6. 선택 상태: 선택된 느낌이 확실히 나는 블루그레이 */
+.Grid.grd_Retiree .body .row .cell[userstatus=selected]
+{
+	background : #cfd8dc;             
+	color : #2c3e50;                  
+	font : bold 13px "Pretendard", "Malgun Gothic", sans-serif;
 }
 
 .Static.stc_POS_Label

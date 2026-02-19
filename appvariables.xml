@@ -150,6 +150,20 @@
           <Col id="MSG_ICON">INF</Col>
         </Row>
         <Row>
+          <Col id="MSG_ID">msg.login.success</Col>
+          <Col id="MSG_TEXT">"{0}" 님, 환영합니다! POS 시스템을 시작합니다.</Col>
+          <Col id="MSG_TEXT_EN"> {0}, welcome!</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
+          <Col id="MSG_ID">msg.login.fail</Col>
+          <Col id="MSG_TEXT">가입되지 않은 사용자입니다. 관리자에게 등록 요청을 해주세요.</Col>
+          <Col id="MSG_TEXT_EN"> You are not a registered user. Please contact the administrator to request registration.</Col>
+          <Col id="MSG_TYPE">A</Col>
+          <Col id="MSG_ICON">INF</Col>
+        </Row>
+        <Row>
           <Col id="MSG_ID">msg.account.id.info</Col>
           <Col id="MSG_TEXT">사용자 ID는 "{0}" 입니다.</Col>
           <Col id="MSG_TEXT_EN"> Your user ID is "{0}".</Col>

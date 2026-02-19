@@ -100,7 +100,7 @@
         <Button id="Button14_00" taborder="73" text="버튼" left="160" top="444" width="120" height="50" cssclass="btn_WF_FillGreen"/>
         <Static id="Static03" taborder="74" text="defaultRight 오른쪽 정렬" left="730" top="250" width="170" height="60" cssclass="sta_defaultRight"/>
         <Static id="Static05" taborder="75" text="titleRight오른쪽정렬" left="700" top="196" width="220" height="60" cssclass="sta_titleRight"/>
-        <Grid id="Grid01" taborder="76" left="620" top="23" width="190" height="143" binddataset="Dataset0" cssclass="grd_POS">
+        <Grid id="Grid01" taborder="76" left="620" top="23" width="80" height="143" binddataset="Dataset0" cssclass="grd_POS">
           <Formats>
             <Format id="default">
               <Columns>
@@ -127,6 +127,28 @@
         <Static id="Static07" taborder="79" text="Static07" left="160" top="630" width="120" height="60" cssclass="stc_Footer_Info"/>
         <Static id="Static08" taborder="80" text="Static08" left="400" top="635" width="120" height="60" cssclass="stc_Footer_Sub"/>
         <Div id="Div04" taborder="81" text="Div04" left="940" top="106" width="200" height="150" cssclass="div_POS_Card_Empty"/>
+        <Grid id="Grid02" taborder="82" left="720" top="18" width="220" height="165" cssclass="grd_Retiree" binddataset="Dataset0">
+          <Formats>
+            <Format id="default">
+              <Columns>
+                <Column size="80"/>
+                <Column size="80"/>
+              </Columns>
+              <Rows>
+                <Row band="head" size="24"/>
+                <Row size="24"/>
+              </Rows>
+              <Band id="head">
+                <Cell text="DEPT_CODE"/>
+                <Cell col="1" text="DEPT_NAME"/>
+              </Band>
+              <Band id="body">
+                <Cell text="bind:DEPT_CODE"/>
+                <Cell col="1" text="bind:DEPT_NAME"/>
+              </Band>
+            </Format>
+          </Formats>
+        </Grid>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvPushNum      = 0;    // 숫자를 누른 상태

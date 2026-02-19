@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="btnTra" width="250" height="189" titletext="메뉴 div 화면" borderRadius="10px" onload="pos2021ly_onload" border=" 1px solid #dcdcdc">
+  <Form id="btnTra" width="250" height="189" titletext="메뉴 div 화면" borderRadius="10px" border=" 1px solid #dcdcdc" ontimer="btnTra_ontimer" onload="btnTra_onload">
     <Layouts>
       <Layout height="189" width="250">
         <Static id="staProName" taborder="0" text="메뉴이름" left="8" top="6" width="152" height="24" font="16px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;,&quot;맑은 고딕&quot;"/>
@@ -16,9 +16,31 @@
       <BindItem id="item1" compid="staProName" propid="text" datasetid="gdsProductMenu" columnid="PROD_NM"/>
       <BindItem id="item3" compid="Static00" propid="text" datasetid="gdsProductMenu" columnid="PRICE"/>
     </Bind>
-    <Script type="xscript5.1"><![CDATA[
-this.pos2021ly_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
+    <Script type="xscript5.1"><![CDATA[this.btnTra_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
 {
+	// 부모의 데이터를 읽기 위해 대기시간을 주기. 틀 -> 이미지 연결 -> 보여주기
+    this.setTimer(1, 70);
+};
+
+
+
+// 투명 버튼을 누르면
+this.btnTransparency_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
+{
+	var pDiv = this.parent; // 부모 Div에 저장된 정보 참조
+    
+    // 메인 폼에 정의된 장바구니 추가 함수 호출
+    var objMainForm = this.getOwnerFrame().form;
+	objMainForm.fn_addCart(pDiv.u_prod_id, pDiv.u_prod_nm, pDiv.u_price);
+};
+
+
+this.btnTra_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+	if(e.timerid == 1) {
+        this.killTimer(1);
+		
+		
 	var pDiv = this.parent; // 나를 감싸고 있는 objDiv를 참조
     
     this.staProName.text=pDiv.u_prod_nm;
@@ -44,18 +66,10 @@ this.pos2021ly_onload = function(obj:nexacro.Form,e:nexacro.LoadEventInfo)
         this.parent.enable=false;
         
     }
-
+	}
 };
 
-// 투명 버튼을 누르면
-this.btnTransparency_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
-{
-	var pDiv = this.parent; // 부모 Div에 저장된 정보 참조
-    
-    // 메인 폼에 정의된 장바구니 추가 함수 호출
-    var objMainForm = this.getOwnerFrame().form;
-	objMainForm.fn_addCart(pDiv.u_prod_id, pDiv.u_prod_nm, pDiv.u_price);
-};
+
 ]]></Script>
   </Form>
 </FDL>

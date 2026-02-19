@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2010fm" width="1536" height="729" titletext="NEXAPOS 메인화면" onload="pos2010fm_onload" background="" onactivate="pos2010fm_onactivate" ontimer="pos2010fm_ontimer" onclose="pos2010fm_onclose" scrollbartype="none none">
+  <Form id="pos2010fm" width="1536" height="729" titletext="NEXAPOS 메인화면" onload="pos2010fm_onload" background="" ontimer="pos2010fm_ontimer" onclose="pos2010fm_onclose" scrollbartype="none none">
     <Layouts>
       <Layout height="729" mobileorientation="landscape" width="1536">
         <Button id="btnLogout" taborder="0" text="로그아웃" top="7" width="108" height="35" onclick="btnLogout_onclick" cssclass="btn_login" right="13"/>

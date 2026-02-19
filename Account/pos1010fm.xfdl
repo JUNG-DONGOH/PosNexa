@@ -142,9 +142,7 @@ this.fnCallback = function(svcId, errCd, errMsg)
 
 //역할별 프레임 제어 함수
 this.fnSetFrameByRole = function (sRole)
-{
-	trace("fnSetFrameByRole 호출됨 - Role: " + sRole); // 디버깅용 로그
-	
+{	
 	if(sRole=="Admin"){
 		//Admin화면 열림
 		this.fvApp.VF.separatesize = "50,*,0,0";
@@ -226,25 +224,17 @@ this.fn_loginCallback = function(svcID, errorCode, errorMsg)
         // gdsAccount에 데이터가 들어왔는지 확인합니다.
         if (this.fvApp.gdsAccount.rowcount > 0) {
             var sName = this.fvApp.gdsAccount.getColumn(0, "name"); //
-            alert(sName + "님, 환영합니다! POS 시스템을 시작합니다.");
+			this.gfnAlert("msg.login.success",[sName]);	
             this.fn_getData();
         } else {
-            alert("가입되지 않은 사용자입니다. 관리자에게 등록 요청을 해주세요.");
+            this.gfnAlert("msg.login.fail");
         }
     }
 };]]></Script>
     <Objects>
       <Dataset id="ds_search">
         <ColumnInfo>
-          <Column id="EMAIL" type="STRING" size="256"/>
-          <Column id="NICKNAME" type="STRING" size="256"/>
           <Column id="LOGIN_ID" type="STRING" size="256"/>
-        </ColumnInfo>
-      </Dataset>
-      <Dataset id="ds_account">
-        <ColumnInfo>
-          <Column id="user_id" type="STRING" size="256"/>
-          <Column id="login_id" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
     </Objects>
