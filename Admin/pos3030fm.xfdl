@@ -73,7 +73,7 @@
       </Layout>
     </Layouts>
     <Objects>
-      <Dataset id="ds_emp" oncolumnchanged="ds_emp_oncolumnchanged">
+      <Dataset id="ds_emp" onrowposchanged="ds_emp_onrowposchanged">
         <ColumnInfo>
           <Column id="emp_id" type="STRING" size="256"/>
           <Column id="link_account" type="STRING" size="256"/>
@@ -208,6 +208,7 @@ this.fnCallback = function(svcId, errCode, errMsg)
     // 1. 조회 성공 시 필터 적용
     if (svcId == "svcEmpLoad") {
         this.fn_applyFilter();
+		this.fn_setEmpImage();
     }
 
     // 2. 저장 작업별 메시지 분기 처리 (svcId 활용)
@@ -332,6 +333,10 @@ this.fn_applyFilter = function()
     }
 
     this.ds_emp.filter(sFilter);
+// 	// 필터 결과가 있으면 첫 행으로 포지션 고정 -> 첫화면 이미지 안보이는거 방지
+// 	if (this.ds_emp.rowcount > 0) {
+// 		this.ds_emp.rowposition=0;
+// 	}
     this.fn_setEmpImage();
     
     // 퇴사자(INACTIVE)일 때만 복구 버튼 보이게 설정

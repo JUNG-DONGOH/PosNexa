@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos3031pu" width="550" height="550" titletext="근무상세 관리 화면" onload="pos3031pu_onload">
+  <Form id="pos3031pu" width="550" height="550" titletext="근무상세 관리 화면" onload="pos3031pu_onload" ontimer="pos3031pu_ontimer">
     <Layouts>
       <Layout height="550" mobileorientation="landscape" width="550">
         <Static id="staName" taborder="0" text="근무자 이름+상세기록" left="21" top="11" width="310" height="26" cssclass="sta_subtitle"/>
@@ -29,7 +29,7 @@
             </Format>
           </Formats>
         </Grid>
-        <Grid id="Grid00" taborder="2" left="20" top="140" width="510" height="170" binddataset="ds_empwork" autofittype="col" cssclass="grd_POS" griduserproperty="checkbox">
+        <Grid id="Grid00" taborder="2" left="20" top="140" width="510" height="170" binddataset="ds_empwork" autofittype="col" cssclass="grd_POS" griduserproperty="checkbox" onheadclick="Grid00_onheadclick">
           <Formats>
             <Format id="default">
               <Columns>
@@ -130,12 +130,23 @@ this.fnCallback = function(svcId, errCode, errMsg)
 {
 	if (errCode < 0) return;
 
-	else if (svcId == "save" || svcId == "delete") {
-        // 1. 먼저 알림창을 띄우고, 확인 버튼을 누르면 팝업을 닫도록 콜백(fnSaveMsgCallback)을 연결합니다.
-        this.gfnAlert("msg.save.success", "", "saveSuccess", "fnSaveMsgCallback");
+	else if (svcId == "save") {
+        this.gfnAlert("msg.save.success","saveSuccess");
     }
 	
     else if (svcId == "svcWorkLog") {
+	
+		// 1. 데이터를 받아온 후 모든 행의 체크박스를 '1'(선택)로 설정
+        this.ds_empwork.enableevent=false; // 속도를 위해 이벤트 잠시 중단
+        for(var i=0; i<this.ds_empwork.rowcount; i++) {
+            this.ds_empwork.setColumn(i, "gridcmmcheck", "1");
+        }
+        this.ds_empwork.enableevent=true; // 다시 이벤트 켬
+        
+        // 2. 그리드 헤더 체크박스 모양도 '1'로 변경 (체크 표시 나타나게 함)
+        this.Grid00.setCellProperty("head", 0, "text", "1"); // 0은 체크박스가 있는 셀 인덱스
+        
+        // 3. 전체 선택된 상태로 합계 재계산
         this.fn_recalculateAll();
     }
 	
@@ -145,21 +156,15 @@ this.fnCallback = function(svcId, errCode, errMsg)
 	}
 };
 
-this.fnSaveMsgCallback = function(sId, bRtn)
-{
-    if (sId == "saveSuccess") {
-        this.close("save");
-    }
-};
-
 /**
  * 상세 근무 기록(ds_empwork)의 시간이 바뀌었을 때 실행
  */
 this.ds_empwork_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.DSColChangeEventInfo)
 {
-    if (e.columnid == "working_hours") 
+  // 일한 시간(working_hours)이 바뀌거나, 체크박스(gridcmmcheck) 상태가 바뀔 때 실행
+    if (e.columnid == "working_hours" || e.columnid == "gridcmmcheck") 
     {
-        this.fn_recalculateAll(); // 전체 재계산 함수 호출
+        this.fn_recalculateAll(); 
     }
 };
 
@@ -180,24 +185,26 @@ this.ds_emp_pop_oncolumnchanged = function(obj:nexacro.NormalDataset,e:nexacro.D
  */
 this.fn_recalculateAll = function()
 {
-    var nTotalHours = 0;
+   var nTotalHours = 0;
     
-    //  for문을 돌면서 하나씩 숫자로 바꿔서 더합니다.
+    // 1. 데이터셋 전체를 돌면서 체크된 행의 시간만 합산
     for(var i=0; i<this.ds_empwork.rowcount; i++) {
-        // 현재 행의 시간을 가져와서 즉시 숫자로 변환 (+)
-        var nRowHour = +(this.ds_empwork.getColumn(i, "working_hours")) || 0;
-        nTotalHours += nRowHour;
+        // 체크박스 컬럼(gridcmmcheck)이 '1'인 경우만 더하기
+        if(this.ds_empwork.getColumn(i, "gridcmmcheck") == "1") {
+            var nRowHour = +(this.ds_empwork.getColumn(i, "working_hours")) || 0;
+            nTotalHours += nRowHour;
+        }
     }
     
-    // 나머지 값들도 숫자로 변환
+    // 2. 급여 관련 설정값 가져오기
     var nWage      = +(this.ds_emp_pop.getColumn(0, "hourly_wage")) || 0;
     var nBonus     = +(this.ds_emp_pop.getColumn(0, "bonus_pay")) || 0;
     var nDeduction = +(this.ds_emp_pop.getColumn(0, "deduction_pay")) || 0;
     
-    // 계산
+    // 3. 계산 (체크된 시간 기반)
     var nFinalSalary = (nWage * nTotalHours) + nBonus - nDeduction;
     
-    // 데이터셋 업데이트
+    // 4. 화면 데이터셋 업데이트 (총 근무시간, 총 급여)
     this.ds_emp_pop.setColumn(0, "total_hours", nTotalHours);
     this.ds_emp_pop.setColumn(0, "total_salary", nFinalSalary);
 };
@@ -245,7 +252,14 @@ this.fn_save = function(svcId)
 // 삭제 버튼 
 this.btn_delete_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
-	var nRow = this.ds_empwork.rowposition;
+	
+	//데이터셋(ds_empwork)에서 gridcmmcheck 컬럼이 '1'인 행이 하나라도 있는지 확인
+    var nCheckedCount = this.ds_empwork.findRow("gridcmmcheck", "1");
+    
+    if (nCheckedCount == -1) {
+        this.alert("삭제할 항목을 선택해주세요.");
+        return;
+    }
 	
 	var sMsgId = "msg.before.delete"; 
     var sPopId = "confirmDelete"; // 콜백에서 구분할 ID를 직접 문자열로 지정
@@ -260,18 +274,16 @@ this.fnMsgcallback = function (id, rtn)
     if(id == "confirmDelete") {
         // 사용자가 '확인'을 눌렀는지 확인
         if(rtn == true || rtn == "OK") {
-            
-            // 삭제할 행 번호를 다시 가져옴 (이미 삭제된 상태가 아닐 때만)
-            var nRow = this.ds_empwork.rowposition;
-            
-            if(nRow > -1) {
-                // 데이터셋에서 행 삭제
-                this.ds_empwork.deleteRow(nRow);
-                // 행 삭제되면 다시 계산
-				this.fn_recalculateAll();
-                // DB 저장을 위한 트랜잭션 함수 호출
-				this.fn_save("delete");
+
+			// 역순(뒤에서부터)으로 돌면서 체크된 행 삭제
+            for(var i = this.ds_empwork.rowcount - 1; i >= 0; i--) {
+                if(this.ds_empwork.getColumn(i, "gridcmmcheck") == "1") {
+                    this.ds_empwork.deleteRow(i);
+                }
             }
+			
+			this.fn_recalculateAll(); // 합계 다시 계산
+            this.fn_save("delete");   // 서버에 반영
         }
     }
 };
@@ -279,6 +291,25 @@ this.fnMsgcallback = function (id, rtn)
 this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
 {
 	this.close();
+};
+
+this.Grid00_onheadclick = function(obj:nexacro.Grid,e:nexacro.GridClickEventInfo)
+{
+	 var sType = obj.getCellProperty("head", e.cell, "displaytype");
+    if (sType != "checkboxcontrol") return;
+
+    // 공통 처리 이후로 한 틱 미룸
+    this.setTimer(1, 1);
+};
+
+
+
+this.pos3031pu_ontimer = function(obj:nexacro.Form,e:nexacro.TimerEventInfo)
+{
+	 if (e.timerid == 1) {
+        this.killTimer(1);
+        this.fn_recalculateAll();
+    }
 };
 ]]></Script>
     <Objects>
@@ -302,7 +333,7 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="status" type="STRING" size="256"/>
         </ColumnInfo>
       </Dataset>
-      <Dataset id="ds_empwork" oncolumnchanged="ds_empwork_oncolumnchanged">
+      <Dataset id="ds_empwork" oncolumnchanged="ds_empwork_oncolumnchanged" useclientlayout="true">
         <ColumnInfo>
           <Column id="log_id" type="STRING" size="256"/>
           <Column id="emp_id" type="STRING" size="256"/>
@@ -310,42 +341,6 @@ this.btn_cancel_onclick = function(obj:nexacro.Button,e:nexacro.ClickEventInfo)
           <Column id="working_hours" type="INT" size="256"/>
           <Column id="memo" type="STRING" size="256"/>
         </ColumnInfo>
-      </Dataset>
-      <Dataset id="dsCheckbox">
-        <ColumnInfo>
-          <Column id="EMP_NAME" type="STRING" size="256"/>
-          <Column id="EMP_ID" type="STRING" size="256"/>
-        </ColumnInfo>
-        <Rows>
-          <Row>
-            <Col id="EMP_NAME">Jackson</Col>
-            <Col id="EMP_ID">US050</Col>
-          </Row>
-          <Row>
-            <Col id="EMP_NAME">Jennie</Col>
-            <Col id="EMP_ID">KR240</Col>
-          </Row>
-          <Row>
-            <Col id="EMP_NAME">Dennis </Col>
-            <Col id="EMP_ID">JP150</Col>
-          </Row>
-          <Row>
-            <Col id="EMP_NAME">Andrew</Col>
-            <Col id="EMP_ID">US020</Col>
-          </Row>
-          <Row>
-            <Col id="EMP_NAME">Jungkook</Col>
-            <Col id="EMP_ID">KR200</Col>
-          </Row>
-          <Row>
-            <Col id="EMP_NAME">Adam</Col>
-            <Col id="EMP_ID">JP230</Col>
-          </Row>
-          <Row>
-            <Col id="EMP_NAME">JiYoung</Col>
-            <Col id="EMP_ID">KR080</Col>
-          </Row>
-        </Rows>
       </Dataset>
     </Objects>
   </Form>
