@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2030fm" width="400" height="729" titletext="주문 내역 화면" onload="pos2030fm_onload" border="0px none,0px none,0px none,1px solid #dcdcdc">
+  <Form id="pos2030fm" width="400" height="729" titletext="주문선택 목록 화면" onload="pos2030fm_onload" border="0px none,0px none,0px none,1px solid #dcdcdc">
     <Layouts>
       <Layout height="729" mobileorientation="landscape" width="400">
         <Button id="btn_pay" taborder="1" text="결제하기" top="597" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_pay_onclick"/>

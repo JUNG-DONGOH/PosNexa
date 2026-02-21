@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2011ly" width="200" height="200" titletext="테이블 화면" onload="pos2011ly_onload" border="0px none" onclick="pos2011ly_onclick" scrollbartype="none none">
+  <Form id="pos2011ly" width="200" height="200" titletext="테이블 div 화면" onload="pos2011ly_onload" border="0px none" onclick="pos2011ly_onclick" scrollbartype="none none">
     <Layouts>
       <Layout height="200" mobileorientation="landscape" width="200">
         <Div id="Div00" taborder="1" left="0" top="0" width="200" height="200" text="" formscrollbartype="none none">

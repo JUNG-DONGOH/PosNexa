@@ -56,7 +56,7 @@ this.fn_getMenuRanking = function()
     var strArg      = "";
     var strCallback = "fn_mainStatCallback";
     
-    this.transaction(strSvcId, strSvcUrl, strInDs, strOutDs, strArg, strCallback);
+    this.gfnTransaction(strSvcId, strSvcUrl, strInDs, strOutDs, strArg, strCallback);
 };
 
 this.fn_mainStatCallback = function(svcId, errCode, errMsg)

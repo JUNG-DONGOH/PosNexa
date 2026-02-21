@@ -19,7 +19,7 @@ this.fn_search = function() {
     var strSvcId    = "getMonthlyProfit";
     var strSvcUrl   = "SvcUrl::pos/getMonthlyProfit.do"; 
     var strOutDs    = "ds_profit=out_monthly_profit"; 
-    this.transaction(strSvcId, strSvcUrl, "", strOutDs, "", "fn_callback");
+    this.gfnTransaction(strSvcId, strSvcUrl, "", strOutDs, "", "fn_callback");
 };
 
 /**

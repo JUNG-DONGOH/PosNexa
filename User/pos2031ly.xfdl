@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="pos2031ly" width="355" height="109" titletext="주문내역 div 화면" borderRadius="10px" border="1px solid #dcdcdc" onload="pos2031ly_onload" cssclass="btn_TITLE_MinD">
+  <Form id="pos2031ly" width="355" height="109" titletext="주문선택 목록 div 화면" borderRadius="10px" border="1px solid #dcdcdc" onload="pos2031ly_onload" cssclass="btn_TITLE_MinD">
     <Layouts>
       <Layout height="109" mobileorientation="landscape" width="355">
         <Static id="staName" taborder="0" text="메뉴이름" left="10" top="7" width="122" height="25" cssclass="sta_blue_badge" padding="0px"/>

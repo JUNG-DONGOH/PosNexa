@@ -44,8 +44,7 @@ this.fn_search = function()
     var strParam    = "";
     var strCallbacks = "fn_callback";
     
-    trace("--- [START] 데이터 조회 시작 ---");
-    this.transaction(strSvcId, strSvcUrl, strInDs, strOutDs, strParam, strCallbacks);
+    this.gfnTransaction(strSvcId, strSvcUrl, strInDs, strOutDs, strParam, strCallbacks);
 };
 
 // 콜백 함수
