@@ -1,6 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <FDL version="2.1">
-  <Form id="formWork" width="1396" height="639" titletext="사용자화면" onload="formWork_onload">
+  <Form id="formWork" width="1396" height="639" titletext="관리자 화면" onload="formWork_onload">
     <Layouts>
       <Layout height="639" width="1396">
         <Static id="staTitle" taborder="1" left="0" width="520" height="20" cssclass="sta_WF_Title" top="0" text="sta"/>

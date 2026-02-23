@@ -3,7 +3,7 @@
   <Form id="formLeft" width="140" height="679" titletext="메뉴화면" scrollbartype="none none">
     <Layouts>
       <Layout height="679" mobileorientation="landscape" width="140">
-        <Grid id="grdMenu" taborder="0" left="0" top="0" width="140" height="679" binddataset="gdsMenu" autofittype="col" scrollbartype="none none" treeusebutton="no" treeusecheckbox="false" treeuseimage="false" treeuseline="true" oncelldblclick="grdMenu_oncelldblclick" cssclass="grdStyle" accessibilityenable="true" border="0px none, 1px solid #e2e8f0, 0px none, 0px none">
+        <Grid id="grdMenu" taborder="0" left="0" top="0" width="140" binddataset="gdsMenu" autofittype="col" scrollbartype="none none" treeusebutton="no" treeusecheckbox="false" treeuseimage="false" treeuseline="true" oncelldblclick="grdMenu_oncelldblclick" cssclass="grdStyle" accessibilityenable="true" border="0px none, 1px solid #e2e8f0, 0px none, 0px none" bottom="0">
           <Formats>
             <Format id="default">
               <Columns>

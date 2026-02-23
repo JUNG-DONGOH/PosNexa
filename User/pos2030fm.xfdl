@@ -3,7 +3,7 @@
   <Form id="pos2030fm" width="400" height="729" titletext="주문선택 목록 화면" onload="pos2030fm_onload" border="0px none,0px none,0px none,1px solid #dcdcdc">
     <Layouts>
       <Layout height="729" mobileorientation="landscape" width="400">
-        <Button id="btn_pay" taborder="1" text="결제하기" top="597" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_pay_onclick"/>
+        <Button id="btn_pay" taborder="1" text="결제하기" width="349" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btn_pay_onclick" bottom="81"/>
         <Div id="divCartArea" taborder="3" left="22" top="60" width="357" height="520" border="0px none black" borderRadius="10px" formscrollbartype="autoindicator autoindicator" text="👈 메뉴를 선택해주세요" font="bold 20px/normal &quot;Segoe UI&quot;,&quot;Malgun Gothic&quot;">
           <Layouts>
             <Layout/>
@@ -16,8 +16,8 @@
             </Layout>
           </Layouts>
         </Div>
-        <Button id="btnAllDelete" taborder="2" text="전체 취소" top="660" width="165" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btnAllDelete_onclick"/>
-        <Button id="btnOrder" taborder="4" text="주문하기" top="660" width="165" height="51" cssclass="btn_outline" right="209" fittocontents="none" onclick="btnOrder_onclick"/>
+        <Button id="btnAllDelete" taborder="2" text="전체 취소" width="165" height="51" cssclass="btn_outline" right="25" fittocontents="none" onclick="btnAllDelete_onclick" bottom="18"/>
+        <Button id="btnOrder" taborder="4" text="주문하기" width="165" height="51" cssclass="btn_outline" right="209" fittocontents="none" onclick="btnOrder_onclick" bottom="18"/>
       </Layout>
     </Layouts>
     <Script type="xscript5.1"><![CDATA[this.fvApp=nexacro.getApplication();

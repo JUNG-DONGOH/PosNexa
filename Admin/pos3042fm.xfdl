@@ -4,7 +4,7 @@
     <Layouts>
       <Layout height="560" mobileorientation="landscape" width="1369">
         <ChartJS id="chtMenuRanking" taborder="0" text="ChartJS00" left="0" top="0" width="1369" height="560"/>
-        <Grid id="Grid00" taborder="1" left="975" top="400" width="375" height="144" binddataset="ds_menuRanking" autofittype="col" scrollbartype="autoindicator autoindicator" cssclass="grd_POS">
+        <Grid id="Grid00" taborder="1" top="400" width="375" height="144" binddataset="ds_menuRanking" autofittype="col" scrollbartype="autoindicator autoindicator" cssclass="grd_POS" right="19">
           <Formats>
             <Format id="default">
               <Columns>

@@ -6,24 +6,24 @@
         <Button id="btnLogout" taborder="0" text="로그아웃" top="7" width="108" height="35" onclick="btnLogout_onclick" cssclass="btn_login" right="13"/>
         <Button id="Button00" taborder="1" left="20" top="0" width="170" height="50" cssclass="logo" onclick="Button00_onclick" background="url('theme://images/pos_Logo.png') repeat right bottom" border="0px none"/>
         <Static id="staUser" taborder="2" top="13" width="130" height="24" cssclass="sta_TF_Welcome" onclick="staUser_onclick" text="역할, 사용자 이름" right="135"/>
-        <Static id="Static00" taborder="3" left="0" top="50" width="1536" height="1" border="1px solid gainsboro" onclick="Static00_onclick"/>
-        <Div id="Div00" taborder="4" left="0" top="629" width="1536" height="100" background="#2c3a75" text="">
+        <Static id="Static00" taborder="3" left="0" top="50" height="1" border="1px solid gainsboro" onclick="Static00_onclick" right="0"/>
+        <Div id="Div00" taborder="4" left="0" background="#2c3a75" text="" right="0" bottom="0" height="100" formscrollbartype="none none" formscrolltype="none">
           <Layouts>
             <Layout>
               <Static id="staFooterInfo" taborder="0" text="NEXAPOS 주식회사" left="4" top="3" width="328" height="20" cssclass="stc_Footer_Info"/>
               <Static id="staFooterInfo1" taborder="1" text="기타 정보" left="4" top="25" width="368" height="20" cssclass="stc_Footer_Info"/>
               <Static id="staFooterInfo2" taborder="2" text="기타 정보" left="4" top="63" width="458" height="20" cssclass="stc_Footer_Sub"/>
               <Static id="staFooterInfo3" taborder="3" text="기타 정보" left="4" top="80" width="458" height="20" cssclass="stc_Footer_Sub"/>
-              <Div id="Div00" taborder="4" left="1386" top="50" width="150" height="50" background="url('theme://images/img_socialsite.png') repeat left top"/>
-              <Static id="staFooterInfo4" taborder="5" text="기타 정보" left="1059" top="30" width="458" height="20" cssclass="stc_Footer_Sub" textAlign="right"/>
+              <Div id="Div00" taborder="4" top="50" width="150" height="50" background="url('theme://images/img_socialsite.png') repeat left top" right="0"/>
+              <Static id="staFooterInfo4" taborder="5" text="기타 정보" top="30" width="458" height="20" cssclass="stc_Footer_Sub" textAlign="right" right="19"/>
             </Layout>
           </Layouts>
         </Div>
         <Static id="staClock" taborder="5" text="현재 시간 보여주기" top="12" width="173" height="26" onclick="Static01_onclick" cssclass="sta_TF_Welcome" right="270" textAlign="center"/>
-        <Button id="btnRefund" taborder="6" text="반품" left="1430" top="565" width="94" height="50" tabstop="true" onclick="btnRefund_onclick" cssclass="btn_outline"/>
-        <Button id="btnOrder" taborder="7" text="주문내역" left="1430" top="500" width="94" height="50" cssclass="btn_outline" onclick="btnOrder_onclick"/>
+        <Button id="btnRefund" taborder="6" text="반품" top="565" width="94" height="50" tabstop="true" onclick="btnRefund_onclick" cssclass="btn_outline" right="12"/>
+        <Button id="btnOrder" taborder="7" text="주문내역" top="500" width="94" height="50" cssclass="btn_outline" onclick="btnOrder_onclick" right="12"/>
         <Static id="staShopName" taborder="8" text="가게 이름" top="12" width="173" height="26" textAlign="right" cssclass="sta_TF_Welcome" right="451"/>
-        <Button id="btnSearch" taborder="11" text="조회" left="1430" top="435" width="94" height="50" cssclass="btn_outline" onclick="btnSearch_onclick"/>
+        <Button id="btnSearch" taborder="11" text="조회" top="435" width="94" height="50" cssclass="btn_outline" onclick="btnSearch_onclick" right="12"/>
         <Static id="Static00_00_00" taborder="9" top="11" width="1" height="30" border="1px solid gainsboro" right="440"/>
         <Static id="Static00_00_00_00" taborder="10" top="11" width="1" height="30" border="1px solid gainsboro" right="272"/>
       </Layout>

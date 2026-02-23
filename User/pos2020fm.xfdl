@@ -8,12 +8,12 @@
             <Layout/>
           </Layouts>
         </Div>
-        <Div id="Div00" taborder="0" text="Div00" left="1134" top="0" width="402" height="729" border="0px none black" url="User::pos2030fm.xfdl">
+        <Div id="Div00" taborder="0" text="Div00" top="0" width="402" border="0px none black" url="User::pos2030fm.xfdl" right="0" bottom="0">
           <Layouts>
             <Layout/>
           </Layouts>
         </Div>
-        <Button id="btnGomain" taborder="1" text="뒤로 가기" left="990" top="8" width="120" height="39" onclick="btnGomain_onclick" cssclass="btn_outline" icon="url('theme://images/btn_TF_Prev.png')" textPadding="8px"/>
+        <Button id="btnGomain" taborder="1" text="뒤로 가기" top="8" width="120" height="39" onclick="btnGomain_onclick" cssclass="btn_outline" icon="url('theme://images/btn_TF_Prev.png')" textPadding="8px" right="426"/>
         <Static id="staTableName" taborder="2" text="테이블 번호" left="40" top="10" width="180" height="35" cssclass="sta_number"/>
         <Button id="btn_all" taborder="3" text="전체" top="53" width="87" height="41" cssclass="btn_outline" fittocontents="none" onclick="btn_all_onclick" left="40"/>
         <Button id="btn_porkbeef" taborder="4" text="고기류" top="53" width="87" height="40" cssclass="btn_outline" fittocontents="none" onclick="btn_porkbeef_onclick" left="137"/>

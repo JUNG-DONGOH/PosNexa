@@ -3,7 +3,8 @@
   <Form id="pos1030fm" width="1536" height="729" titletext="비밀번호 찾기 화면">
     <Layouts>
       <Layout height="729" width="1536">
-        <Div id="Div00" taborder="0" left="522" top="39" width="493" height="651" cssclass="div_card_shadow" text="">
+        <Static id="Static00" taborder="1" left="0" top="0" width="50%" height="50%"/>
+        <Div id="Div00" taborder="0" left="Static00:-246" top="Static00:-325.5" width="493" height="651" cssclass="div_card_shadow" text="">
           <Layouts>
             <Layout>
               <Button id="Button00" taborder="0" text="확인" left="152" top="535" width="80" height="50" cssclass="btn_login" onclick="Div00_Button00_onclick"/>
