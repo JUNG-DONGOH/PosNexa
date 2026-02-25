@@ -2213,7 +2213,7 @@
 {
     background: #FFFFFF;
     box-shadow: none;
-    color: #D1D6DB;
+    color: #3182F6;
     cursor: not-allowed;
     opacity: 1;
     -nexa-border: 1px solid #F2F4F6;
@@ -2812,11 +2812,6 @@
 	font : 13px "Pretendard", "Malgun Gothic", sans-serif;
 }
 
-/* 4. [추가] 줄무늬 스타일: 짝수 행에 조금 더 진한 회색 적용 */
-.Grid.grd_Retiree .body .row .cell[userstatus=alternate]
-{
-	background : #edf1f3;             /* 기본보다 한 단계 더 어두운 회색 */
-}
 
 /* 5. 마우스 오버 상태: 강조를 위한 미드 그레이 */
 .Grid.grd_Retiree .body .row .cell[status=mouseover]
